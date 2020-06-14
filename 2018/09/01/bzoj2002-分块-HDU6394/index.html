@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>bzoj2002 分块 &amp; HDU6394 - Hexo</title>
+  <title>bzoj2002 分块 &amp; HDU6394 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,12 +213,12 @@
             
             <article class="markdown-body">
               <h5 id="bzoj2002"><a href="#bzoj2002" class="headerlink" title="bzoj2002"></a>bzoj2002</h5><p><strong>题意：</strong></p>
-<p>一条直线上有n个装置，每个装置设定初始弹力系数$$k_i$$，当达到第i个装置时，它会往后弹$$k_i$$步，达到第$$i+k_i$$个装置，若不存在第$$i+k_i$$个装置，则绵羊被弹飞。</p>
+<p>一条直线上有n个装置，每个装置设定初始弹力系数<script type="math/tex">k_i</script>，当达到第i个装置时，它会往后弹<script type="math/tex">k_i</script>步，达到第<script type="math/tex">i+k_i</script>个装置，若不存在第<script type="math/tex">i+k_i</script>个装置，则绵羊被弹飞。</p>
 <p>有两种操作：</p>
 <p>1 x：当它从第i个装置起步时，被弹几次后会被弹飞。</p>
 <p>2 x y：修改第x个弹力装置的弹力系数为y。</p>
 <p><strong>思路：</strong></p>
-<p>因为直接暴力的话一步一步弹太慢了，是$$O(n)$$的，可以考虑分块提前把弹几步处理出来，这样就可以把弹的复杂度变成$$O(\sqrt n)$$。</p>
+<p>因为直接暴力的话一步一步弹太慢了，是<script type="math/tex">O(n)</script>的，可以考虑分块提前把弹几步处理出来，这样就可以把弹的复杂度变成<script type="math/tex">O(\sqrt n)</script>。</p>
 <p>所以要处理出来每一个装置到下一块的落点和步数。</p>
 <p>分为三种情况：</p>
 <p>1.下一步直接弹出：pos=-1,step=1；</p>
@@ -218,7 +226,7 @@
 <p>3.下一步弹到后面的块内：pos=Next[i],step=1。</p>
 <p>对于查询，循环求出步数。</p>
 <p>对于修改，因为一个装置的修改会影响到块内装置的信息，所以从后往前更新块内装置的信息即可。</p>
-<p>复杂度为$$O(m*\sqrt n)$$。</p>
+<p>复杂度为<script type="math/tex">O(m*\sqrt n)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
 <span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
@@ -309,7 +317,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="HDU6394"><a href="#HDU6394" class="headerlink" title="HDU6394"></a>HDU6394</h5><p>update…</p>
 
             </article>
@@ -556,6 +563,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

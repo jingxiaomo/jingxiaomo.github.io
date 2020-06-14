@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>opencv学习笔记（二）ROI区域图像叠加&amp;初级图像混合 - Hexo</title>
+  <title>opencv学习笔记（二）ROI区域图像叠加&amp;初级图像混合 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      754 字
+      753 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -209,17 +217,14 @@
 Mat imageROI;
 <span class="hljs-comment">//方法一</span>
 imageROI=<span class="hljs-built_in">image</span>(Rect(<span class="hljs-number">500</span>,<span class="hljs-number">250</span>,logo.cols,logo.rows));</code></pre>
-
 <h2 id="cv-Range"><a href="#cv-Range" class="headerlink" title="cv::Range"></a>cv::Range</h2><p>Range是指从起始索引到终止索引（不包括终止索引）的一连段连续序列。</p>
 <pre><code class="hljs c++"><span class="hljs-comment">//方法二</span>
 imageROI=srcImage3(Range(<span class="hljs-number">250</span>,<span class="hljs-number">250</span>+logoImage.rows),Range(<span class="hljs-number">500</span>,<span class="hljs-number">500</span>+logoImage.cols));</code></pre>
-
 <h1 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>操作系统为B开辟了新的内存空间，所以A改变不会导致B改变。</p>
 <pre><code class="hljs c++">Mat A,B;
 A = imread(<span class="hljs-string">"1.jpg"</span>);
 B = A.clone();
 <span class="hljs-comment">//A.copyTo(B);</span></code></pre>
-
 <p>copyTo()以及掩膜的用法：</p>
 <p><a href="https://www.cnblogs.com/phoenixdsg/p/8420716.html" target="_blank" rel="noopener">https://www.cnblogs.com/phoenixdsg/p/8420716.html</a></p>
 <p><a href="https://www.cnblogs.com/skyfsm/p/6894685.html" target="_blank" rel="noopener">https://www.cnblogs.com/skyfsm/p/6894685.html</a></p>
@@ -227,10 +232,8 @@ B = A.clone();
 <pre><code class="hljs c++">Mat A,B;
 A = imread(<span class="hljs-string">"1.jpg"</span>);
 B = A;</code></pre>
-
 <h1 id="初级图像混合——线性混合操作"><a href="#初级图像混合——线性混合操作" class="headerlink" title="初级图像混合——线性混合操作"></a>初级图像混合——线性混合操作</h1><h2 id="addWeighted函数"><a href="#addWeighted函数" class="headerlink" title="addWeighted函数"></a>addWeighted函数</h2><p>这个函数的作用是，计算两个数组（图像阵列）的加权和。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addWeighted</span><span class="hljs-params">(InputArray src1, <span class="hljs-keyword">double</span> alpha, InputArray src2, <span class="hljs-keyword">double</span> beta, <span class="hljs-keyword">double</span> gamma, OutputArray dst, <span class="hljs-keyword">int</span> dtype=<span class="hljs-number">-1</span>)</span></span>;</code></pre>
-
 <ul>
 <li>第一个参数，表示需要加权的第一个数组，常常填一个Mat。</li>
 <li>第二个参数，表示第一个数组的权重。</li>
@@ -240,8 +243,8 @@ B = A;</code></pre>
 <li>第六个参数，输出的数组，它和输入的两个数组拥有相同的尺寸和通道数。</li>
 <li>第七个参数，输出阵列的可选深度，有默认值-1。;当两个输入数组具有相同的深度时，这个参数设置为-1（默认值），即等同于src1.depth（）。</li>
 </ul>
-<p>$$<br>dst = src1[I]<em>alpha+ src2[I]</em>beta + gamma<br>$$</p>
-<p>其中的I是多维数组元素的索引值。而且，在遇到多通道数组的时候，每个通道都需要独立地进行处理。另外需要注意的是，当输出数组的深度为CV_32S时，这个函数就不适用了，这时候就会内存溢出或者算出的结果压根不对。</p>
+<script type="math/tex; mode=display">
+dst = src1[I]*alpha+ src2[I]*beta + gamma</script><p>其中的I是多维数组元素的索引值。而且，在遇到多通道数组的时候，每个通道都需要独立地进行处理。另外需要注意的是，当输出数组的深度为CV_32S时，这个函数就不适用了，这时候就会内存溢出或者算出的结果压根不对。</p>
 <blockquote>
 <p><strong>图像深度</strong>是指存储每个像素所用的位数,也用于量度图像的色彩分辨率.图像深度确定彩色图像的每个像素可能有的颜色数,或者确定灰度图像的每个像素可能有的灰度级数.它决定了彩色图像中可出现的最多颜色数,或灰度图像中的最大灰度等级.比如一幅单色图像,若每个象素有8位,则最大灰度数目为2的8次方,即256.一幅彩色图像RGB3个分量的象素位数分别为4,4,2,则最大颜色数目为2的4+4+2次方,即1024,就是说像素的深度为10位,每个像素可以是1024种颜色中的一种.</p>
 </blockquote>
@@ -490,6 +493,30 @@ B = A;</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

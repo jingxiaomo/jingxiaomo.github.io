@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5895 矩阵快速幂+欧拉降幂公式 - Hexo</title>
+  <title>HDU5895 矩阵快速幂+欧拉降幂公式 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      735 字
+      710 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,17 +213,65 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有$$g(n)=\sum_{i=0}^nf(i)^2$$，其中$$f(0)=0,f(1)=1,f(n)=f(n−2)+2f(n−1)(n≥2)$$，给出n，y，x，s，求$$x^{g(n*y)}mod(s+1)$$。</p>
+<p>有<script type="math/tex">g(n)=\sum_{i=0}^nf(i)^2</script>，其中<script type="math/tex">f(0)=0,f(1)=1,f(n)=f(n−2)+2f(n−1)(n≥2)</script>，给出n，y，x，s，求<script type="math/tex">x^{g(n*y)}mod(s+1)</script>。</p>
 <p><strong>思路：</strong></p>
 <p>有递推式：</p>
-<p>$$f(n)^2=f(n-2)^2+4f(n-1)^2+4f(n-2)f(n-1)$$</p>
-<p>$$f(n)f(n-1)=f(n-2)f(n-1)+2f(n-1)^2$$</p>
-<p>$$g(n)=g(n-1)+f(n)^2$$</p>
-<p>因此可以构造矩阵：<br>$$<br>\left[<br> \begin{matrix}<br>   f(n)^2 \<br>   f(n-1)^2 \<br>   f(n)f(n-1) \<br>   g(n) \<br>  \end{matrix}<br>  \right]<br> =<br>  \left[<br> \begin{matrix}<br>   4&amp;1&amp;4&amp;0 \<br>   1&amp;0&amp;0&amp;0 \<br>   2&amp;0&amp;1&amp;0 \<br>   4&amp;1&amp;4&amp;1<br>  \end{matrix}<br>  \right]<br>\left[<br> \begin{matrix}<br>   f(n-1)^2 \<br>   f(n-2)^2 \<br>   f(n-1)f(n-2) \<br>   g(n-1) \<br>  \end{matrix}<br>  \right]\<br>  可得<br>  \left[<br> \begin{matrix}<br>   f(ny)^2 \<br>   f(ny-1)^2 \<br>   f(ny)f(ny-1) \<br>   g(ny) \<br>  \end{matrix}<br>  \right]<br> =<br>  \left[<br> \begin{matrix}<br>   4&amp;1&amp;4&amp;0 \<br>   1&amp;0&amp;0&amp;0 \<br>   2&amp;0&amp;1&amp;0 \<br>   4&amp;1&amp;4&amp;1<br>  \end{matrix}<br>  \right]^{ny-1}<br>\left[<br> \begin{matrix}<br>   f(1)^2 \<br>   f(0)^2 \<br>   f(1)f(0) \<br>   g(1) \<br>  \end{matrix}<br>  \right]<br>$$<br>但是这个结果是放在指数上的，这里就要用到欧拉降幂公式了。</p>
-<p>$$A^BmodC=A^{Bmodφ(C)+φ(C)}modC$$</p>
-<p>还有另一种写法：可以推出$$g(n)=\frac{f(n)f(n+1)}{2}$$，</p>
-<p>这里除以2不能直接用逆元处理，因为并没有保证2和s+1互质，所以可以用到公式$$\frac{a}{b}modc=\frac{amod(b*c)}{b}$$（b和c不一定要互质）。</p>
-<p>还有其他公式$$\frac{a}{b}modc=a*b^{φ(c)-1}modc$$。</p>
+<script type="math/tex; mode=display">f(n)^2=f(n-2)^2+4f(n-1)^2+4f(n-2)f(n-1)</script><script type="math/tex; mode=display">f(n)f(n-1)=f(n-2)f(n-1)+2f(n-1)^2</script><script type="math/tex; mode=display">g(n)=g(n-1)+f(n)^2</script><p>因此可以构造矩阵：</p>
+<script type="math/tex; mode=display">
+\left[
+ \begin{matrix}
+   f(n)^2 \\
+   f(n-1)^2 \\
+   f(n)f(n-1) \\
+   g(n) \\
+  \end{matrix}
+  \right]
+ =
+  \left[
+ \begin{matrix}
+   4&1&4&0 \\
+   1&0&0&0 \\
+   2&0&1&0 \\
+   4&1&4&1
+  \end{matrix}
+  \right]
+\left[
+ \begin{matrix}
+   f(n-1)^2 \\
+   f(n-2)^2 \\
+   f(n-1)f(n-2) \\
+   g(n-1) \\
+  \end{matrix}
+  \right]\\
+  可得
+  \left[
+ \begin{matrix}
+   f(ny)^2 \\
+   f(ny-1)^2 \\
+   f(ny)f(ny-1) \\
+   g(ny) \\
+  \end{matrix}
+  \right]
+ =
+  \left[
+ \begin{matrix}
+   4&1&4&0 \\
+   1&0&0&0 \\
+   2&0&1&0 \\
+   4&1&4&1
+  \end{matrix}
+  \right]^{ny-1}
+\left[
+ \begin{matrix}
+   f(1)^2 \\
+   f(0)^2 \\
+   f(1)f(0) \\
+   g(1) \\
+  \end{matrix}
+  \right]</script><p>但是这个结果是放在指数上的，这里就要用到欧拉降幂公式了。</p>
+<script type="math/tex; mode=display">A^BmodC=A^{Bmodφ(C)+φ(C)}modC</script><p>还有另一种写法：可以推出<script type="math/tex">g(n)=\frac{f(n)f(n+1)}{2}</script>，</p>
+<p>这里除以2不能直接用逆元处理，因为并没有保证2和s+1互质，所以可以用到公式<script type="math/tex">\frac{a}{b}modc=\frac{amod(b*c)}{b}</script>（b和c不一定要互质）。</p>
+<p>还有其他公式<script type="math/tex">\frac{a}{b}modc=a*b^{φ(c)-1}modc</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mat</span></span>
 <span class="hljs-class">&#123;</span>
@@ -294,7 +350,6 @@ ll MOD;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -540,6 +595,30 @@ ll MOD;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

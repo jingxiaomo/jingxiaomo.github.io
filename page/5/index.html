@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -176,12 +176,12 @@
           
         
         <div>题意：
-有一个计数器，计数器的初始值为0，每次操作你可以把计数器的值加上$$a_1,a_2,…,a_n$$中的任意一个整数，操作次数不限（可以为0次），问计数器的值对m取模后有几种可能，并输出这些可能。
+有一个计数器，计数器的初始值为0，每次操作你可以把计数器的值加上a_1,a_2,...,a_n中的任意一个整数，操作次数不限（可以为0次），问计数器的值对m取模后有几种可能，并输出这些可能。
 思路：
 裴蜀定理：
-对任何整数a、b和它们的最大公约数d，关于未知数x和y的$$ax+by=m$$有整数解时当且仅当m是d的倍数。
-特别地，$$ax+by=1$$有整数解当且仅当整数a和b互质。
-</div>
+对任何整数a、b和它们的最大公约数d，关于未知数x和y的ax+by=m有整数解时当且仅当m是d的倍数。
+特别地，ax+by=1有整数解当且仅当整数a和b互质。
+设a_1,a_2,a</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -260,8 +260,8 @@ CodeForces600C题意：
 给出一棵树，每个结点有一种颜色，求每个结点的子树中出现次数最多的颜色，如果有多个出现次数最多的颜色，则将它们相加。
 思路：
 如果只是求子树的种类数的话似乎用dfs序+莫队也可以做？
-考虑最暴力的$$O(n^2)$$做法，枚举每个点，暴力访问子树中的点，统计完以后将统计的num数组清空。
-其</div>
+考虑最暴力的O(n^2)做法，枚举每个点，暴力访问子树中的点，统计完以后将统计的num数组清空。
+其实num</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -295,9 +295,7 @@ CodeForces600C题意：
           
         
         <div>题意：
-给出一堆n个东西和另一堆m个东西，每个东西有一个分数S和k个属性值。让你在n个东西和m个东西里各选一件，使$$S_{nw}+S_{mw}+\sum_{i=1}^k|x_{nw}[i]-x_{mw}[i]|$$最大。其中$$K&lt;=5, \sum(n+m)&lt;=300000$$。
-思路：
-想到了多维曼哈顿距离…然而想到了之前做过的一道从一堆点里选一个点让其他点到它的曼哈顿距离最短的那</div>
+给出一堆n个东西和另一堆m个东西，每个东西有一个分数S和k个属性值。让你在n个东西和m个东西里各选一件，使S_{nw}+S_{mw}+\sum_{i=1}^k|x_{nw}[i]-x_{mw}[i]|最大。其中K</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -369,11 +367,11 @@ http://www.cnblogs.com/chinhhh/p/7965433.html
           
         
         <div>题意：
-给出N个点，可以选其中四个点组成正方形，输出最大边长。其中$$1≤N≤100000$$。
+给出N个点，可以选其中四个点组成正方形，输出最大边长。其中1≤N≤100000。
 思路：
 容易想到如果知道两个点这个正方形就可以确定，但是N*N明显不行，这里又可以有一个剪枝，只需要枚举同行或者同列的点。
 对于每个点哈希一下存在unordered_set里。
-两重循环，外层枚举一个点，内层枚举跟它同行或同列的点，然后确定边长，在unordered_set找另外两个点存不存在。这里还</div>
+两重循环，外层枚举一个点，内层枚举跟它同行或同列的点，然后确定边长，在unordered_set找另外两个点存不存在。这里还是有很多</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -409,9 +407,9 @@ http://www.cnblogs.com/chinhhh/p/7965433.html
         <div>题意：
 当矩阵中的(x,y)为所在行和所在列中最大的，该(x,y)被称为纳什均衡点。
 问n*m的全排列矩阵最多只有一个纳什均衡点的方案有几种，对p取模。
-其中$$1≤t≤20,1≤n,m≤80,1≤p≤10^9$$。
+其中1≤t≤20,1≤n,m≤80,1≤p≤10^9。
 思路：
-因为矩阵中最多只能有一个纳什均衡点，所以肯定是最大值的点。所以当放了最大值之后，第二大的值只能放在和它同行或同列的地方，同理，对于一个放完的点，下一个点只能放在和之前的点同行</div>
+因为矩阵中最多只能有一个纳什均衡点，所以肯定是最大值的点。所以当放了最大值之后，第二大的值只能放在和它同行或同列的地方，同理，对于一个放完的点，下一个点只能放在和之前的点同行或同列的</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -446,10 +444,11 @@ http://www.cnblogs.com/chinhhh/p/7965433.html
         
         <div>ZOJ4009题意：
 给出n个数字，有两种操作：
-$$1\ l\ r$$：将$$a_l, a_{l+1}, \dots, a_r$$变成$$a_l^3, a_{l+1}^3, \dots, a_r^3$$；
-$$2\ l \ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$模99971的结果。
+1\ l\ r：将a_l, a_{l+1}, \dots, a_r变成a_l^3, a_{l+1}^3, \dots, a_r^3；
+2\ l \ r：求\displaystyle\sum_{i=l}^r a_i模99971的结果。
 思路：
-打表可以发现，在该模数下，每48个数字会有循环节。所以开48棵线段树</div>
+打表可以发现，在该模数下，每48个数字会有循环节。所以开48棵线段树，在v[0]里放当前值。
+对于修改操作，</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -483,10 +482,10 @@ $$2\ l \ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$模99971的结果。
           
         
         <div>题意：
-给出n个数字，要求合并这些数字的代价不超过T，每次可以合并不超过k个数字，每次合并的代价为这些数字的和。问最小的k可以是多少。其中$$2≤N≤100000$$。
+给出n个数字，要求合并这些数字的代价不超过T，每次可以合并不超过k个数字，每次合并的代价为这些数字的和。问最小的k可以是多少。其中2≤N≤100000。
 思路：
 容易想到二分这个k。
-但是这里合并的时候有个问题，不能直接取当前最小的几个合并，因为可能会出现最后一次合并剩下的不是k的情况，这样子就不能最优了。比如这个例子1 2 3 4 5 6，k=3的时候，如果直接取的话代价为6+1</div>
+但是这里合并的时候有个问题，不能直接取当前最小的几个合并，因为可能会出现最后一次合并剩下的不是k的情况，这样子就不能最优了。比如这个例子1 2 3 4 5 6，k=3的时候，如果直接取的话代价为6+15+21</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -520,9 +519,7 @@ $$2\ l \ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$模99971的结果。
           
         
         <div>题意：
-有$$G_u(a,b)=\frac{\varphi(ab)}{\varphi(a)\varphi(b)}$$。给定m,n,p，求$$(\sum_{a=1}^m\sum_{b=1}^nG_u(a,b))\ mod\ p$$。其中$$1≤m,n≤1000000$$，$$max(m,n)&lt;p≤1000000007 $$，p为质数。
-思路：
-可以推导出$$\frac{\varphi(ab)}</div>
+有G_u(a,b)=\frac{\varphi(ab)}{\varphi(a)\varphi(b)}。给定m,n,p，求(\sum_{a=1}^m\sum_{b=1}^nG_u(a,b))\ mod\ p。其中1≤m,n≤1000000，max(m,n)</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -692,6 +689,30 @@ $$2\ l \ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$模99971的结果。
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

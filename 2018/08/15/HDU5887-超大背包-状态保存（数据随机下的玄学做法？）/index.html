@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5887 超大背包+状态保存（数据随机下的玄学做法？） - Hexo</title>
+  <title>HDU5887 超大背包+状态保存（数据随机下的玄学做法？） - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      596 字
+      595 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,9 +213,9 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n件物品，每件物品有体积$$v_i$$和价值$$w_i$$，问体积为m的背包最多可以装下多大价值的物品。其中$$n \leq 100$$ ，其他数据均匀随机并且不超过$$10^9$$。</p>
+<p>有n件物品，每件物品有体积<script type="math/tex">v_i</script>和价值<script type="math/tex">w_i</script>，问体积为m的背包最多可以装下多大价值的物品。其中<script type="math/tex">n \leq 100</script> ，其他数据均匀随机并且不超过<script type="math/tex">10^9</script>。</p>
 <p><strong>思路：</strong></p>
-<p>很典型的背包问题，然而背包的大小变成了$$10^9$$，最简单的01背包的做法不行，交换两维状态（前i件物品价值为j占用的最小体积）的做法也不行。$$n \leq 100$$，折半枚举也不行。</p>
+<p>很典型的背包问题，然而背包的大小变成了<script type="math/tex">10^9</script>，最简单的01背包的做法不行，交换两维状态（前i件物品价值为j占用的最小体积）的做法也不行。<script type="math/tex">n \leq 100</script>，折半枚举也不行。</p>
 <p>那怎么办呢？所以看了题解…</p>
 <p>这又是数据随机下的玄学做法。因为数据均匀随机，所以事实上状态数是很少的。所以把状态放进容器，每次dp的时候遍历一下。这里有些状态是可以删掉的，如果价值小花费的体积反而多，就可以删掉。所以根据价值从大到小排序，然后把这些状态删去就好了。</p>
 <p>这里还有一个搜索+剪枝的做法，不知是数据水还是什么原因，剪枝就是按性价比排序，然后进行后缀优化，如果背包全部放当前性价比的东西价值却没有超过当前的最大值就剪掉，当然体积如果大于m也剪掉。</p>
@@ -263,7 +271,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -509,6 +516,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

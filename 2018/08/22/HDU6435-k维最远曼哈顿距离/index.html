@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6435 k维最远曼哈顿距离 - Hexo</title>
+  <title>HDU6435 k维最远曼哈顿距离 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      570 字
+      68 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,16 +213,16 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出一堆n个东西和另一堆m个东西，每个东西有一个分数S和k个属性值。让你在n个东西和m个东西里各选一件，使$$S_{nw}+S_{mw}+\sum_{i=1}^k|x_{nw}[i]-x_{mw}[i]|$$最大。其中$$K&lt;=5, \sum(n+m)&lt;=300000$$。</p>
+<p>给出一堆n个东西和另一堆m个东西，每个东西有一个分数S和k个属性值。让你在n个东西和m个东西里各选一件，使<script type="math/tex">S_{nw}+S_{mw}+\sum_{i=1}^k|x_{nw}[i]-x_{mw}[i]|</script>最大。其中<script type="math/tex">K<=5, \sum(n+m)<=300000</script>。</p>
 <p><strong>思路：</strong></p>
 <p>想到了多维曼哈顿距离…然而想到了之前做过的一道从一堆点里选一个点让其他点到它的曼哈顿距离最短的那道题…怎么会想到那道题呢…明显是不同的东西啊…</p>
 <p>S的部分是好处理的，考虑绝对值求和部分。</p>
 <p>考虑最简单的情况，k=2：</p>
-<p>$$|x_1-x_2|+|y_1-y_2|$$把绝对值去掉，有四种情况：</p>
-<p>$$x_1-x_2+y_1-y_2，x_1-x_2-y_1+y_2，-x_1+x_2+y_1-y_2,-x_1+x_2-y_1+y_2$$，</p>
-<p>把$$(x_1,y_1)，(x_2,y_2)$$提出来，有</p>
-<p>$$(x_1+y_1)-(x_2+y_2)，(x_1-y_1)-(x_2-y_2)，(-x_1+y_1)-(-x_2+y_2)，(-x_1-y_1)-(-x_2-y_2)$$。</p>
-<p>所以只要二进制枚举符号，n个东西里取S+k维曼哈顿距离最大的，m个东西里取-S+k维曼哈顿距离最小的，相减来更新答案就可以了。复杂度为$$O(2^k<em>k</em>n)$$。</p>
+<p><script type="math/tex">|x_1-x_2|+|y_1-y_2|</script>把绝对值去掉，有四种情况：</p>
+<p><script type="math/tex">x_1-x_2+y_1-y_2，x_1-x_2-y_1+y_2，-x_1+x_2+y_1-y_2,-x_1+x_2-y_1+y_2</script>，</p>
+<p>把<script type="math/tex">(x_1,y_1)，(x_2,y_2)</script>提出来，有</p>
+<p><script type="math/tex">(x_1+y_1)-(x_2+y_2)，(x_1-y_1)-(x_2-y_2)，(-x_1+y_1)-(-x_2+y_2)，(-x_1-y_1)-(-x_2-y_2)</script>。</p>
+<p>所以只要二进制枚举符号，n个东西里取S+k维曼哈顿距离最大的，m个东西里取-S+k维曼哈顿距离最小的，相减来更新答案就可以了。复杂度为<script type="math/tex">O(2^k*k*n)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3f</span>
@@ -279,7 +287,6 @@ ll nn[<span class="hljs-number">100010</span>],mm[<span class="hljs-number">1000
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -525,6 +532,30 @@ ll nn[<span class="hljs-number">100010</span>],mm[<span class="hljs-number">1000
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

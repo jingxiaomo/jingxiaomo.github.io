@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>匹配问题 - Hexo</title>
+  <title>匹配问题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -285,7 +293,6 @@
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>代码（易懂注释）：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">110</span>];
@@ -339,7 +346,6 @@
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>匈牙利算法的要点如下</p>
 <ol>
 <li>从左边第 1 个顶点开始，挑选未匹配点进行搜索，寻找增广路。<ol>
@@ -370,7 +376,7 @@
 <p>初始化标杆使X标杆的值为斜体字的值。<br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184147332.png" srcset="/img/loading.gif" alt="KM算法1"><br>连接每条边并且使得x1和y3匹配，然后遍历x2，发现x2找不到合法增广路。<br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184201273.png" srcset="/img/loading.gif" alt="KM算法2"><br>把不合法路径上的x点都归为点集S,y点都归为T,将不在T中的y点和在S中的点尝试进行加边。<br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184222429.png" srcset="/img/loading.gif" alt="KM算法3"><br>找到两条边，更新顶标之后，成功形成增广路，运用匈牙利算法反选。<br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184247664.png" srcset="/img/loading.gif" alt="KM算法4"><br>给x3找一个合法的增广路，一下就找到了，直接反选，结束。 </p>
 <p>下面不对，应该只有一条不合法路径，S={x2,x3,x4},T={y2,y4}，所以x1和y1不变。</p>
 <p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184259230.png" srcset="/img/loading.gif" alt="KM算法5"></p>
-<p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184313723.png" srcset="/img/loading.gif" alt="KM算法6"><br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184404897.png" srcset="/img/loading.gif" alt="KM算法7"><br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184421687.png" srcset="/img/loading.gif" alt="KM算法8">)<img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184457642.png" srcset="/img/loading.gif" alt="KM算法9"></p>
+<p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184313723.png" srcset="/img/loading.gif" alt="KM算法6"><br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184404897.png" srcset="/img/loading.gif" alt="KM算法7"><br><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184421687.png" srcset="/img/loading.gif" alt="KM算法8"><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20151124184457642.png" srcset="/img/loading.gif" alt="KM算法9"></p>
 <p>一个优化是对Y顶点引入松弛函数slack，slack[j]保存跟当前节点j相连的节点i的lx[i]+ly[j]−weight(i,j)的最小值，于是求delta时只需O(n)枚举<strong>不在交错树</strong>中的Y顶点的最小slack值即可。</p>
 <p>松弛值可以在匈牙利算法检查相等子树边失败时进行更新，同时在修改标号后也要更新，具体参考代码实现。</p>
 <p>如果我们要求边权值最小的匹配呢？？？</p>
@@ -460,7 +466,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="二分图多重匹配"><a href="#二分图多重匹配" class="headerlink" title="二分图多重匹配"></a><strong>二分图多重匹配</strong></h4><p>二分图多重最大匹配：</p>
 <p>在原图上建立源点S和汇点T，S向每个X方点连一条容量为该X方点L值的边，每个Y方点向T连一条容量为该Y方点L值的边，原来二分图中各边在新的网络中仍存在，容量为1（若该边可以使用多次则容量大于1），求该网络的最大流，就是该二分图多重最大匹配的值。</p>
 <p>二分图多重最优匹配：<br>在原图上建立源点S和汇点T，S向每个X方点连一条容量为该X方点L值、费用为0的边，每个Y方点向T连一条容量为该Y方点L值、费用为0的边，原来二分图中各边在新的网络中仍存在，容量为1（若该边可以使用多次则容量大于1），费用为该边的权值。求该网络的最大费用最大流，就是该二分图多重最优匹配的值。</p>
@@ -598,7 +603,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="最小路径覆盖的网络流做法"><a href="#最小路径覆盖的网络流做法" class="headerlink" title="最小路径覆盖的网络流做法"></a><strong>最小路径覆盖的网络流做法</strong></h4><p>hihocoder1394：<a href="http://hihocoder.com/problemset/problem/1394" target="_blank" rel="noopener">http://hihocoder.com/problemset/problem/1394</a></p>
 <p>代码：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> INF=<span class="hljs-number">0x3f3f3f3f3f3f3f3f</span>;
@@ -696,7 +700,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,n-dinic());
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="二分图常用建图方法"><a href="#二分图常用建图方法" class="headerlink" title="二分图常用建图方法"></a>二分图常用建图方法</h4><h5 id="行列匹配法"><a href="#行列匹配法" class="headerlink" title="行列匹配法"></a>行列匹配法</h5><p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20140802104803640.png" srcset="/img/loading.gif" alt="img"></p>
 <p>上图是一个 3 * 3 的矩阵，方格内的 1 表示这个地方有敌人，0 表示没有敌人,现在我们有很多箭，每根箭可以杀死一行或者一列的敌人，问我们要杀死所有的敌人至要用到几根箭？<br>我们要杀死某个敌人，只要让他所在的行列有箭经过就行。也就是所有的位置都被箭覆盖就行，就是顶点的最小覆盖，既然是顶点的最小覆盖，而且我们要杀的是敌人，那么我们的点就应该是敌人的位子，即(行列)对于上面那个图我么可以建立下面这个模型：</p>
 <p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/20140802105126921.png" srcset="/img/loading.gif" alt="img"></p>
@@ -967,6 +970,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

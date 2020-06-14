@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6315 线段树 - Hexo</title>
+  <title>HDU6315 线段树 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      139 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      2
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -206,15 +214,15 @@
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
 <p>有一个长度为n的序列a和一个相同长度的序列b，a初始都为0，b初始为乱序的全排列。现在有两种操作，共操作q次：</p>
-<p>add l r：对于$$a_l,a_{l+1}…a_r$$加一；</p>
-<p>query l r：询问$$\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor$$。</p>
-<p>其中$$1 \leq n,q \leq 100000$$，$$1 \leq l \leq r \leq n$$。</p>
+<p>add l r：对于<script type="math/tex">a_l,a_{l+1}...a_r</script>加一；</p>
+<p>query l r：询问<script type="math/tex">\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor</script>。</p>
+<p>其中<script type="math/tex">1 \leq n,q \leq 100000</script>，<script type="math/tex">1 \leq l \leq r \leq n</script>。</p>
 <p><strong>思路：</strong></p>
-<p>在经过q次操作之后，$$\sum_{i=1}^n\frac{a_i}{b_i}$$最大为$$\sum_{i=1}^n\lfloor \frac{q}{b_i}\rfloor$$，因为b为全排列，有调和级数$$\sum_{i=1}^n \frac{q}{b_i}&lt;=qlogn$$。</p>
-<p>建立两棵线段树，一棵树A维护序列a的最小值，另一棵树B维护$$\lfloor \frac{a_i}{b_i}\rfloor$$的和。</p>
-<p>对于add操作，将A的$$[l,r]$$区间减1，时间复杂度为$$O(logn)$$。当发现该区间的最小值等于0，就向下dfs，找到那个最小值为0的叶子，对这个叶子对应的$$\lfloor \frac{a_i}{b_i}\rfloor$$进行修改，复杂度上面证明了应该为$$O(qlogn)$$。</p>
-<p>所以总的复杂度为$$O(q*qlogn)$$。</p>
-<p>比赛的时候就是卡在要如何知道哪个点要对$$\lfloor \frac{a_i}{b_i}\rfloor$$进行修改，也没想到这个全排列居然是这么用的，有勇气的时候还是要暴力一发啊…不要怕写之后要调很久（虽然补题的时候的确调了很久…懒标记下放的地方没有累加啊…</p>
+<p>在经过q次操作之后，<script type="math/tex">\sum_{i=1}^n\frac{a_i}{b_i}</script>最大为<script type="math/tex">\sum_{i=1}^n\lfloor \frac{q}{b_i}\rfloor</script>，因为b为全排列，有调和级数<script type="math/tex">\sum_{i=1}^n \frac{q}{b_i}<=qlogn</script>。</p>
+<p>建立两棵线段树，一棵树A维护序列a的最小值，另一棵树B维护<script type="math/tex">\lfloor \frac{a_i}{b_i}\rfloor</script>的和。</p>
+<p>对于add操作，将A的<script type="math/tex">[l,r]</script>区间减1，时间复杂度为<script type="math/tex">O(logn)</script>。当发现该区间的最小值等于0，就向下dfs，找到那个最小值为0的叶子，对这个叶子对应的<script type="math/tex">\lfloor \frac{a_i}{b_i}\rfloor</script>进行修改，复杂度上面证明了应该为<script type="math/tex">O(qlogn)</script>。</p>
+<p>所以总的复杂度为<script type="math/tex">O(q*qlogn)</script>。</p>
+<p>比赛的时候就是卡在要如何知道哪个点要对<script type="math/tex">\lfloor \frac{a_i}{b_i}\rfloor</script>进行修改，也没想到这个全排列居然是这么用的，有勇气的时候还是要暴力一发啊…不要怕写之后要调很久（虽然补题的时候的确调了很久…懒标记下放的地方没有累加啊…</p>
 <p>写线段树的时候也仔细一点吧。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -349,7 +357,6 @@ ll ori[<span class="hljs-number">100010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -595,6 +602,30 @@ ll ori[<span class="hljs-number">100010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

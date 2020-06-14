@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Wannafly挑战赛19C 状压+dfs+容斥 - Hexo</title>
+  <title>Wannafly挑战赛19C 状压+dfs+容斥 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      924 字
+      922 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,9 +213,10 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有一棵树包含N个节点，节点编号从1到N。节点总共有K种颜色，颜色编号从1到K。第i个节点的颜色为$$A_i$$。<br>$$F_i$$表示恰好包含i种颜色的路径数量。请计算：</p>
-<p>$$\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)$$。</p>
-<p>其中$$1≤N≤50000$$，$$1≤K≤10$$。</p>
+<p>有一棵树包含N个节点，节点编号从1到N。节点总共有K种颜色，颜色编号从1到K。第i个节点的颜色为<script type="math/tex">A_i</script>。</p>
+<p><script type="math/tex">F_i</script>表示恰好包含i种颜色的路径数量。请计算：</p>
+<p><script type="math/tex">\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)</script>。</p>
+<p>其中<script type="math/tex">1≤N≤50000</script>，<script type="math/tex">1≤K≤10</script>。</p>
 <p><strong>思路：</strong></p>
 <p>做的时候完全无从下手QAQ</p>
 <p>突破点是在这个k，由范围看出可以用状压，压什么呢？压路径中颜色的使用情况。</p>
@@ -224,7 +233,7 @@
 <p>=dp[111]-dp[110]-dp[101]-dp[011]+dp[001]+dp[010]+dp[100]</p>
 <p>由此可以看出，如果子集和它相差的颜色是奇数的话，就减，如果相差的是偶数的话，就加。</p>
 <p>最后再把一个结点的情况加上就可以了。</p>
-<p>复杂度是$$O(2^k*n)$$。</p>
+<p>复杂度是<script type="math/tex">O(2^k*n)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -321,7 +330,6 @@ ll ans[<span class="hljs-number">1500</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,aans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p><strong>总结：</strong></p>
 <p>看到范围小的，可以想到状压也可以想到全排列。</p>
 
@@ -569,6 +577,30 @@ ll ans[<span class="hljs-number">1500</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

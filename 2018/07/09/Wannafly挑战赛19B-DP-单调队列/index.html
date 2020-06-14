@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Wannafly挑战赛19B DP+单调队列 - Hexo</title>
+  <title>Wannafly挑战赛19B DP+单调队列 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      894 字
+      155 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -213,8 +221,7 @@
 <p>请输出满足以上条件的最大子矩阵和。</p>
 <p><strong>思路：</strong></p>
 <p>首先考虑一个问题：求一个序列的长度不超过m的最大连续子序列。</p>
-<p>$$dp[i]:以i为结尾的长度不超过m的最大连续子序列。$$</p>
-<p>利用前缀和可知，$$dp[i]=pre[i]-pre[k],1&lt;=k&lt;=i-1$$。</p>
+<script type="math/tex; mode=display">dp[i]:以i为结尾的长度不超过m的最大连续子序列。</script><p>利用前缀和可知，<script type="math/tex">dp[i]=pre[i]-pre[k],1<=k<=i-1</script>。</p>
 <p>pre[i]是确定的，想让dp[i]尽可能大，就得让pre[k]尽可能小。</p>
 <p>所以可以用一个单调队列来维护pre[k]的最小值。</p>
 <p>单调队列如何维护呢？</p>
@@ -305,13 +312,6 @@ ll dp[<span class="hljs-number">510</span>];<span class="hljs-comment">//以i为
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
-
-
-
-
 
             </article>
             <hr>
@@ -557,6 +557,30 @@ ll dp[<span class="hljs-number">510</span>];<span class="hljs-comment">//以i为
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

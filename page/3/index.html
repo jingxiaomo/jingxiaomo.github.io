@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -218,10 +218,10 @@ typedef long long LL;
         
           
         
-        <div>将一个点$$(x,y)$$的坐标变为$$(x+y,x−y)$$后,原坐标系中的曼哈顿距离=新坐标系中的切比雪夫距离；
-将一个点$$(x,y)$$的坐标变为$$(\frac{x+y}{2},\frac{x−y}{2}) $$后,原坐标系中的切比雪夫距离=新坐标系中的曼哈顿距离。
-切比雪夫距离在计算的时候需要取max，往往不是很好优化，对于一个点，计算其他点到该的距离的复杂度为$$O(n)$$。
-而曼</div>
+        <div>将一个点(x,y)的坐标变为(x+y,x−y)后,原坐标系中的曼哈顿距离=新坐标系中的切比雪夫距离；
+将一个点(x,y)的坐标变为(\frac{x+y}{2},\frac{x−y}{2})后,原坐标系中的切比雪夫距离=新坐标系中的曼哈顿距离。
+切比雪夫距离在计算的时候需要取max，往往不是很好优化，对于一个点，计算其他点到该的距离的复杂度为O(n)。
+而曼哈顿距离只有求和以及取绝对值两种运算，我们</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -254,14 +254,15 @@ typedef long long LL;
         
           
         
-        <div>设$$h_0,h_1,h_2,…,h_n,…$$是一个序列，我们定义的一阶差分序列为：$$Δh_0,Δh_1,…,Δh_n,…,Δh_n=h_{n+1}-h_n$$。
+        <div>设h_0,h_1,h_2,...,h_n,...是一个序列，我们定义的一阶差分序列为：Δh_0,Δh_1,...,Δh_n,...,Δh_n=h_{n+1}-h_n。
 差分表：
 
 定理一设序列的通项时n的p次多项式，即：则对所有的。
-定理二差分表的第0条对角线等于 $$c_0，c_1，c_2，…，c_p，0，0，0，… $$，这样序列的通项满足： 
+定理二差分表的第0条对角线等于 c_0，c_1，c_2，…，c_p，0，0，0，…，这样序列的通项满足： 
 例：
 1  3   17  49
-  2  14</div>
+  2  14  32
+</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -373,8 +374,8 @@ int main()
         
           
         
-        <div>Codeforces 1058D构造出两个数x,y，使得$$x*y=\frac{2mn}{k}$$，并且$$x\le m,y\le n$$。
-2m和k尽可能地约分，考虑2m与k有共同因子的情况，即$$gcd(2m,k)!=1$$，此时经过约分可以得到$$x=\frac{2m}{gcd(2m,k)},y=\frac{gcd(2m,k)*m}{k}$$，容易看出x,y都满足要求。如果$$gcd(2m,</div>
+        <div>Codeforces 1058D构造出两个数x,y，使得x*y=\frac{2mn}{k}，并且x\le m,y\le n。
+2m和k尽可能地约分，考虑2m与k有共同因子的情况，即gcd(2m,k)!=1，此时经过约分可以得到x=\frac{2m}{gcd(2m,k)},y=\frac{gcd(2m,k)*m}{k}，容易看出x,y都满足要求。如果gcd(2m,k)=1，可以知道gcd(n,k)!</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -409,10 +410,10 @@ int main()
         
         <div>上下界网络流即对边的流量有限制，必须在[down,up]的范围内。
 无源汇有上下界可行流模型：
-一个网络，求出一个流，使得每条边的流量为$$[L_i,H_i]$$，除了源点和汇点，每个点必须满足总流入量=总流出量（流量守恒）（这个流的特点是循环往复，无始无终）。
+一个网络，求出一个流，使得每条边的流量为[L_i,H_i]，除了源点和汇点，每个点必须满足总流入量=总流出量（流量守恒）（这个流的特点是循环往复，无始无终）。
 建图：
 首先建立一个源ss和一个汇tt，一般称为附加源和附加汇。
-对于图中的每条弧$$&lt;u,v&gt;$$，假设它容量上界为c，下</div>
+对于图中的每条弧，假设它容量上界为c，下界b，那么把这条边拆为三条只有上界的弧</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -446,9 +447,9 @@ int main()
           
         
         <div>题意：
-有n只青蛙，有m块石头，编号为0～m-1，第i只青蛙每次可以跳$$a_i$$步，刚开始都在0，问青蛙总共可以跳到的石头之和为多少。其中$$t≤20$$，$$1≤n≤10^4$$，$$1≤m≤10^9$$，$$1≤a_i≤10^9$$。
+有n只青蛙，有m块石头，编号为0～m-1，第i只青蛙每次可以跳a_i步，刚开始都在0，问青蛙总共可以跳到的石头之和为多少。其中t≤20，1≤n≤10^4，1≤m≤10^9，1≤a_i≤10^9。
 思路：
-根据裴蜀定理知，对于一个有n个点的环，每个循环节的长度为n/gcd(n, k)，k为每次走的步数。所以青蛙可以达到的石头编号肯定是$$gcd(m,a</div>
+根据裴蜀定理知，对于一个有n个点的环，每个循环节的长度为n/gcd(n, k)，k为每次走的步数。所以青蛙可以达到的石头编号肯定是gcd(m,a_i)的倍数。相当于真正步长为gcd(m,a</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -482,11 +483,7 @@ int main()
           
         
         <div>题意：
-有一棵以结点1为根的n个结点的树，每个结点有一个权值v[i]，对于每个结点求出以它为LCA的两个结点的GCD的最大值。其中$$n&lt;=100000$$,$$f[i]&lt;v[i]&lt;=100000$$。
-思路：
-因为v[i]很小，首先预处理出1～100000的所有因子存在vector里。
-法一：树上启发式合并
-对于一个结点，它作为LCA就相当于求这个结点的子树中相同的因子，这么说</div>
+有一棵以结点1为根的n个结点的树，每个结点有一个权值v[i]，对于每个结点求出以它为LCA的两个结点的GCD的最大值。其中n</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -520,13 +517,13 @@ int main()
           
         
         <div>存个模板。
-luogu4525计算积分$$\int_{L}^{R}\frac{cx+d}{ax+b}dx$$。结果保留至小数点后6位。
+luogu4525计算积分\int_{L}^{R}\frac{cx+d}{ax+b}dx。结果保留至小数点后6位。
 double a,b,c,d,l,r;
 inline double f(double x)     //原函数
 &#123;
     return (c*x+d)/(a*x+b);
 &#125;
-inline double simpson(double l,dou</div>
+inline double simpson(double l,double </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -696,6 +693,30 @@ inline double simpson(double l,dou</div>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

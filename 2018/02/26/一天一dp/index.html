@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>一天一dp - Hexo</title>
+  <title>一天一dp - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -295,7 +303,6 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,MAX);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="3-21"><a href="#3-21" class="headerlink" title="3.21"></a>3.21</h4><h5 id="51nod1274"><a href="#51nod1274" class="headerlink" title="51nod1274"></a>51nod1274</h5><p>题意：给出一张无向图，求最长严格递增路径。</p>
 <p>思路：这道题看起来很简单记忆化搜索一下就ojbk了可是我debug得真的有点难受orz不过很好自从这个一天一dp计划开始就尽量不看题解了有进步hhh</p>
 <p>刚开始想的是从每个点的最长路径入手，可是考虑到这和前一条边的长度有关系，所以就考虑dp(i):从i条边开始的最长路径。这里，我又没考虑周全，我直接把每条无向边当成一条边了，然后我还存了每条边的两个端点，然后再两个方向dfs，然而这是有问题的，因为会存在是从这个端点进入但是又从这个端点出的问题，我debug的时候模拟样例真的几乎要受不了了orz所以才要考虑把一条无向边当成两条有向边来存…这样就不会存在这种问题了…这样记忆化搜索写起来也很简单了…</p>
@@ -333,7 +340,6 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
 <p>考虑到任意大的情况就是有环，所以可以在dfs求dp的同时判环。</p>
 <p>这里我智障了QAQ数组开小了导致一直WA…又查不出错 以后就</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 300010</span></code></pre>
-
 <p>这样写吧。</p>
 <p>也可以用拓扑排序的写法，这里状态转移指的就是父节点而不是子节点了。</p>
 <p>因为拓扑排序的步骤：</p>
@@ -364,7 +370,9 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
 <p>贪心之后就可以dp了，dp(i):到第i个数字删掉的元素的最大和。</p>
 <p>转移方程：dp(i)=max(dp(i-1),dp(i-k)+min(a[i-k+1],a[i-k+2]…a[i]))，即该数字一个数一组和该数字所在的组(len=k)被删掉最小值的情况。</p>
 <p>所以只要用各种方法查询最小值就可以了，我用的是ST表。</p>
-<h5 id="CodeForces932E"><a href="#CodeForces932E" class="headerlink" title="CodeForces932E"></a>CodeForces932E</h5><p>题意：给定n,k,求<br>$$<br>\sum_{i=1}^nC_n^i*i^k<br>$$<br>,其中n&lt;=1e9,k&lt;=5e3。</p>
+<h5 id="CodeForces932E"><a href="#CodeForces932E" class="headerlink" title="CodeForces932E"></a>CodeForces932E</h5><p>题意：给定n,k,求</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nC_n^i*i^k</script><p>,其中n&lt;=1e9,k&lt;=5e3。</p>
 <p>思路：没有思路的一道题…刚开始以为这是有公式的或者可以找规律的…等打出表发现自己太天真了…看了题解 有三种解决方法 一种是求导+dp 还有一种是组合数学+dp 还有一种斯科林数的方法 都好强啊orz。</p>
 <p>看了一种自己能够接受的，组合+dp的思路。</p>
 <p>其实这个式子可以转化成一个组合问题：把n种物品放入k个箱子（每个箱子只能放一种）的方案数。妙啊orz。</p>
@@ -372,7 +380,7 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
 <p>这里就要用dp了，dp(i)(j):到第i个箱子放j种的方案数。看起来n&lt;=1e9不能这样设计状态，实际上这是假的，箱子总共也就k个呀…</p>
 <p>转移方程就可以写了：dp(i)(j)=dp(i-1)(j)×j+dp(i-1)(j-1)×(n-j+1)，即第i个箱子选哪一种的情况。</p>
 <p>那么答案如何表示？</p>
-<p>答案就是$$\sum_{i=1}^n dp[k][i]*2^{n-i}$$，为什么这里要乘$$2^{n-i}$$呢？因为考虑到问题里可能存在比如说预选了4种，但是实际上可能只用了2种的情况，所以这里也要存在这种情况，所以剩下的n-i种可能被选了可能没被选。</p>
+<p>答案就是<script type="math/tex">\sum_{i=1}^n dp[k][i]*2^{n-i}</script>，为什么这里要乘<script type="math/tex">2^{n-i}</script>呢？因为考虑到问题里可能存在比如说预选了4种，但是实际上可能只用了2种的情况，所以这里也要存在这种情况，所以剩下的n-i种可能被选了可能没被选。</p>
 <p>好厉害啊这道题居然还可以这么转化orz学到了hhh</p>
 <h4 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h4><h5 id="CodeForces946F"><a href="#CodeForces946F" class="headerlink" title="CodeForces946F"></a>CodeForces946F</h5><p>题意：定义F(x)为F(x-1)与F(x-2)的连接（其中F(0) = ‘0’,F(1) = ‘1’）。<br>给出一个长度不超过100的字符串s，询问s在F(x)的所有子序列中出现了多少次。</p>
 <p>思路：</p>
@@ -388,49 +396,49 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
 <p>dp(i)(j)(k)+=dp(i-1)(j)(k)*(k==n?(2^len(f(i-2))):1)，</p>
 <p>dp(i)(j)(k)+=dp(i-2)(j)(k)*(j==1?(2^len(f(i-1))):1)，</p>
 <p>dp(i)(j)(k)+=dp(i-1)(j)(l)*dp(i-2)(l)(k)。</p>
-<h4 id="7-5"><a href="#7-5" class="headerlink" title="7.5"></a>7.5</h4><h5 id="luoguP1140"><a href="#luoguP1140" class="headerlink" title="luoguP1140"></a>luoguP1140</h5><p>题意：给出两个基因序列，根据<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fszcufstnjj307s04q74a.jpg" srcset="/img/loading.gif" alt="img">)求出基因相似度。不等长可以在其中加-，如<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fszcujjm5sj308001nwec.jpg" srcset="/img/loading.gif" alt="img">。规定两个基因的相似度为所有对应方法中，相似度最大的那个。</p>
+<h4 id="7-5"><a href="#7-5" class="headerlink" title="7.5"></a>7.5</h4><h5 id="luoguP1140"><a href="#luoguP1140" class="headerlink" title="luoguP1140"></a>luoguP1140</h5><p>题意：给出两个基因序列，根据<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fszcufstnjj307s04q74a.jpg" srcset="/img/loading.gif" alt="img">求出基因相似度。不等长可以在其中加-，如<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fszcujjm5sj308001nwec.jpg" srcset="/img/loading.gif" alt="img">。规定两个基因的相似度为所有对应方法中，相似度最大的那个。</p>
 <p>思路：</p>
-<p>$$dp[i][j]$$ :前i个与前j个匹配的最大基因相似度。</p>
-<p>$$dp[i][j]=max{dp[i][j],dp[i-1][j]+val(a[i],’-‘}$$：a[i]与’-‘匹配。</p>
-<p>$$dp[i][j]=max{dp[i][j],dp[i][j-1]+val(‘-‘,’b[j]’}$$：’-‘与b[j]匹配。</p>
-<p>$$dp[i][j]=max{dp[i][j],dp[i-1][j]+val(a[i-1],b[j-1]}$$：a[i]与b[j]匹配。</p>
+<p><script type="math/tex">dp[i][j]</script> :前i个与前j个匹配的最大基因相似度。</p>
+<p><script type="math/tex">dp[i][j]=max\{dp[i][j],dp[i-1][j]+val(a[i],'-'\}</script>：a[i]与’-‘匹配。</p>
+<p><script type="math/tex">dp[i][j]=max\{dp[i][j],dp[i][j-1]+val('-','b[j]'\}</script>：’-‘与b[j]匹配。</p>
+<p><script type="math/tex">dp[i][j]=max\{dp[i][j],dp[i-1][j]+val(a[i-1],b[j-1]\}</script>：a[i]与b[j]匹配。</p>
 <p>注意边界条件即可。</p>
 <h4 id="7-13"><a href="#7-13" class="headerlink" title="7.13"></a>7.13</h4><h5 id="GCPC2015J"><a href="#GCPC2015J" class="headerlink" title="GCPC2015J"></a>GCPC2015J</h5><p>题意：有个地方只能用金币和银币，它们的汇率为g，刚开始你有c个金币，他要去n个商家那里买东西。每个商家找零只能用一整袋的银币，每袋银币的个数为pi，商家分为greed，honest和generous三种类型，greed找零的时候是向下取整的，honest是四舍五入的，generous是向上取整的，每个商品的价格为si(si&lt;g)，而且你很同情generous，你有银币可以直接付的话就直接付。问你最多可以买几个商品。</p>
 <p>思路：</p>
-<p>$$dp[i][j][k]$$:处理完第i个商品还剩j个金币k个银币时能买到的最多商品。</p>
+<p><script type="math/tex">dp[i][j][k]</script>:处理完第i个商品还剩j个金币k个银币时能买到的最多商品。</p>
 <p>有转移：</p>
-<p>不买：$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k])$$；</p>
-<p>用银币买：$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k+s_i]+1)(k+s_i≤g*c)$$；</p>
-<p>用金币买:$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j+1][k+找零]+1)$$，</p>
+<p>不买：<script type="math/tex">dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k])</script>；</p>
+<p>用银币买：<script type="math/tex">dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k+s_i]+1)(k+s_i≤g*c)</script>；</p>
+<p>用金币买:<script type="math/tex">dp[i][j][k]=max(dp[i][j][k],dp[i-1][j+1][k+找零]+1)</script>，</p>
 <p>其中找零可以借助ceil,floor,round（四舍五入）函数计算，</p>
 <p>因为对于generous如果银币可以付的话就不用金币付，所以当k+找零&gt;=si的话，就不能用金币买了。</p>
 <p>这里注意初始化dp数组要为-INF而不是0，因为有些状态是不能到达的。</p>
-<p>边界条件是$$dp[0][c][0]=0$$。</p>
+<p>边界条件是<script type="math/tex">dp[0][c][0]=0</script>。</p>
 <h4 id="8-21"><a href="#8-21" class="headerlink" title="8.21"></a>8.21</h4><h5 id="CTU2017F"><a href="#CTU2017F" class="headerlink" title="CTU2017F"></a>CTU2017F</h5><p>题意：给出n个数字，一对相同的数字里面可以包一对相同的数字，同理可以一直包下去，问这样的数字对数最多有多少。</p>
 <p>思路：</p>
-<p>$$dp[i][j]$$：i到j这样的数字的最大对数。</p>
+<p><script type="math/tex">dp[i][j]</script>：i到j这样的数字的最大对数。</p>
 <p>有转移：</p>
-<p>$$dp[i][j]=max(dp[i+1][j],dp[i][j-1])$$;</p>
-<p>如果$$a[i]==a[j]$$，有转移$$dp[i][j]=max(dp[i][j],dp[i+1][j-1]+1)$$。</p>
+<p><script type="math/tex">dp[i][j]=max(dp[i+1][j],dp[i][j-1])</script>;</p>
+<p>如果<script type="math/tex">a[i]==a[j]</script>，有转移<script type="math/tex">dp[i][j]=max(dp[i][j],dp[i+1][j-1]+1)</script>。</p>
 <h4 id="8-27"><a href="#8-27" class="headerlink" title="8.27"></a>8.27</h4><p>做几道区间DP，区间DP常常是外层循环是长度，内存循环是起点。</p>
 <h5 id="POJ2955"><a href="#POJ2955" class="headerlink" title="POJ2955"></a>POJ2955</h5><p>题意：给出一个含’(‘，’)’，’[‘，’]’的括号序列，求最长的括号匹配子序列。</p>
-<p>思路：区间dp的典型套路，$$dp[i][j]$$：[i,j]区间最长的括号匹配子序列。除了跟上题一样的转移外，还有$$dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])$$，就是()()这种情况。</p>
-<h5 id="POJ1651"><a href="#POJ1651" class="headerlink" title="POJ1651"></a>POJ1651</h5><p>题意：给出n个数字，每次取出一个数字a[i]，价值为$$a[i-1]<em>a[i]</em>a[i+1]$$，直到只剩下最前面一个数字和最后面一个数字。问最小价值为多少。</p>
-<p>思路：$$dp[i][j]$$：[i,j]最小价值。</p>
-<p>$$dp[i][j]=max(dp[i][k]+dp[k][j]+a[i]<em>a[k]</em>a[j])\ |\ i+1\le k \le j-1$$。</p>
+<p>思路：区间dp的典型套路，<script type="math/tex">dp[i][j]</script>：[i,j]区间最长的括号匹配子序列。除了跟上题一样的转移外，还有<script type="math/tex">dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script>，就是()()这种情况。</p>
+<h5 id="POJ1651"><a href="#POJ1651" class="headerlink" title="POJ1651"></a>POJ1651</h5><p>题意：给出n个数字，每次取出一个数字a[i]，价值为<script type="math/tex">a[i-1]*a[i]*a[i+1]</script>，直到只剩下最前面一个数字和最后面一个数字。问最小价值为多少。</p>
+<p>思路：<script type="math/tex">dp[i][j]</script>：[i,j]最小价值。</p>
+<p><script type="math/tex">dp[i][j]=max(dp[i][k]+dp[k][j]+a[i]*a[k]*a[j])\ |\ i+1\le k \le j-1</script>。</p>
 <p>从长度为3开始循环，外层是长度，内层是i，再枚举k。</p>
 <p>如何理解？</p>
-<p>如果有三个数字，$$dp[1][3]=dp[1][2]+dp[2][3]+a[1]<em>a[2]</em>a[3]$$。</p>
-<p>如果有四个数字，$$dp[1][4]=max(dp[1][2]+dp[2][4]+a[1]<em>a[2]</em>a[4],dp[1][3]+dp[3][4]+a[1]<em>a[3]</em>a[4])$$。</p>
+<p>如果有三个数字，<script type="math/tex">dp[1][3]=dp[1][2]+dp[2][3]+a[1]*a[2]*a[3]</script>。</p>
+<p>如果有四个数字，<script type="math/tex">dp[1][4]=max(dp[1][2]+dp[2][4]+a[1]*a[2]*a[4],dp[1][3]+dp[3][4]+a[1]*a[3]*a[4])</script>。</p>
 <p>如果有五个数字，</p>
-<p>$$dp[1][5]=max(dp[1][2]+dp[2][5]+a[1]<em>a[2]</em>a[5],dp[1][3]+dp[3][5]+a[1]<em>a[3]</em>a[5],dp[1][4]+dp[4][5]+a[1]<em>a[4]</em>a[5])$$。</p>
+<p><script type="math/tex">dp[1][5]=max(dp[1][2]+dp[2][5]+a[1]*a[2]*a[5],dp[1][3]+dp[3][5]+a[1]*a[3]*a[5],dp[1][4]+dp[4][5]+a[1]*a[4]*a[5])</script>。</p>
 <p>画一画会明白。</p>
-<p>因为对于一个区间来说，最后肯定只剩下最前面的数字和最后面的数字，所以对于$$dp[i][k]$$和$$dp[k][j]$$这两个区间剩下的数字肯定只有a[i],a[k],a[j]，所以转移是这样子的。</p>
+<p>因为对于一个区间来说，最后肯定只剩下最前面的数字和最后面的数字，所以对于<script type="math/tex">dp[i][k]</script>和<script type="math/tex">dp[k][j]</script>这两个区间剩下的数字肯定只有a[i],a[k],a[j]，所以转移是这样子的。</p>
 <h5 id="LightOj1422"><a href="#LightOj1422" class="headerlink" title="LightOj1422"></a>LightOj1422</h5><p>题意：一个人要按顺序穿着n件衣服，身上的衣服可以穿好几件，但是如果脱掉以后这件衣服就报废了。问最少要几件衣服。</p>
-<p>思路：$$dp[i][j]$$：从i到j天最少要穿的衣服。</p>
-<p>对于第i件衣服，如果之后的区间不再重复利用了，这种情况的转移为$$dp[i][j]=dp[i+1][j]+1$$。</p>
-<p>如果这件衣服在后面的区间可以重复利用，则选择区间的穿的衣服种类相同的天数，$$dp[i][j]=dp[i][k-1]+dp[k+1][j]$$，因为要选第k天作为重复利用，那么要把[i,k-1]的衣服一件一件脱下来，那么[i,k-1]和[k+1,j]的代价是要独立算的。</p>
-<h4 id="9-25"><a href="#9-25" class="headerlink" title="9.25"></a>9.25</h4><h5 id="徐州网络赛B"><a href="#徐州网络赛B" class="headerlink" title="徐州网络赛B"></a>徐州网络赛B</h5><p>题意：有n轮游戏，有初始分数m，有A和B两个人，每轮游戏可以有三个选项，加某个数，减某个数，取相反数。A总是想得到GE，B总是想得到BE，GE即最后分数&gt;=k，BE即最后分数&lt;=l，其他都是NE。如果自己不能赢的话，那宁愿NE也不要对手赢。A先手。问最后的结果。其中$$1≤n≤1000, −100≤m≤100$$。</p>
+<p>思路：<script type="math/tex">dp[i][j]</script>：从i到j天最少要穿的衣服。</p>
+<p>对于第i件衣服，如果之后的区间不再重复利用了，这种情况的转移为<script type="math/tex">dp[i][j]=dp[i+1][j]+1</script>。</p>
+<p>如果这件衣服在后面的区间可以重复利用，则选择区间的穿的衣服种类相同的天数，<script type="math/tex">dp[i][j]=dp[i][k-1]+dp[k+1][j]</script>，因为要选第k天作为重复利用，那么要把[i,k-1]的衣服一件一件脱下来，那么[i,k-1]和[k+1,j]的代价是要独立算的。</p>
+<h4 id="9-25"><a href="#9-25" class="headerlink" title="9.25"></a>9.25</h4><h5 id="徐州网络赛B"><a href="#徐州网络赛B" class="headerlink" title="徐州网络赛B"></a>徐州网络赛B</h5><p>题意：有n轮游戏，有初始分数m，有A和B两个人，每轮游戏可以有三个选项，加某个数，减某个数，取相反数。A总是想得到GE，B总是想得到BE，GE即最后分数&gt;=k，BE即最后分数&lt;=l，其他都是NE。如果自己不能赢的话，那宁愿NE也不要对手赢。A先手。问最后的结果。其中<script type="math/tex">1≤n≤1000, −100≤m≤100</script>。</p>
 <p>思路：可以想到可以用记忆化搜索。状态就是到第i轮分数为j的结果。1000*200是可以接受的。对于A来说，尽可能要GE，不行的话就NE，之后才是BE，对于B来说，尽可能要BE，不行的话就NE，之后才是GE。脑补一下写个记忆化搜索就可以了。</p>
 
             </article>
@@ -677,6 +685,30 @@ short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

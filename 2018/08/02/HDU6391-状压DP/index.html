@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6321 状压DP - Hexo</title>
+  <title>HDU6321 状压DP - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -206,16 +214,16 @@
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
 <p>定义图的匹配是一组任意两边都没有公共顶点的边集，有n个点，现在有两种类型的操作m个：</p>
-<p>$$+ u\ v$$：在u和v之间加一条边，</p>
-<p>$$- u\ v$$：删去u和v之间的边，</p>
-<p>问每次操作之后边集中有$$1,2,3,···,\frac{n}{2}$$条边的边集有几个。</p>
-<p>其中$$1≤T≤10,2≤n≤10,n\ mod\ 2=0,1≤m≤30000$$。</p>
+<p><script type="math/tex">+ u\ v</script>：在u和v之间加一条边，</p>
+<p><script type="math/tex">- u\ v</script>：删去u和v之间的边，</p>
+<p>问每次操作之后边集中有<script type="math/tex">1,2,3,···,\frac{n}{2}</script>条边的边集有几个。</p>
+<p>其中<script type="math/tex">1≤T≤10,2≤n≤10,n\ mod\ 2=0,1≤m≤30000</script>。</p>
 <p><strong>思路：</strong></p>
 <p>由n的范围可以想到要状压，</p>
-<p>考虑$$dp[i][j]$$：经过i次操作之后，j集合的点已经匹配的方案数。</p>
+<p>考虑<script type="math/tex">dp[i][j]</script>：经过i次操作之后，j集合的点已经匹配的方案数。</p>
 <p>比如j为0011的时候，只有两个点，边集只能有一条边，1111的时候，因为是匹配，表示边集有两条边。</p>
-<p>加边的时候$$dp[i][j]=dp[i-1][j]+dp[i-1][j-u-v]$$，可以写成一维的，从大到小遍历j。</p>
-<p>对于删边，因为之前加边的顺序对于删边是没有关系的，所以可以看作i-1的时候刚把这条边加上，所以将加边操作倒过来，即从小到大遍历j，$$dp[i][j]=dp[i][j]-dp[j-u-v]$$。</p>
+<p>加边的时候<script type="math/tex">dp[i][j]=dp[i-1][j]+dp[i-1][j-u-v]</script>，可以写成一维的，从大到小遍历j。</p>
+<p>对于删边，因为之前加边的顺序对于删边是没有关系的，所以可以看作i-1的时候刚把这条边加上，所以将加边操作倒过来，即从小到大遍历j，<script type="math/tex">dp[i][j]=dp[i][j]-dp[j-u-v]</script>。</p>
 <p>刚开始的时候连题解都看不懂啊…把标程dp中的前后状态输出来才懂啊…主要是对题目的这个匹配的没有很好地理解…</p>
 <p>__builtin_popcount函数：返回一个数的二进制形式中有多少个1。</p>
 <p><strong>代码：</strong></p>
@@ -285,7 +293,6 @@ ll ans[<span class="hljs-number">1200</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -531,6 +538,30 @@ ll ans[<span class="hljs-number">1200</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

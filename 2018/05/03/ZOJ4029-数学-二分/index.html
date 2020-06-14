@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>ZOJ4029 数学+预处理+二分 - Hexo</title>
+  <title>ZOJ4029 数学+预处理+二分 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      495 字
+      494 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,17 +213,14 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出n个ai，m个pi，$$z_i=\sum\limits_{1 \le i \le n}\Bigl\lfloor \frac{a_i}{\lceil\log_{p}a_i\rceil}\Bigr\rfloor$$，求$$(\sum\limits_{i=1}^{m} i \cdot z_i) \bmod 10^9$$。</p>
-<p>$$1 \le n, m \le 5 \times 10^5$$</p>
-<p>$$2 \le a_i \le 10^{9}$$</p>
-<p>$$2 \le p_i \le 10^{9}$$</p>
-<p><strong>思路：</strong></p>
+<p>给出n个ai，m个pi，<script type="math/tex">z_i=\sum\limits_{1 \le i \le n}\Bigl\lfloor \frac{a_i}{\lceil\log_{p}a_i\rceil}\Bigr\rfloor</script>，求<script type="math/tex">(\sum\limits_{i=1}^{m} i \cdot z_i) \bmod 10^9</script>。</p>
+<script type="math/tex; mode=display">1 \le n, m \le 5 \times 10^5</script><script type="math/tex; mode=display">2 \le a_i \le 10^{9}</script><script type="math/tex; mode=display">2 \le p_i \le 10^{9}</script><p><strong>思路：</strong></p>
 <p>省赛的题目…在最后几分钟以为想到解法了其实是错觉…看到数学公式就一通打表，真的菜啊。</p>
 <p>首先根据数据范围可以知道分母还是很小的，不超过30。</p>
 <p>所以可以先预处理出来a[i]/分母，用前缀和存起来。</p>
 <p>每给你一个p，对于每个分母，可以根据p二分出来ai的范围，落入这个范围的就用前缀和加一下就可以了。</p>
 <p>这里内存有点紧…会SF…用sizeof预估一下内存吧…</p>
-<p>这里有个地方很迷…$$temp=(temp+pre[j][pos2]-pre[j][pos1-1]+MOD)%MOD$$;我觉得加的不会是负的吧a[j]/i都是正的呀…对拍了一下各种数据也都是对的…然而似乎是会有负的…所以每次有减的取模的时候都加一下MOD吧…</p>
+<p>这里有个地方很迷…<script type="math/tex">temp=(temp+pre[j][pos2]-pre[j][pos1-1]+MOD)%MOD</script>;我觉得加的不会是负的吧a[j]/i都是正的呀…对拍了一下各种数据也都是对的…然而似乎是会有负的…所以每次有减的取模的时候都加一下MOD吧…</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++">ll a[<span class="hljs-number">500003</span>];
 ll pre[<span class="hljs-number">32</span>][<span class="hljs-number">500003</span>];<span class="hljs-comment">//分母为i的式子的前缀和</span>
@@ -265,7 +270,6 @@ ll pre[<span class="hljs-number">32</span>][<span class="hljs-number">500003</sp
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -511,6 +515,30 @@ ll pre[<span class="hljs-number">32</span>][<span class="hljs-number">500003</sp
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>一些思想 - Hexo</title>
+  <title>一些思想 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      346 字
+      352 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -206,14 +214,14 @@
             <article class="markdown-body">
               <hr>
 <p><strong>题意：</strong></p>
-<p>给出n个数字，有q个询问，去掉三个数字，在剩下的数字里面选10个，问和能否刚好为87。其中$$t \leq5,n \leq 50,q \leq 100000$$。</p>
+<p>给出n个数字，有q个询问，去掉三个数字，在剩下的数字里面选10个，问和能否刚好为87。其中<script type="math/tex">t \leq5,n \leq 50,q \leq 100000</script>。</p>
 <p><strong>思路：</strong></p>
-<p>$$O(t<em>n^3</em>n*10)$$的bitset优化的dp居然可以水过…不科学啊…</p>
+<p><script type="math/tex">O(t*n^3*n*10)</script>的bitset优化的dp居然可以水过…不科学啊…</p>
 <p>有另一种做法：</p>
-<p>因为删除3个数字，所以对于中间的那个数，$$pre[i][j][k]$$表示前i个中选了j个没有选k的和的情况，$$suf[i][j][k]$$表示后i个中选j个没有选k的和的情况，对于和的情况仍然用bitset优化。</p>
+<p>因为删除3个数字，所以对于中间的那个数，<script type="math/tex">pre[i][j][k]</script>表示前i个中选了j个没有选k的和的情况，<script type="math/tex">suf[i][j][k]</script>表示后i个中选j个没有选k的和的情况，对于和的情况仍然用bitset优化。</p>
 <p>特殊处理一下当3个数字有相同的情况。</p>
 <p>询问的时候把前后拼起来就好了。</p>
-<p>预处理复杂度为$$O(t<em>10</em>n^2)$$，询问的复杂度为$$O(t<em>87</em>10*q)$$。这复杂度也不科学。</p>
+<p>预处理复杂度为<script type="math/tex">O(t*10*n^2)</script>，询问的复杂度为<script type="math/tex">O(t*87*10*q)</script>。这复杂度也不科学。</p>
 <p>但是可以学习一下这种思想。</p>
 <p>ps.三个好像经常可以做文章啊？</p>
 <p><a href="http://pattle.xyz/2018/07/10/BAPC2014-finalE-线段树/" target="_blank" rel="noopener">http://pattle.xyz/2018/07/10/BAPC2014-finalE-线段树/</a></p>
@@ -467,6 +475,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

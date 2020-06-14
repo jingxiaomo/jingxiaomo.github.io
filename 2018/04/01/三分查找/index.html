@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>三分查找 - Hexo</title>
+  <title>三分查找 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -211,16 +219,13 @@
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxdkcbjog4j30fm0ajq2u.jpg" srcset="/img/loading.gif" alt=""></p>
 <h4 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h4><p>1⃣️先取整个区间的中间值mid。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;</code></pre>
-
 <p>2⃣️再取右侧区间的中间值rmid，从而把区间分为三个小区间。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> rmid=(mid+r)&gt;&gt;<span class="hljs-number">1</span>;</code></pre>
-
 <p>3⃣️比较mid与rmid谁最靠近最值，只需要确定mid所在的函数值与rmid所在的函数值的大小。当最值为最小值时，mid与rmid中较小的那个自然更为靠近最值。最值为最大值时同理。</p>
 <pre><code class="hljs c++">ll t1=Calc(mid),t2=Calc(rmid);<span class="hljs-comment">//若求最大值则&lt;,min取max</span>
 <span class="hljs-keyword">if</span>(t1&gt;t2) l=mid;
 <span class="hljs-keyword">else</span> r=rmid;
 ans=<span class="hljs-built_in">min</span>(ans,<span class="hljs-built_in">min</span>(t1,t2));</code></pre>
-
 <h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><p>感谢学长的模板orz</p>
 <pre><code class="hljs c++"><span class="hljs-function">ll <span class="hljs-title">Calc</span><span class="hljs-params">(ll x)</span><span class="hljs-comment">//取最小值</span></span>
 <span class="hljs-function"></span>&#123;
@@ -483,6 +488,30 @@ ans=<span class="hljs-built_in">min</span>(ans,<span class="hljs-built_in">min</
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

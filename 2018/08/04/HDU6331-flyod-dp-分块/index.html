@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6331 flyod+dp+分块 - Hexo</title>
+  <title>HDU6331 flyod+dp+分块 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,31 +213,31 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出n个点，m条有向边，有q次询问，问从s到t至少经过$$k_i$$条路的最短路为多少。其中$$1≤T≤10,2≤n≤50,1≤q≤100000,1≤k_i≤10000$$。</p>
+<p>给出n个点，m条有向边，有q次询问，问从s到t至少经过<script type="math/tex">k_i</script>条路的最短路为多少。其中<script type="math/tex">1≤T≤10,2≤n≤50,1≤q≤100000,1≤k_i≤10000</script>。</p>
 <p><strong>思路：</strong></p>
 <p>dp也可以分块啊 感觉开拓了我的思路啊(๑•̀ㅂ•́)و✧真有趣！</p>
 <p>这里有两份比较好的题解：</p>
 <p><a href="https://blog.csdn.net/weixin_42068627/article/details/81299321" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42068627/article/details/81299321</a></p>
 <p><a href="https://blog.csdn.net/qq_34454069/article/details/81292814" target="_blank" rel="noopener">https://blog.csdn.net/qq_34454069/article/details/81292814</a></p>
-<p>首先考虑最朴素的dp，$$dp[k][i][j]$$：从i到j<strong>至少</strong>走k条路的最短路。有转移：$$dp[k][i][j]=min(dp[k-1][i][l]+d[l][j])|1≤l≤n且l≠j$$，其中$$d[i][j]$$表示i到j的最短路。</p>
-<p>复杂度是$$O(T<em>k</em>n^3)$$，结合数据范围，这有$$10^{10}$$。当然不可能是这么做的啦。</p>
+<p>首先考虑最朴素的dp，<script type="math/tex">dp[k][i][j]</script>：从i到j<strong>至少</strong>走k条路的最短路。有转移：<script type="math/tex">dp[k][i][j]=min(dp[k-1][i][l]+d[l][j])|1≤l≤n且l≠j</script>，其中<script type="math/tex">d[i][j]</script>表示i到j的最短路。</p>
+<p>复杂度是<script type="math/tex">O(T*k*n^3)</script>，结合数据范围，这有<script type="math/tex">10^{10}</script>。当然不可能是这么做的啦。</p>
 <p>那么考虑倍增？</p>
-<p>$$dp1[k][i][j]$$：从i到j<strong>恰好</strong>走$$2^k$$条路的最短路。</p>
-<p>$$dp2[k][i][j]$$：从i到j<strong>至少</strong>走$$2^k$$条路的最短路。</p>
+<p><script type="math/tex">dp1[k][i][j]</script>：从i到j<strong>恰好</strong>走<script type="math/tex">2^k</script>条路的最短路。</p>
+<p><script type="math/tex">dp2[k][i][j]</script>：从i到j<strong>至少</strong>走<script type="math/tex">2^k</script>条路的最短路。</p>
 <p>有转移：</p>
-<p>$$dp1[k][i][j]=min(dp1[k-1][i][l]+dp1[k-1][l][j])|1≤l≤n$$。</p>
-<p>$$dp2[k][i][j]=min(dp1[k-1][i][l]+d[k-1][l][j])|1≤l≤n$$。</p>
-<p>预处理的复杂度是$$O(T<em>log_2k</em>n^3)$$，结合数据范围，这是$$10^7$$，对于每次询问，枚举中转点i，$$ans[k][i][j]=dp2[k的二进制形式中的1][i][l]+dp1[k-k的二进制中的1][l][j]$$，而这里的也需要二进制中的1也要循环处理，处理询问的复杂度为$$O(q<em>T</em>n<em>log_2k)$$，结合数据范围，这是$$7</em>10^8$$，似乎也不太行啊？</p>
+<p><script type="math/tex">dp1[k][i][j]=min(dp1[k-1][i][l]+dp1[k-1][l][j])|1≤l≤n</script>。</p>
+<p><script type="math/tex">dp2[k][i][j]=min(dp1[k-1][i][l]+d[k-1][l][j])|1≤l≤n</script>。</p>
+<p>预处理的复杂度是<script type="math/tex">O(T*log_2k*n^3)</script>，结合数据范围，这是<script type="math/tex">10^7</script>，对于每次询问，枚举中转点i，<script type="math/tex">ans[k][i][j]=dp2[k的二进制形式中的1][i][l]+dp1[k-k的二进制中的1][l][j]</script>，而这里的也需要二进制中的1也要循环处理，处理询问的复杂度为<script type="math/tex">O(q*T*n*log_2k)</script>，结合数据范围，这是<script type="math/tex">7*10^8</script>，似乎也不太行啊？</p>
 <p>所以考虑分块。</p>
-<p>假设分成M块，$$M=\sqrt k$$。</p>
-<p>$$dp[k][i][j]$$：从i到j<strong>恰好</strong>走k条路的最短路$$(k≤M)$$。</p>
-<p>$$dp1[k][i][j]$$：从i到j<strong>至少</strong>走k条路的最短路$$(k≤M)$$。</p>
-<p>$$dp2[k][i][j]$$：从i到j<strong>恰好</strong>走M*k条路的最短路。</p>
+<p>假设分成M块，<script type="math/tex">M=\sqrt k</script>。</p>
+<p><script type="math/tex">dp[k][i][j]</script>：从i到j<strong>恰好</strong>走k条路的最短路<script type="math/tex">(k≤M)</script>。</p>
+<p><script type="math/tex">dp1[k][i][j]</script>：从i到j<strong>至少</strong>走k条路的最短路<script type="math/tex">(k≤M)</script>。</p>
+<p><script type="math/tex">dp2[k][i][j]</script>：从i到j<strong>恰好</strong>走M*k条路的最短路。</p>
 <p>有转移：</p>
-<p>$$dp[k][i][j]=min(dp[k-1][i][l]+w[l][j])|1≤l≤n且l≠j$$。</p>
-<p>$$dp1[k][i][j]=min(dp1[k-1][i][l]+d[l][j])|1≤l≤n且l≠j$$。</p>
-<p>$$dp2[k][i][j]=min(dp2[k-1][i][l]+dp[M][l][j])|1≤l≤n$$。</p>
-<p>预处理的复杂度是$$O(T<em>M</em>n^3)$$，结合数据范围，这是$$10^8$$，对于每个询问，枚举中转点l，$$ans[k][i][j]=min(dp2[k/m][i][l]+dp1[k%m][l][j])$$，复杂度为$$O(T<em>q</em>n)$$，相比倍增，这个复杂度是可以接受的。</p>
+<p><script type="math/tex">dp[k][i][j]=min(dp[k-1][i][l]+w[l][j])|1≤l≤n且l≠j</script>。</p>
+<p><script type="math/tex">dp1[k][i][j]=min(dp1[k-1][i][l]+d[l][j])|1≤l≤n且l≠j</script>。</p>
+<p><script type="math/tex">dp2[k][i][j]=min(dp2[k-1][i][l]+dp[M][l][j])|1≤l≤n</script>。</p>
+<p>预处理的复杂度是<script type="math/tex">O(T*M*n^3)</script>，结合数据范围，这是<script type="math/tex">10^8</script>，对于每个询问，枚举中转点l，<script type="math/tex">ans[k][i][j]=min(dp2[k/m][i][l]+dp1[k\%m][l][j])</script>，复杂度为<script type="math/tex">O(T*q*n)</script>，相比倍增，这个复杂度是可以接受的。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> g[<span class="hljs-number">55</span>][<span class="hljs-number">55</span>];
 <span class="hljs-keyword">int</span> d[<span class="hljs-number">55</span>][<span class="hljs-number">55</span>];
@@ -321,7 +329,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -567,6 +574,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

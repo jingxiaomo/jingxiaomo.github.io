@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -215,10 +215,10 @@ fav：喜欢的选手。nfav：其他选手。
         
           
         
-        <div>基本用法排版方式行级元素(inline)，行级元素使用$...$，两个$表示公式的首尾。
-块级元素(displayed)，块级元素使用$$...$$。块级元素默认是居中显示的。
+        <div>基本用法排版方式行级元素(inline)，行级元素使用...，两个$表示公式的首尾。
+块级元素(displayed)，块级元素使用$$$…$$$。块级元素默认是居中显示的。
 常用西文符号\alpha, \beta, …, \omega代表α,β,…ω. 大写字母,使用\Gamma, \Delta, …, \Omega代表Γ,Δ,…,Ω.
-上标与下标使用 ^和 _ 表示上标和下标. 例如,x_i</div>
+上标与下标使用 ^和 _ 表示上标和下标. 例如,x_i^2</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -252,11 +252,11 @@ fav：喜欢的选手。nfav：其他选手。
           
         
         <div>题意：
-给出一个n个数字的数列a，两个数之间的差异值定义为$$max{|A_i-A_{i-1} |,2≤i≤n}$$。现在要插入m个数，可以插在最前面，中间，最后面，问插入后的最小的差异值为多少。
+给出一个n个数字的数列a，两个数之间的差异值定义为max\{|A_i-A_{i-1} |,2≤i≤n\}。现在要插入m个数，可以插在最前面，中间，最后面，问插入后的最小的差异值为多少。
 思路：
 容易想到可以二分答案，知道答案后每个坑位可以填哪些数字就可以确定了。
 匹配：
-考虑二分图匹配的思路。m个数字和n+1个坑位进行匹配，这里会发现又问题，因为如果有个坑位不放数字，这样进行匹配的话不</div>
+考虑二分图匹配的思路。m个数字和n+1个坑位进行匹配，这里会发现又问题，因为如果有个坑位不放数字，这样进行匹配的话不能看</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -290,10 +290,10 @@ fav：喜欢的选手。nfav：其他选手。
           
         
         <div>题意：
-给定一棵n个节点的树，并且根节点的编号为p，第i个节点有属性值vali, 定义F(i): 在以i为根的子树中，属性值是$$val_i$$的合约数的节点个数。y 是 x 的合约数是指 y 是合数且 y 是 x 的约数。小埃想知道$$\sum_{i=1}^n i·F(i)$$对1000000007取模后的结果.  
+给定一棵n个节点的树，并且根节点的编号为p，第i个节点有属性值vali, 定义F(i): 在以i为根的子树中，属性值是val_i的合约数的节点个数。y 是 x 的合约数是指 y 是合数且 y 是 x 的约数。小埃想知道\sum_{i=1}^n i·F(i)对1000000007取模后的结果.  
 思路：
 有点类似之前做的一道CF题…就都是整体考虑。
-一次DFS就可以了，从根</div>
+一次DFS就可以了，从根开始，第一次碰到</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -366,10 +366,11 @@ fav：喜欢的选手。nfav：其他选手。
           
         
         <div>题意：
-有n个城市，每个城市与另一个城市之间都有路，需要从一个城市到另一个城市需要$$t_{xy}$$的时间，一个人到从第一个城市开始视察每一个城市，到每个城市都有一个deadline，到达这个城市的时间不能超过这个deadline，问最小的到达每个城市的到达时间的总和为多少。（n&lt;=30）
+有n个城市，每个城市与另一个城市之间都有路，需要从一个城市到另一个城市需要t_{xy}的时间，一个人到从第一个城市开始视察每一个城市，到每个城市都有一个deadline，到达这个城市的时间不能超过这个deadline，问最小的到达每个城市的到达时间的总和为多少。（n&lt;=30）
 思路：
 先用floyd处理出每两个点之间的最短路。
-n&lt;=30本来肯定是会超时的，可以考虑剪枝</div>
+n&lt;=30本来肯定是会超时的，可以考虑剪枝。
+搜索</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -404,10 +405,10 @@ n&lt;=30本来肯定是会超时的，可以考虑剪枝</div>
         
         <div>参考博客：https://blog.csdn.net/V5ZSQ/article/details/80205265
 题意：
-有一串括号，每个括号有一个权值，当遇到前一个括号为’(‘，后一个括号为’)’时，可以进行交换，交换的价值为$$v_k*v_{k+1}$$，求价值的最大值。
+有一串括号，每个括号有一个权值，当遇到前一个括号为’(‘，后一个括号为’)’时，可以进行交换，交换的价值为v_k*v_{k+1}，求价值的最大值。
 思路：
 DP题…没做出来是我的锅QAQ一种转移状态考虑不出来就试着想想别的状态？
-每个左括号能到达的最右的位置是固定的，</div>
+每个左括号能到达的最右的位置是固定的，如果这个</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -444,8 +445,7 @@ DP题…没做出来是我的锅QAQ一种转移状态考虑不出来就试着想
 有一个长度为n的隐藏的数列a，再给出一个数列f，f[i]是到i（包括自己）的最长递增数列的长度，给出每个数的范围，求出这个隐藏的数列a。
 思路：
 差分约束。
-当$$f_i=f_j+1(j&lt;i)$$时，有$$a_i&gt;a_j$$，即$$a_j-a_i&lt;=-1$$，所以有i-&gt;j的权值为-1的边。
-当$$f_i=f_j(j&lt;i)$$时，有$$a_i&lt;=a_j$</div>
+当f_i=f_j+1(ja_j，即a_j-a_i</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -479,9 +479,8 @@ DP题…没做出来是我的锅QAQ一种转移状态考虑不出来就试着想
           
         
         <div>题意：
-给出n个ai，m个pi，$$z_i=\sum\limits_{1 \le i \le n}\Bigl\lfloor \frac{a_i}{\lceil\log_{p}a_i\rceil}\Bigr\rfloor$$，求$$(\sum\limits_{i=1}^{m} i \cdot z_i) \bmod 10^9$$。
-$$1 \le n, m \le 5 \times 10^5$$
-$$</div>
+给出n个ai，m个pi，z_i=\sum\limits_{1 \le i \le n}\Bigl\lfloor \frac{a_i}{\lceil\log_{p}a_i\rceil}\Bigr\rfloor，求(\sum\limits_{i=1}^{m} i \cdot z_i) \bmod 10^9。
+1 \le n, m \le 5 \times 10^52 \le a_i \le 1</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -689,6 +688,30 @@ bitset中的每个元素都能单独被访问，例如对于</div>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

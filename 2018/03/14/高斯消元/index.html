@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>高斯消元 - Hexo</title>
+  <title>高斯消元 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      996 字
+      994 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -336,13 +344,12 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>给定一个线性方程组，对其求解。</p>
 <p>输入格式：</p>
-<p>第一行，一个正整数$$n$$</p>
-<p>第二至$$n+1$$行，每行$$n+1$$个整数，为$$a_1,a_2⋯a_n$$和$$b$$，代表一组方程。</p>
+<p>第一行，一个正整数<script type="math/tex">n</script></p>
+<p>第二至<script type="math/tex">n+1</script>行，每行<script type="math/tex">n+1</script>个整数，为<script type="math/tex">a_1,a_2⋯a_n</script>和<script type="math/tex">b</script>，代表一组方程。</p>
 <p>输出格式：</p>
-<p>共$$n$$行，每行一个数，第$$i$$行为$$x_i$$（保留2位小数）</p>
+<p>共<script type="math/tex">n</script>行，每行一个数，第<script type="math/tex">i</script>行为<script type="math/tex">x_i</script>（保留2位小数）</p>
 <p>如果不存在唯一解，在第一行输出”No Solution”。</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
@@ -386,7 +393,6 @@
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.2lf\n"</span>,ans[i]);
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -632,6 +638,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

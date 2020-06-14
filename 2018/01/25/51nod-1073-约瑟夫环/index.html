@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>51nod 1073 约瑟夫环 - Hexo</title>
+  <title>51nod 1073 约瑟夫环 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      333 字
+      329 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -204,14 +212,13 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>假设现在是6个人（编号从0到5）报数，报到（2-1）的退出，即&lt;m=2&gt;。那么第一次编号为1的人退出圈子，从他之后的人开始算起，序列变为2,3,4,5,0，即问题变成了这5个人报数的问题，将序号做一下转换：</p>
+              <p>假设现在是6个人（编号从0到5）报数，报到（2-1）的退出，即<m=2>。那么第一次编号为1的人退出圈子，从他之后的人开始算起，序列变为2,3,4,5,0，即问题变成了这5个人报数的问题，将序号做一下转换：</p>
 <a id="more"></a>
-
-<p>2 –&gt;0</p>
-<p>3 –&gt;1</p>
-<p>4 –&gt;2</p>
-<p>5 –&gt;3</p>
-<p>0 –&gt;4</p>
+<p>2 —&gt;0</p>
+<p>3 —&gt;1</p>
+<p>4 —&gt;2</p>
+<p>5 —&gt;3</p>
+<p>0 —&gt;4</p>
 <p>现在假设x为0,1,2,3,4的解，x’设为那么原问题的解（这里注意，2,3,4,5,0的解就是0,1,2,3,4,5的解，因为1出去了，结果还是一个），根据观察发现，x与x’关系为x’=(x+m)%n，因此只要求出x，就可以求x’。 </p>
 <p>令f[i]表示i个人玩游戏报m退出最后胜利者的编号，最后的结果自然是f[n]<br>递推公式<br>f[1]=0;<br>f[i]=(f[i-1]+m)%i;  (i&gt;1)<br>有了这个公式，我们要做的就是从1-n顺序算出f[i]的数值，最后结果是f[n]。因为实际生活中编号总是从1开始，我们输出f[n]+1。<br>由于是逐级递推，不需要保存每个f[i]：</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
@@ -223,7 +230,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,s+<span class="hljs-number">1</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -469,6 +475,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

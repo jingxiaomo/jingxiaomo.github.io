@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>字符串哈希 - Hexo</title>
+  <title>字符串哈希 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -206,8 +214,8 @@
             <article class="markdown-body">
               <p>想学习一下字符串哈希结果发现以前自己已经脑补出来用过了啊？虽然base和mod取的不是那么好…</p>
 <p>参考资料：<a href="https://wenku.baidu.com/view/b7d3d1c6804d2b160a4ec090" target="_blank" rel="noopener">https://wenku.baidu.com/view/b7d3d1c6804d2b160a4ec090</a></p>
-<p>hash函数：$$hash[i]=(hash[i-1]*p+idx(s[i]))%mod$$。</p>
-<p>子串的hash值（下标从1开始）：$$hash[l,r]=(hash[r]-hash[l-1]*p^{r-l+1})%mod$$。</p>
+<p>hash函数：<script type="math/tex">hash[i]=(hash[i-1]*p+idx(s[i]))\%mod</script>。</p>
+<p>子串的hash值（下标从1开始）：<script type="math/tex">hash[l,r]=(hash[r]-hash[l-1]*p^{r-l+1})\%mod</script>。</p>
 <p>获取哈希值的函数用inline似乎会快一点。</p>
 <p>以求N个字符串中有多少个不同的字符串为例存个模板（这里的排序用set替代也是可以的）：</p>
 <p><strong>自然溢出（最快）：</strong></p>
@@ -242,8 +250,7 @@ ull temp[<span class="hljs-number">10010</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-<p><strong>用$$10^{18}$$的大质数取模：</strong></p>
+<p><strong>用<script type="math/tex">10^{18}</script>的大质数取模：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ull;
 <span class="hljs-keyword">const</span> ull base=<span class="hljs-number">131</span>;
 <span class="hljs-keyword">const</span> ull mod=<span class="hljs-number">212370440130137957l</span>l;
@@ -276,7 +283,6 @@ ull temp[<span class="hljs-number">10010</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p><strong>双哈希（最保险）：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ull;
 <span class="hljs-keyword">const</span> ull base=<span class="hljs-number">131</span>;
@@ -320,9 +326,6 @@ ull temp[<span class="hljs-number">10010</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 <p><strong>手写哈希表（拉链法）：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod=<span class="hljs-number">4000007</span>;
 <span class="hljs-keyword">int</span> cnt=<span class="hljs-number">0</span>;
@@ -337,7 +340,6 @@ ull temp[<span class="hljs-number">10010</span>];
     head[temp]=cnt;
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -583,6 +585,30 @@ ull temp[<span class="hljs-number">10010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

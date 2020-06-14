@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>数论基础专题 - Hexo</title>
+  <title>数论基础专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,17 +212,17 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h5 id="Lightoj1282"><a href="#Lightoj1282" class="headerlink" title="*Lightoj1282 *"></a>*<em>Lightoj1282 *</em></h5><p>求n^k的前三位的方法：对于给定的一个数n,它可以写成10^a,其中这个a为浮点数，则n^k=(10^a)^k=10^a<em>k=(10^x)</em>(10^y);其中x,y分别是a*k的整数部分和小数部分，对于t=n^k这个数，它的位数由(10^x)决定，它的位数上的值则有(10^y)决定，因此我们要求t的前三位，只需要将10^y求出，在乘以100，就得到了它的前三位。</p>
+              <h5 id="Lightoj1282"><a href="#Lightoj1282" class="headerlink" title="Lightoj1282 "></a><strong>Lightoj1282 </strong></h5><p>求n^k的前三位的方法：对于给定的一个数n,它可以写成10^a,其中这个a为浮点数，则n^k=(10^a)^k=10^a<em>k=(10^x)</em>(10^y);其中x,y分别是a*k的整数部分和小数部分，对于t=n^k这个数，它的位数由(10^x)决定，它的位数上的值则有(10^y)决定，因此我们要求t的前三位，只需要将10^y求出，在乘以100，就得到了它的前三位。</p>
 <p>fmod(f,(int)f)即可得到小数点后的部分。</p>
 <h5 id="POJ-2115"><a href="#POJ-2115" class="headerlink" title="POJ 2115"></a><strong>POJ 2115</strong></h5><p>题意：for(i=A;i!=B;i+=C){i%(2^k)};问你循环执行几次？</p>
 <p>解题思路：</p>
 <p>(A+s*C)%2^k=B</p>
 <p>(A+s*C)≡B(mod 2^k)</p>
 <p>s<em>C-m</em>2^k=B-A</p>
-<h5 id="LightOj-1341"><a href="#LightOj-1341" class="headerlink" title="*LightOj 1341 *"></a>*<em>LightOj 1341 *</em></h5><p>a&lt;b*b可以剪枝剪掉。</p>
+<h5 id="LightOj-1341"><a href="#LightOj-1341" class="headerlink" title="LightOj 1341 "></a><strong>LightOj 1341 </strong></h5><p>a&lt;b*b可以剪枝剪掉。</p>
 <h5 id="LightOj-1234"><a href="#LightOj-1234" class="headerlink" title="LightOj 1234"></a><strong>LightOj 1234</strong></h5><p>分组打表。</p>
 <h5 id="LightOj-1336"><a href="#LightOj-1336" class="headerlink" title="LightOj 1336"></a><strong>LightOj 1336</strong></h5><p>考虑奇数+打表找规律。</p>
-<h5 id="LightOj-1213"><a href="#LightOj-1213" class="headerlink" title="*LightOj 1213 *"></a>*<em>LightOj 1213 *</em></h5><p>最内层的加法式子执行了n^K次，每次加了K个数，所以一共加了K<em>n^K个数，一共有n个数，每个数加的次数一定是相同的，所以每个数都加了K</em>n^(K-1)次，所以结果就是Sum<em>K</em>n^(K-1)%mod。</p>
+<h5 id="LightOj-1213"><a href="#LightOj-1213" class="headerlink" title="LightOj 1213 "></a><strong>LightOj 1213 </strong></h5><p>最内层的加法式子执行了n^K次，每次加了K个数，所以一共加了K<em>n^K个数，一共有n个数，每个数加的次数一定是相同的，所以每个数都加了K</em>n^(K-1)次，所以结果就是Sum<em>K</em>n^(K-1)%mod。</p>
 <h5 id="UVA-11752"><a href="#UVA-11752" class="headerlink" title="UVA 11752"></a><strong>UVA 11752</strong></h5><p>题意：</p>
 <p>如果一个数可以表示成两个或以上的数的幂，就是超级幂；</p>
 <p>例如64 = 8^2 = 4^3;</p>
@@ -474,6 +482,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

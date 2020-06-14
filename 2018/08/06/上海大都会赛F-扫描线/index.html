@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>上海大都会赛F 扫描线 - Hexo</title>
+  <title>上海大都会赛F 扫描线 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      603 字
+      17 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,12 +213,12 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出$$N<em>M$$的区域，每个格子$$(i,j)|(0≤i&lt;N,0≤j&lt;M)$$最开始是白色的，现在有q次操作，每次操作对于给定的$$(x_c,y_c)$$和$$r$$，把满足$$\sqrt{(i-x_c)^2+(j-y_c)^2}≤r$$的格子涂成黑色。问在q次操作后区域中白色格子的个数。其中$$1≤ N,M≤2</em>10^4,1≤q≤200$$。</p>
+<p>给出<script type="math/tex">N*M</script>的区域，每个格子<script type="math/tex">(i,j)|(0≤i<N,0≤j<M)</script>最开始是白色的，现在有q次操作，每次操作对于给定的<script type="math/tex">(x_c,y_c)</script>和<script type="math/tex">r</script>，把满足<script type="math/tex">\sqrt{(i-x_c)^2+(j-y_c)^2}≤r</script>的格子涂成黑色。问在q次操作后区域中白色格子的个数。其中<script type="math/tex">1≤ N,M≤2*10^4,1≤q≤200</script>。</p>
 <p><strong>思路：</strong></p>
 <p>自己做的时候想到每个圆覆盖的整数点可以变成菱形，所以想到了矩形面积并，还觉得是不是要变换坐标系，整个都跑偏了…</p>
 <p>其实考虑到数据范围很小，直接扫描线就可以了。</p>
-<p>枚举$$N$$，遍历每个操作，可以求出这条扫描线与每个圆相交的区间，存入vector，再将这些区间按照左端点进行排序，然后问题就转化为这些区间覆盖的点的个数了，只要维护最右边的点R就可以了。</p>
-<p>复杂度是$$O(T<em>N</em>q)$$，$$10^8$$似乎跑得蛮快啊？</p>
+<p>枚举<script type="math/tex">N</script>，遍历每个操作，可以求出这条扫描线与每个圆相交的区间，存入vector，再将这些区间按照左端点进行排序，然后问题就转化为这些区间覆盖的点的个数了，只要维护最右边的点R就可以了。</p>
+<p>复杂度是<script type="math/tex">O(T*N*q)</script>，<script type="math/tex">10^8</script>似乎跑得蛮快啊？</p>
 <p>写的时候仔细一点，注意我代码里注释的那个点。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
@@ -270,7 +278,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -516,6 +523,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

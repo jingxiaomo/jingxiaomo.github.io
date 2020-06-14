@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>ZOJ4009 &amp; 上海大都会赛H 循环节+线段树 - Hexo</title>
+  <title>ZOJ4009 &amp; 上海大都会赛H 循环节+线段树 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      27
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -206,13 +214,13 @@
             <article class="markdown-body">
               <h5 id="ZOJ4009"><a href="#ZOJ4009" class="headerlink" title="ZOJ4009"></a>ZOJ4009</h5><p><strong>题意：</strong></p>
 <p>给出n个数字，有两种操作：</p>
-<p>$$1\ l\ r$$：将$$a_l, a_{l+1}, \dots, a_r$$变成$$a_l^3, a_{l+1}^3, \dots, a_r^3$$；</p>
-<p>$$2\ l \ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$模99971的结果。</p>
+<p><script type="math/tex">1\ l\ r</script>：将<script type="math/tex">a_l, a_{l+1}, \dots, a_r</script>变成<script type="math/tex">a_l^3, a_{l+1}^3, \dots, a_r^3</script>；</p>
+<p><script type="math/tex">2\ l \ r</script>：求<script type="math/tex">\displaystyle\sum_{i=l}^r a_i</script>模99971的结果。</p>
 <p><strong>思路：</strong></p>
 <p>打表可以发现，在该模数下，每48个数字会有循环节。所以开48棵线段树，在v[0]里放当前值。</p>
 <p>对于修改操作，进行左移就可以了。</p>
 <p>不清楚的话可以自己模拟一下。</p>
-<p>因为刚开始$$0 \le a_i \le 10^9$$，所以一开始就要模99971。</p>
+<p>因为刚开始<script type="math/tex">0 \le a_i \le 10^9</script>，所以一开始就要模99971。</p>
 <p>这题有点卡常，虽然跑过了但是太慢了，用个读入挂比较好。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 99971</span>
@@ -318,11 +326,10 @@ ll ans;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="上海大都会赛H"><a href="#上海大都会赛H" class="headerlink" title="上海大都会赛H"></a>上海大都会赛H</h5><p><strong>题意：</strong></p>
 <p>给出n个数字，有两种操作：</p>
-<p>$$C\ l\ r$$：将$$a_l, a_{l+1}, \dots, a_r$$变成$$(a_l^2)%2018,(a_{l+1}^3)%2018, (\dots, a_r^3)%2018$$；</p>
-<p>$$Q\ l\ r$$：求$$\displaystyle\sum_{i=l}^r a_i$$的结果（不用取模）。</p>
+<p><script type="math/tex">C\ l\ r</script>：将<script type="math/tex">a_l, a_{l+1}, \dots, a_r</script>变成<script type="math/tex">(a_l^2)\%2018,(a_{l+1}^3)\%2018, (\dots, a_r^3)\%2018</script>；</p>
+<p><script type="math/tex">Q\ l\ r</script>：求<script type="math/tex">\displaystyle\sum_{i=l}^r a_i</script>的结果（不用取模）。</p>
 <p><strong>思路：</strong></p>
 <p>打表可知循环节大概是在变换4次以后，且每个循环节的长度为6。</p>
 <p>所以这里就需要一个标记circle来记录该区间是否进入了循环节，如果进入了循环节，就像上题那样的做法，如果没有进入，则单点更新，并且判断更新后是否进入循环节。</p>
@@ -458,7 +465,6 @@ ll ans;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -704,6 +710,30 @@ ll ans;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

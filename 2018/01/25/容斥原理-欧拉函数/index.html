@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>容斥原理&amp;&amp;欧拉函数 - Hexo</title>
+  <title>容斥原理&amp;&amp;欧拉函数 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -249,7 +257,6 @@
     &#125;
     <span class="hljs-keyword">return</span> res;
 &#125;</code></pre>
-
 <p>队列法：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> pri[<span class="hljs-number">15</span>];
 <span class="hljs-keyword">int</span> num;
@@ -286,14 +293,14 @@
 &#125;</code></pre>
 <h5 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a><strong>欧拉函数</strong></h5><p>指一个数n在[1,n-1]区间有多少个数与它互质。</p>
 <p>比如说，φ[n] = m代表的意思是在区间[1,n-1]里面有m个数与n互质。</p>
-<p>欧拉函数公式：（我们假设n的质因子有x,y（重复的只算一次）） $$φ[n]=n*(1-\frac{1}{x}) * (1-\frac{1}{y})$$。若有多个继续添上即可。</p>
+<p>欧拉函数公式：（我们假设n的质因子有x,y（重复的只算一次）） <script type="math/tex">φ[n]=n*(1-\frac{1}{x}) * (1-\frac{1}{y})</script>。若有多个继续添上即可。</p>
 <p>下面介绍一些基本性质： </p>
 <p>1.n≥1,φ(1)=1。 </p>
 <p>2.当n为质数的时候，φ(n)=n−1。 </p>
 <p>3.欧拉函数是积性函数，但不是完全积性。当n,m互质的时候，φ(n∗m)=φ(n)∗φ(m)。 </p>
 <p>4.当n为奇数的时候，φ(2∗n)=φ(n)。 </p>
 <p>5.除了φ(2)时，其他欧拉函数均为偶数。 </p>
-<p>6.小于n，且与n互质的所有数字的和是$$\frac{φ(n)∗n}{2}$$。</p>
+<p>6.小于n，且与n互质的所有数字的和是<script type="math/tex">\frac{φ(n)∗n}{2}</script>。</p>
 <p>求欧拉函数 有两个思路：</p>
 <p>1.筛法，用数组记录每个数的欧拉函数（适用于n不是很大的情况，因为数组不能开无限大）；</p>
 <p>2.直接求法计算单个欧拉函数，对于有些题目会比较慢（对于很大的n依然可以求解）；</p>
@@ -313,7 +320,6 @@
         &#125;
     &#125;
 &#125;</code></pre>
-
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">euler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i,res=n;
@@ -331,7 +337,6 @@
     <span class="hljs-comment">//phi[temp]=res;   //如果要记忆化的话</span>
     <span class="hljs-keyword">return</span> res;
 &#125;</code></pre>
-
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 20000001</span>
 ll eu[MAXN];
 ll pri[MAXN];
@@ -355,7 +360,6 @@ ll pri[MAXN];
         &#125;
     &#125;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -601,6 +605,30 @@ ll pri[MAXN];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

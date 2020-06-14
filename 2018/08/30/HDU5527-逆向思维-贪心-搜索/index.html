@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5527 逆向思维+贪心+dfs - Hexo</title>
+  <title>HDU5527 逆向思维+贪心+dfs - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      406 字
+      405 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出一个价格n和一些零钱的数量$$c_1,c_5,c_{10},c_{20},c_{50},c_{100},c_{200},c_{500},c_{1000},c_{2000}$$。求最多用多少零钱凑出这个n。</p>
+<p>给出一个价格n和一些零钱的数量<script type="math/tex">c_1,c_5,c_{10},c_{20},c_{50},c_{100},c_{200},c_{500},c_{1000},c_{2000}</script>。求最多用多少零钱凑出这个n。</p>
 <p><strong>思路：</strong></p>
 <p>用最少的零钱凑会比用最多的零钱凑好考虑。</p>
 <p>如果零钱是1,5,10,50,100,200,1000,2000的话，就可以从大到小直接贪心取，就是每个零钱都是后面一个的约数的时候就可以直接贪心取。但是题目这种情况就不能这么做了，比如20,20,20,50,50，要取110，如果用这种策略的话，是凑不到110的，实际上是可以20+20+20+50的，50要少取一张。所以搜索一下两种情况，取满和取满-1。</p>
@@ -260,7 +268,6 @@ ll ans;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -506,6 +513,30 @@ ll ans;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

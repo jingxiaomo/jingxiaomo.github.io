@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5514 容斥原理/欧拉函数的应用 - Hexo</title>
+  <title>HDU5514 容斥原理/欧拉函数的应用 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,20 +213,20 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n只青蛙，有m块石头，编号为0～m-1，第i只青蛙每次可以跳$$a_i$$步，刚开始都在0，问青蛙总共可以跳到的石头之和为多少。其中$$t≤20$$，$$1≤n≤10^4$$，$$1≤m≤10^9$$，$$1≤a_i≤10^9$$。</p>
+<p>有n只青蛙，有m块石头，编号为0～m-1，第i只青蛙每次可以跳<script type="math/tex">a_i</script>步，刚开始都在0，问青蛙总共可以跳到的石头之和为多少。其中<script type="math/tex">t≤20</script>，<script type="math/tex">1≤n≤10^4</script>，<script type="math/tex">1≤m≤10^9</script>，<script type="math/tex">1≤a_i≤10^9</script>。</p>
 <p><strong>思路：</strong></p>
-<p>根据裴蜀定理知，对于一个有n个点的环，每个循环节的长度为n/gcd(n, k)，k为每次走的步数。所以青蛙可以达到的石头编号肯定是$$gcd(m,a_i)$$的倍数。相当于真正步长为$$gcd(m,a_i)$$。</p>
+<p>根据裴蜀定理知，对于一个有n个点的环，每个循环节的长度为n/gcd(n, k)，k为每次走的步数。所以青蛙可以达到的石头编号肯定是<script type="math/tex">gcd(m,a_i)</script>的倍数。相当于真正步长为<script type="math/tex">gcd(m,a_i)</script>。</p>
 <p>很容易就知道要容斥搞一搞，看到n这么大，就没有然后了…</p>
 <p>看了题解知道原来容斥是可以搞的。</p>
 <p>法一：容斥原理</p>
-<p>要求$$gcd(m,a_1)$$,$$gcd(m,a_2)$$,$$gcd(m,a_3)$$…$$gcd(m,a_n)$$的倍数之和，可以利用$$gcd(m,a_i)$$是m的因子这个特点。</p>
+<p>要求<script type="math/tex">gcd(m,a_1)</script>,<script type="math/tex">gcd(m,a_2)</script>,<script type="math/tex">gcd(m,a_3)</script>…<script type="math/tex">gcd(m,a_n)</script>的倍数之和，可以利用<script type="math/tex">gcd(m,a_i)</script>是m的因子这个特点。</p>
 <p>所以处理出m的因子，然后算贡献。</p>
-<p>首先对于m以内的$$gcd(m,a_i)$$的倍数，标记为1，说明这些数的倍数都有可能算进答案里。然后从小到大，如果某个数的贡献（该数的倍数之和）算入了答案，那么它的倍数应该少算一次贡献，那么就把标记减1。然后每次算的时候就是标记*贡献。贡献用等差数列求和算一下就可以了。</p>
-<p>复杂度为$$O(t<em>1000</em>n)$$。</p>
+<p>首先对于m以内的<script type="math/tex">gcd(m,a_i)</script>的倍数，标记为1，说明这些数的倍数都有可能算进答案里。然后从小到大，如果某个数的贡献（该数的倍数之和）算入了答案，那么它的倍数应该少算一次贡献，那么就把标记减1。然后每次算的时候就是标记*贡献。贡献用等差数列求和算一下就可以了。</p>
+<p>复杂度为<script type="math/tex">O(t*1000*n)</script>。</p>
 <p>一直在想这些数的lcm要怎么处理，还计数搞了好久…然而正确的思路总是明了的思想啊…</p>
 <p>法二：欧拉函数的应用</p>
 <p>因为可能有多只青蛙占领同一个石头的情况，所以有消除重复的办法。</p>
-<p>比如样例一，m=12，$$a_1=9$$，$$a_2=10$$，$$gcd(m,a_1)=3$$，$$gcd(m,a_1)=2$$。可以规定每个石头i只能被步长为$$gcd(m,i)$$的青蛙占领。</p>
+<p>比如样例一，m=12，<script type="math/tex">a_1=9</script>，<script type="math/tex">a_2=10</script>，<script type="math/tex">gcd(m,a_1)=3</script>，<script type="math/tex">gcd(m,a_1)=2</script>。可以规定每个石头i只能被步长为<script type="math/tex">gcd(m,i)</script>的青蛙占领。</p>
 <p>2，10只能由步长为2的来占领；</p>
 <p>3，9只能由步长为3的来占领；</p>
 <p>4，8只能由步长为4的来占领；</p>
@@ -228,8 +236,8 @@
 <p>3+9=3*(1+3);</p>
 <p>4+8=4*(1+2);</p>
 <p>6=6*1。</p>
-<p>所以如果步长为x，可以占领的石头的编号和为x*(与$$\frac{m}{x}$$互质的数之和)。</p>
-<p>因为有结论小于n，且与n互质的所有数字的和是$$\frac{φ(n)∗n}{2}$$。</p>
+<p>所以如果步长为x，可以占领的石头的编号和为x*(与<script type="math/tex">\frac{m}{x}</script>互质的数之和)。</p>
+<p>因为有结论小于n，且与n互质的所有数字的和是<script type="math/tex">\frac{φ(n)∗n}{2}</script>。</p>
 <p>所以就可以做了。</p>
 <p>这个方法比较难想到，特别是消除重复和m/x得到的地方。这么消除重复的方式可以学习一下。</p>
 <p><strong>代码：</strong></p>
@@ -306,7 +314,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>法二：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-keyword">int</span> a[<span class="hljs-number">10010</span>],b[<span class="hljs-number">10010</span>];
@@ -375,7 +382,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -621,6 +627,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

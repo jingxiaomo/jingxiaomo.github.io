@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>mark下博客的某些操作 - Hexo</title>
+  <title>mark下博客的某些操作 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -210,7 +218,6 @@
 <p><del>可是为啥我用了界面会缩小emmmm？？？</del></p>
 <h5 id="首页显示部分文章"><a href="#首页显示部分文章" class="headerlink" title="首页显示部分文章"></a>首页显示部分文章</h5><p>markdown中加入</p>
 <pre><code class="hljs xml"><span class="hljs-comment">&lt;!--more--&gt;</span></code></pre>
-
 <p><del>实测在这个模板下没有什么卵用</del> 其他一些模板下是有用的</p>
 <h5 id="live2d插件"><a href="#live2d插件" class="headerlink" title="live2d插件"></a>live2d插件</h5><p><a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">https://github.com/EYHN/hexo-helper-live2d</a></p>
 <p>不知道为啥用不了可能是哪里没配置好吧 之后再试试</p>
@@ -218,7 +225,6 @@
 <h5 id="图片外链"><a href="#图片外链" class="headerlink" title="图片外链"></a>图片外链</h5><p>只需要在基础语法的括号中填入图片的网络链接即可，现在已经有很多免费/收费图床和方便传图的小工具可选。</p>
 <p>例如：</p>
 <pre><code class="hljs markdown">![<span class="hljs-string">avatar</span>](<span class="hljs-link">http://baidu.com/pic/doge.png</span>)</code></pre>
-
 <p>还是腾讯云的对象存储好用啊</p>
 <h5 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h5><p><a href="https://blog.csdn.net/chwshuang/article/details/52350559" target="_blank" rel="noopener">https://blog.csdn.net/chwshuang/article/details/52350559</a></p>
 <h5 id="支持-Mathjax"><a href="#支持-Mathjax" class="headerlink" title="支持 Mathjax"></a>支持 Mathjax</h5><p><a href="https://www.jianshu.com/p/e8d433a2c5b7" target="_blank" rel="noopener">https://www.jianshu.com/p/e8d433a2c5b7</a></p>
@@ -227,8 +233,9 @@
 <p>看个栗子就会用了</p>
 <p>使用$ 符号包裹Tex命令，例如：</p>
 <p><code>$$\sum_{i=1}^n a_i=0$$</code></p>
-<p>输入以上那段代码后你敲一下键盘上的回车键，预览效果就会出现（即可看到如下的数学公式）：<br>$$<br>\sum_{i=1}^n a_i=0<br>$$</p>
-
+<p>输入以上那段代码后你敲一下键盘上的回车键，预览效果就会出现（即可看到如下的数学公式）：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n a_i=0</script>
             </article>
             <hr>
             <div>
@@ -473,6 +480,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5884 二分+多叉哈夫曼树+单调队列 - Hexo</title>
+  <title>HDU5884 二分+多叉哈夫曼树+单调队列 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      613 字
+      615 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,12 +213,12 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出n个数字，要求合并这些数字的代价不超过T，每次可以合并不超过k个数字，每次合并的代价为这些数字的和。问最小的k可以是多少。其中$$2≤N≤100000$$。</p>
+<p>给出n个数字，要求合并这些数字的代价不超过T，每次可以合并不超过k个数字，每次合并的代价为这些数字的和。问最小的k可以是多少。其中<script type="math/tex">2≤N≤100000</script>。</p>
 <p><strong>思路：</strong></p>
 <p>容易想到二分这个k。</p>
 <p>但是这里合并的时候有个问题，不能直接取当前最小的几个合并，因为可能会出现最后一次合并剩下的不是k的情况，这样子就不能最优了。比如这个例子1 2 3 4 5 6，k=3的时候，如果直接取的话代价为6+15+21，事实上要先取两个最小的，代价为3+10+21，所以有个结论：</p>
-<p>对于k叉树，设m为叶子数 , 若$$( m - 1 ) % ( k - 1 ) != 0 $$, 要增加虚(子叶)结点。第一次构造用$$( m - 1 ) % ( k - 1 ) + 1 $$个结点，之后都用k个结点构造k叉树。</p>
-<p>这里又有个问题，如果直接用优先队列，总的复杂度为$$O(n<em>logn</em>logn)$$，还有t组，网上说可以卡过去，然而我并没有卡过去。</p>
+<p>对于k叉树，设m为叶子数 , 若<script type="math/tex">( m - 1 ) \% ( k - 1 ) != 0</script>, 要增加虚(子叶)结点。第一次构造用<script type="math/tex">( m - 1 ) \% ( k - 1 ) + 1</script>个结点，之后都用k个结点构造k叉树。</p>
+<p>这里又有个问题，如果直接用优先队列，总的复杂度为<script type="math/tex">O(n*logn*logn)</script>，还有t组，网上说可以卡过去，然而我并没有卡过去。</p>
 <p>所以这里可以用单调队列，把产生的新的和放入队列，数列从小到大排列，每次取最小的数字的时候，把队首元素和数组里的数字进行比较可以了。这样保证队列中队首元素总是最小的。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -286,7 +294,6 @@ ll MAX;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -532,6 +539,30 @@ ll MAX;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

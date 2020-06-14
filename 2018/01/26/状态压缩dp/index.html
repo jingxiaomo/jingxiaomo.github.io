@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>状态压缩dp - Hexo</title>
+  <title>状态压缩dp - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -215,6 +223,7 @@
 <p>方法：x=x&amp;(x-1)</p>
 <p>4.把一个数字二进制下第i位置0</p>
 <p>方法：x=x&amp;~(1&lt;&lt;(i-1))</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -223,7 +232,8 @@
 <th>位运算</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>去掉最后一位</td>
 <td>(101101-&gt;10110)</td>
 <td>x&gt;&gt;1</td>
@@ -241,12 +251,14 @@
 <tr>
 <td>把最后一位变成1</td>
 <td>(101100-&gt;101101)</td>
-<td>x|1</td>
+<td>x\</td>
+<td>1</td>
 </tr>
 <tr>
 <td>把最后一位变成0</td>
 <td>(101101-&gt;101100)</td>
-<td>x|1-1</td>
+<td>x\</td>
+<td>1-1</td>
 </tr>
 <tr>
 <td>最后一位取反</td>
@@ -256,7 +268,8 @@
 <tr>
 <td>把右数第k位变成1</td>
 <td>(101001-&gt;101101,k=3)</td>
-<td>x|(1&lt;&lt;(k-1))</td>
+<td>x\</td>
+<td>(1&lt;&lt;(k-1))</td>
 </tr>
 <tr>
 <td>把右数第k位变成0</td>
@@ -286,7 +299,8 @@
 <tr>
 <td>把末k位变成1</td>
 <td>(101001-&gt;101111,k=4)</td>
-<td>x|(1&lt;&lt;k-1)</td>
+<td>x\</td>
+<td>(1&lt;&lt;k-1)</td>
 </tr>
 <tr>
 <td>末k位取反</td>
@@ -301,12 +315,14 @@
 <tr>
 <td>把右起第一个0变成1</td>
 <td>(100101111-&gt;100111111)</td>
-<td>x|(x+1)</td>
+<td>x\</td>
+<td>(x+1)</td>
 </tr>
 <tr>
 <td>把右边连续的0变成1</td>
 <td>(11011000-&gt;11011111)</td>
-<td>x|(x-1)</td>
+<td>x\</td>
+<td>(x-1)</td>
 </tr>
 <tr>
 <td>取右边连续的1</td>
@@ -318,7 +334,9 @@
 <td>(100101000-&gt;1000)</td>
 <td>x&amp;(x^(x-1))</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="适用情况"><a href="#适用情况" class="headerlink" title="适用情况"></a><strong>适用情况</strong></h5><p>看到N和M范围差别特别大，而且N的范围特别小时（也有可能都很小，在20以内时），首先就应该想到正确算法与这两个范围有关！</p>
 <p>因此进一步可以考虑使用状压dp求解！！</p>
 <h5 id="poj-3254"><a href="#poj-3254" class="headerlink" title="poj 3254"></a><strong>poj 3254</strong></h5><p>题意：有n*m大的一个地方，1表示土地肥沃可以种植物，0表示不能种植物，问：在不许有两个植物相邻的情况下，有多少种放置的方法。</p>
@@ -331,7 +349,6 @@
         <span class="hljs-keyword">if</span>((i&amp;(i&lt;&lt;<span class="hljs-number">1</span>))==<span class="hljs-number">0</span>)<span class="hljs-comment">//i左移一位,相邻就相当于左移之后的数字和原数字相与都是0</span>
             fit[++num]=i;
 &#125;</code></pre>
-
 <p>2⃣️保存土地的肥沃情况。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> m,n;
 <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;m,&amp;n);
@@ -342,7 +359,6 @@
         <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
         mp[i]=(mp[i]&lt;&lt;<span class="hljs-number">1</span>)+x;
     &#125;</code></pre>
-
 <p>3⃣️动态规划。</p>
 <p>dp(i)(j):推到第i行，第i行为j状态时的方法数。</p>
 <p>dp(i)(j)=sum{dp(i-1)(k),(1&lt;=k&lt;=num&amp;&amp;k要符合土地肥沃条件和不相邻条件)}</p>
@@ -372,7 +388,6 @@
             &#125;
         &#125;
     &#125;</code></pre>
-
 <p>4⃣️把最后一行的所有方法数字相加即可。</p>
 <p>完整代码：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> fit[<span class="hljs-number">500</span>];<span class="hljs-comment">//每行中不相邻的情况数</span>
@@ -426,7 +441,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -672,6 +686,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

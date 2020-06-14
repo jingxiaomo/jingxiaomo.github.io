@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU5439 找规律+预处理+二分 - Hexo</title>
+  <title>HDU5439 找规律+预处理+二分 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      647 字
+      658 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -210,24 +218,16 @@
 <p>2.第三个数字是2，所以在后面写两个3。</p>
 <p>3.第四个数字是3，所以在后面三个4。</p>
 <p>4.像这样可以得到1,2,2,3,3,4,4,4,5,5,5,6,6,6,6。</p>
-<p>给出一个数字n，假设这个n的最后出现的位置为p，求p最后出现的位置。其中$$n≤10^9$$。</p>
+<p>给出一个数字n，假设这个n的最后出现的位置为p，求p最后出现的位置。其中<script type="math/tex">n≤10^9</script>。</p>
 <p><strong>思路：</strong></p>
-<p>可以找出规律要求的$$F[n]=pre[pre[n]]$$，其中$$pre[n]$$为原数列的前缀和，可以写几项。</p>
-<p>$$F[1]=pre[pre[1]]=1$$</p>
-<p>$$F[2]=pre[pre[2]]=pre[3]=1<em>1+2</em>2$$</p>
-<p>$$F[3]=pre[pre[3]]=pre[5]=1<em>1+2</em>2+3*2$$</p>
-<p>$$F[4]=pre[pre[4]]=pre[8]=1<em>1+2</em>2+3<em>2+4</em>3$$</p>
-<p>$$F[5]=pre[pre[5]]=1<em>1+2</em>2+3<em>2+4</em>3+5<em>3=1</em>1+(2+3)<em>2+(4+5)</em>3$$</p>
-<p>$$F[6]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+6*4$$</p>
-<p>$$F[7]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+(6+7)*4$$</p>
-<p>$$F[8]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+(6+7+8)*4$$</p>
-<p>由此可以知道$$F[n]=\sum_{i=1}^ni*f[i]$$，其中$$f[i]$$表示原数列。</p>
+<p>可以找出规律要求的<script type="math/tex">F[n]=pre[pre[n]]</script>，其中<script type="math/tex">pre[n]</script>为原数列的前缀和，可以写几项。</p>
+<script type="math/tex; mode=display">F[1]=pre[pre[1]]=1</script><script type="math/tex; mode=display">F[2]=pre[pre[2]]=pre[3]=1*1+2*2</script><script type="math/tex; mode=display">F[3]=pre[pre[3]]=pre[5]=1*1+2*2+3*2</script><script type="math/tex; mode=display">F[4]=pre[pre[4]]=pre[8]=1*1+2*2+3*2+4*3</script><script type="math/tex; mode=display">F[5]=pre[pre[5]]=1*1+2*2+3*2+4*3+5*3=1*1+(2+3)*2+(4+5)*3</script><script type="math/tex; mode=display">F[6]=1*1+(2+3)*2+(4*5)*3+6*4</script><script type="math/tex; mode=display">F[7]=1*1+(2+3)*2+(4*5)*3+(6+7)*4</script><script type="math/tex; mode=display">F[8]=1*1+(2+3)*2+(4*5)*3+(6+7+8)*4</script><p>由此可以知道<script type="math/tex">F[n]=\sum_{i=1}^ni*f[i]</script>，其中<script type="math/tex">f[i]</script>表示原数列。</p>
 <p>因为原数列可以根据值分成几块，所以预处理出</p>
-<p>$$f[i]$$：原数列，</p>
-<p>$$locr[i]$$：i最后一次出现的位置，</p>
-<p>$$pre[i]$$：第$$locr[i]$$个数的$$F[i]$$。</p>
+<p><script type="math/tex">f[i]</script>：原数列，</p>
+<p><script type="math/tex">locr[i]</script>：i最后一次出现的位置，</p>
+<p><script type="math/tex">pre[i]</script>：第<script type="math/tex">locr[i]</script>个数的<script type="math/tex">F[i]</script>。</p>
 <p>这些东西就可以了，对于一个n其他多余的要加的东西可以在块内进行。</p>
-<p>所以二分一下每个n在哪一块里再把前面的$$pre$$和块内的加起来就可以了。</p>
+<p>所以二分一下每个n在哪一块里再把前面的<script type="math/tex">pre</script>和块内的加起来就可以了。</p>
 <p>找规律的题做法直接说出来的确有点抽象，这种东西还是要自己手推一下…</p>
 <p>找规律的题分块的确是一种写法。</p>
 <p><strong>代码：</strong></p>
@@ -533,6 +533,30 @@ ll pre[<span class="hljs-number">1000010</span>];<span class="hljs-comment">//�
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

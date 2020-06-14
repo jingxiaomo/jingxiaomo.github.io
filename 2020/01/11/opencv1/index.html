@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>opencv学习笔记（一）图像的载入、显示和输出 - Hexo</title>
+  <title>opencv学习笔记（一）图像的载入、显示和输出 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,7 +213,6 @@
             
             <article class="markdown-body">
               <h1 id="图像的载入和显示"><a href="#图像的载入和显示" class="headerlink" title="图像的载入和显示"></a>图像的载入和显示</h1><h2 id="imread函数"><a href="#imread函数" class="headerlink" title="imread函数"></a>imread函数</h2><pre><code class="hljs c++"><span class="hljs-function">Mat <span class="hljs-title">imread</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span>&amp; filename, intflags=<span class="hljs-number">1</span> )</span></span>;</code></pre>
-
 <p>第一个参数，填需要载入的图片路径名。</p>
 <p>第二个参数，</p>
 <ul>
@@ -214,7 +221,6 @@
 <li>flags &lt;0返回包含Alpha通道的加载的图像。</li>
 </ul>
 <h2 id="namedWindow函数"><a href="#namedWindow函数" class="headerlink" title="namedWindow函数"></a>namedWindow函数</h2><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">namedWindow</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span>&amp; winname,<span class="hljs-keyword">int</span> flags=WINDOW_AUTOSIZE )</span></span>;</code></pre>
-
 <p>第一个参数，填被用作窗口的标识符的窗口名称。</p>
 <p>第二个参数，</p>
 <ul>
@@ -222,16 +228,13 @@
 </li>
 <li><p>WINDOW_AUTOSIZE如果设置了这个值，窗口大小会自动调整以适应所显示的图像，并且不能手动改变窗口大小。</p>
 </li>
-<li><p>WINDOW_OPENGL 如果设置了这个值的话，窗口创建的时候便会支持OpenGL。</p>
-</li>
+<li>WINDOW_OPENGL 如果设置了这个值的话，窗口创建的时候便会支持OpenGL。</li>
 </ul>
 <p>我们可以调用destroyWindow()或者destroyAllWindows()函数来关闭窗口，并取消之前分配的与窗口相关的所有内存空间。</p>
 <h2 id="imshow函数"><a href="#imshow函数" class="headerlink" title="imshow函数"></a>imshow函数</h2><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">imshow</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span>&amp; winname, InputArray mat)</span></span>;</code></pre>
-
 <p> 第一个参数，填需要显示的窗口标识名称。</p>
 <p> 第二个参数，填需要显示的图像。</p>
 <h2 id="imwrite函数"><a href="#imwrite函数" class="headerlink" title="imwrite函数"></a>imwrite函数</h2><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">imwrite</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span>&amp; filename,InputArray img, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; params=<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;() )</span></span>;</code></pre>
-
 <p>第一个参数，填需要写入的文件名。</p>
 <p>第二个参数，填一个Mat类型的图像数据。</p>
 <p>第三个参数，表示为特定格式保存的参数编码，它有默认值vector<int>()，所以一般情况下不需要填写。而如果要填写的话，有下面这些需要了解的地方：</p>
@@ -481,6 +484,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树形dp - Hexo</title>
+  <title>树形dp - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -271,7 +279,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="poj-1655-树的重心"><a href="#poj-1655-树的重心" class="headerlink" title="poj 1655 树的重心"></a><strong>poj 1655 树的重心</strong></h5><p>题意：一颗n结点无根树，选择一个结点为根，将无根树-&gt;有根树，最大子树的结点数最小，我们称该节点为质心（树的重心），求树的重心，如果有多个，按照节点编号升序输出。</p>
 <p>思路：<img src="http://img.blog.csdn.net/20150222155128323?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzAwODI5MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
 <p>完整代码：</p>
@@ -356,7 +363,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="poj-2631-树的直径"><a href="#poj-2631-树的直径" class="headerlink" title="poj 2631 树的直径"></a><strong>poj 2631 树的直径</strong></h5><p>题意：树上最长的简单路径即为树的直径，求树的直径。</p>
 <p>思路：</p>
 <p>两种方法。</p>
@@ -424,7 +430,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,mmax);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>2⃣dp：对于任意一个点，搜索其两个能延伸最远和次远的儿子，把两个距离相加再加上两儿子到父亲的距离再取最大就是树的直径，<u>而且两儿子不能在一条延伸路径上</u>。f(i)(0),f(i)(1)分别记录以顶端端点为i的最长链和次长链长度，当子结点的最长边（次短边没有影响，因为对于i来说的两条路不能在一条延伸路径上）加上到父结点的距离大于父结点的最长边时，更新父结点的最长边和次长边。</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
@@ -490,7 +495,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]+dp[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -736,6 +740,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

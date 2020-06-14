@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>宁夏邀请赛H &amp; 计蒜之道复赛A 贪心 - Hexo</title>
+  <title>宁夏邀请赛H &amp; 计蒜之道复赛A 贪心 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      710 字
+      707 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -268,13 +276,10 @@ ll f[<span class="hljs-number">100010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 <h5 id="计蒜之道复赛A"><a href="#计蒜之道复赛A" class="headerlink" title="计蒜之道复赛A"></a>计蒜之道复赛A</h5><p><strong>题意：</strong></p>
-<p>给你n个一次函数$$f_i(x)=a_ix+b_i$$，给出一个x，让你嵌套成一次函数的形式，一次函数可以任意改变顺序，求$$f(f(f(…f(x))…))$$的最大值。</p>
+<p>给你n个一次函数<script type="math/tex">f_i(x)=a_ix+b_i</script>，给出一个x，让你嵌套成一次函数的形式，一次函数可以任意改变顺序，求<script type="math/tex">f(f(f(...f(x))...))</script>的最大值。</p>
 <p><strong>思路：</strong></p>
-<p>同样是考虑两个变量的时候，设有$$a_1,a_2,b_1,b_2$$，要使$$a_1(a_2x+b_2)+b1&gt;a_2(a_1x+b_1)+b2$$，化简得到$$(a_1-1)/b_1&gt;(a_2-1)/b_2$$。所以按$$(a-1)/b$$从小到大排序，从里到外计算即可。</p>
+<p>同样是考虑两个变量的时候，设有<script type="math/tex">a_1,a_2,b_1,b_2</script>，要使<script type="math/tex">a_1(a_2x+b_2)+b1>a_2(a_1x+b_1)+b2</script>，化简得到<script type="math/tex">(a_1-1)/b_1>(a_2-1)/b_2</script>。所以按<script type="math/tex">(a-1)/b</script>从小到大排序，从里到外计算即可。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
 <span class="hljs-class">&#123;</span>
@@ -306,9 +311,6 @@ ll f[<span class="hljs-number">100010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>这两道题目都是从两项入手算出来的，而且这种条件是传递的。这是考虑贪心问题的一种方向。</p>
 
             </article>
@@ -555,6 +557,30 @@ ll f[<span class="hljs-number">100010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

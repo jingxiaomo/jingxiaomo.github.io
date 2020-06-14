@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6535 倒着的ST表 - Hexo</title>
+  <title>HDU6535 倒着的ST表 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      681 字
+      693 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,16 +213,16 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n个数初始都为0，有m次操作，每次操作对于$$[l,r]$$，如果v大于区间的数，就把这个数变为v，即对区间的每个数取当前值和v的最大值。求这m次操作后的$$⨁_{i=1}^n(i⋅a_i)$$，$$⨁$$表示异或和，其中$$1≤T≤100, 1≤n≤10^5, 1≤m≤5⋅10^6$$。</p>
+<p>有n个数初始都为0，有m次操作，每次操作对于<script type="math/tex">[l,r]</script>，如果v大于区间的数，就把这个数变为v，即对区间的每个数取当前值和v的最大值。求这m次操作后的<script type="math/tex">⨁_{i=1}^n(i⋅a_i)</script>，<script type="math/tex">⨁</script>表示异或和，其中<script type="math/tex">1≤T≤100, 1≤n≤10^5, 1≤m≤5⋅10^6</script>。</p>
 <p><strong>思路：</strong></p>
 <p>因为是区间更新刚开始想到是线段树剪枝啊…然而比赛的时候写gg了…然而想想这复杂度也不可能过啊 是$O(3m+mlogn)$的啊？然而就是很多人是这么过的…这数据有点迷啊？</p>
 <p>正解用的是倒着的ST表。</p>
 <p>$d[i][j]$：$[i,i+2^j-1]$区间的最大值，即区间长度为$2^j$。</p>
 <p>举个栗子，</p>
-<p>首先对于一个区间$$[5,9]$$，可以分成两个区间$$<a href="d[5][2]">5,8</a>$$和$$<a href="d[6][2]">6,9</a>$$,给这两个区间打上要取最大值的标记。像这样进行m次操作。</p>
-<p>然后对于每一个$$d[i][j]$$将标记下压，比如$$d[6]<a href="[6,13]">3</a>$$下压给$$d[6]<a href="[6,9]">2</a>$$和$$d[10]<a href="[10,13]">2</a>$$，这样一直压下去，直到区间长度为$$2^0$$。</p>
+<p>首先对于一个区间<script type="math/tex">[5,9]</script>，可以分成两个区间<script type="math/tex">[5,8](d[5][2])</script>和<script type="math/tex">[6,9](d[6][2])</script>,给这两个区间打上要取最大值的标记。像这样进行m次操作。</p>
+<p>然后对于每一个<script type="math/tex">d[i][j]</script>将标记下压，比如<script type="math/tex">d[6][3]([6,13])</script>下压给<script type="math/tex">d[6][2]([6,9])</script>和<script type="math/tex">d[10][2]([10,13])</script>，这样一直压下去，直到区间长度为<script type="math/tex">2^0</script>。</p>
 <p>最后统计一下要求的东西就好了。</p>
-<p>这样的复杂度为$$O(m+nlogn)$$。</p>
+<p>这样的复杂度为<script type="math/tex">O(m+nlogn)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> uint;
@@ -280,7 +288,6 @@ ll d[<span class="hljs-number">100010</span>][<span class="hljs-number">20</span
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -526,6 +533,30 @@ ll d[<span class="hljs-number">100010</span>][<span class="hljs-number">20</span
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

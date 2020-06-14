@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>上海高校金马五校赛J 二分+匹配/网络流 - Hexo</title>
+  <title>上海高校金马五校赛J 二分+匹配/网络流 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出一个n个数字的数列a，两个数之间的差异值定义为$$max{|A_i-A_{i-1} |,2≤i≤n}$$。现在要插入m个数，可以插在最前面，中间，最后面，问插入后的最小的差异值为多少。</p>
+<p>给出一个n个数字的数列a，两个数之间的差异值定义为<script type="math/tex">max\{|A_i-A_{i-1} |,2≤i≤n\}</script>。现在要插入m个数，可以插在最前面，中间，最后面，问插入后的最小的差异值为多少。</p>
 <p><strong>思路：</strong></p>
 <p>容易想到可以二分答案，知道答案后每个坑位可以填哪些数字就可以确定了。</p>
 <p>匹配：</p>
@@ -323,7 +331,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -569,6 +576,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>2-SAT - Hexo</title>
+  <title>2-SAT - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      669 字
+      235 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      2
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -204,34 +212,38 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>1.首先利用⇒(蕴含)将每一个子句$$a∨b$$改写成等价的$$(¬a⇒b)∧(¬b⇒a) $$。</p>
+              <p>1.首先利用⇒(蕴含)将每一个子句<script type="math/tex">a∨b</script>改写成等价的<script type="math/tex">(¬a⇒b)∧(¬b⇒a)</script>。</p>
 <p>可以给第 i个变量标号为 i，其对应的反值标号为i+n。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">原式</th>
-<th align="center">建图</th>
+<th style="text-align:center">原式</th>
+<th style="text-align:center">建图</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$$¬a∨b$$</td>
-<td align="center">$$a→b∧¬b→¬a$$</td>
+<tbody>
+<tr>
+<td style="text-align:center"><script type="math/tex">¬a∨b</script></td>
+<td style="text-align:center"><script type="math/tex">a→b∧¬b→¬a</script></td>
 </tr>
 <tr>
-<td align="center">$$a∨b$$</td>
-<td align="center">$$¬a→b∧¬b→a$$</td>
+<td style="text-align:center"><script type="math/tex">a∨b</script></td>
+<td style="text-align:center"><script type="math/tex">¬a→b∧¬b→a</script></td>
 </tr>
 <tr>
-<td align="center">$$¬a∨¬b$$</td>
-<td align="center">$$a→¬b∧b→¬a$$</td>
+<td style="text-align:center"><script type="math/tex">¬a∨¬b</script></td>
+<td style="text-align:center"><script type="math/tex">a→¬b∧b→¬a</script></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fx4aedrt60j30ab09haa6.jpg" srcset="/img/loading.gif" alt="built"></p>
 <p>2.如果a点能够到达b点，就表示当a为真时b也为真。因此图中的同一个强联通分量中的所有布尔值均相同。也就是说，如果x与¬x在同一强连通分量内部，一定无解。反之，就一定有解了。</p>
-<p>3.当x所在的强连通分量的拓扑序在¬x所在的强连通分量的拓扑序之后取x为真 就可以了。在使用Tarjan算法缩点找强连通分量的过程中，已经为每组强连通分量标记好顺序了。不过是反着的拓扑序。所以一定要写成$$sccn[x]&lt;sccn[-x]$$。</p>
-<p>时间复杂度：$$O(N+M)$$</p>
+<p>3.当x所在的强连通分量的拓扑序在¬x所在的强连通分量的拓扑序之后取x为真 就可以了。在使用Tarjan算法缩点找强连通分量的过程中，已经为每组强连通分量标记好顺序了。不过是反着的拓扑序。所以一定要写成<script type="math/tex">sccn[x]<sccn[-x]</script>。</p>
+<p>时间复杂度：<script type="math/tex">O(N+M)</script></p>
 <p>模板：</p>
-<p>有n个布尔变量$$x_1～x_n$$，另有m个需要满足的条件，每个条件的形式都是”$$x_i$$为true/false或$$x_j$$为true/false”。给每个变量赋值使得所有条件得到满足。</p>
+<p>有n个布尔变量<script type="math/tex">x_1～x_n</script>，另有m个需要满足的条件，每个条件的形式都是”<script type="math/tex">x_i</script>为true/false或<script type="math/tex">x_j</script>为true/false”。给每个变量赋值使得所有条件得到满足。</p>
 <pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">2000010</span>];
 <span class="hljs-keyword">int</span> dfn[<span class="hljs-number">2000010</span>];<span class="hljs-comment">//在DFS中该节点被搜索的次序</span>
 <span class="hljs-keyword">int</span> low[<span class="hljs-number">2000010</span>];<span class="hljs-comment">//i或i的子树能够通过非树边追溯到最早的祖先节点（即DFS次序号最小）</span>
@@ -300,7 +312,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -546,6 +557,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

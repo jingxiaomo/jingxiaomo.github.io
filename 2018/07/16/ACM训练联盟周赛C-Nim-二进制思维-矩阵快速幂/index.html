@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>ACM训练联盟周赛C Nim+二进制思维+矩阵快速幂 - Hexo</title>
+  <title>ACM训练联盟周赛C Nim+二进制思维+矩阵快速幂 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      570 字
+      569 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>三堆石子的数量分别为k，4k，5k，进行Nim博弈，问在k小于$$2^n$$的时候，有多少种情况先手一定会获得胜利。</p>
+<p>三堆石子的数量分别为k，4k，5k，进行Nim博弈，问在k小于<script type="math/tex">2^n</script>的时候，有多少种情况先手一定会获得胜利。</p>
 <p><strong>思路：</strong></p>
 <p>这道题被我打表+OEIS水过了…</p>
 <p>之后看了一下正解，是这样子的：</p>
@@ -216,7 +224,7 @@
 <p>所以k和k左移两位的数不能有都是1的某一位，即k的二进制形式每隔两个数不能都是1，比如1010这种是不行的。</p>
 <p>那么如何得出递推式呢？</p>
 <p>可以这样进行考虑：</p>
-<p>设f(n)表示n位长度(总数为$$2^{n-1}$$)的满足上述条件的k的个数：</p>
+<p>设f(n)表示n位长度(总数为<script type="math/tex">2^{n-1}</script>)的满足上述条件的k的个数：</p>
 <p>对于f(4)来说，肯定要加上f(3)，就相当于指的是最高位为0的所有情况，</p>
 <p>因为第二位肯定不能为1，所以就忽略这一位，</p>
 <p>然后加上f(2)，这指的是最高三位为100的所有情况，</p>
@@ -470,6 +478,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

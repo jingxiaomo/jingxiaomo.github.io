@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>数位DP - Hexo</title>
+  <title>数位DP - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      2.4k 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      57
+      36
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -252,7 +260,6 @@ ll dp[<span class="hljs-number">20</span>][state];<span class="hljs-comment">//�
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,solve(ri)-solve(le<span class="hljs-number">-1</span>));
     &#125;
 &#125;</code></pre>
-
 <p>无注释版：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
 <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dp[<span class="hljs-number">20</span>][state];
@@ -289,7 +296,6 @@ ll dp[<span class="hljs-number">20</span>][state];<span class="hljs-comment">//�
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,solve(ri)-solve(le<span class="hljs-number">-1</span>));
     &#125;
 &#125;</code></pre>
-
 <h4 id="HDU2089"><a href="#HDU2089" class="headerlink" title="HDU2089"></a>HDU2089</h4><p><strong>题意：</strong></p>
 <p>不吉利的数字为所有含有4或62的号码。对于每个整数对，输出一个不含有不吉利数字的统计个数。</p>
 <p><strong>思路：</strong></p>
@@ -333,12 +339,13 @@ ll dp[<span class="hljs-number">20</span>][state];<span class="hljs-comment">//�
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="HDU3652"><a href="#HDU3652" class="headerlink" title="HDU3652"></a>HDU3652</h4><p><strong>题意：</strong></p>
 <p>给出一个n，求比n小的包含13且能被13整除的数字个数。</p>
 <p><strong>思路：</strong></p>
-<p>$$dp[pos][ext][mod][cur]$$：长度为pos的是否存在13的余数为mod的前一位是否为1的数字个数。</p>
-<p><strong>代码：</strong></p>
+<script type="math/tex; mode=display">dp[pos][ext][mod][cur]$$：长度为pos的是否存在13的余数为mod的前一位是否为1的数字个数。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> dp[<span class="hljs-number">15</span>][<span class="hljs-number">2</span>][<span class="hljs-number">15</span>][<span class="hljs-number">2</span>];
 <span class="hljs-keyword">int</span> a[<span class="hljs-number">15</span>];
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> ext,<span class="hljs-keyword">int</span> mod,<span class="hljs-keyword">int</span> cur,<span class="hljs-keyword">bool</span> limit)</span></span>
@@ -373,12 +380,20 @@ ll dp[<span class="hljs-number">20</span>][state];<span class="hljs-comment">//�
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="BZOJ1026"><a href="#BZOJ1026" class="headerlink" title="BZOJ1026"></a>BZOJ1026</h4><p><strong>题意：</strong></p>
-<p>不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。[A,B]总共有多少个windy数？</p>
-<p><strong>思路：</strong></p>
-<p>$$dp[pos][pre]$$：长度为len，前面一位为pre的数字个数。</p>
-<p>注意一下前导零就可以了。</p>
-<p><strong>代码：</strong></p>
+#### BZOJ1026
+
+**题意：**
+
+不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。[A,B]总共有多少个windy数？
+
+**思路：**
+
+$$dp[pos][pre]$$：长度为len，前面一位为pre的数字个数。
+
+注意一下前导零就可以了。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
 ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">10</span>];
 <span class="hljs-function">ll <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> pre,<span class="hljs-keyword">bool</span> lead,<span class="hljs-keyword">bool</span> limit)</span></span>
@@ -417,13 +432,22 @@ ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">10</span>];
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="CodeForces55D"><a href="#CodeForces55D" class="headerlink" title="CodeForces55D"></a>CodeForces55D</h4><p><strong>题意：</strong></p>
-<p>一个正整数是漂亮数 ，当且仅当它能够被自身的各非零数字整除。求给定范围中有多少个漂亮数。</p>
-<p><strong>思路：</strong></p>
-<p>一个数可以被各位数字整除就相当于可以被各位数字的最大公倍数整除。</p>
-<p>$$dp[len][lcm][mod]$$：长度为len的各位数字的最大公倍数为lcm的被2520除余数为mod的数字个数。</p>
-<p>因为lcm最大可以是2520（0～9的最大公约数），直接开$$19<em>2520</em>2520$$会爆，但是可以存在的lcm并没有这么多，所以离散化一下就好了。</p>
-<p><strong>代码：</strong></p>
+#### CodeForces55D
+
+**题意：**
+
+一个正整数是漂亮数 ，当且仅当它能够被自身的各非零数字整除。求给定范围中有多少个漂亮数。
+
+**思路：**
+
+一个数可以被各位数字整除就相当于可以被各位数字的最大公倍数整除。
+
+$$dp[len][lcm][mod]$$：长度为len的各位数字的最大公倍数为lcm的被2520除余数为mod的数字个数。
+
+因为lcm最大可以是2520（0～9的最大公约数），直接开$$19*2520*2520$$会爆，但是可以存在的lcm并没有这么多，所以离散化一下就好了。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
 ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">100</span>][<span class="hljs-number">2525</span>];
 <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;mp;
@@ -480,12 +504,20 @@ ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">100</span>]
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="POJ3252"><a href="#POJ3252" class="headerlink" title="POJ3252"></a>POJ3252</h4><p><strong>题意：</strong></p>
-<p>求区间[a,b]中，转换成2进制后，0的个数&gt;=1的个数的数字的个数</p>
-<p><strong>思路：</strong></p>
-<p>$$dp[pos][num0][num1]$$：长度为pos的0的个数为num0的1的个数为num1的满足条件的数的个数。</p>
-<p>注意处理前导0就好了。</p>
-<p><strong>代码：</strong></p>
+#### POJ3252
+
+**题意：**
+
+求区间[a,b]中，转换成2进制后，0的个数>=1的个数的数字的个数
+
+**思路：**
+
+$$dp[pos][num0][num1]$$：长度为pos的0的个数为num0的1的个数为num1的满足条件的数的个数。
+
+注意处理前导0就好了。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];
 ll dp[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>][<span class="hljs-number">100</span>];
 <span class="hljs-function">ll <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> num0,<span class="hljs-keyword">int</span> num1,<span class="hljs-keyword">bool</span> lead,<span class="hljs-keyword">bool</span> limit)</span></span>
@@ -522,14 +554,24 @@ ll dp[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="HDU4734"><a href="#HDU4734" class="headerlink" title="HDU4734"></a>HDU4734</h4><p><strong>题意：</strong></p>
-<p>求F(0)~F(B)中,有几个小于等于 F(A)的;</p>
-<p>对于数字$$A_nA_{n-1}A_{n-2} … A_2A_1$$，$$ F(x) = A_n * 2^{n-1} + A_{n-1} * 2^{n-2} + … + A_2 * 2 + A_1 * 1$$。</p>
-<p><strong>思路：</strong></p>
-<p>因为有多组，所以F(A)总是在变的，所以这个状态记录就不能只是记录长度为pos的值为val的数字个数，而应该，</p>
-<p>$$dp[pos][tot]$$：长度为pos的函数值小于tot的数字个数。</p>
-<p>所以转移就是$$dp[pos][tot]+=dp[pos-1][tot-i*(1&lt;&lt;pos)]$$。</p>
-<p><strong>代码：</strong></p>
+#### HDU4734
+
+**题意：**
+
+求F(0)~F(B)中,有几个小于等于 F(A)的;
+
+对于数字$$A_nA_{n-1}A_{n-2} ... A_2A_1$$，$$ F(x) = A_n * 2^{n-1} + A_{n-1} * 2^{n-2} + ... + A_2 * 2 + A_1 * 1$$。
+
+**思路：**
+
+因为有多组，所以F(A)总是在变的，所以这个状态记录就不能只是记录长度为pos的值为val的数字个数，而应该，
+
+$$dp[pos][tot]$$：长度为pos的函数值小于tot的数字个数。
+
+所以转移就是$$dp[pos][tot]+=dp[pos-1][tot-i*(1<<pos)]$$。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> sum;
 <span class="hljs-keyword">int</span> pre[<span class="hljs-number">20</span>];
 <span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
@@ -587,14 +629,24 @@ ll dp[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="HDU3709"><a href="#HDU3709" class="headerlink" title="HDU3709"></a>HDU3709</h4><p><strong>题意：</strong></p>
-<p>给定区间[a,b]，求区间内平衡数的个数。所谓平衡数即有一位做平衡点，左右两边数字的力矩相等。</p>
-<p><strong>思路：</strong></p>
-<p>本来是想四维的，结果MLE了。</p>
-<p>三维也是可以的。</p>
-<p>$$dp[d][pos][sum]$$：平衡点为d，长度为pos，力矩和为sum的数字个数。</p>
-<p>注意重复0的计算要减去。</p>
-<p><strong>代码：</strong></p>
+#### HDU3709
+
+**题意：**
+
+给定区间[a,b]，求区间内平衡数的个数。所谓平衡数即有一位做平衡点，左右两边数字的力矩相等。
+
+**思路：**
+
+本来是想四维的，结果MLE了。
+
+三维也是可以的。
+
+$$dp[d][pos][sum]$$：平衡点为d，长度为pos，力矩和为sum的数字个数。
+
+注意重复0的计算要减去。
+
+**代码：**
+
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
 ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">20</span>][<span class="hljs-number">2000</span>];
 <span class="hljs-keyword">int</span> sign;
@@ -646,20 +698,29 @@ ll dp[<span class="hljs-number">20</span>][<span class="hljs-number">20</span>][
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h4 id="HDU4507"><a href="#HDU4507" class="headerlink" title="HDU4507"></a>HDU4507</h4><p><strong>题意：</strong></p>
-<p>如果一个整数符合下面3个条件之一，那么我们就说这个整数和7有关：</p>
-<p>1、整数中某一位是7；</p>
-<p>2、整数的每一位加起来的和是7的整数倍；</p>
-<p>3、这个整数是7的整数倍；</p>
-<p>求在一定区间内和7无关的数字的平方和。</p>
-<p><strong>思路：</strong></p>
-<p>$$dp[pos][mod][tot]$$：长度为pos的每位加起来的和的余数为mod的余数为tot的数字。</p>
-<p>考虑一个例子，</p>
-<p>245,213,257，它们的平方和应该这样算：</p>
-<p>$$245^2+213^2+257^2$$</p>
-<p>$$=(200+45)^2+(200+13)^2(200+57)^2$$</p>
-<p>$$=200^2<em>3+45^2+13^2+57^2+2*200</em>(45+13+57)$$</p>
-<p>所以知道不仅要记录平方和，还要记录个数，和。</p>
+#### HDU4507
+
+**题意：**
+
+如果一个整数符合下面3个条件之一，那么我们就说这个整数和7有关：
+
+1、整数中某一位是7；
+
+2、整数的每一位加起来的和是7的整数倍；
+
+3、这个整数是7的整数倍；
+
+求在一定区间内和7无关的数字的平方和。
+
+**思路：**
+
+$$dp[pos][mod][tot]$$：长度为pos的每位加起来的和的余数为mod的余数为tot的数字。
+
+考虑一个例子，
+
+245,213,257，它们的平方和应该这样算：
+
+$$245^2+213^2+257^2</script><script type="math/tex; mode=display">=(200+45)^2+(200+13)^2(200+57)^2</script><script type="math/tex; mode=display">=200^2*3+45^2+13^2+57^2+2*200*(45+13+57)</script><p>所以知道不仅要记录平方和，还要记录个数，和。</p>
 <p>然后记忆化搜索就可以了。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
@@ -736,7 +797,6 @@ ll xs[<span class="hljs-number">20</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -982,6 +1042,30 @@ ll xs[<span class="hljs-number">20</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

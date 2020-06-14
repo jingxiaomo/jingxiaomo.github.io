@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6415 推导/DP - Hexo</title>
+  <title>HDU6415 推导/DP - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      694 字
+      695 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -207,22 +215,22 @@
               <p><strong>题意：</strong></p>
 <p>当矩阵中的(x,y)为所在行和所在列中最大的，该(x,y)被称为纳什均衡点。</p>
 <p>问n*m的全排列矩阵最多只有一个纳什均衡点的方案有几种，对p取模。</p>
-<p>其中$$1≤t≤20,1≤n,m≤80,1≤p≤10^9$$。</p>
+<p>其中<script type="math/tex">1≤t≤20,1≤n,m≤80,1≤p≤10^9</script>。</p>
 <p><strong>思路：</strong></p>
 <p>因为矩阵中最多只能有一个纳什均衡点，所以肯定是最大值的点。所以当放了最大值之后，第二大的值只能放在和它同行或同列的地方，同理，对于一个放完的点，下一个点只能放在和之前的点同行或同列的地方。</p>
-<p>比赛的时候队友oeis搞过去了…搞出来的公式也是有点道理的，$$A_{mn}^{mn-m-n+1}<em>m!</em>n!$$，因为如果有行都放满或者列都放满（并不仅仅是单纯一整行或一整列，对角线的情况也是）的的情况后，剩下的数就可以都随便放了，所以算有行或列放满的情况就是$$m!*n!$$（就相当于对行标号，对列标号，标号相同的填上从小到大的数字），剩下的数就进行排列（后来想想好像也不太对，需要update）。</p>
+<p>比赛的时候队友oeis搞过去了…搞出来的公式也是有点道理的，<script type="math/tex">A_{mn}^{mn-m-n+1}*m!*n!</script>，因为如果有行都放满或者列都放满（并不仅仅是单纯一整行或一整列，对角线的情况也是）的的情况后，剩下的数就可以都随便放了，所以算有行或列放满的情况就是<script type="math/tex">m!*n!</script>（就相当于对行标号，对列标号，标号相同的填上从小到大的数字），剩下的数就进行排列（后来想想好像也不太对，需要update）。</p>
 <p>用上面的结论也是可以dp的。</p>
-<p>$$dp[i][j][k]$$：放完第k个点之后有i行j列被占的方案数。</p>
+<p><script type="math/tex">dp[i][j][k]</script>：放完第k个点之后有i行j列被占的方案数。</p>
 <p>有三种转移：</p>
 <p>k放的位置列被放过，行没有被放过：</p>
 <p>在放过的列里面选一列，在没放过的行里选一行。</p>
-<p>$$dp[i][j][k]+=dp[i-1][j][k-1]<em>j</em>(n-i+1)$$。</p>
+<p><script type="math/tex">dp[i][j][k]+=dp[i-1][j][k-1]*j*(n-i+1)</script>。</p>
 <p>k放的位置行被放过，列没有被放过：</p>
-<p>$$dp[i][j][k]+=dp[i][j-1][k-1]<em>i</em>(m-j+1)$$。</p>
+<p><script type="math/tex">dp[i][j][k]+=dp[i][j-1][k-1]*i*(m-j+1)</script>。</p>
 <p>k放的位置行和列都被放过：</p>
 <p>放过的行和列中共有i*j个位置，放在没有放过的位置。</p>
-<p>$$dp[i][j][k]+=dp[i][j][k-1]<em>(i</em>j-k+1)$$。</p>
-<p>初始条件为$$dp[1][1][1]=n*m$$。</p>
+<p><script type="math/tex">dp[i][j][k]+=dp[i][j][k-1]*(i*j-k+1)</script>。</p>
+<p>初始条件为<script type="math/tex">dp[1][1][1]=n*m</script>。</p>
 <p>这就可以写了，但是这个数据有点大，这里需要剪掉一些，所以要把i和j放在外层，k的范围为2～i*j。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007</span>
@@ -252,7 +260,6 @@ ll dp[<span class="hljs-number">85</span>][<span class="hljs-number">85</span>][
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -498,6 +505,30 @@ ll dp[<span class="hljs-number">85</span>][<span class="hljs-number">85</span>][
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

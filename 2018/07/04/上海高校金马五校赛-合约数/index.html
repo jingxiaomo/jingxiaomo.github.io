@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>上海高校金马五校赛B DFS+预处理 - Hexo</title>
+  <title>上海高校金马五校赛B DFS+预处理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      631 字
+      630 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,10 +213,10 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给定一棵n个节点的树，并且根节点的编号为p，第i个节点有属性值vali, 定义F(i): 在以i为根的子树中，属性值是$$val_i$$的合约数的节点个数。y 是 x 的合约数是指 y 是合数且 y 是 x 的约数。小埃想知道$$\sum_{i=1}^n i·F(i)$$对1000000007取模后的结果.  </p>
+<p>给定一棵n个节点的树，并且根节点的编号为p，第i个节点有属性值vali, 定义F(i): 在以i为根的子树中，属性值是<script type="math/tex">val_i</script>的合约数的节点个数。y 是 x 的合约数是指 y 是合数且 y 是 x 的约数。小埃想知道<script type="math/tex">\sum_{i=1}^n i·F(i)</script>对1000000007取模后的结果.  </p>
 <p><strong>思路：</strong></p>
 <p>有点类似之前做的一道CF题…就都是整体考虑。</p>
-<p>一次DFS就可以了，从根开始，第一次碰到这个结点的时候F[i]减去当前这个$$val_i$$的合约数出现的次数。回溯的时候，F[i]加上当前这个$$val_i$$的合约数出现的次数，结果就是i的子树中是$$val_i$$的合约数的节点个数（子树包括自己）。所以要预处理出每个数字的合约数。</p>
+<p>一次DFS就可以了，从根开始，第一次碰到这个结点的时候F[i]减去当前这个<script type="math/tex">val_i</script>的合约数出现的次数。回溯的时候，F[i]加上当前这个<script type="math/tex">val_i</script>的合约数出现的次数，结果就是i的子树中是<script type="math/tex">val_i</script>的合约数的节点个数（子树包括自己）。所以要预处理出每个数字的合约数。</p>
 <p>这里提一下这个复杂度的估计…我以前对DFS的复杂度估计有误解…</p>
 <p>我以前一直以为DFS的复杂度肯定是2^n这样的，现在考虑一下本身这个树也就n个结点，所以这里的复杂度是O(n*sqrt(val))。</p>
 <p>下次看到子树有几个符合要求的结点时可以考虑这种思路。</p>
@@ -284,7 +292,6 @@ ll F[<span class="hljs-number">20010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -530,6 +537,30 @@ ll F[<span class="hljs-number">20010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

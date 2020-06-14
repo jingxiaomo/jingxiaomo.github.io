@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>KMP&amp;扩展KMP&amp;Manacher专题 - Hexo</title>
+  <title>KMP&amp;扩展KMP&amp;Manacher专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -208,7 +216,7 @@
 <p><a href="https://www.bilibili.com/video/av11866460/" target="_blank" rel="noopener">https://www.bilibili.com/video/av11866460/</a></p>
 <p><a href="https://www.bilibili.com/video/av16828557/" target="_blank" rel="noopener">https://www.bilibili.com/video/av16828557/</a></p>
 <p>参考博客：<a href="https://subetter.com/algorithms-and-mathematics/kmp-algorithm.html" target="_blank" rel="noopener">https://subetter.com/algorithms-and-mathematics/kmp-algorithm.html</a></p>
-<p>复杂度：$$O(m+n)$$</p>
+<p>复杂度：<script type="math/tex">O(m+n)</script></p>
 <pre><code class="hljs c++"><span class="hljs-comment">//s为母串，p为模式串</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getnext</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"></span>&#123;
@@ -251,9 +259,8 @@
     &#125;
     <span class="hljs-keyword">return</span> cnt;   <span class="hljs-comment">//返回出现的次数</span>
 &#125;</code></pre>
-
 <h5 id="Manacher模板"><a href="#Manacher模板" class="headerlink" title="Manacher模板"></a><strong>Manacher模板</strong></h5><p>参考博客：<a href="https://www.jianshu.com/p/799bc53d4e3d" target="_blank" rel="noopener">https://www.jianshu.com/p/799bc53d4e3d</a></p>
-<p>复杂度：$$O(n)$$</p>
+<p>复杂度：<script type="math/tex">O(n)</script></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">char</span> a[<span class="hljs-number">11000010</span>];<span class="hljs-comment">//aba</span>
 <span class="hljs-keyword">char</span> anew[<span class="hljs-number">23000010</span>];<span class="hljs-comment">//$#a#b#a#</span>
 <span class="hljs-keyword">int</span> p[<span class="hljs-number">23000010</span>];<span class="hljs-comment">//新串中以第i个字符为对称轴的回文串的回文半径</span>
@@ -315,7 +322,6 @@
 <span class="hljs-comment">    printf("\n");*/</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="HDU-1686"><a href="#HDU-1686" class="headerlink" title="HDU 1686"></a><strong>HDU 1686</strong></h5><p>题意：AZA AZAZAZA 输出3</p>
 <p>解题思路：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">if</span>(j==plen)
@@ -323,7 +329,6 @@
     cnt++;
     j=Next[j];
 &#125;</code></pre>
-
 <h5 id="HDU-2087"><a href="#HDU-2087" class="headerlink" title="HDU 2087"></a><strong>HDU 2087</strong></h5><p>题意：aaaaaa  aa 输出3</p>
 <p>解题思路：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">if</span>(j==plen)
@@ -331,14 +336,12 @@
     cnt++;
     j=<span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="HDU-3746"><a href="#HDU-3746" class="headerlink" title="HDU 3746"></a><strong>HDU 3746</strong></h5><p>题意：给你一个字符串，要求将字符串的全部字符最少循环2次需要添加的字符数。</p>
 <p>解题思路：找循环节。len-next[i]为此字符串的最小循环节(i为字符串的结尾)，如果len%(len-next[i])==0,此字符串的最小周期就为len/(len-next[i])。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> length=len-Next[len];<span class="hljs-comment">//循环节长度</span>
 <span class="hljs-keyword">if</span>(len!=length&amp;&amp;len%length==<span class="hljs-number">0</span>)
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"0\n"</span>);
 <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,length-Next[len]%length);</code></pre>
-
 <h5 id="HDU-3336（存疑）"><a href="#HDU-3336（存疑）" class="headerlink" title="HDU 3336（存疑）"></a><strong>HDU 3336（存疑）</strong></h5><p>题意：求给出字符串的所有前缀在原字符串中出现的次数和。</p>
 <p>解题思路：dp[i]代表以第i位结尾的字符串中包括多少以第i位字母结尾的前缀的出现次数，那么有dp[i]=dp[Next[i]]+1，利用Next数据跳转到第Next[i]的位置，这个位置的跟之前的有过多少次匹配，只要在原基础上加1即可。</p>
 <h5 id="HDU-2609"><a href="#HDU-2609" class="headerlink" title="HDU 2609"></a><strong>HDU 2609</strong></h5><p>题意：有n个有01组成的字符串，每个字符串都代表一个项链，那么该字符串就是一个环状的结构，求可以经过循环旋转，最后不同的串有多少个。</p>
@@ -352,7 +355,7 @@
 <p>s[i+k]&lt;s[j+k]: j=j+k+1 同理</p>
 <p>直到i或j大于串长，找较小者。</p>
 <p>注意：1.i和j一定是不同的。2.每次不等时，需要设置k为0。</p>
-<p>复杂度：$$O(n)$$。</p>
+<p>复杂度：<script type="math/tex">O(n)</script>。</p>
 <h5 id="最小表示法模板"><a href="#最小表示法模板" class="headerlink" title="最小表示法模板"></a><strong>最小表示法模板</strong></h5><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findMin</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> len=str.<span class="hljs-built_in">size</span>();
@@ -375,7 +378,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(i,j);   <span class="hljs-comment">//返回的是第一个最小串的首字符的位置</span>
 &#125;</code></pre>
-
 <h5 id="HDU-4513"><a href="#HDU-4513" class="headerlink" title="HDU 4513"></a><strong>HDU 4513</strong></h5><p>题意：求最长回文子串，而外要求:从回文串最中间向两边满足非递增。</p>
 <p>解题思路：改变一下扩展条件即可。</p>
 <pre><code class="hljs c++">        <span class="hljs-keyword">while</span>(anew[i-p[i]]==anew[i+p[i]])<span class="hljs-comment">//扩展</span>
@@ -387,7 +389,6 @@
             &#125;
             p[i]++;
         &#125;</code></pre>
-
 <h5 id="HDU-3294"><a href="#HDU-3294" class="headerlink" title="HDU 3294"></a><strong>HDU 3294</strong></h5><p>字符串转化的时候不用刚开始就转化，要判断好回文以后输出的地方再转化，否则会TLE。</p>
 <h5 id="2018年全国多校算法寒假训练营练习比赛（第五场）C"><a href="#2018年全国多校算法寒假训练营练习比赛（第五场）C" class="headerlink" title="2018年全国多校算法寒假训练营练习比赛（第五场）C"></a><strong>2018年全国多校算法寒假训练营练习比赛（第五场）C</strong></h5><p>题意：有一个字符串，让你找到这个字符串 S 里面的子串T，必须满足是这个串的前缀，也是这个串的后缀，并且在字符串中也出现过一次的，输出最长满足要求字符串。</p>
 <p>思路：利用Next数组，next数组表示的是这个串最长的公共前后缀，那么求出这个串所有的公共前后缀就是循环即可，因为最长的公共前后缀是next[len]，那么比它短一点的肯定是在这个前缀的最长前后缀，即next[next[len]]，然后KMP一下如果出现次数大于等于3的话就符合要求。</p>
@@ -636,6 +637,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

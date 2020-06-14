@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>pb_ds库 - Hexo</title>
+  <title>pb_ds库 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -207,8 +215,7 @@
               <h5 id="rope"><a href="#rope" class="headerlink" title="rope"></a>rope</h5><p>头文件与命名空间：</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;ext/rope&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> __gnu_cxx;</code></pre>
-
-<p>大概可以称作可持久化平衡树，因为rope适用于大量、冗长的串操作，而不适合单个字符操作。rope类似块状链表。复杂度为$$O\sqrt n$$。</p>
+<p>大概可以称作可持久化平衡树，因为rope适用于大量、冗长的串操作，而不适合单个字符操作。rope类似块状链表。复杂度为<script type="math/tex">O\sqrt n</script>。</p>
 <p>基本操作：</p>
 <p>1）运算符：rope支持operator += -= + - &lt; ==。</p>
 <p>2）输入输出：可以用&lt;&lt;运算符由输入输出流读入或输出。</p>
@@ -221,22 +228,18 @@ copy(pos,len,x);<span class="hljs-comment">//从pos开始到pos+len为止用x代
 replace(pos,x);<span class="hljs-comment">//从pos开始换成x</span>
 substr(pos,x);<span class="hljs-comment">//提取pos开始x个</span>
 at(x)/[x];<span class="hljs-comment">//访问第x个元素</span></code></pre>
-
 <pre><code class="hljs c++">rope&lt;<span class="hljs-keyword">int</span>&gt;r</code></pre>
-
 <p>放在主函数外面会快一点。</p>
 <h5 id="hash-table"><a href="#hash-table" class="headerlink" title="hash table"></a>hash table</h5><p>头文件与命名空间：</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> __gnu_pbds;</code></pre>
-
 <p>cc_hash_table是拉链法</p>
 <p>gp_hash_table是查探法</p>
 <p>gp_hash_table更快，一般用这个。</p>
 <p>声明方式：</p>
 <pre><code class="hljs c++">cc_hash_table&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">bool</span>&gt;h;
 gp_hash_table&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">bool</span>&gt;h;</code></pre>
-
 <p>除了当数组用外，还支持clear、find和operator[]。</p>
 <p>这个也得放在主函数外面。</p>
 
@@ -484,6 +487,30 @@ gp_hash_table&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

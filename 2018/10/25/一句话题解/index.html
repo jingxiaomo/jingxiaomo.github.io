@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>一句话题解 - Hexo</title>
+  <title>一句话题解 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -217,7 +225,7 @@
 <p>如果把’(‘记为1，把’)’记为-1。匹配的条件为每个前缀和都&gt;=0而且总的前缀和为0。</p>
 <p>根据数据范围可以看出可以dp。</p>
 <p>没想到要怎么dp…其实可以先考虑一下这如果要搜索要怎么写，然后记忆化一下。</p>
-<p>这里可以设计状态$$dp[pos][pre][sta]$$，其中sta表示没有翻转，翻转过且连续，翻转过且没有连续。</p>
+<p>这里可以设计状态<script type="math/tex">dp[pos][pre][sta]</script>，其中sta表示没有翻转，翻转过且连续，翻转过且没有连续。</p>
 <p>然后转移一下就可以了。</p>
 <h3 id="Codeforces1073C"><a href="#Codeforces1073C" class="headerlink" title="Codeforces1073C"></a>Codeforces1073C</h3><p><strong>题意：</strong></p>
 <p>给出一个包含’L’,’R’,’U’,’D’的序列，要到达(x,y)，而且可以改变一些字符，把改变的长度定义为改的最后一个字符和改的第一个字符的距离。问这个改变的长度最小为多少。如果无论怎么改都不能到达(x,y)，则输出-1。</p>
@@ -225,16 +233,16 @@
 <p>可以对答案进行二分。</p>
 <p>确定好改变的长度后，枚举改变的区间，这个区间里面的值都是可以改的，所以统计一下除了这个区间以外的走得到的所在的位置，因为区间里面的都是可以改的，所以只要当前位置到最终位置的曼哈顿距离小于等于区间长度就说明是可行的，否则就不可行。</p>
 <h3 id="Codeforces1073D"><a href="#Codeforces1073D" class="headerlink" title="Codeforces1073D"></a>Codeforces1073D</h3><p><strong>题意：</strong></p>
-<p>有n个店家形成一个环，初始有T元钱，每个店家可以买$$a_1,a_2,…,a_n$$元的东西，当前的钱可以买的时候就一定要买，问最终能买多少东西。</p>
+<p>有n个店家形成一个环，初始有T元钱，每个店家可以买<script type="math/tex">a_1,a_2,...,a_n</script>元的东西，当前的钱可以买的时候就一定要买，问最终能买多少东西。</p>
 <p><strong>思路：</strong></p>
 <p>可以模拟。</p>
 <p>对于n个店家，按顺序看能买哪些店家。</p>
 <p>然后对这些可以买的店家计算可以买几次，钱也相应更新就可以了。</p>
 <h3 id="Codeforces1076D"><a href="#Codeforces1076D" class="headerlink" title="Codeforces1076D"></a>Codeforces1076D</h3><p><strong>题意：</strong></p>
-<p>给出n个点m条边，把从1到i的最短路记为$$d_i$$，问在最多剩下k条边的情况下，使$$d_i$$不变的个数最多。求这些剩下的边。</p>
+<p>给出n个点m条边，把从1到i的最短路记为<script type="math/tex">d_i</script>，问在最多剩下k条边的情况下，使<script type="math/tex">d_i</script>不变的个数最多。求这些剩下的边。</p>
 <p><strong>思路：</strong></p>
 <p>要剩下的肯定是在所有最短路中经过最多次数的边。</p>
-<p>这里怎么处理呢。可以在求最短路的过程中记录下每个顶点的前驱$$fa[i]$$，然后就形成一棵最短路径树。因为要的是经过最多次数的边，所以bfs就可以了。</p>
+<p>这里怎么处理呢。可以在求最短路的过程中记录下每个顶点的前驱<script type="math/tex">fa[i]</script>，然后就形成一棵最短路径树。因为要的是经过最多次数的边，所以bfs就可以了。</p>
 <h3 id="Codeforces1076E"><a href="#Codeforces1076E" class="headerlink" title="Codeforces1076E"></a>Codeforces1076E</h3><p><strong>题意：</strong></p>
 <p>给出一棵有n个结点的树，每个结点的权值初始都为0。给出m组操作，在v的子树中与它的距离小于等于d的结点的权值都增加x。问在这些操作之后，结点的权值分别为多少。</p>
 <p><strong>思路：</strong></p>
@@ -244,10 +252,10 @@
 <p>给出n个数，在每k个数里至少选一个，总共选x个，问最大值为多少。</p>
 <p><strong>思路：</strong></p>
 <p>可以想到是dp+单调队列。</p>
-<p>刚开始想的是这么设计状态$$dp[i][j]$$：到第i个总共选了j个的最大值，然后分选和不选来转移，这样子是不行的，因为你得确定知道转移过来的这个到底有没有被选。</p>
-<p>所以要这么设计状态$$dp[i][j]$$：选了第i个总共选了j个的最大值。</p>
+<p>刚开始想的是这么设计状态<script type="math/tex">dp[i][j]</script>：到第i个总共选了j个的最大值，然后分选和不选来转移，这样子是不行的，因为你得确定知道转移过来的这个到底有没有被选。</p>
+<p>所以要这么设计状态<script type="math/tex">dp[i][j]</script>：选了第i个总共选了j个的最大值。</p>
 <h3 id="Codeforces1054D"><a href="#Codeforces1054D" class="headerlink" title="Codeforces1054D"></a>Codeforces1054D</h3><p><strong>题意：</strong></p>
-<p>给出n个数，每个数都可以$$\oplus(2^k-1)$$，在所有区间中，让区间异或为0的区间最少。问在这种情况下，异或不为0的区间有多少个。</p>
+<p>给出n个数，每个数都可以<script type="math/tex">\oplus(2^k-1)</script>，在所有区间中，让区间异或为0的区间最少。问在这种情况下，异或不为0的区间有多少个。</p>
 <p><strong>思路：</strong></p>
 <p>首先异或是可以前缀和的，xor[l,r]=pre[r]-pre[l-1]。</p>
 <p>所以要使异或和相同的最少。因为在一个区间中如果两个数都取反就相当于没变，所以每个异或只有两种情况。</p>
@@ -497,6 +505,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

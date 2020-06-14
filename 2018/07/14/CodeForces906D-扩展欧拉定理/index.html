@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>CodeForces906D &amp; 牛客练习赛22E 扩展欧拉定理 - Hexo</title>
+  <title>CodeForces906D &amp; 牛客练习赛22E 扩展欧拉定理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      877 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      14
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,25 +213,24 @@
             
             <article class="markdown-body">
               <h5 id="CodeForces906D"><a href="#CodeForces906D" class="headerlink" title="CodeForces906D"></a>CodeForces906D</h5><p><strong>题意：</strong></p>
-<p>给定一个数列$$w_1,w_2,…,w_n$$和模数p,每次询问一个区间[l,r],求$${,{w_l}^{,{w_{l+1},}^{,{w_{l+2},}^{…^{w_r},},},},}mod\ p$$的值。其中$$1&lt;=w_k&lt;=10^9$$，$$1&lt;=q&lt;=10^5$$。</p>
+<p>给定一个数列<script type="math/tex">w_1,w_2,...,w_n</script>和模数p,每次询问一个区间[l,r],求<script type="math/tex">{\,{w_l}^{\,{w_{l+1}\,}^{\,{w_{l+2}\,}^{...^{w_r}\,}\,}\,}\,}mod\ p</script>的值。其中<script type="math/tex">1<=w_k<=10^9</script>，<script type="math/tex">1<=q<=10^5</script>。</p>
 <p><strong>思路：</strong></p>
 <p>有扩展欧拉定理：</p>
-<p>$$a^n≡\begin{cases}a^{n\ mod\ \varphi(m)} &amp; \gcd(a, m) = 1\a^{n} &amp; \gcd(a, m) \ne 1 \text{ 且 } n &lt; \varphi(m)\a^{n \bmod \varphi(m) + \varphi(m)} &amp; \gcd(a, m) \ne 1 \text{ 且 } n \ge \varphi(m)\end{cases}\pmod {m}$$</p>
-<p>由欧拉定理，有$$a^{\varphi(m)} \equiv 1 \pmod{m}$$，所以上式可以简单记为：</p>
-<p>$$a^n \equiv\begin{cases}a^{n} &amp; n &lt; \varphi(m)\a^{n \bmod\varphi(m) + \varphi(m)} &amp; n \ge \varphi(m)\end{cases}\pmod {m}$$，</p>
-<p>即$$a^n\ mod\ m=a^{n\ mod\ \varphi(m)+(n&gt;\varphi(m)?\varphi(m):0)}mod\ m$$。</p>
-<p>比如$$a^{b^{c^d}}\ mod\ m=a^{b^{c^d}\ mod\ \varphi(m)+(b^{c^d}&gt;\varphi(m)?\varphi(m):0)}\ mod\ m$$，</p>
-<p>其中$$b^{c^d}\ mod\ \varphi(m)=b^{c^d\ mod\ \varphi(\varphi(m))+(c^d&gt;\varphi(\varphi(m))?\varphi(\varphi(m)):0)}\ mod\ \varphi(m)$$，</p>
-<p>其中$$c^d\ mod\ \varphi(\varphi(m))=c^{d\ mod\ \varphi(\varphi(\varphi(m)))+(d&gt;\varphi(\varphi(\varphi(m)))?\varphi(\varphi(\varphi(m))):0)} \ mod\  \varphi(\varphi(m))$$。</p>
-<p>可以一直递归下去，$$b^{c^d}\ mod\ \varphi(m)$$可以递归处理。</p>
-<p>如果l==r的时候，返回的是$$d\ mod\ \varphi(\varphi(\varphi(m)))+(d&gt;\varphi(\varphi(\varphi(m)))?\varphi(\varphi(\varphi(m))):0)$$。</p>
+<script type="math/tex; mode=display">a^n≡\begin{cases}a^{n\ mod\ \varphi(m)} & \gcd(a, m) = 1\\a^{n} & \gcd(a, m) \ne 1 \text{ 且 } n < \varphi(m)\\a^{n \bmod \varphi(m) + \varphi(m)} & \gcd(a, m) \ne 1 \text{ 且 } n \ge \varphi(m)\end{cases}\pmod {m}</script><p>由欧拉定理，有<script type="math/tex">a^{\varphi(m)} \equiv 1 \pmod{m}</script>，所以上式可以简单记为：</p>
+<p><script type="math/tex">a^n \equiv\begin{cases}a^{n} & n < \varphi(m)\\a^{n \bmod\varphi(m) + \varphi(m)} & n \ge \varphi(m)\end{cases}\pmod {m}</script>，</p>
+<p>即<script type="math/tex">a^n\ mod\ m=a^{n\ mod\ \varphi(m)+(n>\varphi(m)?\varphi(m):0)}mod\ m</script>。</p>
+<p>比如<script type="math/tex">a^{b^{c^d}}\ mod\ m=a^{b^{c^d}\ mod\ \varphi(m)+(b^{c^d}>\varphi(m)?\varphi(m):0)}\ mod\ m</script>，</p>
+<p>其中<script type="math/tex">b^{c^d}\ mod\ \varphi(m)=b^{c^d\ mod\ \varphi(\varphi(m))+(c^d>\varphi(\varphi(m))?\varphi(\varphi(m)):0)}\ mod\ \varphi(m)</script>，</p>
+<p>其中<script type="math/tex">c^d\ mod\ \varphi(\varphi(m))=c^{d\ mod\ \varphi(\varphi(\varphi(m)))+(d>\varphi(\varphi(\varphi(m)))?\varphi(\varphi(\varphi(m))):0)} \ mod\  \varphi(\varphi(m))</script>。</p>
+<p>可以一直递归下去，<script type="math/tex">b^{c^d}\ mod\ \varphi(m)</script>可以递归处理。</p>
+<p>如果l==r的时候，返回的是<script type="math/tex">d\ mod\ \varphi(\varphi(\varphi(m)))+(d>\varphi(\varphi(\varphi(m)))?\varphi(\varphi(\varphi(m))):0)</script>。</p>
 <p>所以定义一个新的Mod方式：a&lt;b?a:a%b+b。</p>
 <p>递归的终点就是Mod(a[l],mod)。</p>
-<p>如果$$φ(φ(φ(⋯(n))))=1$$，那么嵌套层数为$$O(logn)$$。</p>
-<p>如果$$φ(m)=1$$了，那么可以在第二个式子返回0，之后都不用再继续递归了，这也是一个递归终点。</p>
-<p>回溯的时候就可以用快速幂来计算了，比如先回溯到第三个式子，用正常的快速幂是ojbk的，但是回溯到第二个式子的时候会发现只计算了$$c^d\ mod\ \varphi(\varphi(m))$$这一部分，无法判断$$c^d&gt;\varphi(\varphi(m))$$，所以用新定义的Mod方式来进行快速幂运算，这样子每次在函数中调用快速幂的时候得到的就是$$c^d\ mod\ \varphi(\varphi(m))+(c^d&gt;\varphi(\varphi(m))?\varphi(\varphi(m)):0)$$整个的值啦，体现在式子里面就相当于改变了$$c^d\ mod\ \varphi(\varphi(m))$$这个快速幂的方式，那么返回的就是整个上上式的值啦。</p>
-<p>注意计算$$\varphi(m)$$的时候要记忆化。</p>
-<p>这里有个坑点，求$$φ(n)$$的时候，如果调用参数列表里的参数的话会TLE，如果自己在函数内部传个参，就不会TLE了，为什么时间差这么多这是什么玄学啊，难道用函数内部的变量更快？这还是第一次见这种状况。</p>
+<p>如果<script type="math/tex">φ(φ(φ(⋯(n))))=1</script>，那么嵌套层数为<script type="math/tex">O(logn)</script>。</p>
+<p>如果<script type="math/tex">φ(m)=1</script>了，那么可以在第二个式子返回0，之后都不用再继续递归了，这也是一个递归终点。</p>
+<p>回溯的时候就可以用快速幂来计算了，比如先回溯到第三个式子，用正常的快速幂是ojbk的，但是回溯到第二个式子的时候会发现只计算了<script type="math/tex">c^d\ mod\ \varphi(\varphi(m))</script>这一部分，无法判断<script type="math/tex">c^d>\varphi(\varphi(m))</script>，所以用新定义的Mod方式来进行快速幂运算，这样子每次在函数中调用快速幂的时候得到的就是<script type="math/tex">c^d\ mod\ \varphi(\varphi(m))+(c^d>\varphi(\varphi(m))?\varphi(\varphi(m)):0)</script>整个的值啦，体现在式子里面就相当于改变了<script type="math/tex">c^d\ mod\ \varphi(\varphi(m))</script>这个快速幂的方式，那么返回的就是整个上上式的值啦。</p>
+<p>注意计算<script type="math/tex">\varphi(m)</script>的时候要记忆化。</p>
+<p>这里有个坑点，求<script type="math/tex">φ(n)</script>的时候，如果调用参数列表里的参数的话会TLE，如果自己在函数内部传个参，就不会TLE了，为什么时间差这么多这是什么玄学啊，难道用函数内部的变量更快？这还是第一次见这种状况。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Mod(a,b) a&lt;b?a:a%b+b</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -280,9 +287,6 @@ ll a[<span class="hljs-number">100100</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 <h5 id="牛客练习赛22E"><a href="#牛客练习赛22E" class="headerlink" title="牛客练习赛22E"></a>牛客练习赛22E</h5><p><strong>题意：</strong></p>
 <p>多了一个区间[l,r]加上x的操作，每次查询的模p也在改变(p &lt;= 2e7)。</p>
 <p><strong>思路：</strong></p>
@@ -381,7 +385,6 @@ ll c[<span class="hljs-number">500010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -627,6 +630,30 @@ ll c[<span class="hljs-number">500010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

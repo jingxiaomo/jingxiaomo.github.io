@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树状数组 - Hexo</title>
+  <title>树状数组 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -252,7 +260,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="单点查询-区间修改"><a href="#单点查询-区间修改" class="headerlink" title="单点查询 区间修改"></a>单点查询 区间修改</h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
 <span class="hljs-keyword">int</span> c[<span class="hljs-number">500010</span>];<span class="hljs-comment">//差分数组</span>
 <span class="hljs-comment">//这里运用了差分思想，假设原本的数据存在a数组中，</span>
@@ -310,7 +317,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="加了区间修改的万能模板"><a href="#加了区间修改的万能模板" class="headerlink" title="加了区间修改的万能模板"></a>加了区间修改的万能模板</h5><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 ll n;
@@ -372,7 +378,6 @@ ll ci[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差�
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="二维树状数组"><a href="#二维树状数组" class="headerlink" title="二维树状数组"></a>二维树状数组</h5><p>（以bzoj1452为例）</p>
 <p>题意：一个n*m的方格，初始时每个格子有一个整数权值。接下来每次有2种操作：</p>
 <p>改变一个格子的权值；</p>
@@ -430,7 +435,6 @@ ll ci[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差�
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>（以poj2155为例）</p>
 <p>题意：给出矩阵左上角和右下角坐标，矩阵里的元素1变0，0 变1，给出询问，问某个点是多少。</p>
 <p>思路：</p>
@@ -487,7 +491,6 @@ ll ci[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差�
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -733,6 +736,30 @@ ll ci[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差�
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

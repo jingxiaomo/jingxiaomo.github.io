@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>二叉树 - Hexo</title>
+  <title>二叉树 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -207,7 +215,7 @@
               <p><strong>二叉搜索树</strong></p>
 <p>它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。</p>
 <p>567432和543267都长这样：</p>
-<p><img src="/Users/apple/Downloads/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6-3.png" srcset="/img/loading.gif" alt="未命名文件-3"></p>
+<p><img src="/Users/apple/Downloads/未命名文件-3.png" srcset="/img/loading.gif" alt="未命名文件-3"></p>
 <h5 id="二叉树的前序遍历"><a href="#二叉树的前序遍历" class="headerlink" title="二叉树的前序遍历"></a><strong>二叉树的前序遍历</strong></h5><p>（给出的是二叉搜索树序列）</p>
 <p>遍历顺序规则为【根左右】12457836</p>
 <p><img src="http://img.blog.csdn.net/20150204101904649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXlfSm9icw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
@@ -258,7 +266,6 @@
 	&#125;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="二叉树的中序遍历"><a href="#二叉树的中序遍历" class="headerlink" title="二叉树的中序遍历"></a><strong>二叉树的中序遍历</strong></h5><p>（给出的是二叉搜索树序列）</p>
 <p>遍历顺序规则为【左根右】42758136</p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
@@ -308,7 +315,6 @@
 	&#125;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="二叉树的后序遍历"><a href="#二叉树的后序遍历" class="headerlink" title="二叉树的后序遍历"></a><strong>二叉树的后序遍历</strong></h5><p>（给出的是二叉搜索树序列）</p>
 <p>遍历顺序规则为【左右根】47852631</p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
@@ -358,7 +364,6 @@
 	&#125;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a><strong>二叉树的层次遍历</strong></h5><p>从上到下，从左到右的顺序进行遍历。</p>
 <p><img src="http://img.blog.csdn.net/20150423091747551?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHVvbWluZ2p1bjEyMzE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
 <p>样例输入：</p>
@@ -454,7 +459,6 @@ node *root;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="二叉树的递归遍历"><a href="#二叉树的递归遍历" class="headerlink" title="二叉树的递归遍历"></a><strong>二叉树的递归遍历</strong></h5><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
@@ -529,7 +533,6 @@ node *root;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="已知前序、中序遍历，求后序遍历"><a href="#已知前序、中序遍历，求后序遍历" class="headerlink" title="已知前序、中序遍历，求后序遍历"></a><strong>已知前序、中序遍历，求后序遍历</strong></h5><p>参考博客：<a href="http://blog.csdn.net/droidphone/article/details/38063897" target="_blank" rel="noopener">http://blog.csdn.net/droidphone/article/details/38063897</a></p>
 <h5 id="已知中序、后序遍历，求前序遍历"><a href="#已知中序、后序遍历，求前序遍历" class="headerlink" title="已知中序、后序遍历，求前序遍历"></a><strong>已知中序、后序遍历，求前序遍历</strong></h5><p>参考博客：<a href="http://blog.csdn.net/u014536527/article/details/51010702" target="_blank" rel="noopener">http://blog.csdn.net/u014536527/article/details/51010702</a></p>
 
@@ -777,6 +780,30 @@ node *root;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

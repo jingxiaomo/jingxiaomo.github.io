@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6391 思维+读入挂 - Hexo</title>
+  <title>HDU6391 思维+读入挂 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      642 字
+      640 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出k种属性，一个人的k种属性有初始值为$$v_1,v_2,…,v_k$$，他要去打n个怪兽，第i个怪兽也有k种属性$$a_{i,1},a_{i,2},…,a_{i,k}$$，如果当前的$$v_1\geq a_{i,1},v_2\geq a_{i,2},…,v_k\geq a_{i,k}$$，这个人就可以打第i个怪兽，并且每个属性得到怪兽的加成$$b_{i,1},b_{i,2},…,b_{i,k}$$。问你这个人最多可以打几个怪兽，并输出这个人最后的属性值。</p>
+<p>给出k种属性，一个人的k种属性有初始值为<script type="math/tex">v_1,v_2,...,v_k</script>，他要去打n个怪兽，第i个怪兽也有k种属性<script type="math/tex">a_{i,1},a_{i,2},...,a_{i,k}</script>，如果当前的<script type="math/tex">v_1\geq a_{i,1},v_2\geq a_{i,2},...,v_k\geq a_{i,k}</script>，这个人就可以打第i个怪兽，并且每个属性得到怪兽的加成<script type="math/tex">b_{i,1},b_{i,2},...,b_{i,k}</script>。问你这个人最多可以打几个怪兽，并输出这个人最后的属性值。</p>
 <p><strong>思路：</strong></p>
 <p>贪心思路是要打的就打，从a小的开始打，所以先对怪兽的每种属性从小到大排序，拿k个指针去扫，对满足被打条件的属性的怪兽进行标记，当某个怪兽的所有属性都被标记了，就将b加给人，指针向后移动。</p>
 <p>这里要用到读入挂。</p>
@@ -309,7 +317,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -555,6 +562,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

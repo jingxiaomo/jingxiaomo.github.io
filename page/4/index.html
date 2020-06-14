@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -213,11 +213,10 @@
         <div>rope头文件与命名空间：
 #include&lt;ext/rope&gt;
 using namespace __gnu_cxx;
-
-大概可以称作可持久化平衡树，因为rope适用于大量、冗长的串操作，而不适合单个字符操作。rope类似块状链表。复杂度为$$O\sqrt n$$。
+大概可以称作可持久化平衡树，因为rope适用于大量、冗长的串操作，而不适合单个字符操作。rope类似块状链表。复杂度为O\sqrt n。
 基本操作：
 1）运算符：rope支持operator += -= + - &lt; ==。
-2）输入输出：可以用&lt;</div>
+2）输入输出：可以用&lt;&lt;运</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -293,10 +292,10 @@ using namespace __gnu_cxx;
         
         <div>有一个N*M的矩形，矩形中有K块涂黑了，给出涂黑的坐标，问完全白色的矩形有几个。
 根据数据范围的不同，有多种做法。
-Gym101350G 容斥$$ 1 ≤ N, M≤ 10^4$$，$$1 ≤K≤20$$。
+Gym101350G 容斥1 ≤ N, M≤ 10^4，1 ≤K≤20。
 思路：
 因为K比较小，N，M又比较大，所以可以考虑容斥。
-对于一个N*M的矩形，它的子矩形有$$C_{n+1}^2\times C_{m+1}^2=\frac{n(n+1)}{2}\times</div>
+对于一个N*M的矩形，它的子矩形有C_{n+1}^2\times C_{m+1}^2=\frac{n(n+1)}{2}\times \frac{m(m+</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -330,15 +329,7 @@ Gym101350G 容斥$$ 1 ≤ N, M≤ 10^4$$，$$1 ≤K≤20$$。
           
         
         <div>题意：
-有N个结点，由M条双向边连接，每条边有权值。可以把最多k条边的权值改为0。问从1到N的最短路为多少。其中$$1 &lt;= N &lt;= 10000$$，$$1 &lt;= K &lt;= 20$$。
-思路：
-法一：拆点。
-把图分为k层，层与层之间的路权值为0，每次走上一条权值为0的边相当于在层之间走。
-注意数组开的大小。
-如图：
-
-法二：DP思想。
-$$dis[i][j]$$：到第i个</div>
+有N个结点，由M条双向边连接，每条边有权值。可以把最多k条边的权值改为0。问从1到N的最短路为多少。其中1 </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -372,11 +363,7 @@ $$dis[i][j]$$：到第i个</div>
           
         
         <div>题意：
-有n道题，有$$a_i$$和$$b_i$$两个值，每道题得在m道题做完之后才能做，给出了这m道题。如果第t个做出这道题目的话，得到的价值为$$a_i*t+b_i$$。问最大价值为多少。其中$$0&lt;n≤20$$。
-思路：
-可以看出来是一道状压dp。
-可是我想到了这可以画出一张图然后就走上了一条不归路…比赛的时候连二维还是一维都没有考虑好…还想好难转移…真的智障啊…
-怎么就不能好好思考一</div>
+有n道题，有a_i和b_i两个值，每道题得在m道题做完之后才能做，给出了这m道题。如果第t个做出这道题目的话，得到的价值为a_i*t+b_i。问最大价值为多少。其中0</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -410,12 +397,12 @@ $$dis[i][j]$$：到第i个</div>
           
         
         <div>bzoj2002题意：
-一条直线上有n个装置，每个装置设定初始弹力系数$$k_i$$，当达到第i个装置时，它会往后弹$$k_i$$步，达到第$$i+k_i$$个装置，若不存在第$$i+k_i$$个装置，则绵羊被弹飞。
+一条直线上有n个装置，每个装置设定初始弹力系数k_i，当达到第i个装置时，它会往后弹k_i步，达到第i+k_i个装置，若不存在第i+k_i个装置，则绵羊被弹飞。
 有两种操作：
 1 x：当它从第i个装置起步时，被弹几次后会被弹飞。
 2 x y：修改第x个弹力装置的弹力系数为y。
 思路：
-因为直接暴力的话一步一步弹太慢了，是$$O(n)$$的，可</div>
+因为直接暴力的话一步一步弹太慢了，是O(n)的，可以考虑分块提前把弹几步处理出来，这样就可</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -486,10 +473,10 @@ int m = 8</div>
           
         
         <div>题意：
-给出一个价格n和一些零钱的数量$$c_1,c_5,c_{10},c_{20},c_{50},c_{100},c_{200},c_{500},c_{1000},c_{2000}$$。求最多用多少零钱凑出这个n。
+给出一个价格n和一些零钱的数量c_1,c_5,c_{10},c_{20},c_{50},c_{100},c_{200},c_{500},c_{1000},c_{2000}。求最多用多少零钱凑出这个n。
 思路：
 用最少的零钱凑会比用最多的零钱凑好考虑。
-如果零钱是1,5,10,50,100,200,1000,2000的话，就可以从大到小直接贪心取，就是每个零钱都是后面一个的约数的时候</div>
+如果零钱是1,5,10,50,100,200,1000,2000的话，就可以从大到小直接贪心取，就是每个零钱都是后面一个的约数的时候就可以直</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -698,6 +685,30 @@ int m = 8</div>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

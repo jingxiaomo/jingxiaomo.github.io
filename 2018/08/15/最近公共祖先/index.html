@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>最近公共祖先 - Hexo</title>
+  <title>最近公共祖先 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -208,7 +216,7 @@
 <p><a href="https://www.dreamwings.cn/lca/4874.html" target="_blank" rel="noopener">https://www.dreamwings.cn/lca/4874.html</a></p>
 <p><a href="https://www.cnblogs.com/JVxie/p/4854719.html" target="_blank" rel="noopener">https://www.cnblogs.com/JVxie/p/4854719.html</a></p>
 <p><strong>复杂度：</strong></p>
-<p>$$O(m+n)$$，m是询问数，n是节点数。</p>
+<p><script type="math/tex">O(m+n)</script>，m是询问数，n是节点数。</p>
 <p><strong>伪代码：</strong></p>
 <pre><code class="hljs c++">Tarjan(u)   <span class="hljs-comment">// merge和find为并查集合并函数和查找函数</span>
 &#123;
@@ -224,7 +232,6 @@
             u, e 的最近公共祖先为 <span class="hljs-built_in">find</span>(e);
     &#125;
 &#125;</code></pre>
-
 <p><strong>模板：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> top,qtop;
 <span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
@@ -305,13 +312,12 @@
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans[i]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="倍增："><a href="#倍增：" class="headerlink" title="倍增："></a>倍增：</h4><p><strong>参考博客：</strong></p>
 <p><a href="https://blog.csdn.net/qq_42790311/article/details/81486742" target="_blank" rel="noopener">https://blog.csdn.net/qq_42790311/article/details/81486742</a></p>
 <p><a href="https://www.cnblogs.com/xqmmcqs/p/5954097.html" target="_blank" rel="noopener">https://www.cnblogs.com/xqmmcqs/p/5954097.html</a></p>
 <p><a href="https://www.luogu.org/blog/34188/solution-p3379" target="_blank" rel="noopener">https://www.luogu.org/blog/34188/solution-p3379</a></p>
 <p><strong>复杂度：</strong></p>
-<p>$$O(nlog_2n)$$。</p>
+<p><script type="math/tex">O(nlog_2n)</script>。</p>
 <p><strong>模板：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> top;
 <span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
@@ -374,7 +380,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="树链剖分："><a href="#树链剖分：" class="headerlink" title="树链剖分："></a>树链剖分：</h4><p>对于两个不在同一重链内的节点，让他们不断地跳，使得他们处于同一重链上。往上跳之后两点在同一条重链上，LCA就是两点中深度更小的那个。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> top;
 <span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
@@ -464,7 +469,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -710,6 +714,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

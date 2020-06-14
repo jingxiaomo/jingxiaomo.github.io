@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>CodeForces1011E 裴蜀定理 - Hexo</title>
+  <title>CodeForces1011E 裴蜀定理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      354 字
+      356 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,13 +213,13 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有一个计数器，计数器的初始值为0，每次操作你可以把计数器的值加上$$a_1,a_2,…,a_n$$中的任意一个整数，操作次数不限（可以为0次），问计数器的值对m取模后有几种可能，并输出这些可能。</p>
+<p>有一个计数器，计数器的初始值为0，每次操作你可以把计数器的值加上<script type="math/tex">a_1,a_2,...,a_n</script>中的任意一个整数，操作次数不限（可以为0次），问计数器的值对m取模后有几种可能，并输出这些可能。</p>
 <p><strong>思路：</strong></p>
 <p>裴蜀定理：</p>
-<p>对任何整数a、b和它们的最大公约数d，关于未知数x和y的$$ax+by=m$$有整数解时当且仅当m是d的倍数。</p>
-<p>特别地，$$ax+by=1$$有整数解当且仅当整数a和b互质。</p>
-<p>设$$a_1,a_2,a_3……a_n$$为n个整数，d是它们的最大公约数，那么存在整数$$x_1…x_n$$使得$$x_1<em>a_1+x_2</em>a_2+…+x_n*a_n=d$$。</p>
-<p>对于这道题，有$$(k_1<em>a_1+k_2</em>a_2+…+k_n<em>a_n)%m=x$$，则有$$k_1</em>a_1+k_2<em>a_2+…+k_n</em>a_n-k_m*m=x$$，则当x为$$gcd(a_1,a_2,…,m)$$的倍数时该方程有整数解。</p>
+<p>对任何整数a、b和它们的最大公约数d，关于未知数x和y的<script type="math/tex">ax+by=m</script>有整数解时当且仅当m是d的倍数。</p>
+<p>特别地，<script type="math/tex">ax+by=1</script>有整数解当且仅当整数a和b互质。</p>
+<p>设<script type="math/tex">a_1,a_2,a_3......a_n</script>为n个整数，d是它们的最大公约数，那么存在整数<script type="math/tex">x_1...x_n</script>使得<script type="math/tex">x_1*a_1+x_2*a_2+...+x_n*a_n=d</script>。</p>
+<p>对于这道题，有<script type="math/tex">(k_1*a_1+k_2*a_2+...+k_n*a_n)\%m=x</script>，则有<script type="math/tex">k_1*a_1+k_2*a_2+...+k_n*a_n-k_m*m=x</script>，则当x为<script type="math/tex">gcd(a_1,a_2,...,m)</script>的倍数时该方程有整数解。</p>
 <p>另，对于一个环，每个循环节的长度为n/gcd(n, k)，k为每次走的步数。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -240,7 +248,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -486,6 +493,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

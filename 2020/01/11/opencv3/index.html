@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>opencv学习笔记（三）分离颜色通道&amp;多通道图像混合 - Hexo</title>
+  <title>opencv学习笔记（三）分离颜色通道&amp;多通道图像混合 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      719 字
+      721 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -208,14 +216,13 @@
 <h1 id="分离颜色通道"><a href="#分离颜色通道" class="headerlink" title="分离颜色通道"></a>分离颜色通道</h1><h2 id="split函数"><a href="#split函数" class="headerlink" title="split函数"></a>split函数</h2><p>将一个多通道数组分离成几个单通道数组。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">split</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Mat&amp; src, Mat* mvbegin)</span></span>;
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">split</span><span class="hljs-params">(InputArray m,OutputArrayOfArrays mv)</span></span>;</code></pre>
-
 <ul>
 <li><p>第一个参数，InputArray类型的mat或者const Mat&amp;类型的src，填我们需要进行分离的多通道数组。</p>
 </li>
 <li><p>第二个参数，OutputArrayOfArrays类型的mv，填函数的输出数组或者输出的vector容器。</p>
 </li>
 </ul>
-<p>split函数分割多通道数组转换成独立的单通道数组，公式为$$mv<a href="I">c</a>=src(I)_c$$。</p>
+<p>split函数分割多通道数组转换成独立的单通道数组，公式为<script type="math/tex">mv[c](I)=src(I)_c</script>。</p>
 <p>示例：</p>
 <pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;Mat&gt; channels;
 Mat imageBlueChannel;
@@ -227,12 +234,10 @@ split(srcImage4,channels);<span class="hljs-comment">//分离色彩通道</span>
 imageBlueChannel = channels.at(<span class="hljs-number">0</span>);
 imageGreenChannel = channels.at(<span class="hljs-number">1</span>);
 imageRedChannel = channels.at(<span class="hljs-number">2</span>);</code></pre>
-
 <h2 id="merge函数"><a href="#merge函数" class="headerlink" title="merge函数"></a>merge函数</h2><p>将多个数组组合合并成一个多通道的数组。</p>
 <p>它通过组合一些给定的单通道数组，将这些孤立的单通道数组合并成一个多通道的数组，从而创建出一个由多个单通道阵列组成的多通道阵列。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Mat* mv, <span class="hljs-keyword">size_t</span> count, OutputArray dst)</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(InputArrayOfArrays mv,OutputArray dst)</span></span></code></pre>
-
 <ul>
 <li>第一个参数mv，填需要被合并的输入矩阵或vector容器的阵列，这个mv参数中所有的矩阵必须有着一样的尺寸和深度。</li>
 <li>第二个参数count，当mv为一个空白的C数组时，代表输入矩阵的个数，这个参数显然必须大于1。</li>
@@ -257,7 +262,6 @@ merge(channels,srcImage4);
  
 namedWindow(<span class="hljs-string">"sample"</span>);
 imshow(<span class="hljs-string">"sample"</span>,srcImage);</code></pre>
-
 <p>如果我们需要从多通道数组中提取出特定的单通道数组，或者说实现一些复杂的通道组合，可以使用mixChannels()函数。</p>
 
             </article>
@@ -504,6 +508,30 @@ imshow(<span class="hljs-string">"sample"</span>,srcImage);</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

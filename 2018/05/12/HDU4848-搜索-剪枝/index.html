@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU4848 搜索+剪枝 - Hexo</title>
+  <title>HDU4848 搜索+剪枝 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      981 字
+      982 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n个城市，每个城市与另一个城市之间都有路，需要从一个城市到另一个城市需要$$t_{xy}$$的时间，一个人到从第一个城市开始视察每一个城市，到每个城市都有一个deadline，到达这个城市的时间不能超过这个deadline，问最小的到达每个城市的到达时间的总和为多少。（n&lt;=30）</p>
+<p>有n个城市，每个城市与另一个城市之间都有路，需要从一个城市到另一个城市需要<script type="math/tex">t_{xy}</script>的时间，一个人到从第一个城市开始视察每一个城市，到每个城市都有一个deadline，到达这个城市的时间不能超过这个deadline，问最小的到达每个城市的到达时间的总和为多少。（n&lt;=30）</p>
 <p><strong>思路：</strong></p>
 <p>先用floyd处理出每两个点之间的最短路。</p>
 <p>n&lt;=30本来肯定是会超时的，可以考虑剪枝。</p>
@@ -215,8 +223,8 @@
 <p>一般实现：在搜索取和最大值时，如果后面的全部取最大仍然不比当前答案大就可以返回。<br>在搜和最小时同理，可以预处理后缀最大/最小和进行快速查询。</p>
 <p><u>搜索顺序剪枝</u>：  在一些迷宫题，网格题，或者其他搜索中可以贪心的题，搜索顺序显得十分重要。我经常听见有人说(我自己也说过)：“从左边搜会T，从右边搜就A了”之类的语句。其实在迷宫、网格类的题目中，以左上-&gt;右下为例，右下左上就明显比左上右下优秀。在一些推断搜索题中，从已知信息最多的地方开始搜索显然更加优秀。在一些题中，先搜某个值大的，再搜某个值小的(比如树的度数，产生答案的预计(A*))，速度明显会比乱搜更快。搜索的复杂度明显讲不清，这种剪枝自然是能加就加。</p>
 <p>这道题中，</p>
-<p>可行性剪枝：在下一个可以走的点里遍历，如果存在$$cur+dis[id][i]&gt;d[i]$$那就说明那个i是怎么都不能走到的，可以剪掉。</p>
-<p>最优性剪枝：如果当前的tot大于现有的ans的话，就可以剪掉。这里对于tot的处理也有讲究，比如到三个点的花费的时间分别是1,3,5，这里到达时间时间相当于是1,1+3,1+3+5，答案是1+1+3+1+3+5，这里可以直接$$1<em>3+3</em>2+5*1$$，把后面的预先加上，这会更快到达要剪枝的条件。</p>
+<p>可行性剪枝：在下一个可以走的点里遍历，如果存在<script type="math/tex">cur+dis[id][i]>d[i]</script>那就说明那个i是怎么都不能走到的，可以剪掉。</p>
+<p>最优性剪枝：如果当前的tot大于现有的ans的话，就可以剪掉。这里对于tot的处理也有讲究，比如到三个点的花费的时间分别是1,3,5，这里到达时间时间相当于是1,1+3,1+3+5，答案是1+1+3+1+3+5，这里可以直接<script type="math/tex">1*3+3*2+5*1</script>，把后面的预先加上，这会更快到达要剪枝的条件。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> dis[<span class="hljs-number">35</span>][<span class="hljs-number">35</span>];
 <span class="hljs-keyword">int</span> d[<span class="hljs-number">35</span>];
@@ -508,6 +516,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -176,11 +176,7 @@
           
         
         <div>HDU4565题意：
-给出a，b，n，m，求$$S_n=\lceil(a+\sqrt b)^n\rceil%m$$。其中$$0&lt;a,m&lt;2^{15}$$，$$(a-1)^2&lt;b &lt;a^2$$，$$0&lt;b,n&lt;2^{31}$$。
-思路：
-首先根据构造共轭因式的思想，构造下式：
-$$(a+\sqrt b)^n=A+B\sqrt b$$
-$$(a-\sqrt b)^n</div>
+给出a，b，n，m，求S_n=\lceil(a+\sqrt b)^n\rceil\%m。其中0</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -257,7 +253,7 @@ max用单调队列维护是常规操作。但是cnt要怎么在O(n)的复杂度�
 题目又看错了…主要是样例手算不出来…就以为本来的理解是对的…
 事实上它是有贪心在里面的，因为尽可能要让正面朝上的硬币多，所以每次尽可能扔反面朝上的硬币，如果反面朝上的硬币不足a个的话，把反面朝上的硬币全选了以外正面朝上的硬币也选几个。
 这里就可以dp了。
-$$dp[</div>
+dp[i]</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -406,9 +402,9 @@ dfs序有一个可以利用的性质是每一棵子树在序列里都是连续�
           
         
         <div>题意：
-有n个城市，每个城市有一个被抢劫的风险值，现在有q次询问，问u到v在不经过风险值大于w的条件下的最短路长度。其中$$1≤n≤200$$，$$1≤q≤2×10^4$$，$$1≤w≤10^5$$。
+有n个城市，每个城市有一个被抢劫的风险值，现在有q次询问，问u到v在不经过风险值大于w的条件下的最短路长度。其中1≤n≤200，1≤q≤2×10^4，1≤w≤10^5。
 思路：
-不经过某些城市就相当于不用某些城市松弛，这可以想到floyd，最外层是松弛的城市，所以容易想到要将城市的风险值进行从小到大排序，即从小到大进行松弛，再把每次松弛的结果保存下来，相当于三维dp</div>
+不经过某些城市就相当于不用某些城市松弛，这可以想到floyd，最外层是松弛的城市，所以容易想到要将城市的风险值进行从小到大排序，即从小到大进行松弛，再把每次松弛的结果保存下来，相当于三维dp表示经过前i个城市进行松</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -479,11 +475,11 @@ dfs序有一个可以利用的性质是每一棵子树在序列里都是连续�
           
         
         <div>题意：
-给出一个长度为n且元素不超过k的序列，问删除m个数之后不同的序列有几种，模$$1e9+7$$。其中$$1 ≤ n ≤ 10^5$$，$$1 ≤ m ≤ min { n - 1, 10}$$，$$1 ≤ k ≤ 10$$。
+给出一个长度为n且元素不超过k的序列，问删除m个数之后不同的序列有几种，模1e9+7。其中1 ≤ n ≤ 10^5，1 ≤ m ≤ min \{ n - 1, 10\}，1 ≤ k ≤ 10。
 思路：
-$$dp[i][j]：前i个数字删除j个数字的方案数$$。
-有转移$$dp[i][j]=dp[i-1]j+dp[i-1]j-1$$。
-考虑到序列里面可能有重复数字</div>
+dp[i][j]：前i个数字删除j个数字的方案数。
+有转移dp[i][j]=dp[i-1][j](不删除该数字)+dp[i-1][j-1](删除该数字)。
+考虑到序列里面可能有重复数字，比如</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -689,6 +685,30 @@ $$dp[i][j]：前i个数字删除j个数字的方案数$$。
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

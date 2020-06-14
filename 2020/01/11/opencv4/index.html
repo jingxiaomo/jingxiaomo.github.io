@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>opencv学习笔记（四）创建Trackbar &amp; 图像对比度、亮度值调整 - Hexo</title>
+  <title>opencv学习笔记（四）创建Trackbar &amp; 图像对比度、亮度值调整 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,7 +213,6 @@
             
             <article class="markdown-body">
               <h1 id="轨迹条的创建和使用"><a href="#轨迹条的创建和使用" class="headerlink" title="轨迹条的创建和使用"></a>轨迹条的创建和使用</h1><h2 id="createTrackbar函数"><a href="#createTrackbar函数" class="headerlink" title="createTrackbar函数"></a>createTrackbar函数</h2><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">createTrackbar</span><span class="hljs-params">(conststring&amp; trackbarname, conststring&amp; winname,<span class="hljs-keyword">int</span>* value,<span class="hljs-keyword">int</span> count,TrackbarCallback onChange=<span class="hljs-number">0</span>,<span class="hljs-keyword">void</span>* userdata=<span class="hljs-number">0</span>)</span></span>;</code></pre>
-
 <ul>
 <li>第一个参数，const string&amp;类型的trackbarname，表示轨迹条的名字。</li>
 <li>第二个参数，const string&amp;类型的winname，填窗口的名字，表示这个轨迹条会依附到哪个窗口上，即对应namedWindow（）创建窗口时填的某一个窗口名。</li>
@@ -220,15 +227,13 @@
 </blockquote>
 <pre><code class="hljs c++"> <span class="hljs-comment">//创建轨迹条</span>
 createTrackbar(<span class="hljs-string">"对比度："</span>, <span class="hljs-string">"【效果图窗口】"</span>,&amp;g_nContrastValue,<span class="hljs-number">300</span>,ContrastAndBright );<span class="hljs-comment">//g_nContrastValue为全局的整型变量，ContrastAndBright为回调函数的函数名（即指向函数地址的指针）</span></code></pre>
-
 <h2 id="getTrackbarPos函数"><a href="#getTrackbarPos函数" class="headerlink" title="getTrackbarPos函数"></a>getTrackbarPos函数</h2><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getTrackbarPos</span><span class="hljs-params">(conststring&amp; trackbarname,conststring&amp; winname)</span></span>;</code></pre>
-
 <ul>
 <li>第一个参数，const string&amp;类型的trackbarname，表示轨迹条的名字。</li>
 <li>第二个参数，const string&amp;类型的winname，表示轨迹条的父窗口的名称。</li>
 </ul>
-<h1 id="亮度和对比度调整"><a href="#亮度和对比度调整" class="headerlink" title="亮度和对比度调整"></a>亮度和对比度调整</h1><p>$$<br>g(i,j)=a*f(i,j)+b<br>$$</p>
-<h1 id="访问图片中的像素"><a href="#访问图片中的像素" class="headerlink" title="访问图片中的像素"></a>访问图片中的像素</h1><p>为了执行$$g(i,j)=a*f(i,j)+b$$这个运算 ，我们需要访问图像的每一个像素。因为是对RGB图像进行运算，每个像素有三个值（B、G、R），所以我们必须分别访问它们。以下是访问像素的代码片段，三个for循环解决问题：</p>
+<h1 id="亮度和对比度调整"><a href="#亮度和对比度调整" class="headerlink" title="亮度和对比度调整"></a>亮度和对比度调整</h1><script type="math/tex; mode=display">
+g(i,j)=a*f(i,j)+b</script><h1 id="访问图片中的像素"><a href="#访问图片中的像素" class="headerlink" title="访问图片中的像素"></a>访问图片中的像素</h1><p>为了执行<script type="math/tex">g(i,j)=a*f(i,j)+b</script>这个运算 ，我们需要访问图像的每一个像素。因为是对RGB图像进行运算，每个像素有三个值（B、G、R），所以我们必须分别访问它们。以下是访问像素的代码片段，三个for循环解决问题：</p>
 <pre><code class="hljs c++"><span class="hljs-comment">//三个for循环，执行运算 new_image(i,j) =a*image(i,j) + b</span>
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span>; y &lt; <span class="hljs-built_in">image</span>.rows; y++ )
 &#123;
@@ -240,8 +245,7 @@ createTrackbar(<span class="hljs-string">"对比度："</span>, <span class="hlj
               &#125;
        &#125;
 &#125;</code></pre>
-
-<p>为了访问图像的每一个像素，我们使用这样的语法：$$image.at<Vec3b>(y,x)[c]$$，其中，y是像素所在的行， x是像素所在的列， c是B、G、R（对应0、1、2）其中之一。<br>因为我们的运算结果可能超出像素取值范围（溢出），还可能是非整数（如果是浮点数的话），所以我们要用saturate_cast对结果进行转换，以确保它为有效值。<br>这里的a也就是对比度，一般为了观察的效果，取值为0.0到3.0的浮点值，但是我们的轨迹条一般取值都会整数，所以在这里我们可以，将其代表对比度值的nContrastValue参数设为0到300之间的整型，在最后的式子中乘以一个0.01，这样就可以完成轨迹条中300个不同取值的变化。所以在式子中，我们会看到saturate_cast&lt;uchar&gt;( (g_nContrastValue<em>0.01)</em>(image.at&lt;Vec3b&gt;(y,x)[c] ) + g_nBrightValue )中的g_nContrastValue*0.01。</p>
+<p>为了访问图像的每一个像素，我们使用这样的语法：<script type="math/tex">image.at<Vec3b>(y,x)[c]</script>，其中，y是像素所在的行， x是像素所在的列， c是B、G、R（对应0、1、2）其中之一。<br>因为我们的运算结果可能超出像素取值范围（溢出），还可能是非整数（如果是浮点数的话），所以我们要用saturate_cast对结果进行转换，以确保它为有效值。<br>这里的a也就是对比度，一般为了观察的效果，取值为0.0到3.0的浮点值，但是我们的轨迹条一般取值都会整数，所以在这里我们可以，将其代表对比度值的nContrastValue参数设为0到300之间的整型，在最后的式子中乘以一个0.01，这样就可以完成轨迹条中300个不同取值的变化。所以在式子中，我们会看到saturate_cast\<uchar>( (g_nContrastValue<em>0.01)</em>(image.at\<Vec3b>(y,x)[c] ) + g_nBrightValue )中的g_nContrastValue*0.01。</p>
 <h1 id="图像对比度、亮度值调整示例程序"><a href="#图像对比度、亮度值调整示例程序" class="headerlink" title="图像对比度、亮度值调整示例程序"></a>图像对比度、亮度值调整示例程序</h1><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;opencv2/core/core.hpp&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"opencv2/imgproc/imgproc.hpp"</span></span>
@@ -324,7 +328,6 @@ Mat g_srcImage,g_dstImage;
        imshow(<span class="hljs-string">"【原始图窗口】"</span>, g_srcImage);
        imshow(<span class="hljs-string">"【效果图窗口】"</span>, g_dstImage);
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -570,6 +573,30 @@ Mat g_srcImage,g_dstImage;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

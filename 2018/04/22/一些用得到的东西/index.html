@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>调试用 - Hexo</title>
+  <title>调试用 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -217,7 +225,6 @@
     <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"The run time is:"</span>&lt;&lt;(end_time-start_time)&lt;&lt;<span class="hljs-string">"ms!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出运行时间</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p><strong>clock函数（精度较差）</strong></p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
@@ -231,7 +238,6 @@
     <span class="hljs-built_in">cout</span>&lt;&lt; <span class="hljs-string">"Running time is: "</span>&lt;&lt;<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">double</span>&gt;(end_time-start_time)/CLOCKS_PER_SEC*<span class="hljs-number">1000</span>&lt;&lt;<span class="hljs-string">"ms"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出运行时间</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h5><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/time.h&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
@@ -249,7 +255,6 @@
     total_time /= <span class="hljs-number">1000</span>;
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"total time is %lld ms\n"</span>, total_time);
 &#125;</code></pre>
-
 <h4 id="对拍"><a href="#对拍" class="headerlink" title="对拍"></a>对拍</h4><p>参考博客：<a href="https://blog.csdn.net/wlx65003/article/details/51149196" target="_blank" rel="noopener">https://blog.csdn.net/wlx65003/article/details/51149196</a></p>
 <p><a href="http://www.cnblogs.com/shamman/p/7351233.html" target="_blank" rel="noopener">http://www.cnblogs.com/shamman/p/7351233.html</a></p>
 <h5 id="Windows系统-1"><a href="#Windows系统-1" class="headerlink" title="Windows系统"></a>Windows系统</h5><p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fqls2o9y8lj30m80gwq4n.jpg" srcset="/img/loading.gif" alt="avatar"></p>
@@ -263,7 +268,6 @@
 <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> errorlevel <span class="hljs-number">1</span> goto loop  
 pause
 goto loop</code></pre>
-
 <p>rand.cpp</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -296,7 +300,6 @@ goto loop</code></pre>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>只需把my.cpp和std.cpp放在和对拍程序相同的目录下 ，</p>
 <p>my.cpp里放你自己的代码，编译成my.exe ，</p>
 <p>std.cpp里放标程，编译成std.exe，</p>
@@ -314,7 +317,6 @@ goto loop</code></pre>
         <span class="hljs-built_in">exit</span> <span class="hljs-number">0</span>
     fi
 done</code></pre>
-
 <p>将代码存储为judge.sh</p>
 <p>在终端运行 chmod +x judge.sh</p>
 <p>在终端运行 ./judge.sh</p>
@@ -567,6 +569,30 @@ done</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

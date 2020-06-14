@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>曼哈顿距离与切比雪夫距离 - Hexo</title>
+  <title>曼哈顿距离与切比雪夫距离 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,10 +212,10 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>将一个点$$(x,y)$$的坐标变为$$(x+y,x−y)$$后,原坐标系中的曼哈顿距离=新坐标系中的切比雪夫距离；</p>
-<p>将一个点$$(x,y)$$的坐标变为$$(\frac{x+y}{2},\frac{x−y}{2}) $$后,原坐标系中的切比雪夫距离=新坐标系中的曼哈顿距离。</p>
-<p>切比雪夫距离在计算的时候需要取max，往往不是很好优化，对于一个点，计算其他点到该的距离的复杂度为$$O(n)$$。</p>
-<p>而曼哈顿距离只有求和以及取绝对值两种运算，我们把坐标排序后可以去掉绝对值的影响，进而用前缀和优化，可以把复杂度降为$$O(1)$$。</p>
+              <p>将一个点<script type="math/tex">(x,y)</script>的坐标变为<script type="math/tex">(x+y,x−y)</script>后,原坐标系中的曼哈顿距离=新坐标系中的切比雪夫距离；</p>
+<p>将一个点<script type="math/tex">(x,y)</script>的坐标变为<script type="math/tex">(\frac{x+y}{2},\frac{x−y}{2})</script>后,原坐标系中的切比雪夫距离=新坐标系中的曼哈顿距离。</p>
+<p>切比雪夫距离在计算的时候需要取max，往往不是很好优化，对于一个点，计算其他点到该的距离的复杂度为<script type="math/tex">O(n)</script>。</p>
+<p>而曼哈顿距离只有求和以及取绝对值两种运算，我们把坐标排序后可以去掉绝对值的影响，进而用前缀和优化，可以把复杂度降为<script type="math/tex">O(1)</script>。</p>
 
             </article>
             <hr>
@@ -453,6 +461,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

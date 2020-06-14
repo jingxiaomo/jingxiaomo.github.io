@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>背包相关 - Hexo</title>
+  <title>背包相关 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -206,23 +214,20 @@
             <article class="markdown-body">
               <p><a href="http://blog.csdn.net/tinyguyyy/article/details/51203935" target="_blank" rel="noopener">http://blog.csdn.net/tinyguyyy/article/details/51203935</a></p>
 <h5 id="0-1背包的滚动数组优化"><a href="#0-1背包的滚动数组优化" class="headerlink" title="0-1背包的滚动数组优化"></a><strong>0-1背包的滚动数组优化</strong></h5><pre><code class="hljs markdown">每一次c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]改变的值只与c[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">x</span>] &#123;x:1...j&#125;有关c[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">x</span>]是前一次i循环保存下来的值，因此，可以将c缩减成一维数组，可以把二维数组变成一维数组减少内存。</code></pre>
-
 <pre><code class="hljs c++"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=num;i++)
   <span class="hljs-keyword">for</span>(j=w;j&gt;=d[i].wi;j--)
       dp[j]=<span class="hljs-built_in">max</span>(dp[j],dp[j-d[i].wi]+d[i].pi);</code></pre>
-
 <pre><code class="hljs markdown">状态转移方程转换为 c[j] = max(c[j], c[j-w[i]]+v[i]);
 并且，我们注意到状态转移方程，每一次推导c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]是通过c[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j-w[i</span>]]来推导的，而不是通过c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j-w[i</span>]]（所以完全背包是从小到大的）
 因此，j的扫描顺序应该改成从大到小
 否则，第i次求c数组，必然先求的c[<span class="hljs-string">j-w[i</span>]]的值(即c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j-w[i</span>]])，再求c[<span class="hljs-string">j</span>](<span class="hljs-link">即c[i][j]</span>)的值
 由于j递增,那么状态方程就成为下面这个样子了
 c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>] = max(c[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j</span>], c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j-w[i</span>]]+v[i])显然不符合题意</code></pre>
-
-<h5 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a><strong>多重背包问题</strong></h5><p>前两种方法就不多说啦…<br>第三种二进制优化方法：<br>我们试试看，比如Ci  = 14，我们可以把它化成如下4个物品：<br>重量是Wi，体积是Vi<br>重量是2 * Wi , 体积是2 * Vi<br>重量是4 * Wi , 体积是4 * Vi<br>重量是7 * Wi , 体积是7 * Vi<br>注意最后我们最后我们不能取，重量是8 * Wi , 体积是8 * Vi 因为那样总的个数是1 ＋ 2 ＋ 4 ＋ 8 ＝ 15个了，我们不能多取对吧？<br>我们用这4个物品代替原来的14个物品，大家可以试试原来物品无论取多少个，重量和体积都可以靠我们这几个物品凑出来，这说明我们这种分配方式和原来是等价的。</p>
+<h5 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a><strong>多重背包问题</strong></h5><p>前两种方法就不多说啦…<br>第三种二进制优化方法：<br>我们试试看，比如Ci  = 14，我们可以把它化成如下4个物品：<br>重量是Wi，体积是Vi<br>重量是2 <em> Wi , 体积是2 </em> Vi<br>重量是4 <em> Wi , 体积是4 </em> Vi<br>重量是7 <em> Wi , 体积是7 </em> Vi<br>注意最后我们最后我们不能取，重量是8 <em> Wi , 体积是8 </em> Vi 因为那样总的个数是1 ＋ 2 ＋ 4 ＋ 8 ＝ 15个了，我们不能多取对吧？<br>我们用这4个物品代替原来的14个物品，大家可以试试原来物品无论取多少个，重量和体积都可以靠我们这几个物品凑出来，这说明我们这种分配方式和原来是等价的。</p>
 <p>这样就可以把问题转化为0-1背包问题了…</p>
 <p>那为什么是等效的呢？？？</p>
 <p> 其实还有更快的方法…从Ci/2开始循环，那样循环的次数就少了。 </p>
-<h5 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a><strong>完全背包问题</strong></h5><p><strong><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzZ6SzhHV2JOWi9pM3V6dFJQV0lJOFczSVpYN0pDdmUwc3N0S3dSYzlvRjN3PT0.png?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></strong></p>
+<h5 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a><strong>完全背包问题</strong></h5><p><strong><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzZ6SzhHV2JOWi9pM3V6dFJQV0lJOFczSVpYN0pDdmUwc3N0S3dSYzlvRjN3PT0.png?=imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg%7Cwatermark&amp;type=2" srcset="/img/loading.gif" alt="img"></strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)
 <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;=m;j++)
 <span class="hljs-keyword">if</span>(j&gt;=need[i])dp[i][j]=<span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-1</span>][j],dp[i][j-need[i]]+value[i]);
@@ -232,7 +237,6 @@ c[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>] = max(
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)  
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=need[i];j&lt;=m;j++)
 dp[j]=<span class="hljs-built_in">max</span>(dp[j],dp[j-need[i]]+value[i]);</code></pre>
-
 
             </article>
             <hr>
@@ -478,6 +482,30 @@ dp[j]=<span class="hljs-built_in">max</span>(dp[j],dp[j-need[i]]+value[i]);</cod
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

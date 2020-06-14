@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>牛客网暑期ACM多校训练营（第一场）E dp - Hexo</title>
+  <title>牛客网暑期ACM多校训练营（第一场）E dp - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      541 字
+      552 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,10 +213,10 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出一个长度为n且元素不超过k的序列，问删除m个数之后不同的序列有几种，模$$1e9+7$$。其中$$1 ≤ n ≤ 10^5$$，$$1 ≤ m ≤ min { n - 1, 10}$$，$$1 ≤ k ≤ 10$$。</p>
+<p>给出一个长度为n且元素不超过k的序列，问删除m个数之后不同的序列有几种，模<script type="math/tex">1e9+7</script>。其中<script type="math/tex">1 ≤ n ≤ 10^5</script>，<script type="math/tex">1 ≤ m ≤ min \{ n - 1, 10\}</script>，<script type="math/tex">1 ≤ k ≤ 10</script>。</p>
 <p><strong>思路：</strong></p>
-<p>$$dp[i][j]：前i个数字删除j个数字的方案数$$。</p>
-<p>有转移$$dp[i][j]=dp[i-1]<a href="不删除该数字">j</a>+dp[i-1]<a href="删除该数字">j-1</a>$$。</p>
+<p><script type="math/tex">dp[i][j]：前i个数字删除j个数字的方案数</script>。</p>
+<p>有转移<script type="math/tex">dp[i][j]=dp[i-1][j](不删除该数字)+dp[i-1][j-1](删除该数字)</script>。</p>
 <p>考虑到序列里面可能有重复数字，比如</p>
 <p>1,3,2,4,1,5，这时如果<del>1,3,2,4,</del>1,5和1,<del>3,2,4,1,</del>5这两种情况应该是同一种方案，所以当前后有两个数字相同，其中一个删除，中间的也全部删除，这是会有重复方案的。</p>
 <p>所以对于一个前面有相同数字的i，假设前一个数字为pre[i]，相当于要减去pre[i]-1时候删除的数字为j-(i-pre[i])，就相当于当前i没有删除，将pre[i]~i-1全部删除，这种方案是重复的，所以要减去。</p>
@@ -502,6 +510,30 @@ ll dp[<span class="hljs-number">100010</span>][<span class="hljs-number">15</spa
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

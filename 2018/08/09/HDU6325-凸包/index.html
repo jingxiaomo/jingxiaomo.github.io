@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6325 凸包 - Hexo</title>
+  <title>HDU6325 凸包 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      981 字
+      52 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,17 +213,17 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n个点，每个点有个坐标，要从第一个点开始到第n个点结束。当在第i个点的时候，他下一步只能去第j个点，i,j满足$$x_i&lt;x_j$$,从i到j需要花费$$x_i<em>y_j-x_j</em> y_i$$的能量。如果能量是负的，则表明它得到了供给。请输出从第一个点到第n个点的最小花费的路径，如果有多条具有相同的最小花费，输出字典序最小的。其中$$y_1=y_n=0，0=x_1&lt;x_2,x_3,…,x_{n−1}&lt;x_n，0≤x_i,y_i≤10^9$$。</p>
+<p>有n个点，每个点有个坐标，要从第一个点开始到第n个点结束。当在第i个点的时候，他下一步只能去第j个点，i,j满足<script type="math/tex">x_i<x_j</script>,从i到j需要花费<script type="math/tex">x_i*y_j-x_j* y_i</script>的能量。如果能量是负的，则表明它得到了供给。请输出从第一个点到第n个点的最小花费的路径，如果有多条具有相同的最小花费，输出字典序最小的。其中<script type="math/tex">y_1=y_n=0，0=x_1<x_2,x_3,...,x_{n−1}<x_n，0≤x_i,y_i≤10^9</script>。</p>
 <p><strong>思路：</strong></p>
-<p>看到$$x_i<em>y_j-x_j</em>y_i$$就想到叉积了，因为叉积的值表示的是以$$\vec{a}$$和$$\vec{b}$$为相邻边形成平行四边形的面积，由于从起点到终点肯定是沿着顺时针方向走一条路径，再从终点往起点连一条路，这样整条路径就围成了一个凸包，由于这是顺时针围成的，所以面积是负的（平常的凸包是逆时针围成的，面积是正的），因为代价要尽可能小，所以该面积就要尽可能大，所以就可以发现一定要走凸壳了。</p>
+<p>看到<script type="math/tex">x_i*y_j-x_j*y_i</script>就想到叉积了，因为叉积的值表示的是以<script type="math/tex">\vec{a}</script>和<script type="math/tex">\vec{b}</script>为相邻边形成平行四边形的面积，由于从起点到终点肯定是沿着顺时针方向走一条路径，再从终点往起点连一条路，这样整条路径就围成了一个凸包，由于这是顺时针围成的，所以面积是负的（平常的凸包是逆时针围成的，面积是正的），因为代价要尽可能小，所以该面积就要尽可能大，所以就可以发现一定要走凸壳了。</p>
 <p>关于面积是负的解释：</p>
 <p>若a×b&gt;0，表示a在b的顺时针方向上；</p>
 <p>若a×b&lt;0，表示a在b的逆时针方向上；</p>
 <p>若a×b==0表示a和b共线，但不确定方向是否相同。</p>
-<p>因为起点到终点是顺时针走的，所以对于i到j这两个点，i在j的逆时针方向上，所以$$\vec{i}\times \vec{j}=x_i<em>y_j-x_j</em>y_i&lt;0$$，而这两个向量形成的面积肯定是正的，所以说面积是代价的相反数。</p>
+<p>因为起点到终点是顺时针走的，所以对于i到j这两个点，i在j的逆时针方向上，所以<script type="math/tex">\vec{i}\times \vec{j}=x_i*y_j-x_j*y_i<0</script>，而这两个向量形成的面积肯定是正的，所以说面积是代价的相反数。</p>
 <p>所以复习了一下Graham扫描法，这里有篇博客的图解挺好的：<a href="https://www.cnblogs.com/cjyyb/p/7260523.html。" target="_blank" rel="noopener">https://www.cnblogs.com/cjyyb/p/7260523.html。</a></p>
 <p>学习到了这种思想，结合题目，就知道排序要先按照x从小到大，如果x相同按照y从大到小，如果y还是相同按照id从大到小。之后就是扫描，画一下图知道如果叉积&gt;0，应该把栈顶弹掉，或者如果共线（叉积==0），为了字典序最小，如果id比栈顶小，也把栈顶弹掉。</p>
-<p>注意有多个星球可以具有相同坐标，而且i,j满足$$x_i&lt;x_j$$这些条件吧。</p>
+<p>注意有多个星球可以具有相同坐标，而且i,j满足<script type="math/tex">x_i<x_j</script>这些条件吧。</p>
 <p>这里x,y要开ll，因为我写的代码里有x*x，会爆int。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -291,7 +299,6 @@
 <span class="hljs-comment"> 2 2</span>
 <span class="hljs-comment"> 2 0</span>
 <span class="hljs-comment"> */</span></code></pre>
-
 
             </article>
             <hr>
@@ -537,6 +544,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

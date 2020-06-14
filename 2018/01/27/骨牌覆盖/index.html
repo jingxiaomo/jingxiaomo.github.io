@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>骨牌覆盖 - Hexo</title>
+  <title>骨牌覆盖 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -243,7 +251,6 @@
         <span class="hljs-keyword">if</span>(sign==<span class="hljs-number">0</span>)dp[<span class="hljs-number">1</span>][i]=<span class="hljs-number">1</span>;
     &#125;
 &#125;</code></pre>
-
 <p>3⃣️动态规划。</p>
 <p>dp(i)(j):推到第i行状态为j时的方法数。</p>
 <p>dp(i)(j)=sum{dp(i-1)(k),0&lt;=k&lt;(1&lt;&lt;m)&amp;&amp;k和j是可以兼容的}</p>
@@ -274,7 +281,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 &#125;</code></pre>
-
 <pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)<span class="hljs-comment">//每一行</span>
 &#123;
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;(<span class="hljs-number">1</span>&lt;&lt;m);j++)<span class="hljs-comment">//这一行的状态</span>
@@ -286,7 +292,6 @@
         &#125;
     &#125;
 &#125;</code></pre>
-
 <p>4⃣️dp(n)((1&lt;&lt;m)-1)即为总方法数。</p>
 <p>因为最后一行只能都为1。</p>
 <p>完整代码：</p>
@@ -374,7 +379,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,dp[n][(<span class="hljs-number">1</span>&lt;&lt;m)<span class="hljs-number">-1</span>]);<span class="hljs-comment">//最后一行是不可能出现0的</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>这里用枚举+判断会有些慢…</p>
 <p>所以可以直接生成合法的方案。</p>
 <p>1⃣️0和1的表示如上一个方法。</p>
@@ -398,7 +402,6 @@
     dfs(c+<span class="hljs-number">1</span>,pre&lt;&lt;<span class="hljs-number">1</span>,(now&lt;&lt;<span class="hljs-number">1</span>)|<span class="hljs-number">1</span>);<span class="hljs-comment">//上放，为1，则上行为0</span>
     dfs(c+<span class="hljs-number">2</span>,(pre&lt;&lt;<span class="hljs-number">2</span>)|<span class="hljs-number">3</span>,(now&lt;&lt;<span class="hljs-number">2</span>)|<span class="hljs-number">3</span>);<span class="hljs-comment">//横放，为1，右边为1，上边为1，上边的右边为1</span>
 &#125;</code></pre>
-
 <p>3⃣️动态规划。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dp[<span class="hljs-number">15</span>][<span class="hljs-number">50010</span>];<span class="hljs-comment">//推到第i行兼容方式为j时方法数</span>
 <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
@@ -410,7 +413,6 @@ dp[<span class="hljs-number">0</span>][(<span class="hljs-number">1</span>&lt;&l
         dp[i][ok[j][<span class="hljs-number">1</span>]]+=dp[i<span class="hljs-number">-1</span>][ok[j][<span class="hljs-number">0</span>]];
     &#125;
 &#125;</code></pre>
-
 <p>因为第一行不能上放，所以第0行不能有0，只能都是1。</p>
 <p>dp(i)(j):推到第i行状态为j时的方法数。</p>
 <p>dp(i)(j)=sum{dp(i-1)(k),0&lt;=k&lt;(1&lt;&lt;m)&amp;&amp;k和j是可以兼容的}。</p>
@@ -470,7 +472,6 @@ dp[<span class="hljs-number">0</span>][(<span class="hljs-number">1</span>&lt;&l
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>当n很大的时候，就不能用上述的方法算了，这个时候矩阵的优势就体现出来了。</p>
 <h5 id="51nod-1033"><a href="#51nod-1033" class="headerlink" title="51nod 1033"></a><strong>51nod 1033</strong></h5><p>题意：2 &lt;= m &lt;= 10^9，2 &lt;= n &lt;= 5</p>
 <p>思路：题目转化为求经过n次转化，从初始态到终态有几种转化法。</p>
@@ -544,7 +545,6 @@ dp[<span class="hljs-number">0</span>][(<span class="hljs-number">1</span>&lt;&l
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,r.a[(<span class="hljs-number">1</span>&lt;&lt;m)<span class="hljs-number">-1</span>][(<span class="hljs-number">1</span>&lt;&lt;m)<span class="hljs-number">-1</span>]);<span class="hljs-comment">//第0行只能全是1</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -790,6 +790,30 @@ dp[<span class="hljs-number">0</span>][(<span class="hljs-number">1</span>&lt;&l
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

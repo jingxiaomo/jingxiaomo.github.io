@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>AC自动机专题 - Hexo</title>
+  <title>AC自动机专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -214,11 +222,11 @@
 <p><a href="http://www.cppblog.com/menjitianya/archive/2014/07/10/207604.html" target="_blank" rel="noopener">http://www.cppblog.com/menjitianya/archive/2014/07/10/207604.html</a></p>
 <p>这里还有一个知识点：矩阵A^m所代表的意义就是从点与点之间走m步能够到达的方案总数。</p>
 <p><a href="http://blog.csdn.net/WT_cnyali/article/details/69803030" target="_blank" rel="noopener">http://blog.csdn.net/WT_cnyali/article/details/69803030</a></p>
-<p><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzRuaStXbHpydTN2T0FkY1k3OUsxcjZXZzFId2dDVWIwa0tZSENhY1lmenp3PT0.jpg?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzRuaStXbHpydTN2T0FkY1k3OUsxcjZXZzFId2dDVWIwa0tZSENhY1lmenp3PT0.jpg?=imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg%7Cwatermark&amp;type=2" srcset="/img/loading.gif" alt="img"></p>
 <h5 id="HDU-2243"><a href="#HDU-2243" class="headerlink" title="HDU 2243"></a><strong>HDU 2243</strong></h5><p>题意：给定n个单词，求长度不大于m的字符串中所有含给定单词的字符串的个数 。</p>
 <p>解题思路：</p>
 <p>整体和上题相似，即所有情况再减去上题求的情况即可。</p>
-<p><img src="http://imglf5.nosdn.127.net/img/ajhrcUFValVhVzVyNFV3Zlo3bUdnYzRGWUhoRnJxaTVnMTI3R0FQdVZYOTl0RHI1LzNnR0tBPT0.jpg?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="http://imglf5.nosdn.127.net/img/ajhrcUFValVhVzVyNFV3Zlo3bUdnYzRGWUhoRnJxaTVnMTI3R0FQdVZYOTl0RHI1LzNnR0tBPT0.jpg?=imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg%7Cwatermark&amp;type=2" srcset="/img/loading.gif" alt="img"></p>
 <p>将运算过程中的变量和矩阵的元素定义为unsigned __int64，就能实现自动对2^64自动取MOD。注意输出是%I64u。</p>
 <h5 id="HDU-2457"><a href="#HDU-2457" class="headerlink" title="HDU 2457"></a><strong>HDU 2457</strong></h5><p>题意：已知一个DNA串和一些病毒DNA序列，求出最少改变DNA串中多少个字符，能使得串中不包含任意一个病毒序列。</p>
 <pre><code class="hljs markdown">解题思路：Trie图+DP。
@@ -226,7 +234,6 @@
 if(temp-&gt;child[i]-&gt;fail-&gt;num==1)//注意：fail指针指向危险子串的本身也危险
 temp-&gt;child[i]-&gt;num=1;
 之后就是DP，f[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]表示匹配到原串第i个字符时，在AC自动机的j号节点时没有病毒串的最小花费。转移的时候有三种情况：1.转移出病毒串，这个时候直接continue。2.转移与原串相符，这个时候直接将数值转移过去。3.转移与原串不符，这个时候转移数值之后还要+1，再在dp[<span class="hljs-string">len</span>][<span class="hljs-symbol">i</span>]中找到最小值。</code></pre>
-
 <pre><code class="hljs c++">   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=len;i++)
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;sum;j++)
         dp[i][j]=INF;
@@ -252,7 +259,6 @@ temp-&gt;child[i]-&gt;num=1;
             ans=dp[len][i];
     &#125;
     <span class="hljs-keyword">if</span>(ans==INF)ans=<span class="hljs-number">-1</span>;</code></pre>
-
 
             </article>
             <hr>
@@ -498,6 +504,30 @@ temp-&gt;child[i]-&gt;num=1;
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

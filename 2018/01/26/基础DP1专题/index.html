@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>基础DP1专题 - Hexo</title>
+  <title>基础DP1专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,13 +212,12 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h5 id="HDU-1160"><a href="#HDU-1160" class="headerlink" title="*HDU 1160 *"></a>*<em>HDU 1160 *</em></h5><p>很生气的一道题…WA了好久都觉得自己是对的…debug了好久…发现是路径输出的时候发生了错误…本来是用</p>
+              <h5 id="HDU-1160"><a href="#HDU-1160" class="headerlink" title="HDU 1160 "></a><strong>HDU 1160 </strong></h5><p>很生气的一道题…WA了好久都觉得自己是对的…debug了好久…发现是路径输出的时候发生了错误…本来是用</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">while</span>(y!=<span class="hljs-number">0</span>)
 &#123;
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,m[y].id);
     y=pre[y];
 &#125;</code></pre>
-
 <p>这样来输出的，结果WA，然后用递归</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -218,7 +225,6 @@
     <span class="hljs-built_in">print</span>(pre[pos]);
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,m[pos].id);
 &#125;</code></pre>
-
 <p>就AC了，不是说没有顺序规定的吗..,在这种条件下讲道理应该是一样的呀…究竟是怎么回事呢….哦…题目有坑…我以为是没有顺序的…其实这个任意一种的意思还是要按顺序的…有毒…题目都不讲清楚…</p>
 <h5 id="HDU-1024"><a href="#HDU-1024" class="headerlink" title="HDU 1024"></a><strong>HDU 1024</strong></h5><p>题意：定一个数组，求其分成m个不相交子段和最大值的问题。</p>
 <pre><code class="hljs markdown">解题思路：设dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]表示前j个元素分成i组的最优解（j分好的组里面）
@@ -227,7 +233,6 @@
 <span class="xml">第二种情况是j自成一组，上一组最后一个为k，即第i-1组最大和</span>
 <span class="xml">内存不够，就用滚动数组，观察到max( dp[i-1][k] ) 就是上一组 0....j-1 的最大值。我们可以在每次计算dp[i][j]的时候记录下前j个的最大值 用数组保存下来  下次计算的时候可以用.</span>
 <span class="xml">方程就变成dp[i][j]=max(dp[j-1],pre[j-1])+a[j]。</span></code></pre>
-
 <p>核心代码：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> pre[<span class="hljs-number">1000010</span>];<span class="hljs-comment">//存上一层前j个的dp[k]的最大值</span>
         <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=m;i++)
@@ -241,8 +246,7 @@
             &#125;
         &#125;
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,MAX);</code></pre>
-
-<h5 id="HDU-1114"><a href="#HDU-1114" class="headerlink" title="HDU 1114"></a><strong>HDU 1114</strong></h5><h5 id="HDU-2859"><a href="#HDU-2859" class="headerlink" title="*HDU 2859 *"></a>*<em>HDU 2859 *</em></h5><p>要注意可能有1*1这种数据…不能把ans初始化为-INF啊…</p>
+<h5 id="HDU-1114"><a href="#HDU-1114" class="headerlink" title="HDU 1114"></a><strong>HDU 1114</strong></h5><h5 id="HDU-2859"><a href="#HDU-2859" class="headerlink" title="HDU 2859 "></a><strong>HDU 2859 </strong></h5><p>要注意可能有1*1这种数据…不能把ans初始化为-INF啊…</p>
 <h5 id="HDU-1074"><a href="#HDU-1074" class="headerlink" title="HDU 1074"></a><strong>HDU 1074</strong></h5><p>状态压缩DP。</p>
 <p>位运算在状压DP常见的应用如下：</p>
 <p>1.判断一个数字x二进制下第i位是不是等于1。</p>
@@ -315,22 +319,18 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="POJ-3666"><a href="#POJ-3666" class="headerlink" title="POJ 3666"></a><strong>POJ 3666</strong></h5><p>题意：给出长度为n的整数数列,每次可以将一个数加1或者减1,最少要多少次可以将其变成单调增或者单调减(不严格)。</p>
 <pre><code class="hljs markdown">解题思路：对于某个位置而言，一定改成和他前一个一样，或者和他后一个一样，所以最后形成的序列的数都在原序列里出现过，考虑b数组保存排完序后的原数组值，dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>] = min(dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">k</span>])+a[<span class="hljs-string">i</span>]-b[<span class="hljs-string">j</span>], 1<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">=k</span>&lt;=<span class="hljs-string">j。dp[i</span>=<span class="hljs-string">当前考虑的前i个数][j</span>=<span class="hljs-string">第i个数在总序列中排第j小]</span>=<span class="hljs-string">当前的情况的最小改动量。什么意思呢，就是求当前dp[i][j]时候，考虑前i-1个数字，取第i-1个数字在第k（k</span>=<span class="hljs-string">1…j）小中的最小改动量，再加上第i个数字成为第j小的改动量。</span></span></span></code></pre>
-
-<h5 id="51nod-1007"><a href="#51nod-1007" class="headerlink" title="51nod 1007"></a><strong>51nod 1007</strong></h5><p>题意：将一堆正整数分为2组，要求2组的和相差最小。****</p>
+<h5 id="51nod-1007"><a href="#51nod-1007" class="headerlink" title="51nod 1007"></a><strong>51nod 1007</strong></h5><p>题意：将一堆正整数分为2组，要求2组的和相差最小。<em>**</em></p>
 <p>解题思路：分成两组要相差最小，肯定是一组大于sum/2一组小于sum/2或者两组都是sum/2，就相当于其中一组与sum/2相差最小，然后转化为容量为sum/2的01背包问题即可。</p>
 <h5 id="51nod-1021"><a href="#51nod-1021" class="headerlink" title="51nod 1021"></a><strong>51nod 1021</strong></h5><p>题意：现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将N堆石子合并成一堆的最小代价。</p>
 <p>解题思路：</p>
 <pre><code class="hljs markdown">dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]：将i到j合并成一堆的最小代价
 比如i=1,j=4,dp[<span class="hljs-string">1</span>][<span class="hljs-symbol">4</span>]=min(dp[<span class="hljs-string">1</span>][<span class="hljs-symbol">3</span>]+dp[<span class="hljs-string">4</span>][<span class="hljs-symbol">4</span>],dp[<span class="hljs-string">1</span>][<span class="hljs-symbol">2</span>]+dp[<span class="hljs-string">3</span>][<span class="hljs-symbol">4</span>],dp[<span class="hljs-string">1</span>][<span class="hljs-symbol">1</span>]+dp[<span class="hljs-string">2</span>][<span class="hljs-symbol">4</span>])+sum[<span class="hljs-string">1</span>][<span class="hljs-symbol">4</span>];</code></pre>
-
 <h5 id="51nod-1084"><a href="#51nod-1084" class="headerlink" title="51nod 1084"></a><strong>51nod 1084</strong></h5><p>题意：</p>
 <p>一个M*N矩阵中有不同的正整数，经过这个格子，就能获得相应价值的奖励，先从左上走到右下，再从右下走到左上。第1遍时只能向下和向右走，第2遍时只能向上和向左走。两次如果经过同一个格子，则该格子的奖励只计算一次，求能够获得的最大价值。</p>
 <pre><code class="hljs markdown">解题思路：
 从左上角到右下角再回到左上角，这个过程可以看作从左上角同时走两路到右下角，我们记录两路当前的位置，这样就可以处理“同一个格子的数只能取一次”了。但是如果用dp[<span class="hljs-string">x1</span>][<span class="hljs-symbol">y1</span>][<span class="hljs-string">x2</span>][<span class="hljs-symbol">y2</span>]记录状态，这显然不可以。因为两路是同时走得，到达某一状态，它们走过的步数是相同，而且有了步数和行号就可以确定列号了，因此用dp[<span class="hljs-string">x1</span>][<span class="hljs-symbol">x2</span>][<span class="hljs-string">step</span>]记录状态就可以了。</code></pre>
-
 <h5 id="51nod-1202"><a href="#51nod-1202" class="headerlink" title="51nod 1202"></a><strong>51nod 1202</strong></h5><p>题意：对于给出序列a，有些子序列可能是相同的，这里只算做1个，请输出a的不同子序列的数量。由于答案比较大，输出Mod 10^9 + 7的结果即可。</p>
 <p>解题思路：假设dp[i]表示前i项形成的子序列（含空）的个数。下标从1开始，初值是dp[0] = 1，对应代表空子序列。我们考虑第i项，如果所有的数都不相等，应该有dp[i] = dp[i – 1] * 2，其实就是考虑把第i个数放到最后或者不放到最后的情况，原来恰好以第j个数结尾的那些被我们算了两次，因为以第j个数结尾可以换成以第i个数结尾是一样的。如何计算出这个数的个数呢？ 其实这个数等于dp[j – 1]，因为前面(j – 1)个数的子序列最后跟上第j个数就可以了。</p>
 
@@ -578,6 +578,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

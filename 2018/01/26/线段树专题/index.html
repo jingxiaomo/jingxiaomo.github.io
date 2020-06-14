@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>线段树专题 - Hexo</title>
+  <title>线段树专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      19
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -216,12 +224,12 @@
 <p>离散化  X[1] = 1; X[2] = 2; X[3] = 3; X[4] = 4; X[5] = 6; X[7] = 8; X[8] = 10</p>
 <p>于是将一个很大的区间映射到一个较小的区间之中了，然后再对每一张海报依次更新在宽度为1~8的墙上(用线段树），最后统计不同颜色的段数。</p>
 <p>但是只是这样简单的离散化是错误的，</p>
-<p>如三张海报为：1<del>10 1</del>4 6~10</p>
-<p>离散化时 X[ 1 ] = 1, X[ 2 ] = 4, X[ 3 ] = 6, X[ 4 ] = 10<br>第一张海报时：墙的1<del>4被染为1；<br>第二张海报时：墙的1</del>2被染为2，3<del>4仍为1；<br>第三张海报时：墙的3</del>4被染为3，1~2仍为2。<br>最终，第一张海报就显示被完全覆盖了，于是输出2，但实际上明显不是这样，正确输出为3。</p>
+<p>如三张海报为：1~10 1~4 6~10</p>
+<p>离散化时 X[ 1 ] = 1, X[ 2 ] = 4, X[ 3 ] = 6, X[ 4 ] = 10<br>第一张海报时：墙的1~4被染为1；<br>第二张海报时：墙的1~2被染为2，3~4仍为1；<br>第三张海报时：墙的3~4被染为3，1~2仍为2。<br>最终，第一张海报就显示被完全覆盖了，于是输出2，但实际上明显不是这样，正确输出为3。</p>
 <p>新的离散方法为：在相差大于1的数间加一个数，例如在上面1 4 6 10中间加5（算法中实际上1，4之间，6，10之间都新增了数的）</p>
 <p>X[ 1 ] = 1, X[ 2 ] = 4, X[ 3 ] = 5, X[ 4 ] = 6， X[ 5 ] = 10</p>
-<p>这样之后，第一次是1<del>5被染成1；第二次1</del>2被染成2；第三次4~5被染成3</p>
-<p>最终，1<del>2为2，3为1，4</del>5为3，于是输出正确结果3。</p>
+<p>这样之后，第一次是1~5被染成1；第二次1~2被染成2；第三次4~5被染成3</p>
+<p>最终，1~2为2，3为1，4~5为3，于是输出正确结果3。</p>
 <p>这里不用map，用二分查找找到离散后的编号即可。</p>
 <p>线段树部分：</p>
 <p>把海报的编号当成lazy标记，如果访问了某个区间，则lazy标记更新，update和query的时候都要标记下传，本区间的lazy标记归零。</p>
@@ -241,10 +249,9 @@
     <span class="hljs-keyword">if</span>(loc&lt;=m)<span class="hljs-keyword">return</span> query(loc,id&lt;&lt;<span class="hljs-number">1</span>);
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> query(loc,id&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>);
 &#125;</code></pre>
-
 <h5 id="HDU-3974"><a href="#HDU-3974" class="headerlink" title="HDU 3974"></a><strong>HDU 3974</strong></h5><p>题意：一棵树的结构，父节点是老板，子节点是员工，每次给父节点分配的任务，立即会下分到他所有的子节点，有更新和查询命令。</p>
 <p>解题思路：以样例为例子：</p>
-<p><img src="http://imglf3.nosdn.127.net/img/ajhrcUFValVhVzZueWd3RExSU2tWMlNhcmFiajRDWXQvNkswMWdxNEhSMU4veXFqUEdJTXhnPT0.jpg?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="http://imglf3.nosdn.127.net/img/ajhrcUFValVhVzZueWd3RExSU2tWMlNhcmFiajRDWXQvNkswMWdxNEhSMU4veXFqUEdJTXhnPT0.jpg?=imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg%7Cwatermark&amp;type=2" srcset="/img/loading.gif" alt="img"></p>
 <p>用dfs将结点重新编号，对于每个结点，保存st和ed，分别表示自己的编号和最后儿子的编号，使其连续，然后映射到线段树上，对于T操作就是对于st[i]到ed[i]的区间修改，对于C操作就是单点查询。</p>
 <h5 id="HDU-1542"><a href="#HDU-1542" class="headerlink" title="HDU 1542"></a><strong>HDU 1542</strong></h5><p>题意：矩形面积并。</p>
 <p>解题思路：</p>
@@ -285,7 +292,6 @@
     &#125;
     <span class="hljs-keyword">return</span> res;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -531,6 +537,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

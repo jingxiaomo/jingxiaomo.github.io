@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
           
         
         <div>题意：
-三堆石子的数量分别为k，4k，5k，进行Nim博弈，问在k小于$$2^n$$的时候，有多少种情况先手一定会获得胜利。
+三堆石子的数量分别为k，4k，5k，进行Nim博弈，问在k小于2^n的时候，有多少种情况先手一定会获得胜利。
 思路：
 这道题被我打表+OEIS水过了…
 之后看了一下正解，是这样子的：
@@ -184,7 +184,7 @@
 k^4k^5k=0可以化成k^4k=5k，
 因为有k+4k=5k，而且4k是k的二进制形式左移两位，
 两个数异或与相加的得数不同的情况只有1和1的时候。
-所以k和k</div>
+所以k和k左移两位</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -259,10 +259,7 @@ k^4k^5k=0可以化成k^4k=5k，
           
         
         <div>CodeForces906D题意：
-给定一个数列$$w_1,w_2,…,w_n$$和模数p,每次询问一个区间[l,r],求$${,{w_l}^{,{w_{l+1},}^{,{w_{l+2},}^{…^{w_r},},},},}mod\ p$$的值。其中$$1&lt;=w_k&lt;=10^9$$，$$1&lt;=q&lt;=10^5$$。
-思路：
-有扩展欧拉定理：
-$$a^n≡\begin{cas</div>
+给定一个数列w_1,w_2,...,w_n和模数p,每次询问一个区间[l,r],求{\,{w_l}^{\,{w_{l+1}\,}^{\,{w_{l+2}\,}^{...^{w_r}\,}\,}\,}\,}mod\ p的值。其中1\varphi(\varphi(m))，所以用新定义的Mod方式来进行快速幂运算，这样子每次在函数中调用快速幂的时候得到的就是c^d\ </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -296,10 +293,11 @@ $$a^n≡\begin{cas</div>
           
         
         <div>LOJ515题意：
-一共有n个数，第i个数$$x_i​$$可以取$$[a_i,b_i]​$$中任意值。 设$$S=\sum{x_i^2}​$$，求S种类数。其中$$1≤n,a_i,b_i≤100​$$。
+一共有n个数，第i个数x_i​可以取[a_i,b_i]​中任意值。 设S=\sum{x_i^2}​，求S种类数。其中1≤n,a_i,b_i≤100​。
 思路：
 刚开始想到的是DP，但是100^4会爆炸，所以就用bitset来暴力一下。
-每一位表示的是有没有该答案，这是一个集合，如果这个集合中的每个数要与一个数x相加怎么办呢？就是把这个集合左移x位</div>
+每一位表示的是有没有该答案，这是一个集合，如果这个集合中的每个数要与一个数x相加怎么办呢？就是把这个集合左移x位然后再与集合或运算就可以了。
+代</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -542,8 +540,7 @@ n个人做m道题目，给出n个人的答案，已知每个人对了几道，�
 请输出满足以上条件的最大子矩阵和。
 思路：
 首先考虑一个问题：求一个序列的长度不超过m的最大连续子序列。
-$$dp[i]:以i为结尾的长度不超过m的最大连续子序列。$$
-利用前缀和可知，$$dp[i]=pre[i]-p</div>
+dp[i]:以i为结尾的长度不超过m的最大连续子序列。利用前缀和可知，dp[i]=pre[i]-pre[k],1</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -713,6 +710,30 @@ $$dp[i]:以i为结尾的长度不超过m的最大连续子序列。$$
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Lindström–Gessel–Viennot引理 - Hexo</title>
+  <title>Lindström–Gessel–Viennot引理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      941 字
+      855 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      13
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -209,13 +217,13 @@
 <p>其中e(a,b)为图上a（起点）到b（终点）的方案数。</p>
 <hr>
 <h5 id="CodeForces348D"><a href="#CodeForces348D" class="headerlink" title="CodeForces348D"></a>CodeForces348D</h5><p><strong>题意：</strong></p>
-<p>给出一张n*m的有障碍的图，问从(1,1)到(n,m)不相交的两条路径的方案。其中$$2&lt;=n,m&lt;=3000$$。</p>
+<p>给出一张n*m的有障碍的图，问从(1,1)到(n,m)不相交的两条路径的方案。其中<script type="math/tex">2<=n,m<=3000</script>。</p>
 <p><strong>思路：</strong></p>
-<p>可以将起点看作$$A_1(1,2)$$和$$A_2(2,1)$$，将终点看作$$B_1(n-1,m)$$和$$B_2(n,m-1)$$（不能换，因为这样$$A_1B_1$$和$$A_2B_2$$路径是不相交的，如果换了以后这两条路径肯定是会相交的），路径肯定是$$(1,2)-&gt;(n-1,m)$$和$$(2,1)-&gt;(n,m-1)$$这两条，否则是会相交的。</p>
-<p>设$$S(x,y)$$为从x到y的方案数。</p>
-<p>根据LGV引理，答案为$$S(A1,B1)<em>S(A2,B2)-S(A1,B2)</em>S(A2,B1)$$。</p>
-<p>因为是有障碍的而且范围可以进行DP，所以DP求出$$S(x,y)$$就可以了。</p>
-<p>如果没有障碍的话可以直接组合数，比如从(1,1)到(n,m)为$$C_{n+m-2}^{n-1}$$（总共要走n+m-2步其中有n-1步是往下走的）。</p>
+<p>可以将起点看作<script type="math/tex">A_1(1,2)</script>和<script type="math/tex">A_2(2,1)</script>，将终点看作<script type="math/tex">B_1(n-1,m)</script>和<script type="math/tex">B_2(n,m-1)</script>（不能换，因为这样<script type="math/tex">A_1B_1</script>和<script type="math/tex">A_2B_2</script>路径是不相交的，如果换了以后这两条路径肯定是会相交的），路径肯定是<script type="math/tex">(1,2)->(n-1,m)</script>和<script type="math/tex">(2,1)->(n,m-1)</script>这两条，否则是会相交的。</p>
+<p>设<script type="math/tex">S(x,y)</script>为从x到y的方案数。</p>
+<p>根据LGV引理，答案为<script type="math/tex">S(A1,B1)*S(A2,B2)-S(A1,B2)*S(A2,B1)</script>。</p>
+<p>因为是有障碍的而且范围可以进行DP，所以DP求出<script type="math/tex">S(x,y)</script>就可以了。</p>
+<p>如果没有障碍的话可以直接组合数，比如从(1,1)到(n,m)为<script type="math/tex">C_{n+m-2}^{n-1}</script>（总共要走n+m-2步其中有n-1步是往下走的）。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">char</span> mp[<span class="hljs-number">3010</span>][<span class="hljs-number">3010</span>];
 ll dp[<span class="hljs-number">3010</span>][<span class="hljs-number">3010</span>];
@@ -252,18 +260,15 @@ ll dp[<span class="hljs-number">3010</span>][<span class="hljs-number">3010</spa
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,((ans11*ans22)%MOD-(ans12*ans21)%MOD+MOD)%MOD);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <hr>
 <h5 id="牛客网暑期ACM多校训练营（第一场）A"><a href="#牛客网暑期ACM多校训练营（第一场）A" class="headerlink" title="牛客网暑期ACM多校训练营（第一场）A"></a>牛客网暑期ACM多校训练营（第一场）A</h5><p><strong>题意：</strong></p>
 <p>要求满足以下条件的n*m的矩阵个数模1e9+7：</p>
-<p>$$A_{i,j}∈ {0, 1, 2}$$</p>
-<p>$$A_{i,j}\leq A_{i+1,j}$$</p>
-<p>$$A_{i, j}\leq A_{i,j+1}$$。</p>
+<script type="math/tex; mode=display">A_{i,j}∈ {0, 1, 2}</script><script type="math/tex; mode=display">A_{i,j}\leq A_{i+1,j}</script><p><script type="math/tex">A_{i, j}\leq A_{i,j+1}</script>。</p>
 <p><strong>思路：</strong></p>
-<p>考虑01和12的分界线，是$$(n,0)$$到$$(0,m)$$的两条不相交（可重合）路径。因为两个起点重合了，所以平移其中一条变成$$(n-1,-1)$$到$$(-1,m-1)$$。</p>
-<p>所以将起点看作$$(n,0)$$和$$(n-1,-1)$$，把终点看作$$(0,m)$$和$$(-1,m-1)$$。</p>
+<p>考虑01和12的分界线，是<script type="math/tex">(n,0)</script>到<script type="math/tex">(0,m)</script>的两条不相交（可重合）路径。因为两个起点重合了，所以平移其中一条变成<script type="math/tex">(n-1,-1)</script>到<script type="math/tex">(-1,m-1)</script>。</p>
+<p>所以将起点看作<script type="math/tex">(n,0)</script>和<script type="math/tex">(n-1,-1)</script>，把终点看作<script type="math/tex">(0,m)</script>和<script type="math/tex">(-1,m-1)</script>。</p>
 <p>之后就可以用LGV公式了。</p>
-<p>所以答案是$${C_{n+m}^{n}}^{2}-C_{n+m}^{m-1}*C_{n+m}^{n-1}$$。</p>
+<p>所以答案是<script type="math/tex">{C_{n+m}^{n}}^{2}-C_{n+m}^{m-1}*C_{n+m}^{n-1}</script>。</p>
 <p>所以分界线将矩阵分为三部分。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ftgom5htgjj30ic0duaaz.jpg" srcset="/img/loading.gif" alt="img"></p>
 <p>我之前有个疑问，为什么不仍然像上面那道题一样分成两个那样的起点和终点呢？</p>
@@ -298,7 +303,6 @@ ll dp[<span class="hljs-number">3010</span>][<span class="hljs-number">3010</spa
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -544,6 +548,30 @@ ll dp[<span class="hljs-number">3010</span>][<span class="hljs-number">3010</spa
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

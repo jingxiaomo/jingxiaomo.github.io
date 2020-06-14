@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>2017UrumqiA 贪心+概率DP - Hexo</title>
+  <title>2017UrumqiA 贪心+概率DP - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      596 字
+      595 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -210,11 +218,11 @@
 <p>题目又看错了…主要是样例手算不出来…就以为本来的理解是对的…</p>
 <p>事实上它是有贪心在里面的，因为尽可能要让正面朝上的硬币多，所以每次尽可能扔反面朝上的硬币，如果反面朝上的硬币不足a个的话，把反面朝上的硬币全选了以外正面朝上的硬币也选几个。</p>
 <p>这里就可以dp了。</p>
-<p>$$dp[i][j]:扔了i次有j个硬币正面朝上的概率$$。</p>
-<p>对于某个状态$$(i,j)$$，再扔一次a个硬币中有l个硬币正面朝上的概率为$$C_{a}^l* \frac{1}{2^a}$$。</p>
-<p>当反面朝上的硬币大于等于a个的话，有转移$$dp[i+1][j+k]+=dp[i][j]+C_{a}^l* \frac{1}{2^a}$$，其中$$0≤k≤a$$，表示这次扔正面朝上的硬币数。</p>
-<p>当反面朝上的硬币小于a个的话，有转移$$dp[i+1][j-(a-(n-j))+k]+=dp[i][j]+C_{a}^l* \frac{1}{2^a}$$，其中$$0≤k≤a$$。</p>
-<p>边界条件为$$dp[0][0]=1$$。</p>
+<p><script type="math/tex">dp[i][j]:扔了i次有j个硬币正面朝上的概率</script>。</p>
+<p>对于某个状态<script type="math/tex">(i,j)</script>，再扔一次a个硬币中有l个硬币正面朝上的概率为<script type="math/tex">C_{a}^l* \frac{1}{2^a}</script>。</p>
+<p>当反面朝上的硬币大于等于a个的话，有转移<script type="math/tex">dp[i+1][j+k]+=dp[i][j]+C_{a}^l* \frac{1}{2^a}</script>，其中<script type="math/tex">0≤k≤a</script>，表示这次扔正面朝上的硬币数。</p>
+<p>当反面朝上的硬币小于a个的话，有转移<script type="math/tex">dp[i+1][j-(a-(n-j))+k]+=dp[i][j]+C_{a}^l* \frac{1}{2^a}</script>，其中<script type="math/tex">0≤k≤a</script>。</p>
+<p>边界条件为<script type="math/tex">dp[0][0]=1</script>。</p>
 <p>再算一下期望就可以了。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">double</span> dp[<span class="hljs-number">110</span>][<span class="hljs-number">110</span>];<span class="hljs-comment">//扔i次有j面朝上的概率</span>
@@ -268,11 +276,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
-
-
 
             </article>
             <hr>
@@ -518,6 +521,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

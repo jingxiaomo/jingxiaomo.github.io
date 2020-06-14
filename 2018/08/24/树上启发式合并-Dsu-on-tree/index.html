@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树上启发式合并 Dsu on tree - Hexo</title>
+  <title>树上启发式合并 Dsu on tree - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -210,17 +218,17 @@
 <p>给出一棵树，每个结点有一种颜色，求每个结点的子树中出现次数最多的颜色，如果有多个出现次数最多的颜色，则将它们相加。</p>
 <p><strong>思路：</strong></p>
 <p>如果只是求子树的种类数的话似乎用dfs序+莫队也可以做？</p>
-<p>考虑最暴力的$$O(n^2)$$做法，枚举每个点，暴力访问子树中的点，统计完以后将统计的num数组清空。</p>
+<p>考虑最暴力的<script type="math/tex">O(n^2)</script>做法，枚举每个点，暴力访问子树中的点，统计完以后将统计的num数组清空。</p>
 <p>其实num数组清空是浪费的，因为对于它的父亲结点，也会用到它的子树的信息。</p>
 <p>启发式就体现在这里，对于一个结点，让大的子树不清空，所以先树剖出它的重儿子，重儿子就保留子树上的信息。</p>
 <p>所以步骤是这样的：</p>
 <p>1.树剖出重儿子；</p>
 <p>2.DFS遍历子树，先遍历轻儿子，再遍历重儿子；</p>
 <p>3.如果当前根结点是重儿子，就不将信息清空，否则就清空。</p>
-<p>时间复杂度为$$O(nlogn*x)$$，$$x$$为外部维护的时间。</p>
+<p>时间复杂度为<script type="math/tex">O(nlogn*x)</script>，<script type="math/tex">x</script>为外部维护的时间。</p>
 <p>时间复杂度的证明：</p>
 <blockquote>
-<p>只有dfs到轻边时，才会将轻边的子树中合并到上一级的重链，树链剖分将一棵树分割成了不超过$$logn$$条重链。每一个节点最多向上合并$$logn$$次，单次修改复杂度$$O(1)$$。所以整体复杂度是$$O(nlogn)$$的。</p>
+<p>只有dfs到轻边时，才会将轻边的子树中合并到上一级的重链，树链剖分将一棵树分割成了不超过<script type="math/tex">logn</script>条重链。每一个节点最多向上合并<script type="math/tex">logn</script>次，单次修改复杂度<script type="math/tex">O(1)</script>。所以整体复杂度是<script type="math/tex">O(nlogn)</script>的。</p>
 </blockquote>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
@@ -320,7 +328,6 @@ ll ans[<span class="hljs-number">100010</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -566,6 +573,30 @@ ll ans[<span class="hljs-number">100010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

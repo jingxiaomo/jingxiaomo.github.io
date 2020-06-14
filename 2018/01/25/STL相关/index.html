@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>STL相关 - Hexo</title>
+  <title>STL相关 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -207,7 +215,6 @@
               <h5 id="优先队列的优先级设置"><a href="#优先队列的优先级设置" class="headerlink" title="优先队列的优先级设置"></a>优先队列的优先级设置</h5><pre><code class="hljs c++">priority_queue&lt;<span class="hljs-keyword">int</span>&gt; 大顶堆
 priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, less&lt;<span class="hljs-keyword">int</span>&gt; &gt; 大顶堆：表示其他都比堆顶小 <span class="hljs-comment">//&gt;和&gt;之间有空格 防止辨认为输入符号</span>
 priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt; &gt; 小顶堆：表示其他都比堆顶大</code></pre>
-
 <p>结构体设置优先级：</p>
 <p>只可在结构体内部重载小于号。</p>
 <p>两种重置用法：</p>
@@ -221,10 +228,8 @@ priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built
         <span class="hljs-keyword">return</span> f1.price &lt; f2.price; <span class="hljs-comment">// 相当于less,这是大顶堆，反之则是小顶堆</span>
     &#125;
 &#125; f1, f2, f3; <span class="hljs-comment">//定义三个结构体变量</span></code></pre>
-
 <p>调用：</p>
 <pre><code class="hljs abnf">priority_queue&lt;fruit&gt;q<span class="hljs-comment">;</span></code></pre>
-
 <p>比较运算符外置</p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span></span>
 <span class="hljs-class">&#123;</span>
@@ -238,11 +243,9 @@ priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built
         <span class="hljs-keyword">return</span> f1.price &lt; f2.price; <span class="hljs-comment">// 等同于less</span>
     &#125;
 &#125;;</code></pre>
-
 <p>调用：</p>
 <pre><code class="hljs c++">priority_queue&lt;fruit,<span class="hljs-built_in">vector</span>&lt;fruit&gt;,cmp&gt;q; 
 <span class="hljs-comment">//这个和基本类型的用法就相似了，只不过是用cmp代替了less或greater。</span></code></pre>
-
 <h5 id="map的用法"><a href="#map的用法" class="headerlink" title="map的用法"></a>map的用法</h5><p>基本操作：</p>
 <p>begin()          返回指向map头部的迭代器</p>
 <p>clear()         删除所有元素</p>
@@ -257,9 +260,8 @@ priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built
                 <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%03d-%04d %d\n"</span>,it-&gt;first/<span class="hljs-number">10000</span>,it-&gt;first%<span class="hljs-number">10000</span>,it-&gt;second);
             &#125;
         &#125;     <span class="hljs-comment">//it-&gt;first代表键(key)，it-&gt;second代表值(value)</span></code></pre>
-
 <p>map的一个特性：</p>
-<p>我们知道，map内部本身就是按序存储的（比如红黑树），这样方便实现快速查找。在我们插入&lt;key, value&gt;键值对时，map就会自动按照key的大小顺序进行存储。<strong>因而作为key的类型必须能够进行大小运算的比较。</strong>比如int、double、string、char等类型。</p>
+<p>我们知道，map内部本身就是按序存储的（比如红黑树），这样方便实现快速查找。在我们插入<key, value>键值对时，map就会自动按照key的大小顺序进行存储。<strong>因而作为key的类型必须能够进行大小运算的比较。</strong>比如int、double、string、char等类型。</p>
 <h5 id="vector排序"><a href="#vector排序" class="headerlink" title="vector排序"></a>vector排序</h5><p>sort(a.begin(), a.end());</p>
 <p>用自定义的结构体进行sort算法：</p>
 <p>这时候需要自己定义个比较函数，因为sort算法是基于容器中的元素是可以两两比较的，然后从小到大排序，所以要自定义怎么样才是小于（’&lt;’）</p>
@@ -267,7 +269,6 @@ priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built
 <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">comp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> student &amp;a, <span class="hljs-keyword">const</span> student &amp;b)</span></span>&#123;
     <span class="hljs-keyword">return</span> a.score &lt; b.score;
 &#125;</code></pre>
-
 <p>调用：sort(a.begin(),a.end(),comp);</p>
 <p>不过有时候一个排序条件不够，比如要求学生按分数从高到低排序，如果分数相同，则按照年龄从大到小排序</p>
 <p>就需要在comp自定义函数里面修改一下判断了，原来是直接return a.score &lt; b.score</p>
@@ -286,37 +287,30 @@ priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built
 <p>v.insert(v.end(),4,1);//在尾部插入4个1</p>
 <h5 id="Pair"><a href="#Pair" class="headerlink" title="Pair"></a>Pair</h5><p>pair是一种模板类型，其中包含两个数据值，两个数据的类型可以不同，基本的定义如下：</p>
 <pre><code class="hljs c++">pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-built_in">string</span>&gt;a;</code></pre>
-
 <p>表示a中有两个类型，第一个元素是int型的，第二个元素是string类型的，如果创建pair的时候没有对其进行初始化，则调用默认构造函数对其初始化。</p>
 <pre><code class="hljs c++">pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">string</span>&gt;a(<span class="hljs-string">"James"</span>,<span class="hljs-string">"Joy"</span>);</code></pre>
-
 <p>也可以像上面一样在定义的时候直接对其初始化。</p>
 <p>由于pair类型的使用比较繁琐，因为如果要定义多个形同的pair类型的时候，可以时候typedef简化声明：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">string</span>&gt;author;
 <span class="hljs-function">author <span class="hljs-title">pro</span><span class="hljs-params">(<span class="hljs-string">"May"</span>,<span class="hljs-string">"Lily"</span>)</span></span>;
 <span class="hljs-function">author <span class="hljs-title">joye</span><span class="hljs-params">(<span class="hljs-string">"James"</span>,<span class="hljs-string">"Joyce"</span>)</span></span>;</code></pre>
-
 <p>对于pair类，由于它只有两个元素，分别名为first和second，因此直接使用普通的点操作符即可访问其成员。</p>
 <pre><code class="hljs c++">pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">string</span>&gt;a(<span class="hljs-string">"Lily"</span>,<span class="hljs-string">"Poly"</span>); 
 <span class="hljs-built_in">string</span> name;
 name=pair.second;</code></pre>
-
 <p>可以使用make_pair对已存在的两个数据构造一个新的pair类型：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> a=<span class="hljs-number">8</span>;
 <span class="hljs-built_in">string</span> m=<span class="hljs-string">"James"</span>;
 pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-built_in">string</span>&gt;newone;
 newone=make_pair(a,m);</code></pre>
-
 <p>两个pairs互相比较时， 第一个元素正具有较高的优先级.<br>例： </p>
 <pre><code class="hljs c++"><span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt; (<span class="hljs-keyword">const</span> pair&lt;T1, T2&gt;&amp;x, <span class="hljs-keyword">const</span> pair&lt;T1, T2&gt;&amp;y)
 &#123;<span class="hljs-keyword">return</span> x.first&lt;y.first||((y.first&lt;x.first)&amp;&amp;x.second&lt;y.second);&#125;</code></pre>
-
 <h6 id="List"><a href="#List" class="headerlink" title="List"></a>List</h6><pre><code class="hljs c++"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; c0; <span class="hljs-comment">//空链表</span>
 <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">c1</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span></span>; <span class="hljs-comment">//建一个含三个默认值是0的元素的链表</span>
 <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">c2</span><span class="hljs-params">(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>)</span></span>; <span class="hljs-comment">//建一个含五个元素的链表，值都是2</span>
 <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">c4</span><span class="hljs-params">(c2)</span></span>; <span class="hljs-comment">//建一个c2的copy链表</span>
 <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">c5</span><span class="hljs-params">(c1.<span class="hljs-built_in">begin</span>(),c1.<span class="hljs-built_in">end</span>())</span></span>; <span class="hljs-comment">////c5含c1一个区域的元素[_First, _Last)</span></code></pre>
-
 <p>c.assign(n,num)   将n个num拷贝赋值给链表c</p>
 <p>c.assign(beg,end)   将[beg,end)区间的元素拷贝赋值给链表c</p>
 <p>c.insert(pos,num)   在pos位置插入元素num</p>
@@ -326,7 +320,6 @@ newone=make_pair(a,m);</code></pre>
 <p>c1.merge(c2)   合并2个有序的链表并使之有序，重新放到c1里，释放c2</p>
 <p>c1.merge(c2,comp)   合并2个有序的链表并使之按照自定义规则排序之后从新放到c1中，释放c2</p>
 <pre><code class="hljs c++">a2.merge(a1,&#123;<span class="hljs-keyword">return</span> n1&gt;n2;&#125;);</code></pre>
-
 <p>c1.splice(c1.beg,c2)   将c2连接在c1的beg位置,释放c2</p>
 <p>c1.splice(c1.beg,c2,c2.beg)      将c2的beg位置的元素连接到c1的beg位置，并且在c2中施放掉beg位置的元素</p>
 <p>c1.splice(c1.beg,c2,c2.beg,c2.end)      将c2的[beg,end)位置的元素连接到c1的beg位置并且释放c2的[beg,end)位置的元素</p>
@@ -576,6 +569,30 @@ newone=make_pair(a,m);</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

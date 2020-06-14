@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树的一些常识 - Hexo</title>
+  <title>树的一些常识 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      126 字
+      124 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -204,8 +212,8 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="树上与某个结点的距离为k的结点个数"><a href="#树上与某个结点的距离为k的结点个数" class="headerlink" title="树上与某个结点的距离为k的结点个数"></a>树上与某个结点的距离为k的结点个数</h3><p>首先一次dfs处理出每个结点的子树中和它距离为k的结点个数$$num[i][k]$$。</p>
-<p>之后再从根开始dfs根据当前结点和父结点的距离计算答案，比如当前结点和父结点的距离为2，由于父结点已经处理出答案了，那么与当前结点距离为k的结点个数为$$ans[fa][k-2]-num[now][k-4]+num[now][k]​$$。</p>
+              <h3 id="树上与某个结点的距离为k的结点个数"><a href="#树上与某个结点的距离为k的结点个数" class="headerlink" title="树上与某个结点的距离为k的结点个数"></a>树上与某个结点的距离为k的结点个数</h3><p>首先一次dfs处理出每个结点的子树中和它距离为k的结点个数<script type="math/tex">num[i][k]</script>。</p>
+<p>之后再从根开始dfs根据当前结点和父结点的距离计算答案，比如当前结点和父结点的距离为2，由于父结点已经处理出答案了，那么与当前结点距离为k的结点个数为<script type="math/tex">ans[fa][k-2]-num[now][k-4]+num[now][k]​</script>。</p>
 
             </article>
             <hr>
@@ -451,6 +459,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

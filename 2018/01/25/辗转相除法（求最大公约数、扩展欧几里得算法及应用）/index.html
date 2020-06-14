@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>辗转相除法（求最大公约数、扩展欧几里得算法及应用） - Hexo</title>
+  <title>辗转相除法（求最大公约数、扩展欧几里得算法及应用） - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -221,7 +229,6 @@
     <span class="hljs-keyword">while</span>(a%b)&#123;<span class="hljs-keyword">int</span> r=a%b;a=b;b=r;&#125; 
     <span class="hljs-keyword">return</span> b; 
 &#125;</code></pre>
-
 <p>递归写法：</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -229,7 +236,6 @@
     <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> a;
     <span class="hljs-keyword">return</span> gcd(b,a%b);
 &#125;</code></pre>
-
 <p>最小公倍数 = a*b/最大公约数  注意超过范围32位</p>
 <p>用a*(b/最大公约数）就不会超过32位了 而且有时需用到long long</p>
 <h5 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a><strong>扩展欧几里得算法</strong></h5><p>求ax+by=gcd(a,b)（这里a和b都是正整数所以解释了后面带入的为什么是m,n）</p>
@@ -252,13 +258,12 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,x,y);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="扩展欧几里得算法的应用"><a href="#扩展欧几里得算法的应用" class="headerlink" title="扩展欧几里得算法的应用"></a><strong>扩展欧几里得算法的应用</strong></h5><p>（1）求解不定方程</p>
 <p>用扩展欧几里得算法解不定方程ax+by=c;</p>
 <p>这个应该比较好理解了，两个可以同乘以k.</p>
 <p>（2）乘法逆元</p>
 <p>给出2个数M和N(M &lt; N)，且M与N互质，找出一个数K满足0 &lt; K &lt; N且K * M % N = 1，如果有多个满足条件的，输出最小的。</p>
-<p>思路：K * M % N = 1等价于 K<em>M=N<em>X+1  即 K</em>M+N</em>(-X)=1 </p>
+<p>思路：K <em> M % N = 1等价于 K</em>M=N<em>X+1  即 K</em>M+N*(-X)=1 </p>
 <p>根据扩展欧几里德算法，求出K和（-X）；</p>
 <p>而K是应为正整数，即需要若K为负整数，则需要将之化正，即与负数取模同理，将K加上N，直至K&gt;0为止，所得的数即为最小的乘法逆元；</p>
 <p>若K为正整数，则直接输出即可。</p>
@@ -282,7 +287,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(x%n+n)%n);     <span class="hljs-comment">//要使K最小，而且考虑K为负数的情况 </span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>例如：4关于1模7的乘法逆元为多少？</p>
 <p>4X≡1 mod 7</p>
 <p>这个方程等价于求一个X和K，满足4X=7K+1,其中X和K都是整数。</p>
@@ -325,7 +329,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,comb(m,n));
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>求解二元一次方程：</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;d,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;y)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -348,7 +351,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="求模线性方程组"><a href="#求模线性方程组" class="headerlink" title="求模线性方程组"></a><strong>求模线性方程组</strong></h5><p>以POJ 2891为例：</p>
 <p>题意：给你k对a和r是否存在一个正整数x使每队a和r都满足：x mod a=r，求最小正解x或无解。</p>
 <p>思路：</p>
@@ -409,7 +411,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -655,6 +656,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

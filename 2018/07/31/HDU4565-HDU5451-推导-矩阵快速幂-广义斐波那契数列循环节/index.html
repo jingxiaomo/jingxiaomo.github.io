@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU4565 &amp; HDU5451 推导+矩阵快速幂+广义斐波那契数列循环节 - Hexo</title>
+  <title>HDU4565 &amp; HDU5451 推导+矩阵快速幂+广义斐波那契数列循环节 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      21 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,27 +213,59 @@
             
             <article class="markdown-body">
               <h5 id="HDU4565"><a href="#HDU4565" class="headerlink" title="HDU4565"></a>HDU4565</h5><p><strong>题意：</strong></p>
-<p>给出a，b，n，m，求$$S_n=\lceil(a+\sqrt b)^n\rceil%m$$。其中$$0&lt;a,m&lt;2^{15}$$，$$(a-1)^2&lt;b &lt;a^2$$，$$0&lt;b,n&lt;2^{31}$$。</p>
+<p>给出a，b，n，m，求<script type="math/tex">S_n=\lceil(a+\sqrt b)^n\rceil\%m</script>。其中<script type="math/tex">0<a,m<2^{15}</script>，<script type="math/tex">(a-1)^2<b <a^2</script>，<script type="math/tex">0<b,n<2^{31}</script>。</p>
 <p><strong>思路：</strong></p>
 <p>首先根据构造共轭因式的思想，构造下式：</p>
-<p>$$(a+\sqrt b)^n=A+B\sqrt b$$</p>
-<p>$$(a-\sqrt b)^n=A-B\sqrt b$$</p>
-<p>注意一个条件，$$(a-1)^2&lt;b &lt;a^2$$，则$$a-1&lt;\sqrt b&lt;a$$，则$$0&lt;a-\sqrt b&lt;1$$，则有$$0&lt;(a-\sqrt b)^n=A-B\sqrt b&lt;1$$,</p>
-<p>则$$A -1&lt;B\sqrt b&lt;A​$$，</p>
-<p>因为$$S_n=\lceil(a+\sqrt b)^n\rceil%m=\lceil(A+B\sqrt b)\rceil%m=2*A$$。</p>
-<p>①和②相加得$$(a+\sqrt b)^n+(a-\sqrt b)^n=2*A$$。</p>
-<p>所以$$S_n=(a+\sqrt b)^n+(a-\sqrt b)^n$$。</p>
-<p>对于$$S_n$$的递推公式，可以有多种方法推导得到，这里说其中两种。</p>
+<script type="math/tex; mode=display">(a+\sqrt b)^n=A+B\sqrt b</script><script type="math/tex; mode=display">(a-\sqrt b)^n=A-B\sqrt b</script><p>注意一个条件，<script type="math/tex">(a-1)^2<b <a^2</script>，则<script type="math/tex">a-1<\sqrt b<a</script>，则<script type="math/tex">0<a-\sqrt b<1</script>，则有<script type="math/tex">0<(a-\sqrt b)^n=A-B\sqrt b<1</script>,</p>
+<p>则<script type="math/tex">A -1<B\sqrt b<A​</script>，</p>
+<p>因为<script type="math/tex">S_n=\lceil(a+\sqrt b)^n\rceil\%m=\lceil(A+B\sqrt b)\rceil\%m=2*A</script>。</p>
+<p>①和②相加得<script type="math/tex">(a+\sqrt b)^n+(a-\sqrt b)^n=2*A</script>。</p>
+<p>所以<script type="math/tex">S_n=(a+\sqrt b)^n+(a-\sqrt b)^n</script>。</p>
+<p>对于<script type="math/tex">S_n</script>的递推公式，可以有多种方法推导得到，这里说其中两种。</p>
 <p>法一：二阶线性递推式</p>
-<p>定理：对于由递推公式$$a_{n+2}=pa_{n+1}+qa_n$$，$$a_1=\alpha,a_2=\beta$$给出的数列$$\left{a_n\right}$$，方程$$x^2-px-q=0$$，叫做数列$$\left{a_n\right}$$的特征方程。</p>
-<p>这里$$(a+\sqrt b)^n$$和$$(a-\sqrt b)^n$$是特征方程的两个根，可以由韦达定理推出特征方程为$$x^2-2ax+a^2-b=0$$，所以有递推公式$$S_{n+2}=2a<em>S_{n+1}+(b-a^2)</em>S_n$$。</p>
+<p>定理：对于由递推公式<script type="math/tex">a_{n+2}=pa_{n+1}+qa_n</script>，<script type="math/tex">a_1=\alpha,a_2=\beta</script>给出的数列<script type="math/tex">\left\{a_n\right\}</script>，方程<script type="math/tex">x^2-px-q=0</script>，叫做数列<script type="math/tex">\left\{a_n\right\}</script>的特征方程。</p>
+<p>这里<script type="math/tex">(a+\sqrt b)^n</script>和<script type="math/tex">(a-\sqrt b)^n</script>是特征方程的两个根，可以由韦达定理推出特征方程为<script type="math/tex">x^2-2ax+a^2-b=0</script>，所以有递推公式<script type="math/tex">S_{n+2}=2a*S_{n+1}+(b-a^2)*S_n</script>。</p>
 <p>法二：递推</p>
-<p>$$\ \ \ \ S_n*[(a+\sqrt b)+(a-\sqrt b)]\=[(a+\sqrt b)^n+(a-\sqrt b)^n][(a+\sqrt b)+(a-\sqrt b)]\=(a+\sqrt b)^{n+1}+(a-\sqrt b)^{n+1}+(a^2-b)(a+\sqrt b)^{n-1}+(a^2-b)(a-\sqrt b)^{n-1}\=S_{n+1}+(a^2-b)*S_{n-1}$$</p>
-<p>所以$$S_{n+1}=2a<em>S_n+(b-a^2)</em>S_{n-1}$$。</p>
-<p>这样就可以构造矩阵了，<br>$$<br>\left(<br>     \begin{matrix}<br>           f_n \<br>            f_{n-1} \<br>        \end{matrix}<br>\right)<br>        =\left(<br>    \begin{matrix}<br>        2a &amp; b-a^2\<br>        1 &amp; 0\<br>    \end{matrix}<br>\right)<br>=\left(<br>     \begin{matrix}<br>            f_{n-1} \<br>            f_{n-2} \<br>        \end{matrix}<br>\right)<br>$$</p>
-<p>$$<br>\left(<br>     \begin{matrix}<br>           f_n \<br>            f_{n-1} \<br>        \end{matrix}<br>\right)<br>        =\left(<br>    \begin{matrix}<br>        2a &amp; b-a^2\<br>        1 &amp; 0\<br>    \end{matrix}<br>\right)^{n-1}<br>=\left(<br>     \begin{matrix}<br>            f_1 \<br>            f_2 \<br>        \end{matrix}<br>\right)<br>$$</p>
-<p>再用矩阵快速幂做就可以了。</p>
-<p>这里要注意，$$b-a^2$$可能是负的，所以在矩阵乘法中取模的时候要加上模数再取模。</p>
+<script type="math/tex; mode=display">\ \ \ \ S_n*[(a+\sqrt b)+(a-\sqrt b)]\\=[(a+\sqrt b)^n+(a-\sqrt b)^n][(a+\sqrt b)+(a-\sqrt b)]\\=(a+\sqrt b)^{n+1}+(a-\sqrt b)^{n+1}+(a^2-b)(a+\sqrt b)^{n-1}+(a^2-b)(a-\sqrt b)^{n-1}\\=S_{n+1}+(a^2-b)*S_{n-1}</script><p>所以<script type="math/tex">S_{n+1}=2a*S_n+(b-a^2)*S_{n-1}</script>。</p>
+<p>这样就可以构造矩阵了，</p>
+<script type="math/tex; mode=display">
+\left(
+     \begin{matrix}
+           f_n \\
+            f_{n-1} \\
+        \end{matrix}
+\right)
+        =\left(
+    \begin{matrix}
+        2a & b-a^2\\
+        1 & 0\\
+    \end{matrix}
+\right)
+=\left(
+     \begin{matrix}
+            f_{n-1} \\
+            f_{n-2} \\
+        \end{matrix}
+\right)</script><script type="math/tex; mode=display">
+\left(
+     \begin{matrix}
+           f_n \\
+            f_{n-1} \\
+        \end{matrix}
+\right)
+        =\left(
+    \begin{matrix}
+        2a & b-a^2\\
+        1 & 0\\
+    \end{matrix}
+\right)^{n-1}
+=\left(
+     \begin{matrix}
+            f_1 \\
+            f_2 \\
+        \end{matrix}
+\right)</script><p>再用矩阵快速幂做就可以了。</p>
+<p>这里要注意，<script type="math/tex">b-a^2</script>可能是负的，所以在矩阵乘法中取模的时候要加上模数再取模。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mat</span></span>
@@ -271,23 +311,36 @@ ll p;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="HDU5451"><a href="#HDU5451" class="headerlink" title="HDU5451"></a>HDU5451</h5><p><strong>题意：</strong></p>
-<p>给出x和一个质数M，$$y=(5+2\sqrt 6)^{1+2^x}$$，求$$\lfloor y\rfloor%m$$。其中$$0≤x≤2^{32}$$，$$M≤46337$$。</p>
+<p>给出x和一个质数M，<script type="math/tex">y=(5+2\sqrt 6)^{1+2^x}</script>，求<script type="math/tex">\lfloor y\rfloor\%m</script>。其中<script type="math/tex">0≤x≤2^{32}</script>，<script type="math/tex">M≤46337</script>。</p>
 <p><strong>思路：</strong></p>
-<p>类似上题的方法，根据特征方程可以求出递推公式为$$f_n=10*f_{n-1}-f_{n-2}$$。</p>
-<p>已知数列$$\left{a_n\right}​$$满足$$a_{n+2}=c_1<em>a_{n+1}+c_2</em>a_n​$$，其中$$c_1​$$，$$c_2​$$为常数，且$$c_2≠0​$$，$$n∈N^*​$$。</p>
-<p>定理1：方程$$x^2=c_1x+c_2$$为该式的特征的特征方程，该方程的根称为$$\left{a_n\right}$$的特征根，记为$$\lambda_1$$，$$\lambda_2$$。</p>
-<p>定理2:若$$\lambda_1≠\lambda_2$$，则$$a_n=b_1{\lambda_1}^n+b_2{\lambda_2}^n$$，其中$$b_1$$，$$b_2$$为常数，且满足<br>$$<br>\left{<br>\begin{array}{c}<br>    a_1=b_1\lambda_1+b_2\lambda_2 \<br>    a_2=b_1{\lambda_1}^2+{b_2\lambda_2}^2  \<br>\end{array}<br>\right.<br>$$<br>定理3:若$$\lambda_1=\lambda_2=\lambda$$，则$$a_n=(b_1+b_2n)\lambda^n$$，其中$$b_1$$，$$b_2$$为常数，且满足<br>$$<br>\left{<br>\begin{array}{c}<br>    a_1=(b_1+b_2)\lambda \<br>    a_2=(b_1+2b_2)\lambda  \<br>\end{array}<br>\right.<br>$$<br>由定理2，得到通项$$f_n=(5+2\sqrt 6)^n+(5-2\sqrt 6)^n$$。</p>
-<p>因为$$(5+2\sqrt6)^n&gt;1$$，$$(5-2\sqrt6)^n&lt;1$$，因$$(5+2\sqrt 6)^n$$的整数部分为$$f_n-1$$。</p>
-<p>指数是$$2^x+1$$非常大，但模数$$M≤46337$$，所以可以直接暴力找循环节。</p>
-<p>还有一个结论，对于广义斐波那契数列$$f(n)=af(n−1)+bf(n−2),f(1)=c,f(2)=d$$，</p>
-<p>f(n)%p循环节：当c是模p的二次剩余，枚举$$n=(p-1)$$的因子，  　　　　　　　当c是模p的非二次剩余，枚举$$n=(p-1)(p+1)$$的因子。</p>
+<p>类似上题的方法，根据特征方程可以求出递推公式为<script type="math/tex">f_n=10*f_{n-1}-f_{n-2}</script>。</p>
+<p>已知数列<script type="math/tex">\left\{a_n\right\}​</script>满足<script type="math/tex">a_{n+2}=c_1*a_{n+1}+c_2*a_n​</script>，其中<script type="math/tex">c_1​</script>，<script type="math/tex">c_2​</script>为常数，且<script type="math/tex">c_2≠0​</script>，<script type="math/tex">n∈N^*​</script>。</p>
+<p>定理1：方程<script type="math/tex">x^2=c_1x+c_2</script>为该式的特征的特征方程，该方程的根称为<script type="math/tex">\left\{a_n\right\}</script>的特征根，记为<script type="math/tex">\lambda_1</script>，<script type="math/tex">\lambda_2</script>。</p>
+<p>定理2:若<script type="math/tex">\lambda_1≠\lambda_2</script>，则<script type="math/tex">a_n=b_1{\lambda_1}^n+b_2{\lambda_2}^n</script>，其中<script type="math/tex">b_1</script>，<script type="math/tex">b_2</script>为常数，且满足</p>
+<script type="math/tex; mode=display">
+\left\{ 
+\begin{array}{c}
+    a_1=b_1\lambda_1+b_2\lambda_2 \\ 
+    a_2=b_1{\lambda_1}^2+{b_2\lambda_2}^2  \\ 
+\end{array}
+\right.</script><p>定理3:若<script type="math/tex">\lambda_1=\lambda_2=\lambda</script>，则<script type="math/tex">a_n=(b_1+b_2n)\lambda^n</script>，其中<script type="math/tex">b_1</script>，<script type="math/tex">b_2</script>为常数，且满足</p>
+<script type="math/tex; mode=display">
+\left\{ 
+\begin{array}{c}
+    a_1=(b_1+b_2)\lambda \\ 
+    a_2=(b_1+2b_2)\lambda  \\ 
+\end{array}
+\right.</script><p>由定理2，得到通项<script type="math/tex">f_n=(5+2\sqrt 6)^n+(5-2\sqrt 6)^n</script>。</p>
+<p>因为<script type="math/tex">(5+2\sqrt6)^n>1</script>，<script type="math/tex">(5-2\sqrt6)^n<1</script>，因<script type="math/tex">(5+2\sqrt 6)^n</script>的整数部分为<script type="math/tex">f_n-1</script>。</p>
+<p>指数是<script type="math/tex">2^x+1</script>非常大，但模数<script type="math/tex">M≤46337</script>，所以可以直接暴力找循环节。</p>
+<p>还有一个结论，对于广义斐波那契数列<script type="math/tex">f(n)=af(n−1)+bf(n−2),f(1)=c,f(2)=d</script>，</p>
+<p>f(n)%p循环节：当c是模p的二次剩余，枚举<script type="math/tex">n=(p-1)</script>的因子，  　　　　　　　当c是模p的非二次剩余，枚举<script type="math/tex">n=(p-1)(p+1)</script>的因子。</p>
 <p>什么叫二次剩余呢？</p>
-<p>d是模p的二次剩余当且仅当$$d(p−1)/2≡1(mod\ p)$$，</p>
-<p>d是模p的非二次剩余当且仅当$$d(p−1)/2≡-1(mod\ p)$$。</p>
-<p>假设MOD为模数,则在$$f[2]!=MOD$$时,$$(MOD+1)*(MOD-1)$$一定为其一个循环节。 </p>
-<p>在这里循环节可以直接算出，循环节为$$(m+1)*(m-1)$$。</p>
+<p>d是模p的二次剩余当且仅当<script type="math/tex">d(p−1)/2≡1(mod\ p)</script>，</p>
+<p>d是模p的非二次剩余当且仅当<script type="math/tex">d(p−1)/2≡-1(mod\ p)</script>。</p>
+<p>假设MOD为模数,则在<script type="math/tex">f[2]!=MOD</script>时,<script type="math/tex">(MOD+1)*(MOD-1)</script>一定为其一个循环节。 </p>
+<p>在这里循环节可以直接算出，循环节为<script type="math/tex">(m+1)*(m-1)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 ll f[<span class="hljs-number">100010</span>];
@@ -335,7 +388,6 @@ ll l[<span class="hljs-number">100010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -581,6 +633,30 @@ ll l[<span class="hljs-number">100010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

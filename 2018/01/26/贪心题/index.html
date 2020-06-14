@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>贪心题 - Hexo</title>
+  <title>贪心题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      802 字
+      805 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -214,13 +222,13 @@
 <p>注意中间变量t是double啊啊啊啊啊…</p>
 <h5 id="贪心-POJ2109"><a href="#贪心-POJ2109" class="headerlink" title="贪心(POJ2109)"></a><strong>贪心(POJ2109)</strong></h5><p><strong>方法一（用double）</strong>：</p>
 <p>k=pow(p,1/n);</p>
-<p>类型          长度 (bit)           有效数字          绝对值范围<br>float                32                      6<del>7                  10^(-37) ~ 10^38<br>double            64                     15</del>16               10^(-307) <del>10^308<br>long double   128                   18</del>19               10^(-4931) ~ 10 ^ 4932</p>
+<p>类型          长度 (bit)           有效数字          绝对值范围<br>float                32                      6~7                  10^(-37) ~ 10^38<br>double            64                     15~16               10^(-307) ~10^308<br>long double   128                   18~19               10^(-4931) ~ 10 ^ 4932</p>
 <p>首先需要明确：double类型虽然能表示10^(-307)   ~   10^308, （远大于题意的1&lt;=p&lt;10101这个范围）,但只能精确前16位，因此必须慎用！</p>
 <p><strong>方法二（高精度运算+二分查找+快速幂）</strong>：</p>
 <p><strong>方法三（贪心法）</strong>：黑人问号？？？</p>
 <p>贪心(POJ2586)</p>
 <p><strong>方法一（枚举）：</strong></p>
-<p>根据前五个月的情况分五种情况。****</p>
+<p>根据前五个月的情况分五种情况。<em>**</em></p>
 <p><strong>方法二（贪心）：</strong></p>
 <p>先将每个月都当成盈利，从1月开始，算5个月的总和，假如是盈利，把最后一个月设成亏损（最后一个月取到的次数最多），再算5个月总和，要是还是盈利，继续依次设置下去。要注意的是，假如一个月盈利大于4个月亏损总和，就只能全亏了。</p>
 <h5 id="线段的重叠（51nod-1091）"><a href="#线段的重叠（51nod-1091）" class="headerlink" title="线段的重叠（51nod 1091）"></a><strong>线段的重叠（51nod 1091）</strong></h5><p>先排序，起点升序，终点降序，因为贪心。然后用两重循环，把每一条线段当成基准，然后对之后的每一条线段根据完全重叠和重叠部分进行讨论，线扫一遍。</p>
@@ -270,7 +278,6 @@
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,MAX);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -516,6 +523,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

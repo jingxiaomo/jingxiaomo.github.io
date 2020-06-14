@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>PAT题集 - Hexo</title>
+  <title>PAT题集 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -219,7 +227,6 @@ getline(<span class="hljs-built_in">cin</span>,str);<span class="hljs-comment">/
 
 <span class="hljs-keyword">char</span> str2[<span class="hljs-number">1024</span>];
 <span class="hljs-built_in">cin</span>.getline(str2,<span class="hljs-number">1024</span>);<span class="hljs-comment">//读入char数组</span></code></pre>
-
 <h3 id="string-erase"><a href="#string-erase" class="headerlink" title="string::erase"></a>string::erase</h3><p>erase(pos,n)：</p>
 <p>删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符。</p>
 <p>erase(position)：</p>
@@ -235,12 +242,10 @@ getline(<span class="hljs-built_in">cin</span>,str);<span class="hljs-comment">/
     <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> a;
     <span class="hljs-keyword">return</span> gcd(b,a%b);
 &#125;</code></pre>
-
 <h3 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h3><h4 id="floyd"><a href="#floyd" class="headerlink" title="floyd"></a>floyd</h4><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(k=<span class="hljs-number">1</span>;k&lt;=n;k++)    
 <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)    
 <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=n;j++)    
 dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
-
 <h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> to,cost;
@@ -274,7 +279,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
         &#125;
     &#125;
 &#125;</code></pre>
-
 <h3 id="数位dp"><a href="#数位dp" class="headerlink" title="数位dp"></a>数位dp</h3><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
 <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dp[<span class="hljs-number">20</span>][state];
 <span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-comment">/*state变量*/</span>,<span class="hljs-keyword">bool</span> lead,<span class="hljs-keyword">bool</span> limit)</span></span>
@@ -310,7 +314,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,solve(ri)-solve(le<span class="hljs-number">-1</span>));
     &#125;
 &#125;</code></pre>
-
 <h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><p>（下标都从1开始）</p>
 <h4 id="区间查询-单点修改"><a href="#区间查询-单点修改" class="headerlink" title="区间查询 单点修改"></a>区间查询 单点修改</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
 <span class="hljs-keyword">int</span> d[<span class="hljs-number">500010</span>];
@@ -354,7 +357,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h4 id="单点查询-区间修改"><a href="#单点查询-区间修改" class="headerlink" title="单点查询 区间修改"></a>单点查询 区间修改</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
 <span class="hljs-keyword">int</span> c[<span class="hljs-number">500010</span>];<span class="hljs-comment">//差分数组</span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
@@ -408,7 +410,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><h4 id="求满足条件的最大值"><a href="#求满足条件的最大值" class="headerlink" title="求满足条件的最大值"></a>求满足条件的最大值</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,r=maxn,ans=<span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span>(l&lt;=r)
 &#123;
@@ -416,7 +417,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-keyword">if</span>(judge(mid))ans=mid,l=mid+<span class="hljs-number">1</span>;
     <span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;
 &#125;</code></pre>
-
 <h4 id="求满足条件的最小值"><a href="#求满足条件的最小值" class="headerlink" title="求满足条件的最小值"></a>求满足条件的最小值</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,r=maxn,ans=<span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span>(l&lt;=r)
 &#123;
@@ -424,7 +424,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-keyword">if</span>(judge(mid))ans=mid,r=mid<span class="hljs-number">-1</span>;
     <span class="hljs-keyword">else</span> l=mid+<span class="hljs-number">1</span>;
 &#125;</code></pre>
-
 <h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><pre><code class="hljs c++"><span class="hljs-keyword">int</span> par[<span class="hljs-number">1010</span>],high[<span class="hljs-number">1010</span>];
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -455,7 +454,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
 &#125;</code></pre>
-
 <h3 id="优先队列的优先级设置"><a href="#优先队列的优先级设置" class="headerlink" title="优先队列的优先级设置"></a>优先队列的优先级设置</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-built_in">string</span> name;
@@ -470,7 +468,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
 &#125;;
 
 调用：priority_queue&lt;fruit,<span class="hljs-built_in">vector</span>&lt;fruit&gt;,cmp&gt;q;</code></pre>
-
 <h3 id="AVL的插入"><a href="#AVL的插入" class="headerlink" title="AVL的插入"></a>AVL的插入</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> val;
@@ -558,7 +555,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,root-&gt;val);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="Nowcoder"><a href="#Nowcoder" class="headerlink" title="Nowcoder"></a>Nowcoder</h3><h4 id="1017"><a href="#1017" class="headerlink" title="1017"></a>1017</h4><p>求栈的中位数，包括push和pop操作。</p>
 <p>对于求中位数，二分+树状数组。</p>
 <h4 id="1038"><a href="#1038" class="headerlink" title="1038"></a>1038</h4><p>求1～N十进制表示中1的个数。</p>
@@ -575,7 +571,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-keyword">if</span>(!limit)dp[pos][num]=ans;
     <span class="hljs-keyword">return</span> ans;
 &#125;</code></pre>
-
 <h4 id="1049"><a href="#1049" class="headerlink" title="1049"></a>1049</h4><p>给你一些数字的片段，希望拼接之后能拼出的最小的数字。</p>
 <p>样例输入：5 32 321 3214 0229 87，样例输出：22932132143287。</p>
 <p>假设有两个相邻的数字片段a,b。然后我们就要想，把a和b交换能不能使整个序列变小呢？这个问题的其实等价于b+a 是否小于a+b，也就是说对于这样一个序列，如果某两个相邻的元素之间发生交换可以使得整个序列的值变小，就应该交换。</p>
@@ -585,12 +580,11 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-keyword">if</span>(x+y&lt;y+x)<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125;</code></pre>
-
 <h3 id="PTA"><a href="#PTA" class="headerlink" title="PTA"></a>PTA</h3><h4 id="1045"><a href="#1045" class="headerlink" title="1045"></a>1045</h4><p>有一组喜欢的数字序列，要从另一组数字里面选出最长的子序列，使得喜欢的数字序列包含在子序列中（不需要每一个都被包含）。</p>
 <p>可以把喜欢的数字序列从小到大编号，然后在数字里选出子序列就相当于最长非递减子序列。</p>
 <h4 id="1091"><a href="#1091" class="headerlink" title="1091"></a>1091</h4><p>如果dfs要考虑深度，避免递归深度过大爆栈。</p>
-<p>这题$$60<em>1280</em>80$$。所以用bfs。</p>
-<h4 id="1103"><a href="#1103" class="headerlink" title="1103"></a>1103</h4><p>给出N，K，P，使得$$N = n[1]^P + … n[K]^P$$。输出的方案首先$$n[1]+n[2]+…n[k]$$最大然后字典序最大。</p>
+<p>这题<script type="math/tex">60*1280*80</script>。所以用bfs。</p>
+<h4 id="1103"><a href="#1103" class="headerlink" title="1103"></a>1103</h4><p>给出N，K，P，使得<script type="math/tex">N = n[1]^P + ... n[K]^P</script>。输出的方案首先<script type="math/tex">n[1]+n[2]+…n[k]</script>最大然后字典序最大。</p>
 <p>dfs。注意写法。</p>
 <p>dfs里面不要用循环写，因为要字典序最大，肯定是从最大的数开始枚举。</p>
 <pre><code class="hljs c++">dfs(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> cnt, <span class="hljs-keyword">int</span> sum, <span class="hljs-keyword">int</span> path[])
@@ -603,7 +597,6 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
     <span class="hljs-keyword">if</span>(id<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">1</span>)
         dfs(id<span class="hljs-number">-1</span>,now,cnt,sum,path);
 调用：dfs(a[<span class="hljs-number">0</span>],<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, pp);</code></pre>
-
 <h4 id="1123"><a href="#1123" class="headerlink" title="1123"></a>1123</h4><p>判断是不是完全二叉树。当某个节点的儿子有为空的以后，出现子节点不为空的则说明不是完全二叉树，否则是。</p>
 <h4 id="1135"><a href="#1135" class="headerlink" title="1135"></a>1135</h4><p>给出一个二叉查找树的前序遍历序列，判断该树是不是红黑树。</p>
 <p>已知红黑树满足以下性质：</p>
@@ -865,6 +858,30 @@ dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

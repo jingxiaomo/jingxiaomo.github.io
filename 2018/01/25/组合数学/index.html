@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>组合数学 - Hexo</title>
+  <title>组合数学 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      712 字
+      633 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      8
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -204,35 +212,35 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="错排公式"><a href="#错排公式" class="headerlink" title="错排公式"></a><strong>错排公式</strong></h3><p>对于$$D[n]$$都有$$D[n]=(n-1)*(D[n-1]+D[n-2])$$【特殊的，$$D[0]=1$$,$$D[1]=0$$，$$D[2]=1$$】。</p>
-<p>$$D[n]=n!*(\frac{1}{2!}-\frac{1}{3!}+\frac{1}{4!}- \frac{1}{5!}+ ··· ··· +\frac{(-1)^{n-1}}{(n-1)!}+\frac{(-1)^n}{n!})$$。</p>
+              <h3 id="错排公式"><a href="#错排公式" class="headerlink" title="错排公式"></a><strong>错排公式</strong></h3><p>对于<script type="math/tex">D[n]</script>都有<script type="math/tex">D[n]=(n-1)*(D[n-1]+D[n-2])</script>【特殊的，<script type="math/tex">D[0]=1</script>,<script type="math/tex">D[1]=0</script>，<script type="math/tex">D[2]=1</script>】。</p>
+<p><script type="math/tex">D[n]=n!*(\frac{1}{2!}-\frac{1}{3!}+\frac{1}{4!}- \frac{1}{5!}+ ··· ··· +\frac{(-1)^{n-1}}{(n-1)!}+\frac{(-1)^n}{n!})</script>。</p>
 <p>下面拓展一下i个人有j个人是正确的；</p>
 <p>i个人有j个时正确的，有三种情况，</p>
 <p>1：前i-1个人有j-1个正确,然后分配给第i个人他自己的物品。</p>
 <p>2：前i-1个人有j个正确，分配给第i个人他自己的物品，然后再把第i个人和前i-1个人拥有不正确物品的人交换</p>
 <p>3：前i-1个人，有j+1个人正确，分配给$d_i$个人他自己的物品，然后和前i-1个人拥有正确物品的人交换</p>
 <p>结果就是：</p>
-<p><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzZ3Y3I5Q0EvOXRxUmtCaG9mNHlLaEJtdDlBN3RsNG44MTFPbUpBSzBxeXJBPT0.png?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="http://imglf4.nosdn.127.net/img/ajhrcUFValVhVzZ3Y3I5Q0EvOXRxUmtCaG9mNHlLaEJtdDlBN3RsNG44MTFPbUpBSzBxeXJBPT0.png?=imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg%7Cwatermark&amp;type=2" srcset="/img/loading.gif" alt="img"></p>
 <p>小tip：</p>
 <p>当指数很大取模时，可以多次快速幂。</p>
 <p>比如2的10的24次方的次方，可以拆成2的10的12次方取模，再对得数取模。</p>
-<h3 id="分配问题"><a href="#分配问题" class="headerlink" title="分配问题"></a>分配问题</h3><h4 id="整数拆分"><a href="#整数拆分" class="headerlink" title="整数拆分"></a>整数拆分</h4><h5 id="整数的有序拆分"><a href="#整数的有序拆分" class="headerlink" title="整数的有序拆分"></a>整数的有序拆分</h5><p>将n个相同物体分配到m个不同位置上，称为整数的有序拆分，拆分数等于方程$$n=x_1+x_2+…+x_m$$的解的个数。</p>
-<p><strong>无空位时</strong>，拆分数为$$C_{n-1}^{m-1}$$。</p>
-<p><strong>可以有空位时</strong>，拆分数为$$C_{n+m-1}^{n}=C_{n+m-1}^{m-1}$$。</p>
+<h3 id="分配问题"><a href="#分配问题" class="headerlink" title="分配问题"></a>分配问题</h3><h4 id="整数拆分"><a href="#整数拆分" class="headerlink" title="整数拆分"></a>整数拆分</h4><h5 id="整数的有序拆分"><a href="#整数的有序拆分" class="headerlink" title="整数的有序拆分"></a>整数的有序拆分</h5><p>将n个相同物体分配到m个不同位置上，称为整数的有序拆分，拆分数等于方程<script type="math/tex">n=x_1+x_2+...+x_m</script>的解的个数。</p>
+<p><strong>无空位时</strong>，拆分数为<script type="math/tex">C_{n-1}^{m-1}</script>。</p>
+<p><strong>可以有空位时</strong>，拆分数为<script type="math/tex">C_{n+m-1}^{n}=C_{n+m-1}^{m-1}</script>。</p>
 <p>例：</p>
 <p>8台计算机分配给3个单位，第一个单位的分配量不超过3台，第二个单位的分配量不超过4台，第三个单位的分配量不超过5台，问有几种分派方案？</p>
-<p>解：$$G(x)=(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$$，化简之后（其实可以写个程序跑一跑），$$x^8$$的系数为14，所以共14种分配方案。</p>
+<p>解：<script type="math/tex">G(x)=(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)</script>，化简之后（其实可以写个程序跑一跑），<script type="math/tex">x^8</script>的系数为14，所以共14种分配方案。</p>
 <h5 id="整数的无序拆分"><a href="#整数的无序拆分" class="headerlink" title="整数的无序拆分"></a>整数的无序拆分</h5><p>将n个相同物体分配到m个相同的位置上，称为整数的无序拆分。</p>
 <p><strong>无空位时，</strong></p>
-<p>将正整数n分成m个部分，$$n=n_1+n_2+…+n_m(m\geq 1,n_i\geq 1)$$，且不考虑$$n_i$$的次序，满足$$n_1\geq n_2…\geq n_m$$，拆分数记为$$P_m(n)$$。</p>
+<p>将正整数n分成m个部分，<script type="math/tex">n=n_1+n_2+...+n_m(m\geq 1,n_i\geq 1)</script>，且不考虑<script type="math/tex">n_i</script>的次序，满足<script type="math/tex">n_1\geq n_2...\geq n_m</script>，拆分数记为<script type="math/tex">P_m(n)</script>。</p>
 <p>定理：正整数n拆分成m个部分的方案数等于整数n的拆分中最大部分为m的方案数。</p>
-<p>若整数n拆分成1,2,…,m的和，并允许重复，其母函数为$$G(x)=(1+x+x^2+…)(1+x^2+{(x^2)}^2+…)…(1+x^m+{(x^m)^2}+…)$$。</p>
+<p>若整数n拆分成1,2,…,m的和，并允许重复，其母函数为<script type="math/tex">G(x)=(1+x+x^2+...)(1+x^2+{(x^2)}^2+...)...(1+x^m+{(x^m)^2}+...)</script>。</p>
 <p><strong>可以有空位时，</strong></p>
-<p>当$$n\geq m$$时，方案数=$$P_1(n)+P_2(n)+…+P_m(n)$$。</p>
-<p>当$$n&lt;m$$时，方案数=$$P_1(n)+P_2(n)+…+P_n(n)$$。</p>
-<p>整数n拆分中，所有部分均为奇数，其母函数为$$G(x)=(1+x+x^2+…)(1+x^3+{(x^3)}^2+…)(1+x^5+{(x^5)}^2+…)…$$。</p>
+<p>当<script type="math/tex">n\geq m</script>时，方案数=<script type="math/tex">P_1(n)+P_2(n)+...+P_m(n)</script>。</p>
+<p>当<script type="math/tex">n<m</script>时，方案数=<script type="math/tex">P_1(n)+P_2(n)+...+P_n(n)</script>。</p>
+<p>整数n拆分中，所有部分均为奇数，其母函数为<script type="math/tex">G(x)=(1+x+x^2+...)(1+x^3+{(x^3)}^2+...)(1+x^5+{(x^5)}^2+...)...</script>。</p>
 <p>整数n拆分中，所有部分不相等，其母函数为</p>
-<p>$$G(x)=(1+x)(1+x^2)(1+x^3)…$$。</p>
+<p><script type="math/tex">G(x)=(1+x)(1+x^2)(1+x^3)...</script>。</p>
 <p>例：</p>
 
             </article>
@@ -479,6 +487,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

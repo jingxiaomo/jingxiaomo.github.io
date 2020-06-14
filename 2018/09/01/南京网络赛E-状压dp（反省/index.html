@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>南京网络赛E 状压dp（反省...) - Hexo</title>
+  <title>南京网络赛E 状压dp（反省...) - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      448 字
+      67 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有n道题，有$$a_i$$和$$b_i$$两个值，每道题得在m道题做完之后才能做，给出了这m道题。如果第t个做出这道题目的话，得到的价值为$$a_i*t+b_i$$。问最大价值为多少。其中$$0&lt;n≤20$$。</p>
+<p>有n道题，有<script type="math/tex">a_i</script>和<script type="math/tex">b_i</script>两个值，每道题得在m道题做完之后才能做，给出了这m道题。如果第t个做出这道题目的话，得到的价值为<script type="math/tex">a_i*t+b_i</script>。问最大价值为多少。其中<script type="math/tex">0<n≤20</script>。</p>
 <p><strong>思路：</strong></p>
 <p>可以看出来是一道状压dp。</p>
 <p>可是我想到了这可以画出一张图然后就走上了一条不归路…比赛的时候连二维还是一维都没有考虑好…还想好难转移…真的智障啊…</p>
@@ -264,7 +272,6 @@ ll dp[<span class="hljs-number">1100000</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -510,6 +517,30 @@ ll dp[<span class="hljs-number">1100000</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

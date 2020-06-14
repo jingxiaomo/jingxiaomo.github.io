@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Java学习笔记（三）Java核心类 - Hexo</title>
+  <title>Java学习笔记（三）Java核心类 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,13 +212,10 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="字符串与编码"><a href="#字符串与编码" class="headerlink" title="字符串与编码"></a>字符串与编码</h1><p>##String</p>
-<p>在Java中，<code>String</code>是一个引用类型，它本身也是一个<code>class</code>。</p>
+              <h1 id="字符串与编码"><a href="#字符串与编码" class="headerlink" title="字符串与编码"></a>字符串与编码</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>在Java中，<code>String</code>是一个引用类型，它本身也是一个<code>class</code>。</p>
 <pre><code class="hljs java">String s1 = <span class="hljs-string">"Hello!"</span>;</code></pre>
-
 <p>实际上字符串在<code>String</code>内部是通过一个<code>char[]</code>数组表示的，因此，按下面的写法也是可以的：</p>
 <pre><code class="hljs java">String s2 = <span class="hljs-keyword">new</span> String(<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[] &#123;<span class="hljs-string">'H'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'!'</span>&#125;);</code></pre>
-
 <p>Java字符串的一个重要特点就是字符串<em>不可变</em>。这种不可变性是通过内部的<code>private final char[]</code>字段，以及没有任何修改<code>char[]</code>的方法实现的。</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -220,9 +225,7 @@
         System.out.println(s);	<span class="hljs-comment">//输出HELLO</span>
     &#125;
 &#125;</code></pre>
-
-<p>##字符串比较</p>
-<p>当我们想要比较两个字符串是否相同时，要特别注意，我们实际上是想比较字符串的内容是否相同。必须使用<code>equals()</code>方法而不能用<code>==</code>。</p>
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><p>当我们想要比较两个字符串是否相同时，要特别注意，我们实际上是想比较字符串的内容是否相同。必须使用<code>equals()</code>方法而不能用<code>==</code>。</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         String s1 = <span class="hljs-string">"hello"</span>;
@@ -231,7 +234,6 @@
         System.out.println(s1.equals(s2));	<span class="hljs-comment">//输出true</span>
     &#125;
 &#125;</code></pre>
-
 <p>从表面上看，两个字符串用<code>==</code>和<code>equals()</code>比较都为<code>true</code>，但实际上那只是Java编译器在编译期，会自动把所有相同的字符串当作一个对象放入常量池，自然<code>s1</code>和<code>s2</code>的引用就是相同的。</p>
 <p>所以，这种<code>==</code>比较返回<code>true</code>纯属巧合。换一种写法，<code>==</code>比较就会失败：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -242,27 +244,21 @@
         System.out.println(s1.equals(s2));	<span class="hljs-comment">//输出true</span>
     &#125;
 &#125;</code></pre>
-
 <p>要忽略大小写比较，使用<code>equalsIgnoreCase()</code>方法。</p>
 <p><code>String</code>类还提供了多种方法来搜索子串、提取子串。常用的方法有：</p>
 <pre><code class="hljs java"><span class="hljs-comment">// 是否包含子串:</span>
 <span class="hljs-string">"Hello"</span>.contains(<span class="hljs-string">"ll"</span>); <span class="hljs-comment">// true</span></code></pre>
-
 <p>注意到<code>contains()</code>方法的参数是<code>CharSequence</code>而不是<code>String</code>，因为<code>CharSequence</code>是<code>String</code>的父类。</p>
 <p>搜索子串的更多的例子：</p>
 <pre><code class="hljs java"><span class="hljs-string">"Hello"</span>.indexOf(<span class="hljs-string">"l"</span>); <span class="hljs-comment">// 2</span>
 <span class="hljs-string">"Hello"</span>.lastIndexOf(<span class="hljs-string">"l"</span>); <span class="hljs-comment">// 3</span>
 <span class="hljs-string">"Hello"</span>.startsWith(<span class="hljs-string">"He"</span>); <span class="hljs-comment">// true</span>
 <span class="hljs-string">"Hello"</span>.endsWith(<span class="hljs-string">"lo"</span>); <span class="hljs-comment">// true</span></code></pre>
-
 <p>提取子串的例子：</p>
 <pre><code class="hljs java"><span class="hljs-string">"Hello"</span>.substring(<span class="hljs-number">2</span>); <span class="hljs-comment">// "llo"</span>
 <span class="hljs-string">"Hello"</span>.substring(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>); <span class="hljs-string">"ll"</span></code></pre>
-
-<p>###去除首尾空白字符</p>
-<p>使用<code>trim()</code>方法可以移除字符串首尾空白字符。空白字符包括空格，<code>\t</code>，<code>\r</code>，<code>\n</code>：</p>
+<h3 id="去除首尾空白字符"><a href="#去除首尾空白字符" class="headerlink" title="去除首尾空白字符"></a>去除首尾空白字符</h3><p>使用<code>trim()</code>方法可以移除字符串首尾空白字符。空白字符包括空格，<code>\t</code>，<code>\r</code>，<code>\n</code>：</p>
 <pre><code class="hljs java"><span class="hljs-string">"  \tHello\r\n "</span>.trim(); <span class="hljs-comment">// "Hello"</span></code></pre>
-
 <blockquote>
 <p><code>trim()</code>并没有改变字符串的内容，而是返回了一个新字符串。</p>
 </blockquote>
@@ -270,37 +266,27 @@
 <pre><code class="hljs java"><span class="hljs-string">"\u3000Hello\u3000"</span>.strip(); <span class="hljs-comment">// "Hello"</span>
 <span class="hljs-string">" Hello "</span>.stripLeading(); <span class="hljs-comment">// "Hello "</span>
 <span class="hljs-string">" Hello "</span>.stripTrailing(); <span class="hljs-comment">// " Hello"</span></code></pre>
-
 <p><code>String</code>还提供了<code>isEmpty()</code>和<code>isBlank()</code>来判断字符串是否为空和空白字符串：</p>
 <pre><code class="hljs java"><span class="hljs-string">""</span>.isEmpty(); <span class="hljs-comment">// true，因为字符串长度为0</span>
 <span class="hljs-string">"  "</span>.isEmpty(); <span class="hljs-comment">// false，因为字符串长度不为0</span>
 <span class="hljs-string">"  \n"</span>.isBlank(); <span class="hljs-comment">// true，因为只包含空白字符</span>
 <span class="hljs-string">" Hello "</span>.isBlank(); <span class="hljs-comment">// false，因为包含非空白字符</span></code></pre>
-
-<p>###替换子串</p>
-<p>要在字符串中替换子串，有两种方法。</p>
+<h3 id="替换子串"><a href="#替换子串" class="headerlink" title="替换子串"></a>替换子串</h3><p>要在字符串中替换子串，有两种方法。</p>
 <p>一种是根据字符或字符串替换：</p>
 <pre><code class="hljs java">String s = <span class="hljs-string">"hello"</span>;
 s.replace(<span class="hljs-string">'l'</span>, <span class="hljs-string">'w'</span>); <span class="hljs-comment">// "hewwo"，所有字符'l'被替换为'w'</span>
 s.replace(<span class="hljs-string">"ll"</span>, <span class="hljs-string">"~~"</span>); <span class="hljs-comment">// "he~~o"，所有子串"ll"被替换为"~~"</span></code></pre>
-
 <p>另一种是通过正则表达式替换：</p>
 <pre><code class="hljs java">String s = <span class="hljs-string">"A,,B;C ,D"</span>;
 s.replaceAll(<span class="hljs-string">"[\\,\\;\\s]+"</span>, <span class="hljs-string">","</span>); <span class="hljs-comment">// "A,B,C,D"</span></code></pre>
-
 <p>上面的代码通过正则表达式，把匹配的子串统一替换为<code>&quot;,&quot;</code>。</p>
-<p>##分割字符串</p>
-<p>要分割字符串，使用<code>split()</code>方法，并且传入的也是正则表达式：</p>
+<h2 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h2><p>要分割字符串，使用<code>split()</code>方法，并且传入的也是正则表达式：</p>
 <pre><code class="hljs java">String s = <span class="hljs-string">"A,B,C,D"</span>;
 String[] ss = s.split(<span class="hljs-string">"\\,"</span>); <span class="hljs-comment">// &#123;"A", "B", "C", "D"&#125;</span></code></pre>
-
-<p>##拼接字符串</p>
-<p>拼接字符串使用静态方法<code>join()</code>，它用指定的字符串连接字符串数组：</p>
+<h2 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h2><p>拼接字符串使用静态方法<code>join()</code>，它用指定的字符串连接字符串数组：</p>
 <pre><code class="hljs java">String[] arr = &#123;<span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>, <span class="hljs-string">"C"</span>&#125;;
 String s = String.join(<span class="hljs-string">"***"</span>, arr); <span class="hljs-comment">// "A***B***C"</span></code></pre>
-
-<p>##格式化字符串</p>
-<p>字符串提供了<code>formatted()</code>方法和<code>format()</code><em>静态方法</em>，可以传入其他参数，替换占位符，然后生成新的字符串：</p>
+<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>字符串提供了<code>formatted()</code>方法和<code>format()</code><em>静态方法</em>，可以传入其他参数，替换占位符，然后生成新的字符串：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         String s = <span class="hljs-string">"Hi %s, your score is %d!"</span>;
@@ -308,31 +294,23 @@ String s = String.join(<span class="hljs-string">"***"</span>, arr); <span class
         System.out.println(String.format(<span class="hljs-string">"Hi %s, your score is %.2f!"</span>, <span class="hljs-string">"Bob"</span>, <span class="hljs-number">59.5</span>));	<span class="hljs-comment">//输出Hi Bob, your score is 59.59!</span>
     &#125;
 &#125;</code></pre>
-
 <p>如果你不确定用啥占位符，那就始终用<code>%s</code>，因为<code>%s</code>可以显示任何数据类型。</p>
-<p>##类型转换</p>
-<p>要把任意基本类型或引用类型转换为字符串，可以使用静态方法<code>valueOf()</code>。这是一个重载方法，编译器会根据参数自动选择合适的方法：</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>要把任意基本类型或引用类型转换为字符串，可以使用静态方法<code>valueOf()</code>。这是一个重载方法，编译器会根据参数自动选择合适的方法：</p>
 <pre><code class="hljs java">String.valueOf(<span class="hljs-number">123</span>); <span class="hljs-comment">// "123"</span>
 String.valueOf(<span class="hljs-number">45.67</span>); <span class="hljs-comment">// "45.67"</span>
 String.valueOf(<span class="hljs-keyword">true</span>); <span class="hljs-comment">// "true"</span>
 String.valueOf(<span class="hljs-keyword">new</span> Object()); <span class="hljs-comment">// 类似java.lang.Object@636be97c</span></code></pre>
-
 <p>要把字符串转换为其他类型，就需要根据情况。例如，把字符串转换为<code>int</code>类型：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">int</span> n1 = Integer.parseInt(<span class="hljs-string">"123"</span>); <span class="hljs-comment">// 123</span>
 <span class="hljs-keyword">int</span> n2 = Integer.parseInt(<span class="hljs-string">"ff"</span>, <span class="hljs-number">16</span>); <span class="hljs-comment">// 按十六进制转换，255</span></code></pre>
-
 <p>把字符串转换为<code>boolean</code>类型：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">boolean</span> b1 = Boolean.parseBoolean(<span class="hljs-string">"true"</span>); <span class="hljs-comment">// true</span>
 <span class="hljs-keyword">boolean</span> b2 = Boolean.parseBoolean(<span class="hljs-string">"FALSE"</span>); <span class="hljs-comment">// false</span></code></pre>
-
 <p>要特别注意，<code>Integer</code>有个<code>getInteger(String)</code>方法，它不是将字符串转换为<code>int</code>，而是把该字符串对应的系统变量转换为<code>Integer</code>：</p>
 <pre><code class="hljs java">Integer.getInteger(<span class="hljs-string">"java.version"</span>); <span class="hljs-comment">// 版本号，11</span></code></pre>
-
-<p>##转换为char[]</p>
-<p>String<code>和</code>char[]`类型可以互相转换，方法是：</p>
+<h2 id="转换为char"><a href="#转换为char" class="headerlink" title="转换为char[]"></a>转换为char[]</h2><p>String<code>和</code>char[]`类型可以互相转换，方法是：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">char</span>[] cs = <span class="hljs-string">"Hello"</span>.toCharArray(); <span class="hljs-comment">// String -&gt; char[]</span>
 String s = <span class="hljs-keyword">new</span> String(cs); <span class="hljs-comment">// char[] -&gt; String</span></code></pre>
-
 <p>如果修改了<code>char[]</code>数组，<code>String</code>并不会改变。</p>
 <p>从<code>String</code>的不变性设计可以看出，如果传入的对象有可能改变，我们需要复制而不是直接引用。</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -355,11 +333,9 @@ String s = <span class="hljs-keyword">new</span> String(cs); <span class="hljs-c
         System.out.println(Arrays.toString(scores));
     &#125;
 &#125;</code></pre>
-
 <p>观察两次输出，由于<code>Score</code>内部直接引用了外部传入的<code>int[]</code>数组，这会造成外部代码对<code>int[]</code>数组的修改，影响到<code>Score</code>类的字段。如果外部代码不可信，这就会造成安全隐患。</p>
 <p>所以在构造函数里面需要复制一份scores再给this.scores赋值。</p>
-<p>##字符编码</p>
-<p>在早期的计算机系统中，为了给字符编码，美国国家标准学会（American National Standard Institute：ANSI）制定了一套英文字母、数字和常用符号的编码，它占用一个字节，编码范围从<code>0</code>到<code>127</code>，最高位始终为<code>0</code>，称为<code>ASCII</code>编码。例如，字符<code>&#39;A&#39;</code>的编码是<code>0x41</code>，字符<code>&#39;1&#39;</code>的编码是<code>0x31</code>。</p>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><p>在早期的计算机系统中，为了给字符编码，美国国家标准学会（American National Standard Institute：ANSI）制定了一套英文字母、数字和常用符号的编码，它占用一个字节，编码范围从<code>0</code>到<code>127</code>，最高位始终为<code>0</code>，称为<code>ASCII</code>编码。例如，字符<code>&#39;A&#39;</code>的编码是<code>0x41</code>，字符<code>&#39;1&#39;</code>的编码是<code>0x31</code>。</p>
 <p>如果要把汉字也纳入计算机编码，很显然一个字节是不够的。<code>GB2312</code>标准使用两个字节表示一个汉字，其中第一个字节的最高位始终为<code>1</code>，以便和<code>ASCII</code>编码区分开。例如，汉字<code>&#39;中&#39;</code>的<code>GB2312</code>编码是<code>0xd6d0</code>。</p>
 <p>类似的，日文有<code>Shift_JIS</code>编码，韩文有<code>EUC-KR</code>编码，这些编码因为标准不统一，同时使用，就会产生冲突。</p>
 <p>为了统一全球所有语言的编码，全球统一码联盟发布了<code>Unicode</code>编码，它把世界上主要语言都纳入同一个编码，这样，中文、日文、韩文和其他语言就不会冲突。</p>
@@ -370,7 +346,6 @@ String s = <span class="hljs-keyword">new</span> String(cs); <span class="hljs-c
 <span class="hljs-keyword">byte</span>[] b2 = <span class="hljs-string">"Hello"</span>.getBytes(<span class="hljs-string">"UTF-8"</span>); <span class="hljs-comment">// 按UTF-8编码转换</span>
 <span class="hljs-keyword">byte</span>[] b2 = <span class="hljs-string">"Hello"</span>.getBytes(<span class="hljs-string">"GBK"</span>); <span class="hljs-comment">// 按GBK编码转换</span>
 <span class="hljs-keyword">byte</span>[] b3 = <span class="hljs-string">"Hello"</span>.getBytes(StandardCharsets.UTF_8); <span class="hljs-comment">// 按UTF-8编码转换</span></code></pre>
-
 <blockquote>
 <p>转换编码后，就不再是<code>char</code>类型，而是<code>byte</code>类型表示的数组。</p>
 </blockquote>
@@ -378,28 +353,23 @@ String s = <span class="hljs-keyword">new</span> String(cs); <span class="hljs-c
 <pre><code class="hljs java"><span class="hljs-keyword">byte</span>[] b = ...
 String s1 = <span class="hljs-keyword">new</span> String(b, <span class="hljs-string">"GBK"</span>); <span class="hljs-comment">// 按GBK转换</span>
 String s2 = <span class="hljs-keyword">new</span> String(b, StandardCharsets.UTF_8); <span class="hljs-comment">// 按UTF-8转换</span></code></pre>
-
 <p>始终牢记：Java的<code>String</code>和<code>char</code>在内存中总是以Unicode编码表示。</p>
-<p>##延伸阅读</p>
-<p>对于不同版本的JDK，<code>String</code>类在内存中有不同的优化方式。具体来说，早期JDK版本的<code>String</code>总是以<code>char[]</code>存储，它的定义如下：</p>
+<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><p>对于不同版本的JDK，<code>String</code>类在内存中有不同的优化方式。具体来说，早期JDK版本的<code>String</code>总是以<code>char[]</code>存储，它的定义如下：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">char</span>[] value;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> offset;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> count;
 &#125;</code></pre>
-
 <p>而较新的JDK版本的<code>String</code>则以<code>byte[]</code>存储：如果<code>String</code>仅包含ASCII字符，则每个<code>byte</code>存储一个字符，否则，每两个<code>byte</code>存储一个字符，这样做的目的是为了节省内存，因为大量的长度较短的<code>String</code>通常仅包含ASCII字符：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span>[] value;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span> coder; <span class="hljs-comment">// 0 = LATIN1, 1 = UTF16</span></code></pre>
-
 <h1 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h1><p>Java编译器对<code>String</code>做了特殊处理，使得我们可以直接用<code>+</code>拼接字符串。</p>
 <p>考察下面的循环代码：</p>
 <pre><code class="hljs java">String s = <span class="hljs-string">""</span>;
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;
     s = s + <span class="hljs-string">","</span> + i;
 &#125;</code></pre>
-
 <p>虽然可以直接拼接字符串，但是，在循环中，每次循环都会创建新的字符串对象，然后扔掉旧的字符串。这样，绝大部分字符串都是临时对象，不但浪费内存，还会影响GC效率。</p>
 <p>为了能高效拼接字符串，Java标准库提供了<code>StringBuilder</code>，它是一个可变对象，可以预分配缓冲区，这样，往<code>StringBuilder</code>中新增字符时，不会创建新的临时对象：</p>
 <pre><code class="hljs java">StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-number">1024</span>);
@@ -408,7 +378,6 @@ String s2 = <span class="hljs-keyword">new</span> String(b, StandardCharsets.UTF
     sb.append(i);
 &#125;
 String s = sb.toString();</code></pre>
-
 <p><code>StringBuilder</code>还可以进行链式操作：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -420,7 +389,6 @@ String s = sb.toString();</code></pre>
         System.out.println(sb.toString());	<span class="hljs-comment">//输出Hello, Mr Bob!</span>
     &#125;
 &#125;</code></pre>
-
 <p>如果我们查看<code>StringBuilder</code>的源码，可以发现，进行链式操作的关键是，定义的<code>append()</code>方法会返回<code>this</code>，这样，就可以不断调用自身的其他方法。</p>
 <blockquote>
 <p>对于普通的字符串<code>+</code>操作，并不需要我们将其改写为<code>StringBuilder</code>，因为Java编译器在编译时就自动把多个连续的<code>+</code>操作编码为<code>StringConcatFactory</code>的操作。在运行期，<code>StringConcatFactory</code>会自动把字符串连接操作优化为数组复制或者<code>StringBuilder</code>操作。</p>
@@ -442,7 +410,6 @@ String s = sb.toString();</code></pre>
         System.out.println(sb.toString());
     &#125;
 &#125;</code></pre>
-
 <p>类似用分隔符拼接数组的需求很常见，所以Java标准库还提供了一个<code>StringJoiner</code>来干这个事：</p>
 <pre><code class="hljs java">ppublic <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -454,13 +421,10 @@ String s = sb.toString();</code></pre>
         System.out.println(sj.toString());	<span class="hljs-comment">//输出Hello Bob, Alice, Grace!</span>
     &#125;
 &#125;</code></pre>
-
 <p>那么<code>StringJoiner</code>内部是如何拼接字符串的呢？如果查看源码，可以发现，<code>StringJoiner</code>内部实际上就是使用了<code>StringBuilder</code>，所以拼接效率和<code>StringBuilder</code>几乎是一模一样的。</p>
-<p>##String.join()</p>
-<p><code>String</code>还提供了一个静态方法<code>join()</code>，这个方法在内部使用了<code>StringJoiner</code>来拼接字符串，在不需要指定“开头”和“结尾”的时候，用<code>String.join()</code>更方便：</p>
+<h2 id="String-join"><a href="#String-join" class="headerlink" title="String.join()"></a>String.join()</h2><p><code>String</code>还提供了一个静态方法<code>join()</code>，这个方法在内部使用了<code>StringJoiner</code>来拼接字符串，在不需要指定“开头”和“结尾”的时候，用<code>String.join()</code>更方便：</p>
 <pre><code class="hljs java">String[] names = &#123;<span class="hljs-string">"Bob"</span>, <span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Grace"</span>&#125;;
 <span class="hljs-keyword">var</span> s = String.join(<span class="hljs-string">", "</span>, names);</code></pre>
-
 <h1 id="包装类型"><a href="#包装类型" class="headerlink" title="包装类型"></a>包装类型</h1><p>Java的数据类型分两种：</p>
 <ul>
 <li>基本类型：<code>byte</code>，<code>short</code>，<code>int</code>，<code>long</code>，<code>boolean</code>，<code>float</code>，<code>double</code>，<code>char</code></li>
@@ -469,46 +433,50 @@ String s = sb.toString();</code></pre>
 <p>引用类型可以赋值为<code>null</code>，表示空，但基本类型不能赋值为<code>null</code>。</p>
 <p>那么，如何把一个基本类型视为对象（引用类型）？</p>
 <p>实际上，因为包装类型非常有用，Java核心库为每种基本类型都提供了对应的包装类型：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">基本类型</th>
-<th align="left">对应的引用类型</th>
+<th style="text-align:left">基本类型</th>
+<th style="text-align:left">对应的引用类型</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">boolean</td>
-<td align="left">java.lang.Boolean</td>
+<tbody>
+<tr>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">java.lang.Boolean</td>
 </tr>
 <tr>
-<td align="left">byte</td>
-<td align="left">java.lang.Byte</td>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">java.lang.Byte</td>
 </tr>
 <tr>
-<td align="left">short</td>
-<td align="left">java.lang.Short</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">java.lang.Short</td>
 </tr>
 <tr>
-<td align="left">int</td>
-<td align="left">java.lang.Integer</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">java.lang.Integer</td>
 </tr>
 <tr>
-<td align="left">long</td>
-<td align="left">java.lang.Long</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">java.lang.Long</td>
 </tr>
 <tr>
-<td align="left">float</td>
-<td align="left">java.lang.Float</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">java.lang.Float</td>
 </tr>
 <tr>
-<td align="left">double</td>
-<td align="left">java.lang.Double</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">java.lang.Double</td>
 </tr>
 <tr>
-<td align="left">char</td>
-<td align="left">java.lang.Character</td>
+<td style="text-align:left">char</td>
+<td style="text-align:left">java.lang.Character</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>我们可以直接使用，并不需要自己去定义：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -522,20 +490,15 @@ String s = sb.toString();</code></pre>
         System.out.println(n3.intValue());
     &#125;
 &#125;</code></pre>
-
-<p>##Auto Boxing</p>
-<p>Java编译器可以帮助我们自动在<code>int</code>和<code>Integer</code>之间转型：</p>
+<h2 id="Auto-Boxing"><a href="#Auto-Boxing" class="headerlink" title="Auto Boxing"></a>Auto Boxing</h2><p>Java编译器可以帮助我们自动在<code>int</code>和<code>Integer</code>之间转型：</p>
 <pre><code class="hljs java">Integer n = <span class="hljs-number">100</span>; <span class="hljs-comment">// 编译器自动使用Integer.valueOf(int)</span>
 <span class="hljs-keyword">int</span> x = n; <span class="hljs-comment">// 编译器自动使用Integer.intValue()</span></code></pre>
-
 <p>这种直接把<code>int</code>变为<code>Integer</code>的赋值写法，称为自动装箱（Auto Boxing），反过来，把<code>Integer</code>变为<code>int</code>的赋值写法，称为自动拆箱（Auto Unboxing）。</p>
 <p>装箱和拆箱会影响代码的执行效率，因为编译后的<code>class</code>代码是严格区分基本类型和引用类型的。并且，自动拆箱执行时可能会报<code>NullPointerException</code>。</p>
-<p>##不变类</p>
-<p>所有的包装类型都是不变类。我们查看<code>Integer</code>的源码可知，它的核心代码如下：</p>
+<h2 id="不变类"><a href="#不变类" class="headerlink" title="不变类"></a>不变类</h2><p>所有的包装类型都是不变类。我们查看<code>Integer</code>的源码可知，它的核心代码如下：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Integer</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> value;
 &#125;</code></pre>
-
 <p>因此，一旦创建了<code>Integer</code>对象，该对象就是不变的。</p>
 <p>对两个<code>Integer</code>实例进行比较要特别注意：绝对不能用<code>==</code>比较，因为<code>Integer</code>是引用类型，必须使用<code>equals()</code>比较。</p>
 <p>因为<code>Integer.valueOf()</code>可能始终返回同一个<code>Integer</code>实例，因此，在我们自己创建<code>Integer</code>的时候，以下两种方法：</p>
@@ -548,11 +511,9 @@ String s = sb.toString();</code></pre>
 <blockquote>
 <p> 创建新对象时，优先选用静态工厂方法而不是new操作符。</p>
 </blockquote>
-<p>##进制转换</p>
-<p><code>Integer</code>类本身还提供了大量方法，例如，最常用的静态方法<code>parseInt()</code>可以把字符串解析成一个整数：</p>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><code>Integer</code>类本身还提供了大量方法，例如，最常用的静态方法<code>parseInt()</code>可以把字符串解析成一个整数：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">int</span> x1 = Integer.parseInt(<span class="hljs-string">"100"</span>); <span class="hljs-comment">// 100</span>
 <span class="hljs-keyword">int</span> x2 = Integer.parseInt(<span class="hljs-string">"100"</span>, <span class="hljs-number">16</span>); <span class="hljs-comment">// 256,因为按16进制解析</span></code></pre>
-
 <p><code>Integer</code>还可以把整数格式化为指定进制的字符串：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -563,7 +524,6 @@ String s = sb.toString();</code></pre>
         System.out.println(Integer.toBinaryString(<span class="hljs-number">100</span>)); <span class="hljs-comment">// "1100100",表示为2进制</span>
     &#125;
 &#125;</code></pre>
-
 <p>Java的包装类型还定义了一些有用的静态变量</p>
 <pre><code class="hljs java"><span class="hljs-comment">// boolean只有两个值true/false，其包装类型只需要引用Boolean提供的静态字段:</span>
 Boolean t = Boolean.TRUE;
@@ -574,7 +534,6 @@ Boolean f = Boolean.FALSE;
 <span class="hljs-comment">// long类型占用的bit和byte数量:</span>
 <span class="hljs-keyword">int</span> sizeOfLong = Long.SIZE; <span class="hljs-comment">// 64 (bits)</span>
 <span class="hljs-keyword">int</span> bytesOfLong = Long.BYTES; <span class="hljs-comment">// 8 (bytes)</span></code></pre>
-
 <p>最后，所有的整数和浮点数的包装类型都继承自<code>Number</code>，因此，可以非常方便地直接通过包装类型获取各种基本类型：</p>
 <pre><code class="hljs java"><span class="hljs-comment">// 向上转型为Number:</span>
 Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">999</span>);
@@ -584,9 +543,7 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
 <span class="hljs-keyword">long</span> ln = num.longValue();
 <span class="hljs-keyword">float</span> f = num.floatValue();
 <span class="hljs-keyword">double</span> d = num.doubleValue();</code></pre>
-
-<p>##处理无符号整型</p>
-<p>在Java中，并没有无符号整型（Unsigned）的基本数据类型。<code>byte</code>、<code>short</code>、<code>int</code>和<code>long</code>都是带符号整型，最高位是符号位。而C语言则提供了CPU支持的全部数据类型，包括无符号整型。无符号整型和有符号整型的转换在Java中就需要借助包装类型的静态方法完成。</p>
+<h2 id="处理无符号整型"><a href="#处理无符号整型" class="headerlink" title="处理无符号整型"></a>处理无符号整型</h2><p>在Java中，并没有无符号整型（Unsigned）的基本数据类型。<code>byte</code>、<code>short</code>、<code>int</code>和<code>long</code>都是带符号整型，最高位是符号位。而C语言则提供了CPU支持的全部数据类型，包括无符号整型。无符号整型和有符号整型的转换在Java中就需要借助包装类型的静态方法完成。</p>
 <p>例如，byte是有符号整型，范围是$-128～+127$，但如果把<code>byte</code>看作无符号整型，它的范围就是<code>0</code>~<code>255</code>。我们把一个负的<code>byte</code>按无符号整型转换为<code>int</code>：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -596,7 +553,6 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
         System.out.println(Byte.toUnsignedInt(y)); <span class="hljs-comment">// 127</span>
     &#125;
 &#125;</code></pre>
-
 <h1 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h1><p>在Java中，有很多<code>class</code>的定义都符合这样的规范：</p>
 <ul>
 <li>若干<code>private</code>实例字段；</li>
@@ -607,7 +563,6 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
 <span class="hljs-function"><span class="hljs-keyword">public</span> Type <span class="hljs-title">getXyz</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"><span class="hljs-comment">// 写方法:</span></span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setXyz</span><span class="hljs-params">(Type value)</span></span></code></pre>
-
 <p>那么这种<code>class</code>被称为<code>JavaBean</code>。</p>
 <p>上面的字段是<code>xyz</code>，那么读写方法名分别以<code>get</code>和<code>set</code>开头，并且后接大写字母开头的字段名<code>Xyz</code>，因此两个读写方法名分别是<code>getXyz()</code>和<code>setXyz()</code>。</p>
 <p><code>boolean</code>字段比较特殊，它的读方法一般命名为<code>isXyz()</code>。</p>
@@ -628,19 +583,15 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
         <span class="hljs-keyword">return</span> age &lt;= <span class="hljs-number">6</span>;
     &#125;
 &#125;</code></pre>
-
 <p>可以看出，<code>getter</code>和<code>setter</code>也是一种数据封装的方法。</p>
-<p>##JavaBean的作用</p>
-<p>JavaBean主要用来传递数据，即把一组数据组合成一个JavaBean便于传输。此外，JavaBean可以方便地被IDE工具分析，生成读写属性的代码，主要用在图形界面的可视化设计中。</p>
+<h2 id="JavaBean的作用"><a href="#JavaBean的作用" class="headerlink" title="JavaBean的作用"></a>JavaBean的作用</h2><p>JavaBean主要用来传递数据，即把一组数据组合成一个JavaBean便于传输。此外，JavaBean可以方便地被IDE工具分析，生成读写属性的代码，主要用在图形界面的可视化设计中。</p>
 <p>通过IDE，可以快速生成<code>getter</code>和<code>setter</code>。例如，在Eclipse中，先输入以下代码：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;
     <span class="hljs-keyword">private</span> String name;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;
 &#125;</code></pre>
-
 <p>然后，点击右键，在弹出的菜单中选择“Source”，“Generate Getters and Setters”，在弹出的对话框中选中需要生成<code>getter</code>和<code>setter</code>方法的字段，点击确定即可由IDE自动完成所有方法代码。</p>
-<p>##枚举JavaBean属性</p>
-<p>要枚举一个JavaBean的所有属性，可以直接使用Java核心库提供的<code>Introspector</code>：</p>
+<h2 id="枚举JavaBean属性"><a href="#枚举JavaBean属性" class="headerlink" title="枚举JavaBean属性"></a>枚举JavaBean属性</h2><p>要枚举一个JavaBean的所有属性，可以直接使用Java核心库提供的<code>Introspector</code>：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
         BeanInfo info = Introspector.getBeanInfo(Person<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
@@ -672,7 +623,6 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
         <span class="hljs-keyword">this</span>.age = age;
     &#125;
 &#125;</code></pre>
-
 <p>输出：</p>
 <pre><code class="hljs reasonml">age 
   public <span class="hljs-built_in">int</span> <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>get<span class="hljs-constructor">Age()</span> 
@@ -683,9 +633,7 @@ Number num = <span class="hljs-keyword">new</span> Integer(<span class="hljs-num
 name 
   public java.lang.String <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>get<span class="hljs-constructor">Name()</span> 
   public void <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>set<span class="hljs-constructor">Name(<span class="hljs-params">java</span>.<span class="hljs-params">lang</span>.String)</span></code></pre>
-
-<h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><p>##enum</p>
-<p>为了让编译器能自动检查某个值在枚举的集合内，并且，不同用途的枚举需要不同的类型来标记，不能混用，我们可以使用<code>enum</code>来定义枚举类：</p>
+<h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><h2 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h2><p>为了让编译器能自动检查某个值在枚举的集合内，并且，不同用途的枚举需要不同的类型来标记，不能混用，我们可以使用<code>enum</code>来定义枚举类：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Weekday day = Weekday.SUN;
@@ -700,13 +648,10 @@ name
 <span class="hljs-keyword">enum</span> Weekday &#123;
     SUN, MON, TUE, WED, THU, FRI, SAT;
 &#125;</code></pre>
-
 <p>注意到定义枚举类是通过关键字<code>enum</code>实现的，我们只需依次列出枚举的常量名。</p>
-<p>##enum的比较</p>
-<p>使用<code>enum</code>定义的枚举类是一种引用类型。前面我们讲到，引用类型比较，要使用<code>equals()</code>方法，如果使用<code>==</code>比较，它比较的是两个引用类型的变量是否是同一个对象。因此，引用类型比较，要始终使用<code>equals()</code>方法，但<code>enum</code>类型可以例外。</p>
+<h2 id="enum的比较"><a href="#enum的比较" class="headerlink" title="enum的比较"></a>enum的比较</h2><p>使用<code>enum</code>定义的枚举类是一种引用类型。前面我们讲到，引用类型比较，要使用<code>equals()</code>方法，如果使用<code>==</code>比较，它比较的是两个引用类型的变量是否是同一个对象。因此，引用类型比较，要始终使用<code>equals()</code>方法，但<code>enum</code>类型可以例外。</p>
 <p>这是因为<code>enum</code>类型的每个常量在JVM中只有一个唯一实例，所以可以直接用<code>==</code>比较。</p>
-<p>##enum类型</p>
-<p>通过<code>enum</code>定义的枚举类，和其他的<code>class</code>有什么区别？</p>
+<h2 id="enum类型"><a href="#enum类型" class="headerlink" title="enum类型"></a>enum类型</h2><p>通过<code>enum</code>定义的枚举类，和其他的<code>class</code>有什么区别？</p>
 <p>答案是没有任何区别。<code>enum</code>定义的类型就是<code>class</code>，只不过它有以下几个特点：</p>
 <ul>
 <li>定义的<code>enum</code>类型总是继承自<code>java.lang.Enum</code>，且无法被继承；</li>
@@ -718,7 +663,6 @@ name
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Color &#123;
     RED, GREEN, BLUE;
 &#125;</code></pre>
-
 <p>编译器编译出的<code>class</code>大概就像这样：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Enum</span> </span>&#123; <span class="hljs-comment">// 继承自Enum，标记为final class</span>
     <span class="hljs-comment">// 每个实例均为全局唯一:</span>
@@ -728,20 +672,16 @@ name
     <span class="hljs-comment">// private构造方法，确保外部无法调用new操作符:</span>
     <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Color</span><span class="hljs-params">()</span> </span>&#123;&#125;
 &#125;</code></pre>
-
 <p>因为<code>enum</code>是一个<code>class</code>，每个枚举的值都是<code>class</code>实例，因此，这些实例有一些方法：</p>
 <p>name()</p>
 <p>返回常量名，例如：</p>
 <pre><code class="hljs java">String s = Weekday.SUN.name(); <span class="hljs-comment">// "SUN"</span></code></pre>
-
 <p>ordinal()</p>
 <p>返回定义的常量的顺序，从0开始计数，例如：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">int</span> n = Weekday.MON.ordinal(); <span class="hljs-comment">// 1</span></code></pre>
-
 <p>有些童鞋会想，<code>Weekday</code>的枚举常量如果要和<code>int</code>转换，使用<code>ordinal()</code>不是非常方便？比如这样写：</p>
 <pre><code class="hljs java">String task = Weekday.MON.ordinal() + <span class="hljs-string">"/ppt"</span>;
 saveToFile(task);</code></pre>
-
 <p>但是，如果不小心修改了枚举的顺序，编译器是无法检查出这种逻辑错误的。要编写健壮的代码，就不要依靠<code>ordinal()</code>的返回值。因为<code>enum</code>本身是<code>class</code>，所以我们可以定义<code>private</code>的构造方法，并且，给每个枚举常量添加字段：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -763,7 +703,6 @@ saveToFile(task);</code></pre>
         <span class="hljs-keyword">this</span>.dayValue = dayValue;
     &#125;
 &#125;</code></pre>
-
 <blockquote>
 <p> 注意：枚举类的字段也可以是非final类型，即可以在运行期修改，但是不推荐这样做！</p>
 </blockquote>
@@ -771,8 +710,7 @@ saveToFile(task);</code></pre>
 <blockquote>
 <p> 注意：判断枚举常量的名字，要始终使用name()方法，绝不能调用toString()！</p>
 </blockquote>
-<p>##switch</p>
-<p>最后，枚举类可以应用在<code>switch</code>语句中。因为枚举类天生具有类型信息和有限个枚举常量，所以比<code>int</code>、<code>String</code>类型更适合用在<code>switch</code>语句中：</p>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><p>最后，枚举类可以应用在<code>switch</code>语句中。因为枚举类天生具有类型信息和有限个枚举常量，所以比<code>int</code>、<code>String</code>类型更适合用在<code>switch</code>语句中：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Weekday day = Weekday.SUN;
@@ -797,10 +735,8 @@ saveToFile(task);</code></pre>
 <span class="hljs-keyword">enum</span> Weekday &#123;
     MON, TUE, WED, THU, FRI, SAT, SUN;
 &#125;</code></pre>
-
 <p>加上<code>default</code>语句，可以在漏写某个枚举常量时自动报错，从而及时发现错误。</p>
-<h1 id="记录类"><a href="#记录类" class="headerlink" title="记录类"></a>记录类</h1><p>##不变类</p>
-<p>使用<code>String</code>、<code>Integer</code>等类型的时候，这些类型都是不变类，一个不变类具有以下特点：</p>
+<h1 id="记录类"><a href="#记录类" class="headerlink" title="记录类"></a>记录类</h1><h2 id="不变类-1"><a href="#不变类-1" class="headerlink" title="不变类"></a>不变类</h2><p>使用<code>String</code>、<code>Integer</code>等类型的时候，这些类型都是不变类，一个不变类具有以下特点：</p>
 <ol>
 <li>定义class时使用<code>final</code>，无法派生子类；</li>
 <li>每个字段使用<code>final</code>，保证创建实例后无法修改任何字段。</li>
@@ -823,10 +759,8 @@ saveToFile(task);</code></pre>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.y;
     &#125;
 &#125;</code></pre>
-
 <p>为了保证不变类的比较，还需要正确覆写<code>equals()</code>和<code>hashCode()</code>方法，这样才能在集合类中正常使用。</p>
-<p>##record</p>
-<p>从Java 14开始，引入了新的<code>Record</code>类。我们定义<code>Record</code>类时，使用关键字<code>record</code>。把上述<code>Point</code>类改写为<code>Record</code>类，代码如下：</p>
+<h2 id="record"><a href="#record" class="headerlink" title="record"></a>record</h2><p>从Java 14开始，引入了新的<code>Record</code>类。我们定义<code>Record</code>类时，使用关键字<code>record</code>。把上述<code>Point</code>类改写为<code>Record</code>类，代码如下：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Point p = <span class="hljs-keyword">new</span> Point(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>);
@@ -837,7 +771,6 @@ saveToFile(task);</code></pre>
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> record <span class="hljs-title">Point</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;&#125;</code></pre>
-
 <p>把上述定义改写为class，相当于以下代码：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> x;
@@ -867,12 +800,10 @@ saveToFile(task);</code></pre>
         ...
     &#125;
 &#125;</code></pre>
-
 <p>除了用<code>final</code>修饰class以及每个字段外，编译器还自动为我们创建了构造方法，和字段名同名的方法，以及覆写<code>toString()</code>、<code>equals()</code>和<code>hashCode()</code>方法。</p>
 <p>换句话说，使用<code>record</code>关键字，可以一行写出一个不变类。</p>
 <p>和<code>enum</code>类似，我们自己不能直接从<code>Record</code>派生，只能通过<code>record</code>关键字由编译器实现继承。</p>
-<p>##构造方法</p>
-<p>假设<code>Point</code>类的<code>x</code>、<code>y</code>不允许负数，我们就得给<code>Point</code>的构造方法加上检查逻辑：</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>假设<code>Point</code>类的<code>x</code>、<code>y</code>不允许负数，我们就得给<code>Point</code>的构造方法加上检查逻辑：</p>
 <pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> record <span class="hljs-title">Point</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
     <span class="hljs-keyword">public</span> Point &#123;
         <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || y &lt; <span class="hljs-number">0</span>) &#123;
@@ -880,7 +811,6 @@ saveToFile(task);</code></pre>
         &#125;
     &#125;
 &#125;</code></pre>
-
 <p>注意到方法<code>public Point {...}</code>被称为Compact Constructor，它的目的是让我们编写检查逻辑，编译器最终生成的构造方法如下：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
@@ -894,7 +824,6 @@ saveToFile(task);</code></pre>
     &#125;
     ...
 &#125;</code></pre>
-
 <p>作为<code>record</code>的<code>Point</code>仍然可以添加静态方法。一种常用的静态方法是<code>of()</code>方法，用来创建<code>Point</code>：</p>
 <pre><code class="hljs javascript">public record Point(int x, int y) &#123;
     public <span class="hljs-keyword">static</span> Point <span class="hljs-keyword">of</span>() &#123;
@@ -904,27 +833,22 @@ saveToFile(task);</code></pre>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Point(x, y);
     &#125;
 &#125;</code></pre>
-
 <p>这样我们可以写出更简洁的代码：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">var</span> z = Point.of();
 <span class="hljs-keyword">var</span> p = Point.of(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>);</code></pre>
-
 <h1 id="BigInteger"><a href="#BigInteger" class="headerlink" title="BigInteger"></a>BigInteger</h1><p>在Java中，由CPU原生提供的整型最大范围是64位<code>long</code>型整数。使用<code>long</code>型整数可以直接通过CPU指令进行计算，速度非常快。</p>
 <p>如果我们使用的整数范围超过了<code>long</code>型怎么办？这个时候，就只能用软件来模拟一个大整数。<code>java.math.BigInteger</code>就是用来表示任意大小的整数。<code>BigInteger</code>内部用一个<code>int[]</code>数组来模拟一个非常大的整数：</p>
 <pre><code class="hljs java">BigInteger bi = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"1234567890"</span>);
 System.out.println(bi.pow(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 2867971860299718107233761438093672048294900000</span></code></pre>
-
 <p>对<code>BigInteger</code>做运算的时候，只能使用实例方法，例如，加法运算：</p>
 <pre><code class="hljs java">BigInteger i1 = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"1234567890"</span>);
 BigInteger i2 = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"12345678901234567890"</span>);
 BigInteger sum = i1.add(i2); <span class="hljs-comment">// 12345678902469135780</span></code></pre>
-
 <p>和<code>long</code>型整数运算比，<code>BigInteger</code>不会有范围限制，但缺点是速度比较慢。</p>
 <p>也可以把<code>BigInteger</code>转换成<code>long</code>型：</p>
 <pre><code class="hljs java">BigInteger i = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"123456789000"</span>);
 System.out.println(i.longValue()); <span class="hljs-comment">// 123456789000</span>
 System.out.println(i.multiply(i).longValueExact()); <span class="hljs-comment">// java.lang.ArithmeticException: BigInteger out of long range</span></code></pre>
-
 <p>使用<code>longValueExact()</code>方法时，如果超出了<code>long</code>型的范围，会抛出<code>ArithmeticException</code>。</p>
 <p><code>BigInteger</code>和<code>Integer</code>、<code>Long</code>一样，也是不可变类，并且也继承自<code>Number</code>类。因为<code>Number</code>定义了转换为基本类型的几个方法：</p>
 <ul>
@@ -939,7 +863,6 @@ System.out.println(i.multiply(i).longValueExact()); <span class="hljs-comment">/
 <h1 id="BigDecimal"><a href="#BigDecimal" class="headerlink" title="BigDecimal"></a>BigDecimal</h1><p>和<code>BigInteger</code>类似，<code>BigDecimal</code>可以表示一个任意大小且精度完全准确的浮点数。</p>
 <pre><code class="hljs java">BigDecimal bd = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"123.4567"</span>);
 System.out.println(bd.multiply(bd)); <span class="hljs-comment">// 15241.55677489</span></code></pre>
-
 <p><code>BigDecimal</code>用<code>scale()</code>表示小数位数。</p>
 <p>通过<code>BigDecimal</code>的<code>stripTrailingZeros()</code>方法，可以将一个<code>BigDecimal</code>格式化为一个相等的，但去掉了末尾0的<code>BigDecimal</code>：</p>
 <pre><code class="hljs java">BigDecimal d1 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"123.4500"</span>);
@@ -951,7 +874,6 @@ BigDecimal d3 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hl
 BigDecimal d4 = d3.stripTrailingZeros();
 System.out.println(d3.scale()); <span class="hljs-comment">// 0</span>
 System.out.println(d4.scale()); <span class="hljs-comment">// -2</span></code></pre>
-
 <p>如果一个<code>BigDecimal</code>的<code>scale()</code>返回负数，例如，<code>-2</code>，表示这个数是个整数，并且末尾有2个0。</p>
 <p>可以对一个<code>BigDecimal</code>设置它的<code>scale</code>，如果精度比原始值低，那么按照指定的方法进行四舍五入或者直接截断：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.math.BigDecimal;
@@ -966,13 +888,11 @@ System.out.println(d4.scale()); <span class="hljs-comment">// -2</span></code></
         System.out.println(d3);
     &#125;
 &#125;</code></pre>
-
 <p>对<code>BigDecimal</code>做加、减、乘时，精度不会丢失，但是做除法时，存在无法除尽的情况，这时，就必须指定精度以及如何进行截断：</p>
 <pre><code class="hljs java">BigDecimal d1 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"123.456"</span>);
 BigDecimal d2 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"23.456789"</span>);
 BigDecimal d3 = d1.divide(d2, <span class="hljs-number">10</span>, RoundingMode.HALF_UP); <span class="hljs-comment">// 保留10位小数并四舍五入</span>
 BigDecimal d4 = d1.divide(d2); <span class="hljs-comment">// 报错：ArithmeticException，因为除不尽</span></code></pre>
-
 <p>还可以对<code>BigDecimal</code>做除法的同时求余数：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.math.BigDecimal;
 
@@ -985,64 +905,49 @@ BigDecimal d4 = d1.divide(d2); <span class="hljs-comment">// 报错：Arithmetic
         System.out.println(dr[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 0.105</span>
     &#125;
 &#125;</code></pre>
-
 <p>调用<code>divideAndRemainder()</code>方法时，返回的数组包含两个<code>BigDecimal</code>，分别是商和余数，其中商总是整数，余数不会大于除数。</p>
-<p>##比较BigDecimal</p>
-<p>在比较两个<code>BigDecimal</code>的值是否相等时，要特别注意，使用<code>equals()</code>方法不但要求两个<code>BigDecimal</code>的值相等，还要求它们的<code>scale()</code>相等：</p>
+<h2 id="比较BigDecimal"><a href="#比较BigDecimal" class="headerlink" title="比较BigDecimal"></a>比较BigDecimal</h2><p>在比较两个<code>BigDecimal</code>的值是否相等时，要特别注意，使用<code>equals()</code>方法不但要求两个<code>BigDecimal</code>的值相等，还要求它们的<code>scale()</code>相等：</p>
 <pre><code class="hljs java">BigDecimal d1 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"123.456"</span>);
 BigDecimal d2 = <span class="hljs-keyword">new</span> BigDecimal(<span class="hljs-string">"123.45600"</span>);
 System.out.println(d1.equals(d2)); <span class="hljs-comment">// false,因为scale不同</span>
 System.out.println(d1.equals(d2.stripTrailingZeros())); <span class="hljs-comment">// true,因为d2去除尾部0后scale变为2</span>
 System.out.println(d1.compareTo(d2)); <span class="hljs-comment">// 0</span></code></pre>
-
 <p>必须使用<code>compareTo()</code>方法来比较，它根据两个值的大小分别返回负数、正数和<code>0</code>，分别表示小于、大于和等于。</p>
 <p>如果查看<code>BigDecimal</code>的源码，可以发现，实际上一个<code>BigDecimal</code>是通过一个<code>BigInteger</code>和一个<code>scale</code>来表示的，即<code>BigInteger</code>表示一个完整的整数，而<code>scale</code>表示小数位数：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BigDecimal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Number</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">BigDecimal</span>&gt; </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> BigInteger intVal;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> scale;
 &#125;</code></pre>
-
 <p><code>BigDecimal</code>也是从<code>Number</code>继承的，也是不可变对象。</p>
-<h1 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h1><p>##Math</p>
-<p>顾名思义，<code>Math</code>类就是用来进行数学计算的，它提供了大量的静态方法来便于我们实现数学计算：</p>
+<h1 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h1><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>顾名思义，<code>Math</code>类就是用来进行数学计算的，它提供了大量的静态方法来便于我们实现数学计算：</p>
 <p>求绝对值：</p>
 <pre><code class="hljs java">Math.abs(-<span class="hljs-number">100</span>); <span class="hljs-comment">// 100</span>
 Math.abs(-<span class="hljs-number">7.8</span>); <span class="hljs-comment">// 7.8</span></code></pre>
-
 <p>取最大或最小值：</p>
 <pre><code class="hljs java">Math.max(<span class="hljs-number">100</span>, <span class="hljs-number">99</span>); <span class="hljs-comment">// 100</span>
 Math.min(<span class="hljs-number">1.2</span>, <span class="hljs-number">2.3</span>); <span class="hljs-comment">// 1.2</span></code></pre>
-
 <p>计算xy次方：</p>
 <pre><code class="hljs java">Math.pow(<span class="hljs-number">2</span>, <span class="hljs-number">10</span>); <span class="hljs-comment">// 2的10次方=1024</span></code></pre>
-
 <p>计算√x：</p>
 <pre><code class="hljs java">Math.sqrt(<span class="hljs-number">2</span>); <span class="hljs-comment">// 1.414...</span></code></pre>
-
 <p>计算$e^x$次方：</p>
 <pre><code class="hljs java">Math.exp(<span class="hljs-number">2</span>); <span class="hljs-comment">// 7.389...</span></code></pre>
-
 <p>计算以e为底的对数：</p>
 <pre><code class="hljs java">Math.log(<span class="hljs-number">4</span>); <span class="hljs-comment">// 1.386...</span></code></pre>
-
 <p>计算以10为底的对数：</p>
 <pre><code class="hljs java">Math.log10(<span class="hljs-number">100</span>); <span class="hljs-comment">// 2</span></code></pre>
-
 <p>三角函数：</p>
 <pre><code class="hljs java">Math.sin(<span class="hljs-number">3.14</span>); <span class="hljs-comment">// 0.00159...</span>
 Math.cos(<span class="hljs-number">3.14</span>); <span class="hljs-comment">// -0.9999...</span>
 Math.tan(<span class="hljs-number">3.14</span>); <span class="hljs-comment">// -0.0015...</span>
 Math.asin(<span class="hljs-number">1.0</span>); <span class="hljs-comment">// 1.57079...</span>
 Math.acos(<span class="hljs-number">1.0</span>); <span class="hljs-comment">// 0.0</span></code></pre>
-
 <p>Math还提供了几个数学常量：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">double</span> pi = Math.PI; <span class="hljs-comment">// 3.14159...</span>
 <span class="hljs-keyword">double</span> e = Math.E; <span class="hljs-comment">// 2.7182818...</span>
 Math.sin(Math.PI / <span class="hljs-number">6</span>); <span class="hljs-comment">// sin(π/6) = 0.5</span></code></pre>
-
 <p>生成一个随机数x，x的范围是<code>[0,1)</code>：</p>
 <pre><code class="hljs java">Math.random(); <span class="hljs-comment">// 0.53907... 每次都不一样</span></code></pre>
-
 <p>如果我们要生成一个区间在<code>[MIN, MAX)</code>的随机数，可以借助<code>Math.random()</code>实现，计算如下：</p>
 <pre><code class="hljs java"><span class="hljs-comment">// 区间在[MIN, MAX)的随机数</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -1056,10 +961,8 @@ Math.sin(Math.PI / <span class="hljs-number">6</span>); <span class="hljs-commen
         System.out.println(n);
     &#125;
 &#125;</code></pre>
-
 <p>Java标准库还提供了一个<code>StrictMath</code>，它提供了和<code>Math</code>几乎一模一样的方法。这两个类的区别在于，由于浮点数计算存在误差，不同的平台（例如x86和ARM）计算的结果可能不一致（指误差不同），因此，<code>StrictMath</code>保证所有平台计算结果都是完全相同的，而<code>Math</code>会尽量针对平台优化计算速度，所以，绝大多数情况下，使用<code>Math</code>就足够了。</p>
-<p>##Random</p>
-<p><code>Random</code>用来创建伪随机数。所谓伪随机数，是指只要给定一个初始的种子，产生的随机数序列是完全一样的。</p>
+<h2 id="Random"><a href="#Random" class="headerlink" title="Random"></a>Random</h2><p><code>Random</code>用来创建伪随机数。所谓伪随机数，是指只要给定一个初始的种子，产生的随机数序列是完全一样的。</p>
 <p>要生成一个随机数，可以使用<code>nextInt()</code>、<code>nextLong()</code>、<code>nextFloat()</code>、<code>nextDouble()</code>：</p>
 <pre><code class="hljs java">Random r = <span class="hljs-keyword">new</span> Random();
 r.nextInt(); <span class="hljs-comment">// 2071575453,每次都不一样</span>
@@ -1067,7 +970,6 @@ r.nextInt(<span class="hljs-number">10</span>); <span class="hljs-comment">// 5,
 r.nextLong(); <span class="hljs-comment">// 8811649292570369305,每次都不一样</span>
 r.nextFloat(); <span class="hljs-comment">// 0.54335...生成一个[0,1)之间的float</span>
 r.nextDouble(); <span class="hljs-comment">// 0.3716...生成一个[0,1)之间的double</span></code></pre>
-
 <p>有童鞋问，每次运行程序，生成的随机数都是不同的，没看出<em>伪随机数</em>的特性来。</p>
 <p>这是因为我们创建<code>Random</code>实例时，如果不给定种子，就使用系统当前时间戳作为种子，因此每次运行时，种子不同，得到的伪随机数序列就不同。</p>
 <p>如果我们在创建<code>Random</code>实例时指定一个种子，就会得到完全确定的随机数序列：</p>
@@ -1082,13 +984,10 @@ r.nextDouble(); <span class="hljs-comment">// 0.3716...生成一个[0,1)之间�
         <span class="hljs-comment">// 51, 80, 41, 28, 55...</span>
     &#125;
 &#125;</code></pre>
-
 <p>前面我们使用的<code>Math.random()</code>实际上内部调用了<code>Random</code>类，所以它也是伪随机数，只是我们无法指定种子。</p>
-<p>##SecureRandom</p>
-<p>有伪随机数，就有真随机数。实际上真正的真随机数只能通过量子力学原理来获取，而我们想要的是一个不可预测的安全的随机数，<code>SecureRandom</code>就是用来创建安全的随机数的：</p>
+<h2 id="SecureRandom"><a href="#SecureRandom" class="headerlink" title="SecureRandom"></a>SecureRandom</h2><p>有伪随机数，就有真随机数。实际上真正的真随机数只能通过量子力学原理来获取，而我们想要的是一个不可预测的安全的随机数，<code>SecureRandom</code>就是用来创建安全的随机数的：</p>
 <pre><code class="hljs java">SecureRandom sr = <span class="hljs-keyword">new</span> SecureRandom();
 System.out.println(sr.nextInt(<span class="hljs-number">100</span>));</code></pre>
-
 <p><code>SecureRandom</code>无法指定种子，它使用RNG（random number generator）算法。JDK的<code>SecureRandom</code>实际上有多种不同的底层实现，有的使用安全随机种子加上伪随机数算法来产生安全的随机数，有的使用真正的随机数生成器。实际使用的时候，可以优先获取高强度的安全随机数生成器，如果没有提供，再使用普通等级的安全随机数生成器：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
 <span class="hljs-keyword">import</span> java.security.SecureRandom;
@@ -1107,7 +1006,6 @@ System.out.println(sr.nextInt(<span class="hljs-number">100</span>));</code></pr
         System.out.println(Arrays.toString(buffer));
     &#125;
 &#125;</code></pre>
-
 <p><code>SecureRandom</code>的安全性是通过操作系统提供的安全的随机种子来生成随机数。这个种子是通过CPU的热噪声、读写磁盘的字节、网络流量等各种随机事件产生的“熵”。</p>
 <p>在密码学中，安全的随机数非常重要。如果使用不安全的伪随机数，所有加密体系都将被攻破。因此，时刻牢记必须使用<code>SecureRandom</code>来产生安全的随机数。</p>
 <blockquote>
@@ -1358,6 +1256,30 @@ System.out.println(sr.nextInt(<span class="hljs-number">100</span>));</code></pr
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

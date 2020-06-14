@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>ZOJ4028 差分约束 - Hexo</title>
+  <title>ZOJ4028 差分约束 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      512 字
+      74 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -208,12 +216,12 @@
 <p>有一个长度为n的隐藏的数列a，再给出一个数列f，f[i]是到i（包括自己）的最长递增数列的长度，给出每个数的范围，求出这个隐藏的数列a。</p>
 <p><strong>思路：</strong></p>
 <p>差分约束。</p>
-<p>当$$f_i=f_j+1(j&lt;i)$$时，有$$a_i&gt;a_j$$，即$$a_j-a_i&lt;=-1$$，所以有i-&gt;j的权值为-1的边。</p>
-<p>当$$f_i=f_j(j&lt;i)$$时，有$$a_i&lt;=a_j$$，即$$a_i-a_j&lt;=0$$，所以有j-&gt;i的权值为0的边。</p>
+<p>当<script type="math/tex">f_i=f_j+1(j<i)</script>时，有<script type="math/tex">a_i>a_j</script>，即<script type="math/tex">a_j-a_i<=-1</script>，所以有i-&gt;j的权值为-1的边。</p>
+<p>当<script type="math/tex">f_i=f_j(j<i)</script>时，有<script type="math/tex">a_i<=a_j</script>，即<script type="math/tex">a_i-a_j<=0</script>，所以有j-&gt;i的权值为0的边。</p>
 <p>那么范围如何处理呢？</p>
 <p>假定有一个超级源点，对于每个范围[l,r]，</p>
-<p>有$$a_i-a_0&gt;=l$$，即$$a_0-a_i&lt;=-l$$，所以有i-&gt;0的权值为-l的边，</p>
-<p>有$$a_i-a_0&lt;=r$$，所以有0-&gt;i的权值为r的边。</p>
+<p>有<script type="math/tex">a_i-a_0>=l</script>，即<script type="math/tex">a_0-a_i<=-l</script>，所以有i-&gt;0的权值为-l的边，</p>
+<p>有<script type="math/tex">a_i-a_0<=r</script>，所以有0-&gt;i的权值为r的边。</p>
 <p>之后跑一下SPFA即可。</p>
 <p>这里注意要用long long。</p>
 <p><strong>代码：</strong></p>
@@ -304,9 +312,6 @@ ll dis[<span class="hljs-number">500010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 
             </article>
             <hr>
@@ -552,6 +557,30 @@ ll dis[<span class="hljs-number">500010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

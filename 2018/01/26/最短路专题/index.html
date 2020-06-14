@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>最短路专题 - Hexo</title>
+  <title>最短路专题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -235,12 +243,10 @@
         &#125;
     &#125;
 &#125;</code></pre>
-
 <h5 id="floyd模板"><a href="#floyd模板" class="headerlink" title="floyd模板"></a><strong>floyd模板</strong></h5><pre><code class="hljs matlab"><span class="hljs-keyword">for</span>(k=<span class="hljs-number">1</span>;k&lt;=n;k++)    
 <span class="hljs-keyword">for</span>(<span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>;<span class="hljs-built_in">i</span>&lt;=n;<span class="hljs-built_in">i</span>++)    
 <span class="hljs-keyword">for</span>(<span class="hljs-built_in">j</span>=<span class="hljs-number">1</span>;<span class="hljs-built_in">j</span>&lt;=n;<span class="hljs-built_in">j</span>++)    
 dis[<span class="hljs-built_in">i</span>][<span class="hljs-built_in">j</span>]=dis[<span class="hljs-built_in">i</span>][<span class="hljs-built_in">j</span>]||(dis[<span class="hljs-built_in">i</span>][k]&amp;&amp;dis[k][<span class="hljs-built_in">j</span>]);</code></pre>
-
 <h5 id="spfa模板"><a href="#spfa模板" class="headerlink" title="spfa模板"></a><strong>spfa模板</strong></h5><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> to;
@@ -281,12 +287,11 @@ dis[<span class="hljs-built_in">i</span>][<span class="hljs-built_in">j</span>]=
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125;</code></pre>
-
 <h5 id="POJ-2253"><a href="#POJ-2253" class="headerlink" title="POJ 2253"></a><strong>POJ 2253</strong></h5><p>题意：</p>
 <p>​      有两只青蛙和若干块石头，现在已知这些东西的坐标，两只青蛙A坐标和青蛙B坐标是第一个和第二个坐标，现在A青蛙想要到B青蛙那里去，并且A青蛙可以借助任意石头的跳跃，而从A到B有若干通路，问从A到B的所有通路上的最大边。</p>
 <p>解题思路：</p>
 <p>​      求所有通路中间最长的一段路的最小值，让dis[i]存从1到i的最长的一段路，然后max(dis[id],e.cost)&lt;dis[e.to]更新即可。</p>
-<h5 id="POJ-1797"><a href="#POJ-1797" class="headerlink" title="*POJ 1797 *"></a>*<em>POJ 1797 *</em></h5><p>题意：</p>
+<h5 id="POJ-1797"><a href="#POJ-1797" class="headerlink" title="POJ 1797 "></a><strong>POJ 1797 </strong></h5><p>题意：</p>
 <p>​       找一条从 1 到 n 的道路，使得这条道路的每段距离中的最小值最大。</p>
 <p>解题思路：</p>
 <p>​       求所有通路中间最短的一段路的最大值，让dis[i]存从1到i的最短的一段路，然后min(dis[id],e.cost)&gt;dis[e.to]更新即可。</p>
@@ -308,7 +313,6 @@ dis[<span class="hljs-built_in">i</span>][<span class="hljs-built_in">j</span>]=
 <p>​      差分约束，因为要使dis[B]&lt;dis[A]+e.cost，所以修改一下松弛条件dis[id]+e.cost&lt;dis[e.to]即可（因为刚开始初始化的dis[e.to]是INF，所以松弛要使它变小）。</p>
 <p>给出一些形如x-y&lt;=b不等式的约束，问你是否满足有解的问题，这类问题可以转换成图论里的最短路径问题。</p>
 <pre><code class="hljs markdown">在单源最短路径的算法中有一步是“若d[<span class="hljs-string">v</span>] &gt; d[<span class="hljs-string">u</span>]+cost[<span class="hljs-string">u</span>][<span class="hljs-symbol">v</span>]，则d[<span class="hljs-string">v</span>]= d[<span class="hljs-string">u</span>] + cost[<span class="hljs-string">u</span>][<span class="hljs-symbol">v</span>]，这样就满足d[<span class="hljs-string">v</span>]-d[<span class="hljs-string">u</span>]<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">=cost[u][v]”。</span></span></span></code></pre>
-
 <p>如此，如果要求最大值，把每个不等式变为标准x-y&lt;=k的形式，然后建立一条从y到x的权值为k的边，求出最短路径即可；</p>
 <p>如果要求最小值，把每个不等式变为标准x-y&gt;=k的形式，然后建立一条从y到x的权值为k的边，求出最长路径即可；</p>
 <p>注意：x-y&lt;k,x-y&lt;=k-1，大于同理；一般题目中除了明面上的约束，还会有一些隐藏的约束；由于差分约束系统常出现负权，故一般用SPFA；如果存在负环，则此约束系统不存在。</p>
@@ -329,10 +333,8 @@ head[]数组一般初始化为<span class="hljs-number">-1</span>,对于加边�
     eg[top].next=head[a];
     head[a]=top++;
 &#125;</code></pre>
-
 <p>遍历时：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)</code></pre>
-
 <h5 id="POJ-1062"><a href="#POJ-1062" class="headerlink" title="POJ 1062"></a><strong>POJ 1062</strong></h5><p>题意：</p>
 <p>​       有N个物品，每个物品都有自己的价格，但同时某些物品也可以由其他的（可能不止一个）替代品，这些替代品的价格比较“优惠”，问怎么样选取可以让你的花费最少来购买到物品1。</p>
 <p>解题思路：</p>
@@ -348,16 +350,15 @@ head[]数组一般初始化为<span class="hljs-number">-1</span>,对于加边�
         <span class="hljs-keyword">if</span>(!cir[v[x][i].to])
             dfs(v[x][i].to);
 &#125;</code></pre>
-
 <h5 id="HDU-4725"><a href="#HDU-4725" class="headerlink" title="HDU 4725"></a><strong>HDU 4725</strong></h5><p>题意：</p>
 <p>​       每个点放在一层，然后给了n个点，相邻的两层距离是固定的t，有额外m条边，然后求1到n的最短路径，如果没有则输出-1。</p>
 <p>解题思路：</p>
 <p>​       难点在于建图。要将层抽象出来成为n个点（对应编号依次为n+1~n+n），然后层与层建边，点与点建边，层与在该层上的点建边（边长为0）（这时只要考虑该层进入这个点），点与相邻层建边（边长为c）（这时只要考虑从点出去），spfa+vector会TLE，用dijkstra+vector，或者spfa+链式前向星。</p>
-<h5 id="POJ-3169"><a href="#POJ-3169" class="headerlink" title="*POJ 3169 *"></a>*<em>POJ 3169 *</em></h5><p>题意：</p>
+<h5 id="POJ-3169"><a href="#POJ-3169" class="headerlink" title="POJ 3169 "></a><strong>POJ 3169 </strong></h5><p>题意：</p>
 <p>​       一些母牛按序号排成一条直线。有两种要求，A和B距离不得超过X，还有一种是C和D距离不得少于Y，问可能的最大距离。如果没有输出-1，如果可以随便排输出-2，否则输出最大的距离。</p>
 <p>解题思路：</p>
 <p>​       差分约束。根据题目可得三个要求：s[i+1]-s[i]&gt;=0;s[B]-s[A]&lt;=D(ML);s[B]-s[A]&gt;=D(MD)。看s[B]-s[A]&lt;=D这个条件，因为最开始dis[i]初始化为INF，所以if(s[A]+D&lt;s[B])s[B]=s[A]+D，是不是觉得这个条件很眼熟？就是最短路松弛的条件呀…所以就是最短路啦…也就是题目要求的最长…建边即可(A,B,D)，这样子一来，也可以把其他条件变一变，也可以变成这个样子来建边，s[A]-s[B]&lt;=-D，建边(B,A,-D)，s[i]-s[i+1]&lt;=0，建边(i+1,i,0)，建好图就跑一下spfa。如果出现负环，则说明无解，因为可以一直松弛下去，如果dis[i]==INF，就相当于1到i不连通，没有约束，则说明可以是任意解。</p>
-<h5 id="POJ-4370"><a href="#POJ-4370" class="headerlink" title="*POJ 4370 *"></a>*<em>POJ 4370 *</em></h5><p>题意：</p>
+<h5 id="POJ-4370"><a href="#POJ-4370" class="headerlink" title="POJ 4370 "></a><strong>POJ 4370 </strong></h5><p>题意：</p>
 <p>​       一个n*n的01矩阵，满足以下条件</p>
 <p>X12+X13+…X1n=1<br>X1n+X2n+…Xn-1n=1<br>for each i (1&lt;i&lt;n), satisfies ∑Xki (1&lt;=k&lt;=n)=∑Xij (1&lt;=j&lt;=n).</p>
 <p>另给出一个矩阵C，求∑Cij*Xij(1&lt;=i,j&lt;=n)的最小值。</p>
@@ -609,6 +610,30 @@ head[]数组一般初始化为<span class="hljs-number">-1</span>,对于加边�
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

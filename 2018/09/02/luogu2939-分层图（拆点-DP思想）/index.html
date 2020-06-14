@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>luogu2939 分层图（拆点/dp思想） - Hexo</title>
+  <title>luogu2939 分层图（拆点/dp思想） - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      785 字
+      48 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有N个结点，由M条双向边连接，每条边有权值。可以把最多k条边的权值改为0。问从1到N的最短路为多少。其中$$1 &lt;= N &lt;= 10000$$，$$1 &lt;= K &lt;= 20$$。</p>
+<p>有N个结点，由M条双向边连接，每条边有权值。可以把最多k条边的权值改为0。问从1到N的最短路为多少。其中<script type="math/tex">1 <= N <= 10000</script>，<script type="math/tex">1 <= K <= 20</script>。</p>
 <p><strong>思路：</strong></p>
 <p>法一：拆点。</p>
 <p>把图分为k层，层与层之间的路权值为0，每次走上一条权值为0的边相当于在层之间走。</p>
@@ -213,9 +221,9 @@
 <p>如图：</p>
 <p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fuv126yvowj30fg0c8t8w.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>法二：DP思想。</p>
-<p>$$dis[i][j]$$：到第i个结点把j条边权值改为0的最短路。</p>
-<p>根据松弛有$$dis[p][j]=min(dis[i][j]+w(i,p))$$，还有一种转移是层与层之间，即权值为0的情况，$$dis[p][j+1]=min(dis[i][j]+0)$$。</p>
-<p>复杂度为$$O(nklog(nk))$$。</p>
+<p><script type="math/tex">dis[i][j]</script>：到第i个结点把j条边权值改为0的最短路。</p>
+<p>根据松弛有<script type="math/tex">dis[p][j]=min(dis[i][j]+w(i,p))</script>，还有一种转移是层与层之间，即权值为0的情况，<script type="math/tex">dis[p][j+1]=min(dis[i][j]+0)</script>。</p>
+<p>复杂度为<script type="math/tex">O(nklog(nk))</script>。</p>
 <p><strong>代码：</strong></p>
 <p>法一：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -297,7 +305,6 @@ ll dis[<span class="hljs-number">500010</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,dis[n]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>法二：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3f</span>
@@ -371,7 +378,6 @@ ll dis[<span class="hljs-number">10010</span>][<span class="hljs-number">25</spa
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,dis[n][k]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -617,6 +623,30 @@ ll dis[<span class="hljs-number">10010</span>][<span class="hljs-number">25</spa
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

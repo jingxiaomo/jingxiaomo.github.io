@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -458,13 +458,13 @@ ll dfs(int pos,/*state变量*/,bool lead/*前导零*/,bool limit/*数位上界�
         
           
         
-        <div>组合数取模就是求$$C_{n}^{m}%p$$的值。
+        <div>组合数取模就是求C_{n}^{m}\%p的值。
 
-$$1\leq m\leq n\leq1000和1\leq p\leq 10^9$$。
+1\leq m\leq n\leq1000和1\leq p\leq 10^9。
 这个问题比较简单，组合数的计算可以靠杨辉三角，那么由于n和m的范围小，直接两层循环即可。
-$$C_{n}^{m}=C_{n-1}^{m}+C_{n-1}^{m-1}$$；
+C_{n}^{m}=C_{n-1}^{m}+C_{n-1}^{m-1}；
 c[0][0]=1;
-for(long long i=1;i&lt;=5003;i+</div>
+for(long long i=1;i&lt;=5003;i++)//j是上面，i是</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -497,9 +497,9 @@ for(long long i=1;i&lt;=5003;i+</div>
         
           
         
-        <div>费马小定理假如p是质数，且gcd(a,p)=1，那么 $$a^{p-1}≡1（mod p）$$，即：假如a是整数，p是质数，且a,p互质(即两者只有一个公约数1)，那么a的(p-1)次方除以p的余数恒等于1。
+        <div>费马小定理假如p是质数，且gcd(a,p)=1，那么 a^{p-1}≡1（mod p），即：假如a是整数，p是质数，且a,p互质(即两者只有一个公约数1)，那么a的(p-1)次方除以p的余数恒等于1。
 和同余定理可以一起用在当指数很大的时候。比如要整体MOD 1e9+7，可以对指数MOD 1e9+6，然后再将快速幂得到的MOD 1e9+7。参见nbuoj2700。
-逆元一般用扩展欧几里得算</div>
+逆元一般用扩展欧几里得算法来求得</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -709,6 +709,30 @@ for(j=0;j&lt;len;j++)
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

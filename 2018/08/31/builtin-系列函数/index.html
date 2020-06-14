@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>__builtin_系列函数 - Hexo</title>
+  <title>__builtin_系列函数 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -211,13 +219,11 @@
 <span class="hljs-keyword">int</span> m = <span class="hljs-number">8</span>;<span class="hljs-comment">//1000</span>
 <span class="hljs-built_in">cout</span>&lt;&lt;__builtin_ffs(n)&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出1</span>
 <span class="hljs-built_in">cout</span>&lt;&lt;__builtin_ffs(m)&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出4</span></code></pre>
-
 <p>4.<strong>__builtin_clz (unsigned int x)</strong>：返回x二进制下最高有效位到最高位的1上一位的长度（即最高位开始连续0的个数）。</p>
 <p>5.<strong>__builtin_ctz(unsigned int n)</strong>：返回x的二进制下最低位开始连续0的个数（即__builtin_ffs(x)-1）。</p>
 <p>以上的返回类型都是unsigned int，只要在函数名后面加上ll，即可返回unsigned longlong，e.g.:__builtinbuiltin_popcountll(x)。</p>
 <p>其他：用如下指令可以将__builtin_popcount被编译器识别为一条指令，加快运行速度。</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> GCC target (<span class="hljs-meta-string">"popcnt"</span>)</span></code></pre>
-
 
             </article>
             <hr>
@@ -463,6 +469,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

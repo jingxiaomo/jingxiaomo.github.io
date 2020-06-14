@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>上下界网络流 - Hexo</title>
+  <title>上下界网络流 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.9k 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29
+      28
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -206,13 +214,13 @@
             <article class="markdown-body">
               <p>上下界网络流即对边的流量有限制，必须在[down,up]的范围内。</p>
 <h3 id="无源汇有上下界可行流"><a href="#无源汇有上下界可行流" class="headerlink" title="无源汇有上下界可行流"></a>无源汇有上下界可行流</h3><p><strong>模型：</strong></p>
-<p>一个网络，求出一个流，使得每条边的流量为$$[L_i,H_i]$$，除了源点和汇点，每个点必须满足总流入量=总流出量（流量守恒）（这个流的特点是循环往复，无始无终）。</p>
+<p>一个网络，求出一个流，使得每条边的流量为<script type="math/tex">[L_i,H_i]</script>，除了源点和汇点，每个点必须满足总流入量=总流出量（流量守恒）（这个流的特点是循环往复，无始无终）。</p>
 <p><strong>建图：</strong></p>
 <p>首先建立一个源ss和一个汇tt，一般称为附加源和附加汇。</p>
-<p>对于图中的每条弧$$&lt;u,v&gt;$$，假设它容量上界为c，下界b，那么把这条边拆为三条只有上界的弧。</p>
-<p>一条为$$&lt;ss,v&gt;$$，容量为b；</p>
-<p>一条为$$&lt;u,tt&gt;$$，容量为b；</p>
-<p>一条为$$&lt;u,v&gt;$$，容量为c−b。</p>
+<p>对于图中的每条弧<script type="math/tex"><u,v></script>，假设它容量上界为c，下界b，那么把这条边拆为三条只有上界的弧。</p>
+<p>一条为<script type="math/tex"><ss,v></script>，容量为b；</p>
+<p>一条为<script type="math/tex"><u,tt></script>，容量为b；</p>
+<p>一条为<script type="math/tex"><u,v></script>，容量为c−b。</p>
 <p>其中前两条弧一般称为附加弧。</p>
 <p>然后对这张图跑最大流，以ss为源，以tt为汇，如果所有的附加弧都满流，则原图有可行流。</p>
 <p>这时，每条非附加弧的流量加上它的容量下界，就是原图中这条弧应该有的流量。</p>
@@ -330,14 +338,13 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h3 id="有源汇有上下界可行流"><a href="#有源汇有上下界可行流" class="headerlink" title="有源汇有上下界可行流"></a>有源汇有上下界可行流</h3><p><strong>模型：</strong></p>
 <p>网络有一个源点s和汇点t，求出一个流使得源点的总流出量等于汇点的总流入量，其他的点满足流量守恒，而且每条边的流量满足上界和下界限制。</p>
 <p><strong>建图：</strong></p>
-<p>建立弧$$&lt;t,s&gt;$$，容量下界为0，上界为∞。</p>
+<p>建立弧<script type="math/tex"><t,s></script>，容量下界为0，上界为∞。</p>
 <p>然后对这个新图（实际上只是比原图多了一条边）按照无源汇可行流的方法建模，如果所有附加弧满流，则存在可行流。</p>
-<p>求原图中每条边对应的实际流量的方法，同无源汇可行流，只是忽略掉弧$$&lt;t,s&gt;$$就好。</p>
-<p>而且这时候弧$$&lt;t,s&gt;$$的流量就是原图的总流量。</p>
+<p>求原图中每条边对应的实际流量的方法，同无源汇可行流，只是忽略掉弧<script type="math/tex"><t,s></script>就好。</p>
+<p>而且这时候弧<script type="math/tex"><t,s></script>的流量就是原图的总流量。</p>
 <h3 id="有源汇有上下界最大流"><a href="#有源汇有上下界最大流" class="headerlink" title="有源汇有上下界最大流"></a>有源汇有上下界最大流</h3><p><strong>模型：</strong></p>
 <p>网络有一个源点s和汇点t，求出一个流使得源点的总流出量等于汇点的总流入量，其他的点满足流量守恒,而且每条边的流量满足上界和下界限制。在这些前提下要求总流量最大。</p>
 <p><strong>建图：</strong></p>
@@ -470,13 +477,12 @@
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,maxflow-flow);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h3 id="有源汇有上下界最小流"><a href="#有源汇有上下界最小流" class="headerlink" title="有源汇有上下界最小流"></a>有源汇有上下界最小流</h3><p><strong>模型：</strong></p>
 <p>模型:现在的网络有一个源点s和汇点t，求出一个流使得源点的总流出量等于汇点的总流入量，其他的点满足流量守恒，而且每条边的流量满足上界和下界限制。在这些前提下要求总流量最小。</p>
 <p><strong>建图：</strong></p>
-<p>首先按照有源汇可行流的方法建模，但是不要建立$$&lt;t,s&gt;$$这条弧。</p>
+<p>首先按照有源汇可行流的方法建模，但是不要建立<script type="math/tex"><t,s></script>这条弧。</p>
 <p>然后在这个图上，跑从附加源ss到附加汇tt的最大流。</p>
-<p>这时候再添加弧$$&lt;t,s&gt;$$，下界为0，上界为∞。</p>
+<p>这时候再添加弧<script type="math/tex"><t,s></script>，下界为0，上界为∞。</p>
 <p>在现在的这张图上，从ss到tt的最大流，就是原图的最小流。</p>
 
             </article>
@@ -723,6 +729,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

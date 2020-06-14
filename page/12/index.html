@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -213,11 +213,10 @@
           
         
         <div>题意：
-有$$g(n)=\sum_{i=0}^nf(i)^2$$，其中$$f(0)=0,f(1)=1,f(n)=f(n−2)+2f(n−1)(n≥2)$$，给出n，y，x，s，求$$x^{g(n*y)}mod(s+1)$$。
+有g(n)=\sum_{i=0}^nf(i)^2，其中f(0)=0,f(1)=1,f(n)=f(n−2)+2f(n−1)(n≥2)，给出n，y，x，s，求x^{g(n*y)}mod(s+1)。
 思路：
 有递推式：
-$$f(n)^2=f(n-2)^2+4f(n-1)^2+4f(n-2)f(n-1)$$
-$$f(n)f(n-1)=f(n-2)f(n-1)+2f(n-1)</div>
+f(n)^2=f(n-2)^2+4f(n-1)^2+4f(n-2)f(n-1)f(n)f(n-1)=f(n-2)f(n-1)+2f(n-1)^2g(n)=g(n-1)+f(n)^</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -293,11 +292,12 @@ int main()
           
         
         <div>题意：
-一个可重集合中包含n个元素 $$a1,a2,……,an$$，你需要选择一个子集，使得这个子集中任意两个元素 $$a_i,a_j$$均满足条件$$ gcd(ai,aj)*gcd(ai+1,aj+1)≠1$$，且这个子集的元素个数是所有满足上述条件的子集中最多的。输出这个子集的元素个数。
+一个可重集合中包含n个元素 a1,a2,……,an，你需要选择一个子集，使得这个子集中任意两个元素 a_i,a_j均满足条件gcd(ai,aj)*gcd(ai+1,aj+1)≠1，且这个子集的元素个数是所有满足上述条件的子集中最多的。输出这个子集的元素个数。
 思路：
 挺经典的一道题。
 看这道题就可以想到最大团。
-最大团就是图的最大的完全子图（每两个点之间都有边相连</div>
+最大团就是图的最大的完全子图（每两个点之间都有边相连）。
+这里满足 gcd(a</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -492,8 +492,7 @@ int main()
 std::set::lower_bound与std::lower_bound的效率问题参考博客：https://blog.csdn.net/CZWin32768/article/details/51752267
 set用lower_bound要这样用啊：s.lower_bound(x)。
 vector可定长vector&lt;int&gt;v(n);
-
-这样写</div>
+这样写。</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -705,6 +704,30 @@ Notes:
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

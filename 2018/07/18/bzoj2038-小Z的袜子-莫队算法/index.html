@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>莫队算法 - Hexo</title>
+  <title>莫队算法 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,18 +212,18 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>莫队算法可以一个可高效解决绝大多数<strong>离线</strong>+<strong>无修改</strong>+<strong>区间查询</strong>问题的算法。这类问题具体是指：如果知道$$[L,R]$$的答案时，可以在$$O(g(n))$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案的话，就可以$$O(n\sqrt n · \mathrm{g}(n))$$的时间内求出所有查询。</p>
+              <h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>莫队算法可以一个可高效解决绝大多数<strong>离线</strong>+<strong>无修改</strong>+<strong>区间查询</strong>问题的算法。这类问题具体是指：如果知道<script type="math/tex">[L,R]</script>的答案时，可以在<script type="math/tex">O(g(n))</script>的时间下得到<script type="math/tex">[L,R−1]</script>,<script type="math/tex">[L,R+1]</script>,<script type="math/tex">[L−1,R]</script>,<script type="math/tex">[L+1,R]</script>的答案的话，就可以<script type="math/tex">O(n\sqrt n · \mathrm{g}(n))</script>的时间内求出所有查询。</p>
 <p>对于莫队算法我感觉就是暴力。由于预先知道所有的询问，因此可以合理的组织计算每个询问的顺序以此来降低复杂度。</p>
-<p>假设我们算完$$[L,R]$$的答案后现在要算$$[L′,R′]$$的答案。由于可以在$$O(1)$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案，所以计算$$[L′,R′]$$的答案耗时$$|L−L′|+|R−R′|$$。如果把询问$$[L,R]$$看做平面上的点$$a(L,R)$$，询问$$[L′,R′]$$看做点$$b(L′,R′)$$的话，那么时间开销就为两点的曼哈顿距离。</p>
+<p>假设我们算完<script type="math/tex">[L,R]</script>的答案后现在要算<script type="math/tex">[L′,R′]</script>的答案。由于可以在<script type="math/tex">O(1)</script>的时间下得到<script type="math/tex">[L,R−1]</script>,<script type="math/tex">[L,R+1]</script>,<script type="math/tex">[L−1,R]</script>,<script type="math/tex">[L+1,R]</script>的答案，所以计算<script type="math/tex">[L′,R′]</script>的答案耗时<script type="math/tex">|L−L′|+|R−R′|</script>。如果把询问<script type="math/tex">[L,R]</script>看做平面上的点<script type="math/tex">a(L,R)</script>，询问<script type="math/tex">[L′,R′]</script>看做点<script type="math/tex">b(L′,R′)</script>的话，那么时间开销就为两点的曼哈顿距离。</p>
 <p>因此，如果将每个询问看做平面上的一个点，按一定顺序计算每个值，那开销就为曼哈顿距离的和。要计算到每个点，路径至少会形成一棵树。所以问题就变成了求二维平面的最小曼哈顿距离生成树。</p>
-<p>这样只要顺着树边计算一次就OK了，可以证明时间复杂度为$$O(n\sqrt{n})$$（这个我不会证明），但是这种方法的编程复杂度稍微高了一点。</p>
+<p>这样只要顺着树边计算一次就OK了，可以证明时间复杂度为<script type="math/tex">O(n\sqrt{n})</script>（这个我不会证明），但是这种方法的编程复杂度稍微高了一点。</p>
 <p>有一个比较优雅的替代品：先对序列分块，然后对于所有询问按照L所在块的大小排序，如果一样再按照R排序，最后再计算。为什么这样计算就可以降低复杂度呢?</p>
-<p>一、i与i+1在同一块内，r单调递增，所以r是$$O(n)$$的。由于有$$\sqrt{n}$$块,所以这一部分时间复杂度是$$O(n\sqrt{n})$$；<br>二、i与i+1跨越一块，r最多变化n，由于有$$\sqrt{n}$$块，所以这一部分时间复杂度是$$O(n\sqrt{n})$$；<br>三、i与i+1在同一块内时，变化不超过$$\sqrt{n}$$，跨越一块也不会超过$$\sqrt{n}$$，不妨看作是$$\sqrt{n}$$。由于有n个数，所以时间复杂度是$$O(n\sqrt{n})$$；<br>于是就变成了$$O(n\sqrt{n})$$了。</p>
+<p>一、i与i+1在同一块内，r单调递增，所以r是<script type="math/tex">O(n)</script>的。由于有<script type="math/tex">\sqrt{n}</script>块,所以这一部分时间复杂度是<script type="math/tex">O(n\sqrt{n})</script>；<br>二、i与i+1跨越一块，r最多变化n，由于有<script type="math/tex">\sqrt{n}</script>块，所以这一部分时间复杂度是<script type="math/tex">O(n\sqrt{n})</script>；<br>三、i与i+1在同一块内时，变化不超过<script type="math/tex">\sqrt{n}</script>，跨越一块也不会超过<script type="math/tex">\sqrt{n}</script>，不妨看作是<script type="math/tex">\sqrt{n}</script>。由于有n个数，所以时间复杂度是<script type="math/tex">O(n\sqrt{n})</script>；<br>于是就变成了<script type="math/tex">O(n\sqrt{n})</script>了。</p>
 <h5 id="例题（bzoj2038"><a href="#例题（bzoj2038" class="headerlink" title="例题（bzoj2038)"></a>例题（bzoj2038)</h5><p><strong>题意：</strong></p>
-<p>有n只袜子，每只袜子有不同的颜色，给出区间$$[L,R]$$，问在这个区间中有多大的概率抽到两只颜色相同的袜子。</p>
+<p>有n只袜子，每只袜子有不同的颜色，给出区间<script type="math/tex">[L,R]</script>，问在这个区间中有多大的概率抽到两只颜色相同的袜子。</p>
 <p><strong>思路：</strong></p>
-<p>假设区间$$[L,R]$$中有三种颜色，每种颜色的袜子只数分别为a,b,c。</p>
-<p>则抽到两只颜色相同的袜子的概率为$$\frac{a}{a+b+c}<em>\frac{a-1}{a+b+c-1}+\frac{b}{a+b+c}<em>\frac{b-1}{a+b+c-1}+\frac{c}{a+b+c}</em>\frac{c}{a+b+c-1}$$，化简结果为$$\frac{a^2+b^2+c^2-(a+b+c)}{(a+b+c)</em>(a+b+c-1)}=\frac{a^2+b^2+c^2-(R-L+1)}{(R-L+1)*(R-L)}$$。</p>
+<p>假设区间<script type="math/tex">[L,R]</script>中有三种颜色，每种颜色的袜子只数分别为a,b,c。</p>
+<p>则抽到两只颜色相同的袜子的概率为<script type="math/tex">\frac{a}{a+b+c}*\frac{a-1}{a+b+c-1}+\frac{b}{a+b+c}*\frac{b-1}{a+b+c-1}+\frac{c}{a+b+c}*\frac{c}{a+b+c-1}</script>，化简结果为<script type="math/tex">\frac{a^2+b^2+c^2-(a+b+c)}{(a+b+c)*(a+b+c-1)}=\frac{a^2+b^2+c^2-(R-L+1)}{(R-L+1)*(R-L)}</script>。</p>
 <p>所以只要求每个区间内每种袜子的数目的平方和就可以了。</p>
 <p>这时可以用莫队算法了。</p>
 <p><strong>代码：</strong></p>
@@ -302,7 +310,6 @@ ll num[<span class="hljs-number">50010</span>];<span class="hljs-comment">//当�
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld/%lld\n"</span>,ans[i].fz,ans[i].fm);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>一般来说只要update函数根据题意作出修改就行了，其他都差不多。</p>
 <h5 id="小优化"><a href="#小优化" class="headerlink" title="小优化"></a>小优化</h5><p>如果l所在块的编号为奇数则按r升序排序，偶数则按r降序排序。 </p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(qnode x,qnode y)</span></span>
@@ -312,7 +319,6 @@ ll num[<span class="hljs-number">50010</span>];<span class="hljs-comment">//当�
     <span class="hljs-keyword">if</span>(pos[x.l]&amp;<span class="hljs-number">1</span>==<span class="hljs-number">1</span>)<span class="hljs-keyword">return</span> x.r&lt;y.r;
     <span class="hljs-keyword">return</span> x.r&gt;y.r;
 &#125;</code></pre>
-
 <h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><p>惊了 while循环比for跑得快！考虑到莫队算法是一个很暴力的算法，还是尽可能要优化代码，所以改进一哈。</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">qnode</span></span>
@@ -640,6 +646,30 @@ ll num[<span class="hljs-number">50010</span>];<span class="hljs-comment">//当�
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

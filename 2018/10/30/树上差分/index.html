@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树上差分 - Hexo</title>
+  <title>树上差分 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -372,7 +380,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h3 id="已知路径求树上所有节点被路径覆盖次数"><a href="#已知路径求树上所有节点被路径覆盖次数" class="headerlink" title="已知路径求树上所有节点被路径覆盖次数"></a>已知路径求树上所有节点被路径覆盖次数</h3><p>对每条路径的起点a和终点b的权值+1 , 对lca(a, b)的权值-1 , 对lca(a,b)的父节点权值-1。</p>
 <p>从根节点开始深搜，回溯时将其本身的权值加上所有子节点的权值。</p>
 <p>每个节点的权值即是其被路径覆盖的次数。</p>
@@ -478,7 +485,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -724,6 +730,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

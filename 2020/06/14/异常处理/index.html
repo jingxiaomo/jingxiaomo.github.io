@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Java学习笔记（四）异常处理 - Hexo</title>
+  <title>Java学习笔记（四）异常处理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -223,7 +231,6 @@
         <span class="hljs-comment">// unknown error:</span>
     &#125;
 &#125;</code></pre>
-
 <p>因为使用<code>int</code>类型的错误码，想要处理就非常麻烦。这种方式常见于底层C函数。</p>
 <p>方法二：在语言层面上提供一个异常处理机制。</p>
 <p>Java内置了一套异常处理机制，总是使用异常来表示错误。</p>
@@ -240,7 +247,6 @@
 &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
     <span class="hljs-comment">// other error:</span>
 &#125;</code></pre>
-
 <p>因为Java的异常是<code>class</code>，它的继承关系如下：</p>
 <pre><code class="hljs ascii">                     ┌───────────┐
                      │  Object   │
@@ -268,7 +274,6 @@
          ┌─────────────────────┐ ┌─────────────────────────┐
          │NullPointerException │ │IllegalArgumentException │...
          └─────────────────────┘ └─────────────────────────┘</code></pre>
-
 <p>从继承关系可知：<code>Throwable</code>是异常体系的根，它继承自<code>Object</code>。<code>Throwable</code>有两个体系：<code>Error</code>和<code>Exception</code>，<code>Error</code>表示严重的错误，程序对此一般无能为力，例如：</p>
 <ul>
 <li><code>OutOfMemoryError</code>：内存耗尽</li>
@@ -318,7 +323,6 @@
         &#125;
     &#125;
 &#125;</code></pre>
-
 <p>如果我们不捕获<code>UnsupportedEncodingException</code>，会出现编译失败的问题：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
 <span class="hljs-keyword">import</span> java.util.Arrays;
@@ -333,13 +337,11 @@
         <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
     &#125;
 &#125;</code></pre>
-
 <p>编译器会报错，错误信息类似：unreported exception UnsupportedEncodingException; must be caught or declared to be thrown，并且准确地指出需要捕获的语句是<code>return s.getBytes(&quot;GBK&quot;);</code>。意思是说，像<code>UnsupportedEncodingException</code>这样的Checked Exception，必须被捕获。</p>
 <p>这是因为<code>String.getBytes(String)</code>方法定义是：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] getBytes(String charsetName) <span class="hljs-keyword">throws</span> UnsupportedEncodingException &#123;
     ...
 &#125;</code></pre>
-
 <p>在方法定义的时候，使用<code>throws Xxx</code>表示该方法可能抛出的异常类型。调用方在调用的时候，必须强制捕获这些异常，否则编译器会报错。</p>
 <p>在<code>toGBK()</code>方法中，因为调用了<code>String.getBytes(String)</code>方法，就必须捕获<code>UnsupportedEncodingException</code>。我们也可以不捕获它，而是在方法定义处用throws表示<code>toGBK()</code>方法可能会抛出<code>UnsupportedEncodingException</code>，就可以让<code>toGBK()</code>方法通过编译器检查：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
@@ -355,7 +357,6 @@
         <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
     &#125;
 &#125;</code></pre>
-
 <p>上述代码仍然会得到编译错误，但这一次，编译器提示的不是调用<code>return s.getBytes(&quot;GBK&quot;);</code>的问题，而是<code>byte[] bs = toGBK(&quot;中文&quot;);</code>。因为在<code>main()</code>方法中，调用<code>toGBK()</code>，没有捕获它声明的可能抛出的<code>UnsupportedEncodingException</code>。</p>
 <p>修复方法是在<code>main()</code>方法中捕获异常并处理：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
@@ -376,7 +377,6 @@
         <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
     &#125;
 &#125;</code></pre>
-
 <p>可见，只要是方法声明的Checked Exception，不在调用层捕获，也必须在更高的调用层捕获。所有未捕获的异常，最终也必须在<code>main()</code>方法中捕获，不会出现漏写<code>try</code>的情况。这是由编译器保证的。<code>main()</code>方法也是最后捕获<code>Exception</code>的机会。</p>
 <p>如果是测试代码，上面的写法就略显麻烦。如果不想写任何<code>try</code>代码，可以直接把<code>main()</code>方法定义为<code>throws Exception</code>：</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
@@ -393,7 +393,6 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
     &#125;
 &#125;</code></pre>
-
 <p>因为<code>main()</code>方法声明了可能抛出<code>Exception</code>，也就声明了可能抛出所有的<code>Exception</code>，因此在内部就无需捕获了。代价就是一旦发生异常，程序会立刻退出。</p>
 <p>还有一些童鞋喜欢在<code>toGBK()</code>内部“消化”异常：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
@@ -403,7 +402,6 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         <span class="hljs-comment">// 什么也不干</span>
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</code></pre>
-
 <p>这种捕获后不处理的方式是非常不好的，即使真的什么也做不了，也要先把异常记录下来：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
     <span class="hljs-keyword">try</span> &#123;
@@ -413,7 +411,6 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         e.printStackTrace();
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</code></pre>
-
 <p>所有异常都可以调用<code>printStackTrace()</code>方法打印异常栈，这是一个简单有用的快速打印异常的方法。</p>
 
             </article>
@@ -654,6 +651,30 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

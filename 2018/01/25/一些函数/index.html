@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>一些函数 - Hexo</title>
+  <title>一些函数 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      839 字
+      827 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -206,7 +214,7 @@
             <article class="markdown-body">
               <h5 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf"></a>sprintf</h5><p>​         sprintf()最常见的应用之一莫过于把整数打印到字符串中，如：<br>​         sprintf(s, “%d”, 123);  //把整数123打印成一个字符串保存在s中；<br>​         sprintf(s, “%8x”, 4567);  //小写16进制，宽度占8个位置，右对齐。</p>
 <h5 id="atoi-atof-atol"><a href="#atoi-atof-atol" class="headerlink" title="atoi(atof)(atol)"></a>atoi(atof)(atol)</h5><p>​         功能：把字符串转换成整型数（浮点数）（长整数）；</p>
-<p>​         表头文件 #include &lt;stdlib.h&gt;；</p>
+<p>​         表头文件 #include <stdlib.h>；</p>
 <p>​         程序例: </p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt; </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt; </span></span>
@@ -218,7 +226,6 @@ n = atoi(str);
 <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125; 
 运行结果是:
 <span class="hljs-built_in">string</span> =<span class="hljs-number">1234</span> integer=<span class="hljs-number">1234</span></code></pre>
-
 <p>​         运行结果是:<br>​         string =1234 integer=1234</p>
 <h5 id="lower-bound-upper-bound-函数"><a href="#lower-bound-upper-bound-函数" class="headerlink" title="lower_bound(upper_bound)函数"></a>lower_bound(upper_bound)函数</h5><p>​          头文件：#include <algorithm></p>
 <p>​          lower_bound(a,a+10,x);//在数组a中寻找大于或等于x的第一个位置，所以使用的时候常常要减a。</p>
@@ -228,7 +235,6 @@ n = atoi(str);
 <pre><code class="hljs c++"><span class="hljs-keyword">char</span> buf[<span class="hljs-number">512</span>] = ;
 　　<span class="hljs-built_in">sscanf</span>(<span class="hljs-string">"123456 "</span>, <span class="hljs-string">"%s"</span>, buf);
 　　<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, buf);</code></pre>
-
 <p>　　结果为：123456</p>
 <h5 id="next-permutation函数-STL"><a href="#next-permutation函数-STL" class="headerlink" title="next_permutation函数(STL)"></a>next_permutation函数(STL)</h5><p>功能：字典序列举排列。</p>
 <p>例子：</p>
@@ -239,13 +245,13 @@ n = atoi(str);
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
 &#125;<span class="hljs-keyword">while</span>(next_permutation(p,p+n));</code></pre>
 <h5 id="strchr-s-c-函数"><a href="#strchr-s-c-函数" class="headerlink" title="strchr(s,c)函数"></a>strchr(s,c)函数</h5><p>strchr(s,c)：查找字符串s中首次出现字符c的位置；如果找到指定的字符则返回该字符所在地址，否则返回 NULL。</p>
-<h5 id="memset-a-0-sizeof-a-函数"><a href="#memset-a-0-sizeof-a-函数" class="headerlink" title="memset(a,0,sizeof(a))函数"></a>memset(a,0,sizeof(a))函数</h5><p>头文件：#include&lt;string.h&gt;</p>
+<h5 id="memset-a-0-sizeof-a-函数"><a href="#memset-a-0-sizeof-a-函数" class="headerlink" title="memset(a,0,sizeof(a))函数"></a>memset(a,0,sizeof(a))函数</h5><p>头文件：#include<string.h></p>
 <p>只可以填充0或者-1。</p>
 <h5 id="fill-arr-arr-n-key-函数"><a href="#fill-arr-arr-n-key-函数" class="headerlink" title="fill(arr, arr + n, key)函数"></a>fill(arr, arr + n, key)函数</h5><p>头文件：#include<algorithm></p>
 <h5 id="floor函数"><a href="#floor函数" class="headerlink" title="floor函数"></a>floor函数</h5><p>floor(x)返回的是小于或等于x的最大整数。<br>如：     floor(10.5) == 10    floor(-10.5) == -11</p>
 <h5 id="ceil函数"><a href="#ceil函数" class="headerlink" title="ceil函数"></a>ceil函数</h5><p>ceil(x)返回的是大于或等于x的最小整数。</p>
 <p>如：     ceil(10.5) == 11    ceil(-10.5) ==-10</p>
-<h5 id="unique-函数"><a href="#unique-函数" class="headerlink" title="unique()函数"></a>unique()函数</h5><p>去重函数，STL中unique的函数 unique的功能是去除相邻的重复元素(只保留一个),还有一个容易忽视的特性是它并不真正把重复的元素删除。它是c++中的函数，所以头文件要加#include&lt;iostream.h&gt;，具体用法如下：</p>
+<h5 id="unique-函数"><a href="#unique-函数" class="headerlink" title="unique()函数"></a>unique()函数</h5><p>去重函数，STL中unique的函数 unique的功能是去除相邻的重复元素(只保留一个),还有一个容易忽视的特性是它并不真正把重复的元素删除。它是c++中的函数，所以头文件要加#include<iostream.h>，具体用法如下：</p>
 <p>​    int num[100];</p>
 <p>   unique(num,mun+n)返回的是num去重后的尾地址，之所以说比不真正把重复的元素删除，其实是，该函数把重复的元素一到后面去了，然后依然保存到了原数组中，然后返回去重后最后一个元素的地址，因为unique去除的是相邻的重复元素，所以一般用之前都会要排一下序。</p>
 <h5 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h5><p>substr(字符串,截取开始位置,截取长度) //返回截取的字</p>
@@ -259,7 +265,6 @@ n = atoi(str);
     <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);  
 nth_element(a,a+mid,a+n);  
 <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,a[mid]);</code></pre>
-
 
             </article>
             <hr>
@@ -505,6 +510,30 @@ nth_element(a,a+mid,a+n);
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

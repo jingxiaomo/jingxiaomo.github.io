@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>CodeForces869C 组合数学（或者DP） - Hexo</title>
+  <title>CodeForces869C 组合数学（或者DP） - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -211,7 +219,7 @@
 <p>限制条件可以理解为：1.同种岛屿之间不能有桥；2.同种岛屿不能同时连着同一个岛屿；</p>
 <p>因为条件1，所以建桥可以分三步，a与b的建桥情况，b与c的建桥情况，a与c的建桥情况，即每种岛屿的每个岛屿与另一种的每个岛屿之间有没有桥。</p>
 <p>因为条件2，<strong>每种岛屿的每个岛屿最多只能和另一种的岛屿建一座桥</strong>。</p>
-<p>对于第一步，min(a,b)+1种情况，即分别有0，1，2，。。。，min（a+b）座桥时的情况，对每个情况k，方式数有，从a中选k个岛屿<em>从b中选k个岛屿（即C(a,k) * C(b,k)</em>k!）。</p>
+<p>对于第一步，min(a,b)+1种情况，即分别有0，1，2，。。。，min（a+b）座桥时的情况，对每个情况k，方式数有，从a中选k个岛屿<em>从b中选k个岛屿（即C(a,k) </em> C(b,k)*k!）。</p>
 <p>根据分类相加，分布相乘的计数原理，可以求出答案。（Cn,m可以用递推预处理，An,m等于Cn,m*m!，m!也可以预处理）</p>
 <p>DP思路：</p>
 <p>直接拿dp[i][j] 代表有i个红颜色小岛，j个蓝颜色小岛的情况下有多少种。</p>
@@ -219,7 +227,6 @@
 <p>1.不和其他小岛相连</p>
 <p>2.和另一种颜色的某个小岛相连</p>
 <pre><code class="hljs markdown">dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]=(dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j</span>]+(dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j-1</span>]*j%mod))%mod;</code></pre>
-
 
             </article>
             <hr>
@@ -465,6 +472,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

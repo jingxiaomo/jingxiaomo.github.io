@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>GCPC2014C 双调欧几里得旅行商问题 - Hexo</title>
+  <title>GCPC2014C 双调欧几里得旅行商问题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -208,13 +216,13 @@
 <p>给出二维平面上的n个点，现在从最左端出发，到达最右端的点，再返回最左端的点，要求遍历所有点且路程最短。</p>
 <p><strong>思路：</strong></p>
 <p>这是一个双调欧几里得旅行商问题。双线程dp。</p>
-<p>$$dp[i][j]$$：快的人走到i，慢的人走到j的最短路程(i&gt;j)。</p>
+<p><script type="math/tex">dp[i][j]</script>：快的人走到i，慢的人走到j的最短路程(i&gt;j)。</p>
 <p>对于当前点，要不在走得快的人走的边上，要不在走得慢的人走的边上。</p>
 <p>有状态转移方程：</p>
 <p>在走得快的人走的边上：</p>
-<p>$$dp[i+1][j]=min(dp[i+1][j],dp[i][j]+dis(i,i+1))$$。</p>
+<p><script type="math/tex">dp[i+1][j]=min(dp[i+1][j],dp[i][j]+dis(i,i+1))</script>。</p>
 <p>在走得慢的人走的边上：</p>
-<p>$$dp[i+1][i]=min(dp[i+1][i],dp[i][j]+dis(j,i+1))$$。</p>
+<p><script type="math/tex">dp[i+1][i]=min(dp[i+1][i],dp[i][j]+dis(j,i+1))</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span></span>
 <span class="hljs-class">&#123;</span>
@@ -254,17 +262,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
-
-
-
-
-
-
-
-
 
             </article>
             <hr>
@@ -510,6 +507,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

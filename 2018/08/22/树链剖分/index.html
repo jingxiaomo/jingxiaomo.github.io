@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>树链剖分 - Hexo</title>
+  <title>树链剖分 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -237,13 +245,11 @@
 <span class="hljs-keyword">int</span> dep[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该结点的深度，用来往上跳</span>
 <span class="hljs-keyword">int</span> tot[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该结点子树的结点个数，用来更新权值和</span>
 <span class="hljs-keyword">int</span> son[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该结点的重儿子编号</span></code></pre>
-
 <p>2.对整棵树进行重新编号。</p>
 <p>处理出这些：</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> idx[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该结点重新编号后的编号</span>
 <span class="hljs-keyword">int</span> topp[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该结点所在链的顶端结点</span>
 <span class="hljs-keyword">int</span> aval[<span class="hljs-number">100010</span>];<span class="hljs-comment">//重新编号后该结点的权值</span></code></pre>
-
 <p>3.根据重新编完号的树，把这棵树的上每个点映射到线段树上。并写出线段树的基本操作函数。</p>
 <p>4.实现对于树上的操作，</p>
 <p>树链剖分的思想是:<strong>对于两个不在同一重链内的节点,让他们不断地跳,使得他们处于同一重链上</strong>。</p>
@@ -265,7 +271,7 @@
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuitw3q82dj30a40bc749.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>这是1号节点和6号节点已经在同一条重链内,所以直接对线段树进行一次查询即可。</p>
 <p>对于子树的操作，利用性质直接query或update。</p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>$$O(log_2n)^2$$。</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p><script type="math/tex">O(log_2n)^2</script>。</p>
 <h5 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h5><p>已知一棵包含N个结点的树（连通且无环），每个节点上包含一个数值，需要支持以下操作：</p>
 <p>1 x y z 表示将树从x到y结点最短路径上所有节点的值都加上z；</p>
 <p>2 x y 表示求树从x到y结点最短路径上所有节点的值之和；</p>
@@ -713,6 +719,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

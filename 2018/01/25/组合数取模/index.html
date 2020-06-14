@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>组合数取模 - Hexo</title>
+  <title>组合数取模 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,11 +212,11 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>组合数取模就是求$$C_{n}^{m}%p$$的值。</p>
+              <p>组合数取模就是求<script type="math/tex">C_{n}^{m}\%p</script>的值。</p>
 <hr>
-<p>$$1\leq m\leq n\leq1000和1\leq p\leq 10^9$$。</p>
+<p><script type="math/tex">1\leq m\leq n\leq1000和1\leq p\leq 10^9</script>。</p>
 <p>这个问题比较简单，组合数的计算可以靠<strong>杨辉三角</strong>，那么由于n和m的范围小，直接两层循环即可。</p>
-<p>$$C_{n}^{m}=C_{n-1}^{m}+C_{n-1}^{m-1}$$；</p>
+<p><script type="math/tex">C_{n}^{m}=C_{n-1}^{m}+C_{n-1}^{m-1}</script>；</p>
 <pre><code class="hljs c++">c[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">5003</span>;i++)<span class="hljs-comment">//j是上面，i是下面</span>
 &#123;
@@ -219,11 +227,10 @@
         <span class="hljs-comment">//printf("%lld %lld %lld\n",i,j,c[i][j]);</span>
     &#125;
 &#125;</code></pre>
-
 <hr>
-<p>$$1\leq m\leq n\leq10^8和2\leq p\leq 10^5$$，并且p是素数。</p>
+<p><script type="math/tex">1\leq m\leq n\leq10^8和2\leq p\leq 10^5</script>，并且p是素数。</p>
 <p>这个问题有个叫做Lucas的定理。</p>
-<p> <strong>题意：</strong>求$$C_{n}^{m}%p$$，其中$$1\leq p\leq 10^9$$，并且p是素数。</p>
+<p> <strong>题意：</strong>求<script type="math/tex">C_{n}^{m}\%p</script>，其中<script type="math/tex">1\leq p\leq 10^9</script>，并且p是素数。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">PowerMod</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">1</span>;
@@ -265,9 +272,8 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <hr>
-<p>$$1\leq m\leq n\leq10^6和2\leq p\leq 10^5$$，并且p可能为合数。</p>
+<p><script type="math/tex">1\leq m\leq n\leq10^6和2\leq p\leq 10^5</script>，并且p可能为合数。</p>
 <p>这样的话先采取暴力分解，然后快速幂即可。</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
@@ -354,7 +360,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p><strong>逆元求取组合数</strong></p>
 <p>由定理可知：如果用C(n, r)表示n-元素集的r-组合的个数，有</p>
 <p>C(n,r)=n!r!∗(n−r)!</p>
@@ -363,7 +368,7 @@
 <ul>
 <li>(a + b) % p = (a % p + b % p) % p</li>
 <li>(a - b) % p = (a % p - b % p) % p</li>
-<li>(a * b) % p = (a % p * b % p) % p</li>
+<li>(a <em> b) % p = (a % p </em> b % p) % p</li>
 </ul>
 <p>但对于除法却不成立，即(a / b) % p ≠ (a % p / b % p) % p 。</p>
 <p>显然数学家们是不能忍受这种局面的，他们扔出了<strong>“逆元”</strong>来解决这个问题。那么什么是逆元？ 逆元和模运算中的除法又有说明关系呢？</p>
@@ -408,7 +413,6 @@
     <span class="hljs-keyword">if</span>(n&lt;m)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     <span class="hljs-keyword">return</span> fac[n]*inv[m]%MOD*inv[n-m]%MOD;
 &#125;</code></pre>
-
 <p>对于第二种方法，因为在算法竞赛中模数p总是质数，所以可以利用<a href="http://baike.baidu.com/view/263807.htm" target="_blank" rel="noopener">费马小定理</a> ： </p>
 <p>bp−1%p=1</p>
 <p>可以直接得到 b 的逆元是 bp−2 , 使用 <strong>快速幂</strong> 求解即可。</p>
@@ -719,6 +723,30 @@ LL Jc[maxn];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

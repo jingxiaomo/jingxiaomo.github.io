@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>网络流24题 - Hexo</title>
+  <title>网络流24题 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,6 +213,7 @@
             
             <article class="markdown-body">
               <p>开坑开坑。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -214,7 +223,8 @@
 <th>转化模型</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td><a href="https://www.luogu.org/problemnew/show/P2756" target="_blank" rel="noopener">飞行员配对方案问题</a></td>
 <td>二分图最大匹配</td>
@@ -356,9 +366,10 @@
 <td>24</td>
 <td><a href="https://www.luogu.org/problemnew/show/P3355" target="_blank" rel="noopener">骑士共存问题</a></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="飞行员配对方案问题"><a href="#飞行员配对方案问题" class="headerlink" title="飞行员配对方案问题"></a>飞行员配对方案问题</h5><p><strong>题意：</strong></p>
 <p>飞行员匹配二分图最大匹配，并输出匹配方案。</p>
 <p><strong>思路：</strong></p>
@@ -479,7 +490,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="太空飞行计划问题"><a href="#太空飞行计划问题" class="headerlink" title="太空飞行计划问题"></a>太空飞行计划问题</h5><p><strong>题意：</strong></p>
 <p>有一些实验可以做，给出每个实验的收益，每个实验需要几个仪器（多个实验可以用同一个仪器），给出每个仪器所需的钱，问最大利润为多少，并输出要做的实验和要买的仪器。</p>
 <p><strong>思路：</strong></p>
@@ -654,7 +664,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,sum-ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="最小路径覆盖问题"><a href="#最小路径覆盖问题" class="headerlink" title="最小路径覆盖问题"></a>最小路径覆盖问题</h5><p><strong>题意：</strong></p>
 <p>对于一个 DAG（有向无环图），选取最少条路径，使得每个顶点属于且仅属于一条路径。路径长可以为 0（即单个点）。给出一个DAG，求最小路径覆盖并输出每条路径。</p>
 <p><strong>思路：</strong></p>
@@ -806,12 +815,11 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,n-ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="魔术球问题"><a href="#魔术球问题" class="headerlink" title="魔术球问题"></a>魔术球问题</h5><p><strong>题意：</strong></p>
 <p>假设有n根柱子，现要按下述规则在这n根柱子中依次放入编号为1，2，3，…的球。要求每次只能在某根柱子的最上面放球。在同一根柱子中，任何2个相邻球的编号之和为完全平方数。计算出在n根柱子上最多能放多少个球。</p>
 <p><strong>思路：</strong></p>
 <p>这是最小路径覆盖反过来做。</p>
-<p>我先打了个表，因为n的范围小于等于55，球最多是1567个，dinic的复杂度理论上限为$$O(n^2*m)$$，所以枚举是ojbk的，因为是从小到大枚举，所以直接在残余网络上继续加边就可以，这里要注意要设一个前驱和后继这个拆点的分界，否则会发生覆盖。打表也可发现，n越大球越多，所以二分也可以，那么就每次都要重新建图了。</p>
+<p>我先打了个表，因为n的范围小于等于55，球最多是1567个，dinic的复杂度理论上限为<script type="math/tex">O(n^2*m)</script>，所以枚举是ojbk的，因为是从小到大枚举，所以直接在残余网络上继续加边就可以，这里要注意要设一个前驱和后继这个拆点的分界，否则会发生覆盖。打表也可发现，n越大球越多，所以二分也可以，那么就每次都要重新建图了。</p>
 <p>其实每个n最多能放几个球是有公式的，我会打表然而不会推呀QAQ</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> num;
@@ -965,7 +973,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="圆桌问题"><a href="#圆桌问题" class="headerlink" title="圆桌问题"></a>圆桌问题</h5><p><strong>题意：</strong></p>
 <p>假设有来自m 个不同单位的代表参加一次国际会议。每个单位的代表数分别为ri (i =1,2,……,m)。</p>
 <p>会议餐厅共有n 张餐桌，每张餐桌可容纳ci (i =1,2,……,n)个代表就餐。</p>
@@ -1096,7 +1103,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="试题库问题"><a href="#试题库问题" class="headerlink" title="试题库问题"></a>试题库问题</h5><p><strong>题意：</strong></p>
 <p>假设一个试题库中有n道试题。每道试题都标明了所属类别。同一道题可能有多个类别属性。共有k个类型。现要从题库中抽取m道题组成试卷。并要求试卷包含指定类型的试题。试设计一个满足要求的组卷算法。</p>
 <p><strong>思路：</strong></p>
@@ -1226,7 +1232,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="方格取数问题"><a href="#方格取数问题" class="headerlink" title="方格取数问题"></a>方格取数问题</h5><p><strong>题意：</strong></p>
 <p>在一个有 m*n 个方格的棋盘中，每个方格中有一个正整数。现要从方格中取数，使任意2个数所在方格没有公共边，且取出的数的总和最大。试设计一个满足要求的取数算法。对于给定的方格棋盘，按照取数要求编程找出总和最大的数。</p>
 <p><strong>思路：</strong></p>
@@ -1405,7 +1410,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,sum-dinic());
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -1651,6 +1655,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

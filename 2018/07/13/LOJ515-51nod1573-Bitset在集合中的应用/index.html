@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>LOJ515 &amp; 51nod1573 Bitset乱搞 - Hexo</title>
+  <title>LOJ515 &amp; 51nod1573 Bitset乱搞 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      787 字
+      786 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <h5 id="LOJ515"><a href="#LOJ515" class="headerlink" title="LOJ515"></a>LOJ515</h5><p><strong>题意：</strong></p>
-<p>一共有n个数，第i个数$$x_i​$$可以取$$[a_i,b_i]​$$中任意值。 设$$S=\sum{x_i^2}​$$，求S种类数。其中$$1≤n,a_i,b_i≤100​$$。</p>
+<p>一共有n个数，第i个数<script type="math/tex">x_i​</script>可以取<script type="math/tex">[a_i,b_i]​</script>中任意值。 设<script type="math/tex">S=\sum{x_i^2}​</script>，求S种类数。其中<script type="math/tex">1≤n,a_i,b_i≤100​</script>。</p>
 <p><strong>思路：</strong></p>
 <p>刚开始想到的是DP，但是100^4会爆炸，所以就用bitset来暴力一下。</p>
 <p>每一位表示的是有没有该答案，这是一个集合，如果这个集合中的每个数要与一个数x相加怎么办呢？就是把这个集合左移x位然后再与集合或运算就可以了。</p>
@@ -225,7 +233,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans[n].count());
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="51nod1573"><a href="#51nod1573" class="headerlink" title="51nod1573"></a>51nod1573</h5><p><strong>题意：</strong></p>
 <p>我们现在有n个多重集合，第i个集合最开始都有一个元素ai(1≤i≤n)。</p>
 <p>一个多重集合的价值为子集中不同的和的个数。</p>
@@ -287,7 +294,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>类似集合合并，或者每个状态就是01(yes or no)的题目，可以考虑用bitset来搞。复杂度可以降低到原来的1/32或者1/64（视计算机而定）。</p>
 
             </article>
@@ -534,6 +540,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

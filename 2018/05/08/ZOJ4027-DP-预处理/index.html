@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>ZOJ4027 DP+预处理 - Hexo</title>
+  <title>ZOJ4027 DP+预处理 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -206,12 +214,12 @@
             <article class="markdown-body">
               <p>参考博客：<a href="https://blog.csdn.net/V5ZSQ/article/details/80205265" target="_blank" rel="noopener">https://blog.csdn.net/V5ZSQ/article/details/80205265</a></p>
 <p><strong>题意：</strong></p>
-<p>有一串括号，每个括号有一个权值，当遇到前一个括号为’(‘，后一个括号为’)’时，可以进行交换，交换的价值为$$v_k*v_{k+1}$$，求价值的最大值。</p>
+<p>有一串括号，每个括号有一个权值，当遇到前一个括号为’(‘，后一个括号为’)’时，可以进行交换，交换的价值为<script type="math/tex">v_k*v_{k+1}</script>，求价值的最大值。</p>
 <p><strong>思路：</strong></p>
 <p>DP题…没做出来是我的锅QAQ一种转移状态考虑不出来就试着想想别的状态？</p>
 <p>每个左括号能到达的最右的位置是固定的，如果这个括号可以被移动到j位置，那么他后面的左括号一定都在比他右的位置，也就是j+1位之后。</p>
 <p>第i个左括号到j及之后的位置的最大价值有两种转移，一种是第i个左括号移到j+1及之后的位置，另一种是第i个左括号移到j及之后的位置，第i+1个左括号移到j+1及之后的位置。</p>
-<p>有转移方程$$dp[i][j]=max(dp[i+1][j],移动到这里的价值+dp[i+1][j+1])$$。</p>
+<p>有转移方程<script type="math/tex">dp[i][j]=max(dp[i+1][j],移动到这里的价值+dp[i+1][j+1])</script>。</p>
 <p>如何处理移动到这里的价值呢？</p>
 <p>这个价值相当于第i个左括号的权值*pos[i]~j中所有右括号的权值之和。</p>
 <p>直接遍历右括号会变成n^3的dp，所以这里用前缀和处理。</p>
@@ -287,7 +295,6 @@ ll sum[<span class="hljs-number">1010</span>];<span class="hljs-comment">//前i�
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -533,6 +540,30 @@ ll sum[<span class="hljs-number">1010</span>];<span class="hljs-comment">//前i�
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

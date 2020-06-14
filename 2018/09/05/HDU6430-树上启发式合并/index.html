@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>HDU6430 树上启发式合并/线段树合并 - Hexo</title>
+  <title>HDU6430 树上启发式合并/线段树合并 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      574 字
+      53 字
     </span>
   
 
@@ -173,12 +173,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      1
        分钟
     </span>
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,7 +213,7 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>有一棵以结点1为根的n个结点的树，每个结点有一个权值v[i]，对于每个结点求出以它为LCA的两个结点的GCD的最大值。其中$$n&lt;=100000$$,$$f[i]&lt;v[i]&lt;=100000$$。</p>
+<p>有一棵以结点1为根的n个结点的树，每个结点有一个权值v[i]，对于每个结点求出以它为LCA的两个结点的GCD的最大值。其中<script type="math/tex">n<=100000</script>,<script type="math/tex">f[i]<v[i]<=100000</script>。</p>
 <p><strong>思路：</strong></p>
 <p>因为v[i]很小，首先预处理出1～100000的所有因子存在vector里。</p>
 <p>法一：树上启发式合并</p>
@@ -278,7 +286,6 @@
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans[i]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -524,6 +531,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

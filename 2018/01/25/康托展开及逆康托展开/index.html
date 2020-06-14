@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>康托展开及逆康托展开 - Hexo</title>
+  <title>康托展开及逆康托展开 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -210,7 +218,6 @@
 <p>对于排列4213来说，4在4213中排第3，<strong>注意从0开始</strong>，2在213中排第1，1在13中排第0，3在3中排第0，即：</p>
 <p><img src="http://img.blog.csdn.net/20131010170547375" srcset="/img/loading.gif" alt="img">，<strong>得到的ans是比原数小的数，要得到第几个数应该加一。</strong></p>
 <a id="more"></a>
-
 <p>代码实现：</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
@@ -244,7 +251,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="通过康托逆展开生成全排列"><a href="#通过康托逆展开生成全排列" class="headerlink" title="通过康托逆展开生成全排列"></a><strong>通过康托逆展开生成全排列</strong></h5><p>如果已知 s = [“A”, “B”, “C”, “D”]，X(s1) = 20，能否推出 s1 = [“D”, “B”, “A”, “C”] 呢？</p>
 <p><strong>首先要减一。</strong><br>　　因为已知 X(s1) = a4<em>3! + a3</em>2! + a2<em>1! + a1</em>0! = 20，所以问题变成由 20 能否唯一地映射出一组 a4、a3、a2、a1？如果不考虑 ai 的取值范围，有<br>3<em>3! + 1</em>2! + 0<em>1! + 0</em>0! = 20<br>2<em>3! + 4</em>2! + 0<em>1! + 0</em>0! = 20<br>1<em>3! + 7</em>2! + 0<em>1! + 0</em>0! = 20<br>0<em>3! + 10</em>2! + 0<em>1! + 0</em>0! = 20<br>0<em>3! + 0</em>2! + 20<em>1! + 0</em>0! = 20<br>等等。但是满足 0 &lt;= ai &lt;= n-1 的只有第一组。可以使用辗转相除的方法得到 ai，如下图所示：<br><img src="http://pic002.cnblogs.com/images/2011/25284/2011042422221712.png" srcset="/img/loading.gif" alt="img"></p>
 <p>知道了a4、a3、a2、a1的值，就可以知道s1[0] 是子数组[“A”, “B”, “C”, “D”]中第3大的元素 “D”，s1[1] 是子数组 [“A”, “B”, “C”] 中第1大的元素”B”，s1[2] 是子数组 [“A”, “C”] 中第0大的元素”A”，s[3] 是子数组 [“C”] 中第0大的元素”C”，所以s1 = [“D”, “B”, “A”, “C”]。</p>
@@ -282,7 +288,6 @@
     reCantor(a,temp);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -528,6 +533,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

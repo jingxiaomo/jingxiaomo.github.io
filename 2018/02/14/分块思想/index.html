@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>分块思想 - Hexo</title>
+  <title>分块思想 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -224,7 +232,6 @@
         lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
     rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
 &#125;</code></pre>
-
 <h5 id="LOJ-6277"><a href="#LOJ-6277" class="headerlink" title="LOJ 6277"></a>LOJ 6277</h5><p>题意：若 opt=0，表示将位于[l,r]的之间的数字都加c。</p>
 <p>若 opt=1，表示询问ar的值（l和c忽略）。</p>
 <p>思路：加一个数组表示每个块一起又加了多少即可。</p>
@@ -284,7 +291,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6278"><a href="#LOJ-6278" class="headerlink" title="LOJ 6278"></a>LOJ 6278</h5><p>题意：若 opt=0，表示将位于[l,r] 的之间的数字都加 c。</p>
 <p>若 opt=1，表示询问 [l,r] 中，小于 c^2 的数字的个数。</p>
 <p>思路：</p>
@@ -397,7 +403,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6279"><a href="#LOJ-6279" class="headerlink" title="LOJ 6279"></a>LOJ 6279</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间加法，询问区间内小于某个值x的前驱（比其小的最大元素）。</p>
 <p>思路：跟上一题差不多区间询问的地方稍微改一下就可以了。</p>
 <p>可以在块内维护其它结构使其更具有拓展性，比如放一个set，这样如果还有插入、删除元素的操作，会更加的方便。</p>
@@ -516,7 +521,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6280"><a href="#LOJ-6280" class="headerlink" title="LOJ 6280"></a>LOJ 6280</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间加法，区间求和。</p>
 <p>思路：加两个数组表示每个块的总和（用前缀和处理），表示每个块又加了多少，维护区间和即可。</p>
 <p>代码：</p>
@@ -605,7 +609,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6281"><a href="#LOJ-6281" class="headerlink" title="LOJ 6281"></a>LOJ 6281</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间开方，区间求和。</p>
 <p>思路：跟以前做过的一道线段树差不多，那道线段树没有用到lazy标记，这里也差不多，不能直接像上面那题区间求和，要利用开方，开个bool数组标记每个块是否还可以开方，如果都是0或1的话就不能开方了，这里还是用到sum数组，查询的时候会快点。</p>
 <p>代码：</p>
@@ -734,7 +737,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6282"><a href="#LOJ-6282" class="headerlink" title="LOJ 6282"></a>LOJ 6282</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及单点插入，单点询问，数据随机生成。</p>
 <p>思路：每个块放入vector内，插入的时候用insert函数实现，但是如果先在一个块有大量单点插入，这个块的大小会大大超过√n，块内的插入就很慢了，所以还需要引入一个操作：重新分块（重构），每√n次插入后，重新把数列平均分一下块。</p>
 <p>我这里有个很奇怪的地方，rebuild()这个函数里面，我直接用覆盖n的方法会WA，但是另外用个变量就AC了，不知道错在哪里，真的很奇怪…</p>
@@ -818,7 +820,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6283"><a href="#LOJ-6283" class="headerlink" title="LOJ 6283"></a>LOJ 6283</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间乘法，区间加法，单点询问。</p>
 <p>思路：之前线段树专题里做过差不多的题目，lazy标记变成ax+b形式即可。这里每次更新a[i]，即块外的时候，要把标记下放，否则会打乱乘除的顺序，在块内则不需要，因为块内并没有改变a[i]，如果块内之后变成块外的话，会下放。</p>
 <p>代码：</p>
@@ -925,7 +926,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6284"><a href="#LOJ-6284" class="headerlink" title="LOJ 6284"></a>LOJ 6284</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间询问等于一个数 c 的元素，并将这个区间的所有元素改为 c。</p>
 <p>思路：维护每个分块是否只有一种权值，区间操作的时候，对于同权值的一个块就O(1)统计答案，否则暴力统计答案，并修改标记，不完整的块也暴力。</p>
 <p>假设初始序列都是同一个值，那么查询是O(√n)，如果这时进行一个区间操作，它最多破坏首尾2个块的标记，所以只能使后面的询问至多多2个块的暴力时间，所以均摊每次操作复杂度还是O(√n)。换句话说，要想让一个操作耗费O(n)的时间，要先花费√n个操作对数列进行修改。pushdown操作类似上题。</p>
@@ -1016,7 +1016,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="LOJ-6285"><a href="#LOJ-6285" class="headerlink" title="LOJ 6285"></a>LOJ 6285</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及询问区间的最小众数。</p>
 <p>思路：</p>
 <p>解法一：</p>
@@ -1139,7 +1138,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -1385,6 +1383,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

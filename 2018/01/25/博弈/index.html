@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>博弈 - Hexo</title>
+  <title>博弈 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -214,6 +222,7 @@
 <p>事实二：假设轮到你行动了，这时堆里的Nim和不为0。但是可以保证的是，存在一种取法能在你行动后的堆的Nim和为0。</p>
 <p>现在如果你是玩家A，所以你先走。接着假设现在堆里的Nim和不等于0.你的策略将会是这样:如果可能尽可能使得下一个Nim和，也就是你动作后的Nim和为0.这也意味着无论B如何动作通过事实1可知，B的这个动作会把下个Nim和变得不为0.</p>
 <p>让我们开始，在表中记录每一步的Nim和：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -223,7 +232,8 @@
 <th>下个Nim和</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>A</td>
 <td>非0</td>
 <td>能</td>
@@ -257,9 +267,10 @@
 <td>……</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>这个像乒乓球一样的Nim和不断在0和非0之间转化，意味着你保证能赢！如果B注定要赢，她将要把最后一个硬币攒在手中。也就是说：她需要一个动作来产生零Nim和，但在我们看来这是不可能的。你的每次动作，都在把Nim和减少到0。当游戏进行到快到结尾时时，零Nim和就等价于没有一个硬币剩余——这时你就赢了。</p>
 <p>那么对于n堆物品,只要判断它是否是奇状态就可以判断是否先手有必赢策略.</p>
 <p>以非零Nim和打头的游戏，玩家A都有一个必胜策略。策略就是在每一步都让下一个Nim和减少到0.</p>
@@ -283,7 +294,6 @@
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"A\n"</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="反Nim游戏："><a href="#反Nim游戏：" class="headerlink" title="反Nim游戏："></a><strong>反Nim游戏：</strong></h5><p>在反尼姆博奕中判断必胜局面的条件有两点，满足任意一点先手都能取胜，即必胜局面。   </p>
 <p>1：各堆石子数目异或结果不等于0，且存在有石子数目大于1的石子堆。</p>
 <p>2：各堆石子数目异或结果等于0，且所有石子堆数目全部为1。</p>
@@ -294,7 +304,7 @@
 <p>给你一个局面，让你求先手输赢，假设先手赢的话输出他第一次的取法。</p>
 <p>​       首先讨论在两边同时取的情况，很明显两边同时取的话，不论怎样取他的差值是不会变的，那么我们可以根据差值计算出其中的小的值，然后加上差值就是大的一个值，当</p>
 <p>然能取的条件是求出的最小的值不能大于其中小的一堆的石子数目。</p>
-<p>​      加入在一堆中取的话，可以取任意一堆，那么其差值也是不定的，但是我们可以枚举差值，差值范围是0 — 大的石子数目，然后根据上面的理论判断满足条件的话就是一种合理的取法。</p>
+<p>​      加入在一堆中取的话，可以取任意一堆，那么其差值也是不定的，但是我们可以枚举差值，差值范围是0 —- 大的石子数目，然后根据上面的理论判断满足条件的话就是一种合理的取法。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> a,b;
@@ -340,7 +350,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="斐波那契博弈（找规律）："><a href="#斐波那契博弈（找规律）：" class="headerlink" title="斐波那契博弈（找规律）："></a><strong>斐波那契博弈（找规律）：</strong></h5><p>1堆石子有n个,两人轮流取.先取者第1次可以取任意多个，但不能全部取完.以后每次取的石子数不能超过上次取子数的2倍。取完者胜。</p>
 <p>n = 2时输出second；<br>n = 3时也是输出second；<br>n = 4时，第一个人想获胜就必须先拿1个，这时剩余的石子数为3，此时无论第二个人如何取，第一个人都能赢，输出first；<br>n = 5时，first不可能获胜，因为他取2时，second直接取掉剩下的3个就会获胜，当他取1时，这样就变成了n为4的情形，所以输出的是second；<br>n = 6时，first只要去掉1个，就可以让局势变成n为5的情形，所以输出的是first；   n = 7时，first取掉2个，局势变成n为5的情形，故first赢，所以输出的是first；<br>n = 8时，当first取1的时候，局势变为7的情形，第二个人可赢，first取2的时候，局势变成n为6得到情形，也是第二个人赢，取3的时候，second直接取掉剩下的5个，所以n = 8时，输出的是second；<br> …………<br> 从上面的分析可以看出，n为2、3、5、8时，这些都是输出second，即必败点，仔细的人会发现这些满足斐波那契数的规律，可以推断13也是一个必败点。<br> 借助“Zeckendorf定理”（齐肯多夫定理）：任何正整数可以表示为若干个不连续的Fibonacci数之和。n=12时，只要谁能使石子剩下8且此次取子没超过3就能获胜。因此可以把12看成8+4，把8看成一个站，等价与对4进行”气喘操作”。又如13，13=8+5，5本来就是必败态，得出13也是必败态。也就是说，只要是斐波那契数，都是必败点。</p>
 <p>先手胜当且仅当n不是斐波那契数（n为物品总数）</p>
@@ -589,6 +598,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

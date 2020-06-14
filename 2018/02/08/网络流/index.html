@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>网络流 - Hexo</title>
+  <title>网络流 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -221,6 +229,7 @@
 <p>1.根据残量网络计算层次图。<br>2.在层次图中使用DFS进行增广直到不存在增广路。<br>3.重复以上步骤直到无法增广。</p>
 </blockquote>
 <p>较详细解释(流程) :</p>
+<p>&gt;</p>
 <blockquote>
 <p>1.用BFS建立分层图  注意:分层图是以当前图为基础建立的,所以要重复建立分层图。<br>2.用DFS的方法寻找一条由源点到汇点的路径,获得这条路径的流量I 根据这条路径修改整个图,将所经之处正向边流量减少I,反向边流量增加I,注意I是非负数。<br>3.重复步骤2,直到DFS找不到新的路径时,重复步骤1。</p>
 </blockquote>
@@ -325,7 +334,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="最大流最小割定理"><a href="#最大流最小割定理" class="headerlink" title="最大流最小割定理"></a><strong>最大流最小割定理</strong></h5><p>在一个有权图中，源点为Vs，汇点为Vt，如果拿掉这张图中的一些边，就无法从Vs到达Vt，这些边的组合就叫做割集。</p>
 <p>对于一个网络流图G=(V,E)，其割的定义为一种点的划分方式：将所有的点划分为S和T=V-S两个部分，其中源点s∈S，汇点t∈T。</p>
 <p>对于一个割(S,T)，我们定义净流f(S,T)表示穿过割(S,T)的流量之和，即：</p>
@@ -467,9 +475,6 @@ ll dis[<span class="hljs-number">5010</span>];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-
-
 
             </article>
             <hr>
@@ -715,6 +720,30 @@ ll dis[<span class="hljs-number">5010</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

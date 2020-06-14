@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -222,11 +222,11 @@
         
         <div>
 题意：
-给出n个数字，有q个询问，去掉三个数字，在剩下的数字里面选10个，问和能否刚好为87。其中$$t \leq5,n \leq 50,q \leq 100000$$。
+给出n个数字，有q个询问，去掉三个数字，在剩下的数字里面选10个，问和能否刚好为87。其中t \leq5,n \leq 50,q \leq 100000。
 思路：
-$$O(tn^3n*10)$$的bitset优化的dp居然可以水过…不科学啊…
+O(t*n^3*n*10)的bitset优化的dp居然可以水过…不科学啊…
 有另一种做法：
-因为删除3个数字，所以对于中间的那个数，$$pre[i][j][k]$$表示前i个中选了j个没有选k的和的情况，$$suf</div>
+因为删除3个数字，所以对于中间的那个数，pre[i][j][k]表示前i个中选了j个没有选k的和的情况，suf[i][j][k]表示后</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -260,10 +260,11 @@ $$O(tn^3n*10)$$的bitset优化的dp居然可以水过…不科学啊…
           
         
         <div>题意：
-有n件物品，每件物品有体积$$v_i$$和价值$$w_i$$，问体积为m的背包最多可以装下多大价值的物品。其中$$n \leq 100$$ ，其他数据均匀随机并且不超过$$10^9$$。
+有n件物品，每件物品有体积v_i和价值w_i，问体积为m的背包最多可以装下多大价值的物品。其中n \leq 100 ，其他数据均匀随机并且不超过10^9。
 思路：
-很典型的背包问题，然而背包的大小变成了$$10^9$$，最简单的01背包的做法不行，交换两维状态（前i件物品价值为j占用的最小体积）的做法也不行。$$n \leq 100$$，折半枚举也不行。
-那</div>
+很典型的背包问题，然而背包的大小变成了10^9，最简单的01背包的做法不行，交换两维状态（前i件物品价值为j占用的最小体积）的做法也不行。n \leq 100，折半枚举也不行。
+那怎么办呢？所以看了题解…
+这又是数据随机下的玄学</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -300,11 +301,11 @@ $$O(tn^3n*10)$$的bitset优化的dp居然可以水过…不科学啊…
 https://www.dreamwings.cn/lca/4874.html
 https://www.cnblogs.com/JVxie/p/4854719.html
 复杂度：
-$$O(m+n)$$，m是询问数，n是节点数。
+O(m+n)，m是询问数，n是节点数。
 伪代码：
 Tarjan(u)   // merge和find为并查集合并函数和查找函数
 &#123;
-    for each(u,v)   </div>
+    for each(u,v)       </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -338,7 +339,7 @@ Tarjan(u)   // merge和find为并查集合并函数和查找函数
           
         
         <div>题意：
-给出k种属性，一个人的k种属性有初始值为$$v_1,v_2,…,v_k$$，他要去打n个怪兽，第i个怪兽也有k种属性$$a_{i,1},a_{i,2},…,a_{i,k}$$，如果当前的$$v_1\geq a_{i,1},v_2\geq a_{i,2},…,v_k\geq a_{i,k}$$，这个人就可以打第i个怪兽，并且每个属性得到怪兽的加成$$b_{i,1},b_{i,2},…,b_{</div>
+给出k种属性，一个人的k种属性有初始值为v_1,v_2,...,v_k，他要去打n个怪兽，第i个怪兽也有k种属性a_{i,1},a_{i,2},...,a_{i,k}，如果当前的v_1\geq a_{i,1},v_2\geq a_{i,2},...,v_k\geq a_{i,k}，这个人就可以打第i个怪兽，并且每个属性得到怪兽的加成b_{i,1},b_{i,2},...,b_{i,k}。问</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -411,7 +412,9 @@ Tarjan(u)   // merge和find为并查集合并函数和查找函数
         
         <div>题意：
 有一个n*m的矩阵，对于每一行，如果行中有奇数个1，则置1，反之则置0，对于每一列也这样操作。
-比如$$    \begin{matrix}    1 &amp; 1 &amp; 1 &amp;1 \    0 &amp; 1 &amp; 1 &amp; 1 \   0 &amp;1 &amp; 1&amp;1 \  0 &amp; 1 &amp; 1 &amp; 0  \end{matr</div>
+比如\begin{matrix}    1 & 1 & 1 &1 \\    0 & 1 & 1 & 1 \\   0 &1 & 1&1 \\  0 & 1 & 1 & 0  \end{matrix}，行为[0,1,1,0]，列为[1,0,0,1]。
+给出行和列的情况，让你复原这个矩阵。
+如果没</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -446,8 +449,8 @@ Tarjan(u)   // merge和find为并查集合并函数和查找函数
         
         <div>想学习一下字符串哈希结果发现以前自己已经脑补出来用过了啊？虽然base和mod取的不是那么好…
 参考资料：https://wenku.baidu.com/view/b7d3d1c6804d2b160a4ec090
-hash函数：$$hash[i]=(hash[i-1]*p+idx(s[i]))%mod$$。
-子串的hash值（下标从1开始）：$$hash[l,r]=(hash[r]-hash[l-</div>
+hash函数：hash[i]=(hash[i-1]*p+idx(s[i]))\%mod。
+子串的hash值（下标从1开始）：hash[l,r]=(hash[r]-hash[l-1]*p^</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -481,7 +484,7 @@ hash函数：$$hash[i]=(hash[i-1]*p+idx(s[i]))%mod$$。
           
         
         <div>题意：
-有n个点，每个点有个坐标，要从第一个点开始到第n个点结束。当在第i个点的时候，他下一步只能去第j个点，i,j满足$$x_i&lt;x_j$$,从i到j需要花费$$x_iy_j-x_j y_i$$的能量。如果能量是负的，则表明它得到了供给。请输出从第一个点到第n个点的最小花费的路径，如果有多条具有相同的最小花费，输出字典序最小的。其中$$y_1=y_n=0，0=x_1&lt;x_2,x_3,</div>
+有n个点，每个点有个坐标，要从第一个点开始到第n个点结束。当在第i个点的时候，他下一步只能去第j个点，i,j满足x_i</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -515,7 +518,9 @@ hash函数：$$hash[i]=(hash[i-1]*p+idx(s[i]))%mod$$。
           
         
         <div>题意：
-总共有N本书，要放到一个K层的书架上去。假设每一层最后放了$$cnt_i$$本书，f[i]为斐波那契数列(f[0]=0,f[1]=1)，定义第i层书架的稳定值为$$stable_i=f[cnt_i]$$，第i层书架的美观值为$$beauty_i=2^{stable_i}-1$$，定义分数为$$score=gcd(beauty_1,beauty_2,…,beauty_k)$$。问分数的期望为</div>
+总共有N本书，要放到一个K层的书架上去。假设每一层最后放了cnt_i本书，f[i]为斐波那契数列(f[0]=0,f[1]=1)，定义第i层书架的稳定值为stable_i=f[cnt_i]，第i层书架的美观值为beauty_i=2^{stable_i}-1，定义分数为score=gcd(beauty_1,beauty_2,...,beauty_k)。问分数的期望为多少。
+思路：
+有两个公式，</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -685,6 +690,30 @@ hash函数：$$hash[i]=(hash[i-1]*p+idx(s[i]))%mod$$。
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

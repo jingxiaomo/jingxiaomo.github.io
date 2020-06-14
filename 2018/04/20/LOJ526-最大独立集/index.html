@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>LOJ526 最大独立集 - Hexo</title>
+  <title>LOJ526 最大独立集 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      546 字
+      543 字
     </span>
   
 
@@ -179,6 +179,14 @@
   
 
   
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
   
 </div>
 
@@ -205,15 +213,15 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>一个可重集合中包含n个元素 $$a1,a2,……,an$$，你需要选择一个子集，使得这个子集中任意两个元素 $$a_i,a_j$$均满足条件$$ gcd(ai,aj)*gcd(ai+1,aj+1)≠1$$，且这个子集的元素个数是所有满足上述条件的子集中最多的。输出这个子集的元素个数。</p>
+<p>一个可重集合中包含n个元素 <script type="math/tex">a1,a2,……,an</script>，你需要选择一个子集，使得这个子集中任意两个元素 <script type="math/tex">a_i,a_j</script>均满足条件<script type="math/tex">gcd(ai,aj)*gcd(ai+1,aj+1)≠1</script>，且这个子集的元素个数是所有满足上述条件的子集中最多的。输出这个子集的元素个数。</p>
 <p><strong>思路：</strong></p>
 <p>挺经典的一道题。</p>
 <p>看这道题就可以想到最大团。</p>
 <p>最大团就是图的最大的完全子图（每两个点之间都有边相连）。</p>
-<p>这里满足 $$gcd(ai,aj)*gcd(ai+1,aj+1)≠1$$的每两个$$a_i,a_j$$都用边相连，该图的最大团就是题目所求了。</p>
+<p>这里满足 <script type="math/tex">gcd(ai,aj)*gcd(ai+1,aj+1)≠1</script>的每两个<script type="math/tex">a_i,a_j</script>都用边相连，该图的最大团就是题目所求了。</p>
 <p>如何求最大团呢？</p>
 <p>最大团=补图的最大独立集。最大独立集数目=|V|−最大匹配数。</p>
-<p>该图的补图就是对满足$$gcd(ai,aj)*gcd(ai+1,aj+1)=1$$的每两个$$a_i,a_j$$用边相连。</p>
+<p>该图的补图就是对满足<script type="math/tex">gcd(ai,aj)*gcd(ai+1,aj+1)=1</script>的每两个<script type="math/tex">a_i,a_j</script>用边相连。</p>
 <p>然后二分图匹配就可以了。</p>
 <p>有一个小优化，奇数和奇数，偶数和偶数肯定是不用连边的，只要连奇数和偶数就好了。</p>
 <p>看别人还有一种做法，多次random_shuffle取满足条件的一个一个加到答案里。</p>
@@ -276,7 +284,6 @@ ll a[<span class="hljs-number">510</span>];
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,n-maxmatch()/<span class="hljs-number">2</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -522,6 +529,30 @@ ll a[<span class="hljs-number">510</span>];
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

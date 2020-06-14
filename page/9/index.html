@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -176,12 +176,12 @@
           
         
         <div>题意：
-有N天，一个人每天穿一件衣服，总共有m件衣服，某天穿颜色A下一天穿颜色B，能得到愉快值$$f[A][B]$$。问最大的愉快值是多少。
+有N天，一个人每天穿一件衣服，总共有m件衣服，某天穿颜色A下一天穿颜色B，能得到愉快值f[A][B]。问最大的愉快值是多少。
 思路：
-$$dp[i][j][k]：第k天从i到j的最大愉快值$$ ，
-所以$$dp[i][j][k]=max(dp[i][j][k],dp[i][t][k-1]+f[t][j])$$。
+dp[i][j][k]：第k天从i到j的最大愉快值 ，
+所以dp[i][j][k]=max(dp[i][j][k],dp[i][t][k-1]+f[t][j])。
 这类似于矩阵乘法了，
-矩阵乘法的形式为$$dp[i][j][k]=dp</div>
+矩阵乘法的形式为dp[i][j][k]=dp[i][j][k]+dp[i</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -216,9 +216,11 @@ $$dp[i][j][k]：第k天从i到j的最大愉快值$$ ，
         
         <div>题意：
 有一个长度为n的序列a和一个相同长度的序列b，a初始都为0，b初始为乱序的全排列。现在有两种操作，共操作q次：
-add l r：对于$$a_l,a_{l+1}…a_r$$加一；
-query l r：询问$$\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor$$。
-其中$$1 \leq n,q \leq 100000$$，$$1 \leq l \leq r </div>
+add l r：对于a_l,a_{l+1}...a_r加一；
+query l r：询问\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor。
+其中1 \leq n,q \leq 100000，1 \leq l \leq r \leq n。
+思路：
+</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -297,10 +299,10 @@ query l r：询问$$\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor$$。
 每行的和为2。
 思路：
 看到矩阵的这些特征可以想到把它看作一个无向图的邻接矩阵。
-若$$A_{i,j}=2$$表示i和j之间有两条边，就相当于是两个点的环。
+若A_{i,j}=2表示i和j之间有两条边，就相当于是两个点的环。
 那么每行的和为2的意思就是每个点的度为2，说明这个图全部都是环，每个点属于且仅属于一个环。
 可以考虑dp：
-f(n)表示n个点</div>
+f(n)表示n个点时的方案</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -378,9 +380,9 @@ f(n)表示n个点</div>
 其中e(a,b)为图上a（起点）到b（终点）的方案数。
 
 CodeForces348D题意：
-给出一张n*m的有障碍的图，问从(1,1)到(n,m)不相交的两条路径的方案。其中$$2&lt;=n,m&lt;=3000$$。
-思路：
-可以将起点看作$$A_1(1</div>
+给出一张n*m的有障碍的图，问从(1,1)到(n,m)不相交的两条路径的方案。其中2(n,m-1)这两条，否则是会相交的。
+设S(x,y)为从x到y的方案数。
+根据L</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -413,8 +415,8 @@ CodeForces348D题意：
         
           
         
-        <div>介绍莫队算法可以一个可高效解决绝大多数离线+无修改+区间查询问题的算法。这类问题具体是指：如果知道$$[L,R]$$的答案时，可以在$$O(g(n))$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案的话，就可以$$O(n\sqrt n · \mathrm{g}(n))$$的时间内求出所有查询。
-对于莫队算法我感觉就是暴力。由于预先</div>
+        <div>介绍莫队算法可以一个可高效解决绝大多数离线+无修改+区间查询问题的算法。这类问题具体是指：如果知道[L,R]的答案时，可以在O(g(n))的时间下得到[L,R−1],[L,R+1],[L−1,R],[L+1,R]的答案的话，就可以O(n\sqrt n · \mathrm{g}(n))的时间内求出所有查询。
+对于莫队算法我感觉就是暴力。由于预先知道所有的询问，因此可以合理的组织计算每个询问的顺序以此</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -448,12 +450,13 @@ CodeForces348D题意：
           
         
         <div>题意：
-有一棵树包含N个节点，节点编号从1到N。节点总共有K种颜色，颜色编号从1到K。第i个节点的颜色为$$A_i$$。$$F_i$$表示恰好包含i种颜色的路径数量。请计算：
-$$\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)$$。
-其中$$1≤N≤50000$$，$$1≤K≤10$$。
+有一棵树包含N个节点，节点编号从1到N。节点总共有K种颜色，颜色编号从1到K。第i个节点的颜色为A_i。
+F_i表示恰好包含i种颜色的路径数量。请计算：
+\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)。
+其中1≤N≤50000，1≤K≤10。
 思路：
 做的时候完全无从下手QAQ
-突破点是在这个k，</div>
+突破点是在这个k，由范围看出可以用状压，压什么呢？压路径</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -524,11 +527,11 @@ $$\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)$$。
           
         
         <div>Codeforces292D题意：
-给出n个点和m条无向边，每条无向边依次编号为1～m，给出q次询问，问删去[l,r]这些边后连通分量个数。其中$$2 ≤n≤ 500$$，$$1≤ m ≤10^4$$，$$1≤k≤ 2·10^4$$。
+给出n个点和m条无向边，每条无向边依次编号为1～m，给出q次询问，问删去[l,r]这些边后连通分量个数。其中2 ≤n≤ 500，1≤ m ≤10^4，1≤k≤ 2·10^4。
 思路：
 并查集是可以用来求无向图连通分量的个数的：
 并查集是指比如A和B是一类，A和C是一类，那么A、B、C为一类；
-无向图的连通是指比如A和B连通，A和C连通，那</div>
+无向图的连通是指比如A和B连通，A和C连通，那么B和肯定也连通，A、B</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -698,6 +701,30 @@ $$\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)$$。
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

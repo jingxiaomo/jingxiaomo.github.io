@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>构造 - Hexo</title>
+  <title>构造 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,8 +212,8 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="Codeforces-1058D"><a href="#Codeforces-1058D" class="headerlink" title="Codeforces 1058D"></a>Codeforces 1058D</h4><p><strong>构造出两个数x,y，使得$$x*y=\frac{2mn}{k}$$，并且$$x\le m,y\le n$$。</strong></p>
-<p>2m和k尽可能地约分，考虑2m与k有共同因子的情况，即$$gcd(2m,k)!=1$$，此时经过约分可以得到$$x=\frac{2m}{gcd(2m,k)},y=\frac{gcd(2m,k)*m}{k}$$，容易看出x,y都满足要求。如果$$gcd(2m,k)=1$$，可以知道$$gcd(n,k)!=1$$，就是一样的做法了。</p>
+              <h4 id="Codeforces-1058D"><a href="#Codeforces-1058D" class="headerlink" title="Codeforces 1058D"></a>Codeforces 1058D</h4><p><strong>构造出两个数x,y，使得<script type="math/tex">x*y=\frac{2mn}{k}</script>，并且<script type="math/tex">x\le m,y\le n</script>。</strong></p>
+<p>2m和k尽可能地约分，考虑2m与k有共同因子的情况，即<script type="math/tex">gcd(2m,k)!=1</script>，此时经过约分可以得到<script type="math/tex">x=\frac{2m}{gcd(2m,k)},y=\frac{gcd(2m,k)*m}{k}</script>，容易看出x,y都满足要求。如果<script type="math/tex">gcd(2m,k)=1</script>，可以知道<script type="math/tex">gcd(n,k)!=1</script>，就是一样的做法了。</p>
 
             </article>
             <hr>
@@ -451,6 +459,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

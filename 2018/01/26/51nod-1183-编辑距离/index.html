@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>51nod 1183 编辑距离 - Hexo</title>
+  <title>51nod 1183 编辑距离 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -215,7 +223,6 @@
 ②f[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j</span>]+1 删去a[i]，等价于在b[j]后插入a[i]（删除就相当于插入了）
 ③f[<span class="hljs-string">i</span>][<span class="hljs-symbol">j-1</span>]+1 删去b[j]，等价于在a[i]后插入b[j]
 初始化:f[<span class="hljs-string">0</span>][<span class="hljs-symbol">i</span>]=i  f[<span class="hljs-string">i</span>][<span class="hljs-symbol">0</span>]=i</code></pre>
-
 <pre><code class="hljs c++"><span class="hljs-keyword">int</span> dp[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"></span>&#123;
@@ -233,7 +240,6 @@
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp[<span class="hljs-built_in">strlen</span>(a)][<span class="hljs-built_in">strlen</span>(b)]);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -479,6 +485,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

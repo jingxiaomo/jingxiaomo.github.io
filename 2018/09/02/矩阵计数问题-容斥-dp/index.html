@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>矩阵计数问题 容斥/dp - Hexo</title>
+  <title>矩阵计数问题 容斥/dp - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -206,15 +214,15 @@
             <article class="markdown-body">
               <p>有一个N*M的矩形，矩形中有K块涂黑了，给出涂黑的坐标，问完全白色的矩形有几个。</p>
 <p>根据数据范围的不同，有多种做法。</p>
-<h4 id="Gym101350G-容斥"><a href="#Gym101350G-容斥" class="headerlink" title="Gym101350G 容斥"></a>Gym101350G 容斥</h4><p>$$ 1 ≤ N, M≤ 10^4$$，$$1 ≤K≤20$$。</p>
+<h4 id="Gym101350G-容斥"><a href="#Gym101350G-容斥" class="headerlink" title="Gym101350G 容斥"></a>Gym101350G 容斥</h4><p><script type="math/tex">1 ≤ N, M≤ 10^4</script>，<script type="math/tex">1 ≤K≤20</script>。</p>
 <p><strong>思路：</strong></p>
 <p>因为K比较小，N，M又比较大，所以可以考虑容斥。</p>
-<p>对于一个N*M的矩形，它的子矩形有$$C_{n+1}^2\times C_{m+1}^2=\frac{n(n+1)}{2}\times \frac{m(m+1)}{2}$$个，就相当于在横的边里任意选两条，竖着的边里任意选两条，相当于选出了矩形的边界。</p>
+<p>对于一个N*M的矩形，它的子矩形有<script type="math/tex">C_{n+1}^2\times C_{m+1}^2=\frac{n(n+1)}{2}\times \frac{m(m+1)}{2}</script>个，就相当于在横的边里任意选两条，竖着的边里任意选两条，相当于选出了矩形的边界。</p>
 <p>根据容斥原理，那就要算出包含涂黑的矩形有几个，奇加偶减，对于包含奇数个黑块的矩形，就减，对于包含偶数个黑块的矩形，就加。</p>
 <p>如何算出包含黑块的矩形有几个？</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuv6fvb88qj30j20d2dgk.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>只要知道minr,minc,maxr,maxc就可以了。</p>
-<p>就相当于选矩形的四条边，最左边的那条边有minc种选法，最右边的那条边有m-maxc+1种选法，最上边的那条边有minr种选法，最下边的那条边有n-maxr+1种选法。个数为$$minc<em>minr</em>(m-maxc+1)*(n-maxr+1)$$。</p>
+<p>就相当于选矩形的四条边，最左边的那条边有minc种选法，最右边的那条边有m-maxc+1种选法，最上边的那条边有minr种选法，最下边的那条边有n-maxr+1种选法。个数为<script type="math/tex">minc*minr*(m-maxc+1)*(n-maxr+1)</script>。</p>
 <p>所以二进制枚举容斥一下就可以了。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
@@ -257,15 +265,14 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-<h4 id="南京网络赛B-单调栈"><a href="#南京网络赛B-单调栈" class="headerlink" title="南京网络赛B 单调栈"></a>南京网络赛B 单调栈</h4><p>$$1≤N≤10^5$$，$$1≤M≤100$$，$$0≤K≤10^5$$。</p>
+<h4 id="南京网络赛B-单调栈"><a href="#南京网络赛B-单调栈" class="headerlink" title="南京网络赛B 单调栈"></a>南京网络赛B 单调栈</h4><p><script type="math/tex">1≤N≤10^5</script>，<script type="math/tex">1≤M≤100</script>，<script type="math/tex">0≤K≤10^5</script>。</p>
 <p><strong>思路：</strong></p>
 <p>K的范围明显不能容斥。</p>
 <p>首先对于矩形中的每一块可以处理出它向上可以选几条边。</p>
 <p>固定下面那条边，枚举每一块，处理出它左右可以扩展到哪里，即左右各可以选几条边（在上面选的边都可用的情况下）。</p>
 <p>以向左扩展为例，如果左边的高度比它高或跟它相同的话，就肯定可以继续扩展过去，但是如果出现高度比它低的情况的时候，就不能扩展了。所以相当于找它的左边第一个比它低的块，这里就可以用单调栈了。如果当前元素小于等于栈顶元素的话，就把栈顶弹掉。类似于HDU1506。</p>
 <p>向右扩展的话，要注意高度和它相同的不能再扩展了，因为扩展的话后面的往左边扩展会算进去这种情况，会造成重复。</p>
-<p>所以对于每个块，完全空白的矩形为$$h[i][j]<em>(j-l[j])</em>(r[j]-j)$$。</p>
+<p>所以对于每个块，完全空白的矩形为<script type="math/tex">h[i][j]*(j-l[j])*(r[j]-j)</script>。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
 <span class="hljs-keyword">int</span> g[<span class="hljs-number">100010</span>][<span class="hljs-number">110</span>];
@@ -322,7 +329,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -568,6 +574,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

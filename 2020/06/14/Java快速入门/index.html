@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>Java学习笔记（一）Java快速入门 - Hexo</title>
+  <title>Java学习笔记（一）Java快速入门 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -204,31 +212,25 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="Java开发环境搭建"><a href="#Java开发环境搭建" class="headerlink" title="Java开发环境搭建"></a>Java开发环境搭建</h1><p>##Java语言特性</p>
-<p>在Java语言中真正操作内存的是：JVM（Java虚拟机）</p>
+              <h1 id="Java开发环境搭建"><a href="#Java开发环境搭建" class="headerlink" title="Java开发环境搭建"></a>Java开发环境搭建</h1><h2 id="Java语言特性"><a href="#Java语言特性" class="headerlink" title="Java语言特性"></a>Java语言特性</h2><p>在Java语言中真正操作内存的是：JVM（Java虚拟机）</p>
 <p>所有的Java程序都是运行在Java虚拟机当中的。</p>
 <p>而Java虚拟机执行过程中再去操作内存。</p>
 <p>Java语言底层是C++，所以JVM是用C++语言写好的一个虚拟的计算机。Java程序实际上没有直接和操作系统打交道。</p>
 <p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/%E6%8D%95%E8%8E%B71.PNG" srcset="/img/loading.gif" alt=""></p>
-<p>##术语</p>
-<p>JavaSE：标准版；JavaEE：企业版；JavaME：微型版。</p>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>JavaSE：标准版；JavaEE：企业版；JavaME：微型版。</p>
 <p>JDK：Java开发工具箱；JRE：Java运行环境。</p>
-<p>##Java的加载与执行原理</p>
-<p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/%E6%8D%95%E8%8E%B72.PNG" srcset="/img/loading.gif" alt=""></p>
+<h2 id="Java的加载与执行原理"><a href="#Java的加载与执行原理" class="headerlink" title="Java的加载与执行原理"></a>Java的加载与执行原理</h2><p><img src="https://pattle-1256208834.cos.ap-shanghai.myqcloud.com/%E6%8D%95%E8%8E%B72.PNG" srcset="/img/loading.gif" alt=""></p>
 <p>java HelloWorld的执行过程：</p>
 <ol>
 <li>先启动JVM；</li>
 <li>JVM启动后，JVM会去启动类加载器，类加载器负责去硬盘上找“类”对应的“字节码”文件（HelloWorld.class）；</li>
 <li>类加载器如果在硬盘上找不到对应的字节码文件——错误：找不到或无法加载主类；类加载器如果找到了，类加载器会将字节码文件装载到JVM中，JVM启动解释器将字节码解释为二进制码，操作系统执行二进制码和硬件交互。</li>
 </ol>
-<p>##环境变量</p>
-<p>安装Tomcat服务器需要配置JAVA_HOME环境变量。</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>安装Tomcat服务器需要配置JAVA_HOME环境变量。</p>
 <p>让类加载器去指定的路径下加载字节码文件：设置一个环境变量，叫做classpath，classpath环境变量是java特有的。配置了classpath之后类加载器只会去配置的路径下去找不会再去当前路径下找。</p>
-<p>##注释</p>
-<pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><pre><code class="hljs java"><span class="hljs-comment">/**</span>
 <span class="hljs-comment">*javadoc注释：这里的注释信息可以自动被javadoc.exe命令解析提取并生成到帮助文档中</span>
 <span class="hljs-comment">*/</span></code></pre>
-
 <p>例如：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span></span>&#123;
 	<span class="hljs-comment">/**</span>
@@ -239,20 +241,16 @@
         
     &#125;
 &#125;</code></pre>
-
 <p>生成javadoc文档：</p>
 <pre><code class="hljs shell">javadoc -d javaapi T.java</code></pre>
-
 <p>把javadoc放入javaapi文件夹。</p>
-<p>##接收键盘输入</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> </span>&#123;
+<h2 id="接收键盘输入"><a href="#接收键盘输入" class="headerlink" title="接收键盘输入"></a>接收键盘输入</h2><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         java.util.Scanner s=<span class="hljs-keyword">new</span> java.util.Scanner(System.in);
         <span class="hljs-keyword">int</span> a=s.nextInt();
         System.out.println(a);
     &#125;
 &#125;</code></pre>
-
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> </span>&#123;
@@ -262,9 +260,7 @@
         System.out.println(a);
     &#125;
 &#125;</code></pre>
-
-<p>##类</p>
-<p>在java中任何有效的代码必须写到类当中。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>在java中任何有效的代码必须写到类当中。</p>
 <pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
     
 &#125;
@@ -278,7 +274,6 @@
 &#125;
 
 <span class="hljs-comment">//编译通过</span></code></pre>
-
 <p>一个java源代码文件中有多个类，编译后有多个class文件。</p>
 <p>public的类不是必须的。</p>
 <pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
@@ -294,7 +289,6 @@
 &#125;
 
 <span class="hljs-comment">//编译报错</span></code></pre>
-
 <p>public的类可以没有，但如果有的话，public修饰的类名必须和源文件名保持一致。因此一个java文件里面public的类只能有一个。</p>
 <pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T1</span></span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;
@@ -315,18 +309,17 @@
 &#125;
 
 <span class="hljs-comment">//编译通过</span></code></pre>
-
 <p>想从哪个入口进去，就加载哪个类。例如：</p>
 <pre><code class="hljs sh">java T1
 java T2
 java T3</code></pre>
-
 <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h2><p>在Java中数据被称为字面量。例如10、1.23、true、’a’、”abc”，分别为整数型字面量、浮点型字面量、布尔型字面量、字符型字面量、字符串型字面量。</p>
 <p>只有字面量内存是无法重复利用的，使用变量以后内存空间就得到了重复利用。</p>
 <h2 id="变量-1"><a href="#变量-1" class="headerlink" title="变量"></a>变量</h2><p>变量是内存中存储数据的最基本的单元。</p>
 <p>Java变量必须先声明再赋值才能访问（没有值相当于空间没有开辟）。</p>
 <p>局部变量只在方法体中有效，方法体执行结束该变量的内存就释放了。</p>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>类型</th>
@@ -334,7 +327,8 @@ java T3</code></pre>
 <th>取值范围</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>byte</td>
 <td>1</td>
 <td>[-128,127]</td>
@@ -374,7 +368,9 @@ java T3</code></pre>
 <td>2</td>
 <td>[0,65535]</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><p>字符编码规定了一系列文字对应的二进制。</p>
 <p>字符编码涉及到编码和解码两个过程。</p>
 <p>ASCII码：英文；</p>
@@ -389,7 +385,6 @@ java T3</code></pre>
 System.out.println(x);
 
 <span class="hljs-comment">//输出：中</span></code></pre>
-
 <h2 id="整数型"><a href="#整数型" class="headerlink" title="整数型"></a>整数型</h2><h3 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h3><pre><code class="hljs java"><span class="hljs-comment">//十进制</span>
 <span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;
 <span class="hljs-comment">//八进制</span>
@@ -398,7 +393,6 @@ System.out.println(x);
 <span class="hljs-keyword">int</span> c=<span class="hljs-number">0x10</span>;
 <span class="hljs-comment">//二进制</span>
 <span class="hljs-keyword">int</span> d=<span class="hljs-number">0b10</span>;</code></pre>
-
 <h3 id="默认"><a href="#默认" class="headerlink" title="默认"></a>默认</h3><p>在任何情况下，整数型的字面量默认被当作int类型处理，浮点型的字面量默认被当作double类型处理。 </p>
 <p>当整数型字面量没有超出byte/short/char的取值范围，那么这个整数型字面量可以直接赋值给byte/short/char。</p>
 <p>多种数据类型做混合运算的时候，最终的结果是最大容量对应的类型，但是byte、char、short做混合运算的时候，各自先转换成int。</p>
@@ -412,7 +406,6 @@ System.out.println(x);
 <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
 <span class="hljs-keyword">short</span> x=a;	<span class="hljs-comment">//编译报错，编译器只知道a是int类型，不知道a中存储的是哪个值</span>
 System.out.println(x);</code></pre>
-
 <h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><p>小容量可以自动转换成大容量。</p>
 <blockquote>
 <p>容量排序：</p>
@@ -421,17 +414,14 @@ System.out.println(x);</code></pre>
 <p>例如：</p>
 <pre><code class="hljs java"><span class="hljs-comment">//int自动转换成long</span>
 <span class="hljs-keyword">long</span> b=<span class="hljs-number">200</span>;</code></pre>
-
 <pre><code class="hljs java"><span class="hljs-keyword">long</span> e=<span class="hljs-number">2147483648</span>;
 
 <span class="hljs-comment">//编译报错，超过int取值范围</span></code></pre>
-
 <h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>大容量不能直接赋值给小容量，需要使用强制类型转换符进行强制转换，但是运行时可能损失精度。</p>
 <pre><code class="hljs java"><span class="hljs-keyword">long</span> x=<span class="hljs-number">100L</span>;
 <span class="hljs-keyword">int</span> y=x;
 
 <span class="hljs-comment">//编译报错</span></code></pre>
-
 <h3 id="二进制原码反码补码"><a href="#二进制原码反码补码" class="headerlink" title="二进制原码反码补码"></a>二进制原码反码补码</h3><p>反码是原码的符号位不变，其他位取反；补码是反码+1。</p>
 <p>例如：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">byte</span> b=(<span class="hljs-keyword">byte</span>)<span class="hljs-number">150</span>;
@@ -440,7 +430,6 @@ System.out.println(x);</code></pre>
 <span class="hljs-comment">//11101010（原码）</span>
 System.out.println(b);
 <span class="hljs-comment">//输出：-106</span></code></pre>
-
 <h2 id="字符串连接运算符"><a href="#字符串连接运算符" class="headerlink" title="字符串连接运算符"></a>字符串连接运算符</h2><p>当+运算符两边的任意一边是字符串类型，那么这个+会进行字符串拼接操作。</p>
 <p>String属于引用数据类型。</p>
 <h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>凡是有权利自己命名的单词都是标识符。例如类名、方法名（main也是，但是是固定的）、变量名、接口名、常量名。</p>
@@ -461,8 +450,7 @@ System.out.println(b);
 <p>变量名、方法名首字母小写，后面每个单词首字母大写。</p>
 <p>常量名全部大小，并且单词和单词之间采用下划线衔接。</p>
 <h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><p>java中的所有关键字全部小写，具有特殊含义。</p>
-<h1 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h1><p>##遍历数组</p>
-<p>使用标准的<code>for</code>循环可以完成一个数组的遍历。</p>
+<h1 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h1><h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><p>使用标准的<code>for</code>循环可以完成一个数组的遍历。</p>
 <p>使用<code>for each</code>循环，直接迭代数组的每个元素。</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -472,10 +460,8 @@ System.out.println(b);
         &#125;
     &#125;
 &#125;</code></pre>
-
 <p>注意：在<code>for (int n : ns)</code>循环中，变量<code>n</code>直接拿到<code>ns</code>数组的元素，而不是索引。</p>
-<p>##打印元素</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
+<h2 id="打印元素"><a href="#打印元素" class="headerlink" title="打印元素"></a>打印元素</h2><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -484,9 +470,7 @@ System.out.println(b);
       	<span class="hljs-comment">//输出[1, 1, 2, 3, 5, 8]</span>
     &#125;
 &#125;</code></pre>
-
-<p>##数组排序</p>
-<p>Java的标准库已经内置了排序功能，我们只需要调用JDK提供的<code>Arrays.sort()</code>就可以排序：</p>
+<h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><p>Java的标准库已经内置了排序功能，我们只需要调用JDK提供的<code>Arrays.sort()</code>就可以排序：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -497,10 +481,8 @@ System.out.println(b);
       	<span class="hljs-comment">//输出[8, 12, 18, 28, 36, 50, 65, 73, 89, 96] </span>
     &#125;
 &#125;</code></pre>
-
 <p>如果对一个字符串数组进行排序，例如：</p>
 <pre><code class="hljs java">String[] ns = &#123; <span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"pear"</span> &#125;;</code></pre>
-
 <p>排序前，这个数组在内存中表示如下：</p>
 <pre><code class="hljs ascii">                   ┌──────────────────────────────────┐
                ┌───┼──────────────────────┐           │
@@ -510,7 +492,6 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
          └─┬─┴───┴───┴───┴────────┴───┴───────┴───┴──────┴───┘
            │                 ▲
            └─────────────────┘</code></pre>
-
 <p>调用<code>Arrays.sort(ns);</code>排序后，这个数组在内存中表示如下：</p>
 <pre><code class="hljs ascii">                   ┌──────────────────────────────────┐
                ┌───┼──────────┐                       │
@@ -520,10 +501,8 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
          └─┬─┴───┴───┴───┴────────┴───┴───────┴───┴──────┴───┘
            │                              ▲
            └──────────────────────────────┘</code></pre>
-
 <p>原来的3个字符串在内存中均没有任何变化，但是<code>ns</code>数组的每个元素指向变化了。</p>
-<p>##二维数组</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[][] ns = &#123;
             &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span> &#125;,
@@ -533,7 +512,6 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
         System.out.println(ns.length); <span class="hljs-comment">// 3</span>
     &#125;
 &#125;</code></pre>
-
 <p>因为<code>ns</code>包含3个数组，因此，<code>ns.length</code>为<code>3</code>。</p>
 <p>二维数组的每个数组元素的长度并不要求相同，例如，可以这么定义<code>ns</code>数组：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">int</span>[][] ns = &#123;
@@ -541,7 +519,6 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
     &#123; <span class="hljs-number">5</span>, <span class="hljs-number">6</span> &#125;,
     &#123; <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span> &#125;
 &#125;;</code></pre>
-
 <p>要打印一个二维数组，可以使用两层嵌套的for循环：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] arr : ns) &#123;
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n : arr) &#123;
@@ -550,7 +527,6 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
     &#125;
     System.out.println();
 &#125;</code></pre>
-
 <p>或者使用Java标准库的<code>Arrays.deepToString()</code>：</p>
 <pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
 
@@ -565,7 +541,6 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
       	<span class="hljs-comment">//输出[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]] </span>
     &#125;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -811,6 +786,30 @@ ns ─────&gt;│░░░│░░░│░░░│   │&quot;banana&
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

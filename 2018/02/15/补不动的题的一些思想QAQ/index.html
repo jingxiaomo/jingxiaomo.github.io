@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>补不动的题的一些思想QAQ - Hexo</title>
+  <title>补不动的题的一些思想QAQ - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -210,7 +218,6 @@
 <p>思路：（这里的a,b,c表示长度）c=n-a-b，而且max(a,b)-1&lt;=c&lt;=max(a,b)，所以两重循环即可</p>
 <pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=len/<span class="hljs-number">2</span>&amp;&amp;sign==<span class="hljs-number">0</span>;i++)<span class="hljs-comment">//a的长度/b的长度</span>
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=len<span class="hljs-number">-2</span>*i<span class="hljs-number">-1</span>;j&lt;=len<span class="hljs-number">-2</span>*i&amp;&amp;sign==<span class="hljs-number">0</span>;j++)<span class="hljs-comment">//b的长度/a的长度</span></code></pre>
-
 <p>那么如何判断是否正确呢？先可以哈希（取模）判断一下是否正确，再大数加法，这个思想跟之前有一道斐波那契的差不多。</p>
 <h5 id="ACM竞赛高校联盟训练赛-第8场-J"><a href="#ACM竞赛高校联盟训练赛-第8场-J" class="headerlink" title="ACM竞赛高校联盟训练赛 第8场 J"></a>ACM竞赛高校联盟训练赛 第8场 J</h5><p>哇这道题并不是补不动 只是不能补</p>
 <p>就说一种思想吧 原来括号匹配还可以转化为1和-1然后求前缀和的 将左括号’(‘视为1，右括号’)’视为-1则序列合法等价于所有前缀和非负且最后为零。</p>
@@ -460,6 +467,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

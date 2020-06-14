@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>计算几何 - Hexo</title>
+  <title>计算几何 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,19 +213,19 @@
             
             <article class="markdown-body">
               <p>参考博客：<a href="http://dev.gameres.com/Program/Abstract/Geometry.htm#" target="_blank" rel="noopener">http://dev.gameres.com/Program/Abstract/Geometry.htm#</a></p>
-<h5 id="向量的点积"><a href="#向量的点积" class="headerlink" title="向量的点积"></a><strong>向量的点积</strong></h5><p>结果为$$\vec{a}· \vec{b}=x_1x_2+y_1y_2$$。</p>
+<h5 id="向量的点积"><a href="#向量的点积" class="headerlink" title="向量的点积"></a><strong>向量的点积</strong></h5><p>结果为<script type="math/tex">\vec{a}· \vec{b}=x_1x_2+y_1y_2</script>。</p>
 <p>点积的结果是一个数值。</p>
-<p>点积的集合意义：我们以向量 a 向向量 b 做垂线，则$$| a |*cos(a,b)$$为 a 在向量 b 上的投影，即点积是一个向量在另一个向量上的投影乘以另一个向量。且满足交换律</p>
-<p>应用：可以根据集合意义求两向量的夹角，$$\vec{a}·\vec{b}=|\vec{a}||\vec{b}|cos\theta$$。</p>
-<h5 id="向量的叉积"><a href="#向量的叉积" class="headerlink" title="向量的叉积"></a><strong>向量的叉积</strong></h5><p>结果为$$|\vec{a}\times\vec{b}|=|\vec{a}||\vec{b}|sin\theta=x1<em>y2-x2</em>y1$$。</p>
+<p>点积的集合意义：我们以向量 a 向向量 b 做垂线，则<script type="math/tex">| a |*cos(a,b)</script>为 a 在向量 b 上的投影，即点积是一个向量在另一个向量上的投影乘以另一个向量。且满足交换律</p>
+<p>应用：可以根据集合意义求两向量的夹角，<script type="math/tex">\vec{a}·\vec{b}=|\vec{a}||\vec{b}|cos\theta</script>。</p>
+<h5 id="向量的叉积"><a href="#向量的叉积" class="headerlink" title="向量的叉积"></a><strong>向量的叉积</strong></h5><p>结果为<script type="math/tex">|\vec{a}\times\vec{b}|=|\vec{a}||\vec{b}|sin\theta=x1*y2-x2*y1</script>。</p>
 <p>叉积的结果也是一个向量，是垂直于向量a，b所形成的平面，如果看成三维坐标的话是在 z 轴上，上面结果是它的模。</p>
 <p>方向判定：右手定则，（右手半握，大拇指垂直向上，四指右向量a握向b，大拇指的方向就是叉积的方向）</p>
 <p>坐标运算：</p>
-<p>$$\vec{a}=a_x,a_y,a_z$$，$$\vec{b}=b_x,b_y,b_z$$ ，i,j,k分别是X,Y,Z轴方向的单位向量，则$$\vec{a}×\vec{b}=(a_yb_z-a_zb_y)\vec{i}+(a_zb_x-a_xb_z)\vec{j}+(a_xb_y-a_yb_x)\vec{k}$$,</p>
+<p><script type="math/tex">\vec{a}=a_x,a_y,a_z</script>，<script type="math/tex">\vec{b}=b_x,b_y,b_z</script> ，i,j,k分别是X,Y,Z轴方向的单位向量，则<script type="math/tex">\vec{a}×\vec{b}=(a_yb_z-a_zb_y)\vec{i}+(a_zb_x-a_xb_z)\vec{j}+(a_xb_y-a_yb_x)\vec{k}</script>,</p>
 <p>为了帮助记忆,利用三阶</p>
 <p>行列式，写成</p>
 <p>det <img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D86/sign=ed67d90cabec8a13101a5ae6f6038050/37d12f2eb9389b50f5891db18735e5dde6116edb.jpg" srcset="/img/loading.gif" alt="img">。</p>
-<p>$$a\times b=(l,m,n)\times (o,p,q)=(mq-np,no-lq,lp-mo)$$。</p>
+<p><script type="math/tex">a\times b=(l,m,n)\times (o,p,q)=(mq-np,no-lq,lp-mo)</script>。</p>
 <p>叉积的集合意义：</p>
 <p>1：其结果是a和b为相邻边形成平行四边形的面积。</p>
 <p>2：结果有正有负，有sin（a，b）可知和其夹角有关，夹角大于180°为负值。</p>
@@ -234,7 +242,7 @@
 <p>​     我们分两步确定两条线段是否相交：</p>
 <p>​      (1)快速排斥试验</p>
 <p>​      设以线段 P1P2 为对角线的矩形为R， 设以线段 Q1Q2 为对角线的矩形为T，如果R和T不相交，显然两线段不会相交。</p>
-<p>　  (2)跨立试验<br>　  如果两线段相交，则两线段必然相互跨立对方。若P1P2跨立Q1Q2 ，则矢量 ( P1 - Q1 ) 和( P2 - Q1 )位于矢量( Q2 - Q1 ) 的两侧，即( P1 - Q1 ) × ( Q2 - Q1 ) * ( P2 - Q1 ) × ( Q2 - Q1 ) &lt; 0。上式可改写成( P1 - Q1 ) × ( Q2 - Q1 ) * ( Q2 - Q1 ) × ( P2 - Q1 ) &gt; 0。当 ( P1 - Q1 ) × ( Q2 - Q1 ) = 0 时，说明 ( P1 - Q1 ) 和 ( Q2 - Q1 )共线，但是因为已经通过快速排斥试验，所以 P1 一定在线段 Q1Q2上；同理，( Q2 - Q1 ) ×(P2 - Q1 ) = 0 说明 P2 一定在线段 Q1Q2上。所以判断P1P2跨立Q1Q2的依据是：( P1 - Q1 ) × ( Q2 - Q1 ) * ( Q2 - Q1 ) × ( P2 - Q1 ) &gt;= 0。同理判断Q1Q2跨立P1P2的依据是：( Q1 - P1 ) × ( P2 - P1 ) * ( P2 - P1 ) × ( Q2 - P1 ) &gt;= 0。</p>
+<p>　  (2)跨立试验<br>　  如果两线段相交，则两线段必然相互跨立对方。若P1P2跨立Q1Q2 ，则矢量 ( P1 - Q1 ) 和( P2 - Q1 )位于矢量( Q2 - Q1 ) 的两侧，即( P1 - Q1 ) × ( Q2 - Q1 ) <em> ( P2 - Q1 ) × ( Q2 - Q1 ) &lt; 0。上式可改写成( P1 - Q1 ) × ( Q2 - Q1 ) </em> ( Q2 - Q1 ) × ( P2 - Q1 ) &gt; 0。当 ( P1 - Q1 ) × ( Q2 - Q1 ) = 0 时，说明 ( P1 - Q1 ) 和 ( Q2 - Q1 )共线，但是因为已经通过快速排斥试验，所以 P1 一定在线段 Q1Q2上；同理，( Q2 - Q1 ) ×(P2 - Q1 ) = 0 说明 P2 一定在线段 Q1Q2上。所以判断P1P2跨立Q1Q2的依据是：( P1 - Q1 ) × ( Q2 - Q1 ) <em> ( Q2 - Q1 ) × ( P2 - Q1 ) &gt;= 0。同理判断Q1Q2跨立P1P2的依据是：( Q1 - P1 ) × ( P2 - P1 ) </em> ( P2 - P1 ) × ( Q2 - P1 ) &gt;= 0。</p>
 <p>具体情况如下图所示：</p>
 <p>​    <img src="http://dev.gameres.com/Program/Abstract/Geometry_2.gif" srcset="/img/loading.gif" alt="img"></p>
 <pre><code class="hljs c++"><span class="hljs-comment">//这里直线1的两个顶点是p[0],p[1];直线2的两个顶点是p[2],p[3]。</span>
@@ -263,9 +271,8 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="混合积"><a href="#混合积" class="headerlink" title="混合积"></a><strong>混合积</strong></h5><p>设 a ,b,c 是空间中三个向量，则 (a×b)·c称为三个向量 a ，b ，c 的混合积，记作[a b c] 或 (a,b,c) 或 (abc)。</p>
-<p>设$$\vec{a}=a_1\vec{i}+a_2\vec{j}+a_3\vec{k}$$，$$\vec{b}=b_1\vec{i}+b_2\vec{j}+b_3\vec{k}$$，$$\vec{c}=c_1\vec{i}+c_2\vec{j}+c_3\vec{k}$$。则有</p>
+<p>设<script type="math/tex">\vec{a}=a_1\vec{i}+a_2\vec{j}+a_3\vec{k}</script>，<script type="math/tex">\vec{b}=b_1\vec{i}+b_2\vec{j}+b_3\vec{k}</script>，<script type="math/tex">\vec{c}=c_1\vec{i}+c_2\vec{j}+c_3\vec{k}</script>。则有</p>
 <p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D174/sign=cf3995104c10b912bbc1f2f9f7fcfcb5/a50f4bfbfbedab6401679f6bfc36afc379311e07.jpg" srcset="/img/loading.gif" alt="img"></p>
 <p>应用：</p>
 <p>四个点构成三个向量， 如果这三个向量的混合积为0，那么体积为0，那么四点共面。</p>
@@ -294,7 +301,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="皮克公式"><a href="#皮克公式" class="headerlink" title="皮克公式"></a><strong>皮克公式</strong></h5><p>给定顶点坐标均是整点（或正方形格点）的简单多边形，皮克定理说明了其面积S和内部格点数目n、边上格点数目s的关系：</p>
 <p><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D88/sign=2eff49b0b4003af349bad168342acee8/fc1f4134970a304e3d330943d3c8a786c9175c71.jpg" srcset="/img/loading.gif" alt="img"></p>
 <p>(其中n表示多边形内部的点数,s表示多边形边界上的点数,S表示多边形的面积)</p>
@@ -347,7 +353,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <h5 id="精度"><a href="#精度" class="headerlink" title="精度"></a><strong>精度</strong></h5><p>参考博客：<a href="http://www.cnblogs.com/crazyacking/p/4668471.html" target="_blank" rel="noopener">http://www.cnblogs.com/crazyacking/p/4668471.html</a></p>
 <p>判断浮点数相等：</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> eps 1e-8<span class="hljs-comment">//依题目而定</span></span>
@@ -357,7 +362,6 @@
     <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
 &#125;</code></pre>
-
 <h5 id="凸包"><a href="#凸包" class="headerlink" title="凸包"></a><strong>凸包</strong></h5><p>参考博客：<a href="https://www.cnblogs.com/aiguona/p/7232243.html" target="_blank" rel="noopener">https://www.cnblogs.com/aiguona/p/7232243.html</a></p>
 <p>1⃣把纵坐标最小的点作为p0，如果有多个纵坐标最小的点，就选其中横坐标最小的点。</p>
 <p>2⃣按逆时针方向相对于p0进行极角排序，如果极角相同，就把距离p0近的排在前面。</p>
@@ -422,7 +426,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -668,6 +671,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

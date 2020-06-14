@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>上海大都会赛A 随机 - Hexo</title>
+  <title>上海大都会赛A 随机 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -205,9 +213,9 @@
             
             <article class="markdown-body">
               <p><strong>题意：</strong></p>
-<p>给出N个点，求是否存在一条直线，至少经过N个点中的$$\lceil N*x\rceil$$个点。其中$$1≤ T ≤ 100$$，$$1≤N≤10^4$$，$$0 &lt; x &lt; 1$$且x为一位小数。</p>
+<p>给出N个点，求是否存在一条直线，至少经过N个点中的<script type="math/tex">\lceil N*x\rceil</script>个点。其中<script type="math/tex">1≤ T ≤ 100</script>，<script type="math/tex">1≤N≤10^4</script>，<script type="math/tex">0 < x < 1</script>且x为一位小数。</p>
 <p><strong>思路：</strong></p>
-<p>这道题是随机两个点形成一条直线，这条直线满足条件的概率为$$x<em>x$$，因为在满足条件的直线上的点至少有$$\lceil N</em>x\rceil$$个，所以某个点在这条直线上的概率为$$\frac{\lceil N<em>x\rceil}{N}≈x$$，两个点都在这条直线上的概率为$$x</em>x$$，$$x*x$$的极端情况为0.01，所以随机几百次就可以了。</p>
+<p>这道题是随机两个点形成一条直线，这条直线满足条件的概率为<script type="math/tex">x*x</script>，因为在满足条件的直线上的点至少有<script type="math/tex">\lceil N*x\rceil</script>个，所以某个点在这条直线上的概率为<script type="math/tex">\frac{\lceil N*x\rceil}{N}≈x</script>，两个点都在这条直线上的概率为<script type="math/tex">x*x</script>，<script type="math/tex">x*x</script>的极端情况为0.01，所以随机几百次就可以了。</p>
 <p><strong>代码：</strong></p>
 <pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span></span>
 <span class="hljs-class">&#123;</span>
@@ -244,7 +252,6 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 
             </article>
             <hr>
@@ -490,6 +497,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>bitset用法 - Hexo</title>
+  <title>bitset用法 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -226,87 +234,90 @@
   <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"baz:"</span>&lt;&lt;baz&lt;&lt;<span class="hljs-built_in">endl</span>;
   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-<h5 id="bitset操作"><a href="#bitset操作" class="headerlink" title="bitset操作"></a>bitset操作</h5><table>
+<h5 id="bitset操作"><a href="#bitset操作" class="headerlink" title="bitset操作"></a>bitset操作</h5><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">函数名</th>
+<th style="text-align:left">函数名</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">b.any()</td>
+<tbody>
+<tr>
+<td style="text-align:left">b.any()</td>
 <td>b中是否存在置为1的二进制位？</td>
 </tr>
 <tr>
-<td align="left">b.none()</td>
+<td style="text-align:left">b.none()</td>
 <td>b中不存在置为1的二进制位吗？</td>
 </tr>
 <tr>
-<td align="left">b.count()</td>
+<td style="text-align:left">b.count()</td>
 <td>b中置为1的二进制位的个数</td>
 </tr>
 <tr>
-<td align="left">b.size()</td>
+<td style="text-align:left">b.size()</td>
 <td>b中二进制位的个数</td>
 </tr>
 <tr>
-<td align="left">b[pos]</td>
+<td style="text-align:left">b[pos]</td>
 <td>访问b中在pos处的二进制位</td>
 </tr>
 <tr>
-<td align="left">b.test(pos)</td>
+<td style="text-align:left">b.test(pos)</td>
 <td>b中在pos处的二进制位是否为1？</td>
 </tr>
 <tr>
-<td align="left">b.set()</td>
+<td style="text-align:left">b.set()</td>
 <td>把b中所有二进制位都置为1</td>
 </tr>
 <tr>
-<td align="left">b.set(pos)</td>
+<td style="text-align:left">b.set(pos)</td>
 <td>把b中在pos处的二进制位置为1</td>
 </tr>
 <tr>
-<td align="left">b.reset()</td>
+<td style="text-align:left">b.reset()</td>
 <td>把b中所有二进制位都置为0</td>
 </tr>
 <tr>
-<td align="left">b.reset(pos)</td>
+<td style="text-align:left">b.reset(pos)</td>
 <td>把b中在pos处的二进制位置为0</td>
 </tr>
 <tr>
-<td align="left">b.flip()</td>
+<td style="text-align:left">b.flip()</td>
 <td>把b中所有二进制位逐位取反</td>
 </tr>
 <tr>
-<td align="left">b.flip(pos)</td>
+<td style="text-align:left">b.flip(pos)</td>
 <td>把b中在pos处的二进制位取反</td>
 </tr>
 <tr>
-<td align="left">b.to_ulong()</td>
+<td style="text-align:left">b.to_ulong()</td>
 <td>用b中同样的二进制位返回一个unsigned long值</td>
 </tr>
 <tr>
-<td align="left">b.to_ullong()</td>
+<td style="text-align:left">b.to_ullong()</td>
 <td>用b中同样的二进制位返回一个unsigned long long值</td>
 </tr>
 <tr>
-<td align="left">b.to_string()</td>
+<td style="text-align:left">b.to_string()</td>
 <td>返回它转换为string的结果</td>
 </tr>
 <tr>
-<td align="left">cout&lt;&lt;b</td>
+<td style="text-align:left">cout&lt;&lt;b</td>
 <td>输出b</td>
 </tr>
 <tr>
-<td align="left">_Find_first()</td>
+<td style="text-align:left">_Find_first()</td>
 <td>找到第一个为1的数</td>
 </tr>
 <tr>
-<td align="left">_Find_next()</td>
+<td style="text-align:left">_Find_next()</td>
 <td>找到下一个为1的数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
             </article>
             <hr>
@@ -552,6 +563,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

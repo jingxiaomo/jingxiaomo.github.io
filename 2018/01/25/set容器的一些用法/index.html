@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="kumira">
   <meta name="keywords" content="">
-  <title>set容器的一些用法 - Hexo</title>
+  <title>set容器的一些用法 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -238,12 +246,11 @@
     <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-built_in">endl</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>运行结果：</p>
 <p><img src="http://pic002.cnblogs.com/images/2012/406683/2012081315230691.jpg" srcset="/img/loading.gif" alt="img"></p>
 <p><strong>小结：</strong>set中的删除操作是不进行任何的错误检查的，比如定位器的是否合法等等，所以用的时候自己一定要注意。</p>
 <hr>
-<p>*<em>find() *</em> ，返回给定值值得定位器，如果没找到则返回end()。</p>
+<p><strong>find() </strong> ，返回给定值值得定位器，如果没找到则返回end()。</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> a[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;
@@ -255,8 +262,7 @@
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
-<p>-—————————————————————————</p>
+<p>-—————————————————————————————————————-</p>
 <p><strong>lower_bound(key_value)</strong> ，返回第一个大于等于key_value的定位器</p>
 <p><strong>upper_bound(key_value)，</strong>返回最后一个大于等于key_value的定位器</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
@@ -273,7 +279,6 @@
     <span class="hljs-built_in">cout</span>&lt;&lt;*s.upper_bound(<span class="hljs-number">3</span>)&lt;&lt;<span class="hljs-built_in">endl</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-
 <p>运行结果：</p>
 <p><img src="http://pic002.cnblogs.com/images/2012/406683/2012081316162732.jpg" srcset="/img/loading.gif" alt="img"></p>
 
@@ -521,6 +526,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a5dc56eafecca743bd237bbc54f64e67";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
