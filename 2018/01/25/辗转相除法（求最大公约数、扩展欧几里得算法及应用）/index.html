@@ -1,25 +1,664 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>辗转相除法（求最大公约数、扩展欧几里得算法及应用） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-25 17:56">
+      January 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="求最大公约数"><a href="#求最大公约数" class="headerlink" title="求最大公约数"></a><strong>求最大公约数</strong></h5><p>原理：gcd(a,b)=gcd(b,a mod b)</p>
+<p>辗转相除法是利用以下性质来确定两个正整数 a 和 b 的最大公因子的：</p>
+<p>⒈ 若 r 是 a ÷ b 的余数，且r不为0， 则</p>
+<p>gcd(a,b) = gcd(b,r)</p>
+<p>⒉ a 和其倍数之最大公因子为 a。</p>
+<p>另一种写法是：</p>
+<p>⒈ 令r为a/b所得余数（0≤r&lt;b）</p>
+<p>若 r= 0，算法结束；b 即为答案。</p>
+<p>⒉ 互换：置 a←b，b←r，并返回第一步。</p>
+<p>欧几里德算法的C语言实现：</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span> </span>
+<span class="hljs-function"></span>&#123; 
+    <span class="hljs-keyword">if</span>(a&lt;b)&#123;<span class="hljs-keyword">int</span> temp;temp=a;a=b;b=temp;&#125; 
+    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> a;
+    <span class="hljs-keyword">while</span>(a%b)&#123;<span class="hljs-keyword">int</span> r=a%b;a=b;b=r;&#125; 
+    <span class="hljs-keyword">return</span> b; 
+&#125;</code></pre>
+
+<p>递归写法：</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(a&lt;b)&#123;<span class="hljs-keyword">int</span> temp;temp=a;a=b;b=temp;&#125; 
+    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> a;
+    <span class="hljs-keyword">return</span> gcd(b,a%b);
+&#125;</code></pre>
+
+<p>最小公倍数 = a*b/最大公约数  注意超过范围32位</p>
+<p>用a*(b/最大公约数）就不会超过32位了 而且有时需用到long long</p>
+<h5 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a><strong>扩展欧几里得算法</strong></h5><p>求ax+by=gcd(a,b)（这里a和b都是正整数所以解释了后面带入的为什么是m,n）</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> &amp;x,<span class="hljs-keyword">int</span> &amp;y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> d=a;
+    <span class="hljs-keyword">if</span>(b!=<span class="hljs-number">0</span>)&#123;
+        d=extgcd(b,a%b,y,x);
+        y=y-(a/b)*x;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> d;
+&#125; 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> x,y;
+    extgcd(<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,x,y);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,x,y);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="扩展欧几里得算法的应用"><a href="#扩展欧几里得算法的应用" class="headerlink" title="扩展欧几里得算法的应用"></a><strong>扩展欧几里得算法的应用</strong></h5><p>（1）求解不定方程</p>
+<p>用扩展欧几里得算法解不定方程ax+by=c;</p>
+<p>这个应该比较好理解了，两个可以同乘以k.</p>
+<p>（2）乘法逆元</p>
+<p>给出2个数M和N(M &lt; N)，且M与N互质，找出一个数K满足0 &lt; K &lt; N且K * M % N = 1，如果有多个满足条件的，输出最小的。</p>
+<p>思路：K * M % N = 1等价于 K<em>M=N<em>X+1  即 K</em>M+N</em>(-X)=1 </p>
+<p>根据扩展欧几里德算法，求出K和（-X）；</p>
+<p>而K是应为正整数，即需要若K为负整数，则需要将之化正，即与负数取模同理，将K加上N，直至K&gt;0为止，所得的数即为最小的乘法逆元；</p>
+<p>若K为正整数，则直接输出即可。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> &amp;x,<span class="hljs-keyword">int</span> &amp;y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> d=a;
+    <span class="hljs-keyword">if</span>(b!=<span class="hljs-number">0</span>)&#123;
+        d=extgcd(b,a%b,y,x);
+        y=y-(a/b)*x;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> d;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,n,x,y;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;m,&amp;n);
+    extgcd(m,n,x,y);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(x%n+n)%n);     <span class="hljs-comment">//要使K最小，而且考虑K为负数的情况 </span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>例如：4关于1模7的乘法逆元为多少？</p>
+<p>4X≡1 mod 7</p>
+<p>这个方程等价于求一个X和K，满足4X=7K+1,其中X和K都是整数。</p>
+<p>若ax≡1 mod f, 则称a关于模f的乘法逆元为x。也可表示为ax≡1(mod f)。</p>
+<p>为什么要有乘法逆元呢？<br>当我们要求（a/b） mod p的值，且a很大，无法直接求得a/b的值时，我们就要用到乘法逆元。<br>我们可以通过求b关于p的乘法逆元k，将a乘上k再模p，即(a*k) mod p。其结果与(a/b) mod p等价。</p>
+<p>用乘法逆元求组合数：</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007</span>
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d=a;
+    <span class="hljs-keyword">if</span>(b!=<span class="hljs-number">0</span>)&#123;
+        d=extgcd(b,a%b,y,x);
+        y=y-(a/b)*x;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> d;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">hx</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> x,y;
+    extgcd(a,b,x,y);
+    <span class="hljs-keyword">return</span> (x%b+b)%b;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">comb</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> m)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> fz=<span class="hljs-number">1</span>,fm=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">for</span>(i=n;i&gt;=m+<span class="hljs-number">1</span>;i--)
+    fz=(fz*i)%MOD;
+    <span class="hljs-keyword">for</span>(i=n-m;i&gt;=<span class="hljs-number">2</span>;i--)
+    fm=(fm*i)%MOD;
+    <span class="hljs-keyword">return</span> (fz*hx(fm,MOD))%MOD;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> m,n;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;m,&amp;n);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,comb(m,n));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>求解二元一次方程：</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;d,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(!b)&#123;d=a;x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;&#125;
+    <span class="hljs-keyword">else</span>&#123;extgcd(b,a%b,d,y,x);y-=x*(a/b);&#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> x,y,m,n,l,d,a,b,c;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;m,&amp;n,&amp;l);
+    a=m-n;b=l;c=y-x;
+    extgcd(a,b,d,x,y);
+    <span class="hljs-keyword">if</span>(c%d)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Impossible\n"</span>);
+    <span class="hljs-keyword">else</span>
+    &#123;
+        x=x*(c/d);<span class="hljs-comment">//c可以整除d</span>
+        b=b/d;
+        <span class="hljs-keyword">if</span>(b&lt;<span class="hljs-number">0</span>)b=-b;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,(x%b+b)%b);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="求模线性方程组"><a href="#求模线性方程组" class="headerlink" title="求模线性方程组"></a><strong>求模线性方程组</strong></h5><p>以POJ 2891为例：</p>
+<p>题意：给你k对a和r是否存在一个正整数x使每队a和r都满足：x mod a=r，求最小正解x或无解。</p>
+<p>思路：</p>
+<p>若模数两两互质，我们可以用中国剩余定理来解。<br>这里我们先考虑两个方程：</p>
+<center>x≡r1(mod a1)</center>
+
+<center>x≡r2(mod a2)</center>
+
+<p>我们可以写成:</p>
+<center>x+y1a1=r1</center>
+
+<center>x−y2a2=r2</center>
+
+<p>相减得：</p>
+<center>y1a1+y2a2=r1−r2</center>
+
+<p>这就可以用扩展欧几里得解方程求出解：</p>
+<p>设a, b, c为任意整数。若方程ax+by=c的一组整数解为(x0,y0)，则它的任意整数解都可以写成(x0+kb’,y0-ka’)，其中a’=a/gcd(a,b)，b’=b/gcd(a,b)，k取任意整数。</p>
+<p>设a, b, c为任意整数，g=gcd(a,b)，方程ax+by=g的一组解是(x0,y0)，则当c是g的倍数时ax+by=c的一组解是(x0c/g,y0c/g)；当c不是g的倍数时无整数解。</p>
+<p>若gcd(a,b)/|m那么方程就无解，直接输出-1。<br>否则我们可以解出上式的y1。回带得到一个特解x0=r1−y1a1。<br>通解可以写成x=x0+k∗lcm(a1,a2)也就是x≡x0(mod lcm(a1,a2))。<br>这样我们就将两个方程合并为了一个。重复进行以上操作，我们最终能将n个方程全部合并，再用扩展欧几德得解出来就好了。</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">100010</span>],r[<span class="hljs-number">100010</span>];
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d=a;
+    <span class="hljs-keyword">if</span>(b!=<span class="hljs-number">0</span>)&#123;
+        d=extgcd(b,a%b,y,x);
+        y=y-(a/b)*x;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> d;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)!=EOF)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;a[i],&amp;r[i]);
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> rr=r[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> aa=a[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> x,y,d;
+        <span class="hljs-keyword">int</span> sign=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n&amp;&amp;sign==<span class="hljs-number">0</span>;i++)
+        &#123;
+            d=extgcd(aa,a[i],x,y);
+            <span class="hljs-comment">//printf("%lld\n",x);</span>
+            <span class="hljs-keyword">if</span>((rr-r[i])%d!=<span class="hljs-number">0</span>)sign++;
+            x=(rr-r[i])/d*x%a[i];<span class="hljs-comment">//注意要模a[i]</span>
+            <span class="hljs-comment">//printf("%lld\n",x);</span>
+            rr=rr-x*aa;
+            aa=aa/d*a[i];<span class="hljs-comment">//不能写成aa*a[i]/d会溢出</span>
+            rr=rr%aa;<span class="hljs-comment">//这个rr可能很大，所以要模掉，模掉也没有影响</span>
+        &#125;
+        <span class="hljs-keyword">if</span>(sign)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"-1\n"</span>);
+        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,(rr%aa+aa)%aa);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80%E5%8F%8A%E9%80%86%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">康托展开及逆康托展开</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E4%B8%80%E4%BA%9B%E7%BB%86%E5%B0%8F%E7%9A%84%E7%82%B9/">
+                        <span class="hidden-mobile">一些细小的点</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "辗转相除法（求最大公约数、扩展欧几里得算法及应用）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

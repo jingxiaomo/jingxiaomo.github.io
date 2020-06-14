@@ -1,25 +1,719 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>最近公共祖先 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-08-15 20:49">
+      August 15, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="tarjan离线："><a href="#tarjan离线：" class="headerlink" title="tarjan离线："></a>tarjan离线：</h4><p><strong>参考博客：</strong></p>
+<p><a href="https://www.dreamwings.cn/lca/4874.html" target="_blank" rel="noopener">https://www.dreamwings.cn/lca/4874.html</a></p>
+<p><a href="https://www.cnblogs.com/JVxie/p/4854719.html" target="_blank" rel="noopener">https://www.cnblogs.com/JVxie/p/4854719.html</a></p>
+<p><strong>复杂度：</strong></p>
+<p>$$O(m+n)$$，m是询问数，n是节点数。</p>
+<p><strong>伪代码：</strong></p>
+<pre><code class="hljs c++">Tarjan(u)   <span class="hljs-comment">// merge和find为并查集合并函数和查找函数</span>
+&#123;
+    <span class="hljs-function"><span class="hljs-keyword">for</span> <span class="hljs-title">each</span><span class="hljs-params">(u,v)</span>       <span class="hljs-comment">// 遍历u的所有子节点v</span></span>
+<span class="hljs-function">    </span>&#123;
+        Tarjan(v);      <span class="hljs-comment">// 继续往下遍历</span>
+        merge(u,v);     <span class="hljs-comment">// 合并v到u这一集合</span>
+        标记 v 已被访问过;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">for</span> <span class="hljs-title">each</span><span class="hljs-params">(u,e)</span>       <span class="hljs-comment">// 遍历所有与u有查询关系的e</span></span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">if</span> (e 被访问过)
+            u, e 的最近公共祖先为 <span class="hljs-built_in">find</span>(e);
+    &#125;
+&#125;</code></pre>
+
+<p><strong>模板：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> top,qtop;
+<span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
+<span class="hljs-keyword">int</span> qhead[<span class="hljs-number">500010</span>];
+<span class="hljs-keyword">int</span> par[<span class="hljs-number">500010</span>];
+<span class="hljs-keyword">bool</span> vis[<span class="hljs-number">500010</span>];
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    <span class="hljs-keyword">int</span> next;
+&#125;eg[<span class="hljs-number">500010</span>*<span class="hljs-number">2</span>];
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">query</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">int</span> next;
+&#125;qu[<span class="hljs-number">500010</span>*<span class="hljs-number">2</span>];
+<span class="hljs-keyword">int</span> ans[<span class="hljs-number">500010</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    eg[top].to=b;
+    eg[top].next=head[a];
+    head[a]=top++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addq</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    qu[qtop].to=b;
+    qu[qtop].id=c;
+    qu[qtop].next=qhead[a];
+    qhead[a]=qtop++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">return</span> par[x]=Find(par[x]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span></span>
+<span class="hljs-function"></span>&#123;
+    vis[id]=<span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> v=eg[i].to;
+        <span class="hljs-keyword">if</span>(!vis[v])
+        &#123;
+            tarjan(v);
+            par[v]=id;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=qhead[id];i!=<span class="hljs-number">-1</span>;i=qu[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> v=qu[i].to;
+        <span class="hljs-keyword">if</span>(vis[v])
+            ans[qu[i].id]=Find(v);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,s,x,y;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;s);
+    top=<span class="hljs-number">0</span>;qtop=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        head[i]=<span class="hljs-number">-1</span>;qhead[i]=<span class="hljs-number">-1</span>;
+        vis[i]=<span class="hljs-literal">false</span>;par[i]=i;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        add(x,y);add(y,x);
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        addq(x,y,i);addq(y,x,i);
+    &#125;
+    tarjan(s);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans[i]);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h4 id="倍增："><a href="#倍增：" class="headerlink" title="倍增："></a>倍增：</h4><p><strong>参考博客：</strong></p>
+<p><a href="https://blog.csdn.net/qq_42790311/article/details/81486742" target="_blank" rel="noopener">https://blog.csdn.net/qq_42790311/article/details/81486742</a></p>
+<p><a href="https://www.cnblogs.com/xqmmcqs/p/5954097.html" target="_blank" rel="noopener">https://www.cnblogs.com/xqmmcqs/p/5954097.html</a></p>
+<p><a href="https://www.luogu.org/blog/34188/solution-p3379" target="_blank" rel="noopener">https://www.luogu.org/blog/34188/solution-p3379</a></p>
+<p><strong>复杂度：</strong></p>
+<p>$$O(nlog_2n)$$。</p>
+<p><strong>模板：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> top;
+<span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
+<span class="hljs-keyword">int</span> par[<span class="hljs-number">500010</span>][<span class="hljs-number">25</span>];<span class="hljs-comment">//编号为i的结点的第2^j个祖先</span>
+<span class="hljs-keyword">int</span> dep[<span class="hljs-number">500010</span>];
+<span class="hljs-keyword">int</span> lg[<span class="hljs-number">500010</span>];
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    <span class="hljs-keyword">int</span> next;
+&#125;eg[<span class="hljs-number">500010</span>*<span class="hljs-number">2</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    eg[top].to=b;
+    eg[top].next=head[a];
+    head[a]=top++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> fa,<span class="hljs-keyword">int</span> depth)</span></span>
+<span class="hljs-function"></span>&#123;
+    dep[id]=depth;
+    par[id][<span class="hljs-number">0</span>]=fa;
+    <span class="hljs-comment">//i的第2^j个祖先相当于i的第2^(j-1)个祖先的第2^(j-1)个祖先</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;(<span class="hljs-number">1</span>&lt;&lt;i)&lt;=dep[id];i++)
+        par[id][i]=par[par[id][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+        <span class="hljs-keyword">if</span>(eg[i].to!=fa)
+            dfs(eg[i].to,id,depth+<span class="hljs-number">1</span>);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(dep[x]&lt;dep[y])swap(x,y);<span class="hljs-comment">//保证x的深度大于等于y</span>
+    <span class="hljs-keyword">while</span>(dep[x]&gt;dep[y])
+        x=par[x][lg[dep[x]-dep[y]]<span class="hljs-number">-1</span>];<span class="hljs-comment">//让深的往上跳</span>
+    <span class="hljs-keyword">if</span>(x==y)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-comment">//一起向上跳</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lg[dep[x]]<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)
+        <span class="hljs-keyword">if</span>(par[x][i]!=par[y][i])
+            x=par[x][i],y=par[y][i];
+    <span class="hljs-keyword">return</span> par[x][<span class="hljs-number">0</span>];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,r,x,y;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;r);
+    lg[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        lg[i]=lg[i<span class="hljs-number">-1</span>]+(<span class="hljs-number">1</span>&lt;&lt;lg[i<span class="hljs-number">-1</span>]==i);<span class="hljs-comment">//预处理出log2(i)+1</span>
+    top=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(head));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        add(x,y);add(y,x);
+    &#125;
+    dfs(r,r,<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,lca(x,y));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h4 id="树链剖分："><a href="#树链剖分：" class="headerlink" title="树链剖分："></a>树链剖分：</h4><p>对于两个不在同一重链内的节点，让他们不断地跳，使得他们处于同一重链上。往上跳之后两点在同一条重链上，LCA就是两点中深度更小的那个。</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> top;
+<span class="hljs-keyword">int</span> head[<span class="hljs-number">500010</span>];
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    <span class="hljs-keyword">int</span> next;
+&#125;eg[<span class="hljs-number">1000010</span>];
+<span class="hljs-keyword">int</span> par[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点的父亲</span>
+<span class="hljs-keyword">int</span> dep[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点的深度</span>
+<span class="hljs-keyword">int</span> tot[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点子树的结点个数</span>
+<span class="hljs-keyword">int</span> son[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点的重儿子编号</span>
+<span class="hljs-keyword">int</span> idx[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点重新编号后的编号</span>
+<span class="hljs-keyword">int</span> topp[<span class="hljs-number">500010</span>];<span class="hljs-comment">//该结点所在链的顶端结点</span>
+<span class="hljs-keyword">int</span> cnt;
+<span class="hljs-keyword">int</span> ans;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    eg[top].to=b;
+    eg[top].next=head[a];
+    head[a]=top++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> fa,<span class="hljs-keyword">int</span> depth)</span></span>
+<span class="hljs-function"></span>&#123;
+    par[id]=fa;dep[id]=depth;
+    tot[id]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> maxson=<span class="hljs-number">-1</span>;
+    son[id]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=eg[i].to;
+        <span class="hljs-keyword">if</span>(temp==fa)<span class="hljs-keyword">continue</span>;
+        tot[id]+=dfs1(temp,id,depth+<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span>(tot[temp]&gt;maxson)
+        &#123;
+            son[id]=temp;
+            maxson=tot[temp];
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> tot[id];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> topf)</span></span>
+<span class="hljs-function"></span>&#123;
+    idx[id]=++cnt;
+    topp[id]=topf;
+    <span class="hljs-keyword">if</span>(son[id]==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span>;     <span class="hljs-comment">//子节点的son为0</span>
+    dfs2(son[id],topf);     <span class="hljs-comment">//优先标记重儿子</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=eg[i].to;
+        <span class="hljs-keyword">if</span>(idx[temp]==<span class="hljs-number">0</span>)
+            dfs2(temp,temp);     <span class="hljs-comment">//每一条链以轻儿子为起点</span>
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(topp[x]!=topp[y])
+    &#123;
+        <span class="hljs-keyword">if</span>(dep[topp[x]]&lt;dep[topp[y]])swap(x,y);     <span class="hljs-comment">//谁的top低谁就往上走</span>
+        x=par[topp[x]];
+    &#125;
+    <span class="hljs-keyword">if</span>(dep[x]&gt;dep[y])swap(x,y);
+    <span class="hljs-keyword">return</span> x;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,r,x,y;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;r);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        head[i]=<span class="hljs-number">-1</span>;
+        idx[i]=<span class="hljs-number">0</span>;
+    &#125;
+    top=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n<span class="hljs-number">-1</span>;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        add(x,y);add(y,x);
+    &#125;
+    dfs1(r,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+    cnt=<span class="hljs-number">0</span>;
+    dfs2(r,r);
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,lca(x,y));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/08/15/HDU5887-%E8%B6%85%E5%A4%A7%E8%83%8C%E5%8C%85-%E7%8A%B6%E6%80%81%E4%BF%9D%E5%AD%98%EF%BC%88%E6%95%B0%E6%8D%AE%E9%9A%8F%E6%9C%BA%E4%B8%8B%E7%9A%84%E7%8E%84%E5%AD%A6%E5%81%9A%E6%B3%95%EF%BC%9F%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HDU5887 超大背包+状态保存（数据随机下的玄学做法？）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/08/14/HDU6391-%E6%80%9D%E7%BB%B4-%E8%AF%BB%E5%85%A5%E6%8C%82/">
+                        <span class="hidden-mobile">HDU6391 思维+读入挂</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "最近公共祖先&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

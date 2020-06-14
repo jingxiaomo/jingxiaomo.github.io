@@ -1,7 +1,714 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/a.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.6)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/26/ZOJ3715-%E6%9E%9A%E4%B8%BE-%E8%B4%AA%E5%BF%83/">ZOJ3715 枚举+贪心</a>
+
+      <a href="/2018/04/26/ZOJ3715-%E6%9E%9A%E4%B8%BE-%E8%B4%AA%E5%BF%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有n个小朋友竞选班长，1想当班长，每个人都必须选择一个人当班长，并且不可以选择自己，并且每个人都有一个权值ai，这个权值就是如果1想让这个人改变主意选择自己当班长就得给他ai个糖果，只有当1的票数是唯一最多的时候，1才能竞选班长，问1竞选班长的最小花费糖果数。(n&lt;=100)
+思路：
+想了直接贪心但是似乎没有完美的方案，都会有反例。
+考虑n&lt;=100比较小，可以枚举+贪心。我第</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-26
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/24/HDU5895-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82%E5%85%AC%E5%BC%8F/">HDU5895 矩阵快速幂+欧拉降幂公式</a>
+
+      <a href="/2018/04/24/HDU5895-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82%E5%85%AC%E5%BC%8F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有$$g(n)=\sum_{i=0}^nf(i)^2$$，其中$$f(0)=0,f(1)=1,f(n)=f(n−2)+2f(n−1)(n≥2)$$，给出n，y，x，s，求$$x^{g(n*y)}mod(s+1)$$。
+思路：
+有递推式：
+$$f(n)^2=f(n-2)^2+4f(n-1)^2+4f(n-2)f(n-1)$$
+$$f(n)f(n-1)=f(n-2)f(n-1)+2f(n-1)</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-24
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/22/%E4%B8%80%E4%BA%9B%E7%94%A8%E5%BE%97%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF/">调试用</a>
+
+      <a href="/2018/04/22/%E4%B8%80%E4%BA%9B%E7%94%A8%E5%BE%97%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF/" class="index-excerpt">
+        
+        
+          
+        
+        <div>计算程序运行时间Windows系统GetTickCount函数
+#include&lt;iostream&gt;
+#include&lt;windows.h&gt;
+int main()
+&#123;
+    DWORD start_time=GetTickCount();
+    &#123;
+        //此处为被测试代码
+    &#125;
+    DWORD end_time=Ge</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-22
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/20/LOJ526-%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86/">LOJ526 最大独立集</a>
+
+      <a href="/2018/04/20/LOJ526-%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+一个可重集合中包含n个元素 $$a1,a2,……,an$$，你需要选择一个子集，使得这个子集中任意两个元素 $$a_i,a_j$$均满足条件$$ gcd(ai,aj)*gcd(ai+1,aj+1)≠1$$，且这个子集的元素个数是所有满足上述条件的子集中最多的。输出这个子集的元素个数。
+思路：
+挺经典的一道题。
+看这道题就可以想到最大团。
+最大团就是图的最大的完全子图（每两个点之间都有边相连</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-20
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/16/%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9BC-%E5%BE%97%E5%88%B0%E7%9B%AE%E6%A0%87%E6%95%B0%E5%AD%97%E7%9A%84%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%95%B0/">金马五校赛C 得到目标数字的最小操作数</a>
+
+      <a href="/2018/04/16/%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9BC-%E5%BE%97%E5%88%B0%E7%9B%AE%E6%A0%87%E6%95%B0%E5%AD%97%E7%9A%84%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%95%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出两个数列a和b(1&lt;=n&lt;=9)，通过以下操作使a变成b，求最小操作数。
+首先可以交换数列中任意两个数的位置。通过若干次这样的操作得到c。
+若c[i]&gt;a[i]，则对a[i]乘2或者加1；若c[i]&lt;a[i]，则对a[i]除以2或者减1，如果是奇数，则不能除以2。
+思路：
+考虑到这里的n的范围很小，可以根据全排列来表示出所有c[i]可能的情况。
+再算出从a到c所</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-16
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/12/CodeForces842D-%E5%BC%82%E6%88%96Trie/">CodeForces842D 01Trie</a>
+
+      <a href="/2018/04/12/CodeForces842D-%E5%BC%82%E6%88%96Trie/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：mex为数列中没有出现过的第一个非负整数。给出一个数列，每次询问给出一个x，问每个数异或x后数列的mex。
+思路：又是一道知道怎么做但不会写的题…
+之前就知道有01字典树来处理异或的这种操作，但一直没有写过，这是第一道01字典树吧…
+字典树是高位在上，以保证每次都先满足高位最大。
+对于每一次异或，如果这个位是0，就不变，如果是1，就对换左右子树。
+这里可以用到一个懒标记，只有用到的时候进行标</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-12
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/10/ZOJ3965-%E7%94%B1%E4%B8%A4%E4%B8%AAdfs%E5%BA%8F%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/">ZOJ3965 由两个dfs序还原二叉树</a>
+
+      <a href="/2018/04/10/ZOJ3965-%E7%94%B1%E4%B8%A4%E4%B8%AAdfs%E5%BA%8F%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：给出两个二叉树的DFS序列，输出每个结点的父结点编号。
+思路：我快要gg了…
+知道要怎么做就是不知道怎么写…
+真的…菜得一逼…递归都不会写（。
+看题解写完就…情绪低落（。
+容易知道如果之后一个结点相同，则说明这一定是当前结点的子结点；如果不同，说明这两个都是该结点的子结点，找到这两个结点分别在两个序列里的位置，然后递归下去。
+考虑一个栗子：
+1 2 4 7 8 9 5 3 6
+1 2 5 4</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/09/%E6%B3%A8%E6%84%8F/">注意</a>
+
+      <a href="/2018/04/09/%E6%B3%A8%E6%84%8F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>能之前特判的尽量都先特判。
+多组的时候能不memset的就尽量不memset 特别是时限比较紧的时候。
+可以用sizeof预先估计内存。
+等比数列求和用公式的时候注意要特判公比为1的情况。
+有减的时候取模要加上模数，矩阵快速幂里有负数项，最后也要加模数直到为正。
+找规律可以预先假设一个式子，然后待定系数。
+%f输出是四舍五入的。
+</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-09
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/09/%E9%9C%87%E6%83%8A-jpg/">震惊.jpg</a>
+
+      <a href="/2018/04/09/%E9%9C%87%E6%83%8A-jpg/" class="index-excerpt">
+        
+        
+          
+        
+        <div>记录一下各种之前不知道的point。
+std::set::lower_bound与std::lower_bound的效率问题参考博客：https://blog.csdn.net/CZWin32768/article/details/51752267
+set用lower_bound要这样用啊：s.lower_bound(x)。
+vector可定长vector&lt;int&gt;v(n);
+
+这样写</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-09
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/07/%E5%90%84%E5%A4%84%E7%9C%8B%E6%9D%A5%E7%9A%84%E5%A7%BF%E5%8A%BF/">各处看来的姿势</a>
+
+      <a href="/2018/04/07/%E5%90%84%E5%A4%84%E7%9C%8B%E6%9D%A5%E7%9A%84%E5%A7%BF%E5%8A%BF/" class="index-excerpt">
+        
+        
+          
+        
+        <div>为什么要写这样一篇博文呢？
+因为在知乎上看到了一个问题感觉思想有用？
+2016 的阶乘（2016!）末尾第一个非零数字是几？传送门：https://www.zhihu.com/question/47569759
+不妨令2016!末尾有k个零， 
+因为2016!因子里2肯定比5多，所以 
+来数2016!因子5的个数
+
+
+Notes:
+考虑以前做过的一道题，k的阶乘的末尾有几个0，我们知道因子里2肯定</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-07
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/11/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/13/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

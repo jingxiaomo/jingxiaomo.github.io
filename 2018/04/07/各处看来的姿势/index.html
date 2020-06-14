@@ -1,25 +1,492 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>各处看来的姿势 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-04-07 11:42">
+      April 7, 2018 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      374 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>为什么要写这样一篇博文呢？</p>
+<p>因为在知乎上看到了一个问题感觉思想有用？</p>
+<h4 id="2016-的阶乘（2016-）末尾第一个非零数字是几？"><a href="#2016-的阶乘（2016-）末尾第一个非零数字是几？" class="headerlink" title="2016 的阶乘（2016!）末尾第一个非零数字是几？"></a>2016 的阶乘（2016!）末尾第一个非零数字是几？</h4><p>传送门：<a href="https://www.zhihu.com/question/47569759" target="_blank" rel="noopener">https://www.zhihu.com/question/47569759</a></p>
+<p>不妨令2016!末尾有k个零， <img src="https://www.zhihu.com/equation?tex=n+%3D+%5Cfrac%7B2016%21%7D%7B10%5Ek%7D" srcset="/img/loading.gif" alt="n = \frac{2016!}{10^k}"></p>
+<p>因为2016!因子里2肯定比5多，所以 <img src="https://www.zhihu.com/equation?tex=n+%5Cequiv+0+%5Cpmod+2" srcset="/img/loading.gif" alt="n \equiv 0 \pmod 2"></p>
+<p>来数2016!因子5的个数</p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Barray%7D%7B%7D+2016+%26%5Cdiv%26+5+%26%3D%26+403+%26...%26+1+%5C%5C+403+%26%5Cdiv%26+5+%26%3D%26+80+%26...%26+3+%5C%5C+80+%26%5Cdiv%26+5+%26%3D%26+16+%26...%26+0+%5C%5C+16+%26%5Cdiv%26+5+%26%3D%26+3+%26...%26+1%5C%5C+3+%26%5Cdiv%26+5+%26%3D%26+0+%26...%26+3+%5C%5C+%5Cend%7Barray%7D" srcset="/img/loading.gif" alt="\begin{array}{} 2016 &amp;\div&amp; 5 &amp;=&amp; 403 &amp;...&amp; 1 \\ 403 &amp;\div&amp; 5 &amp;=&amp; 80 &amp;...&amp; 3 \\ 80 &amp;\div&amp; 5 &amp;=&amp; 16 &amp;...&amp; 0 \\ 16 &amp;\div&amp; 5 &amp;=&amp; 3 &amp;...&amp; 1\\ 3 &amp;\div&amp; 5 &amp;=&amp; 0 &amp;...&amp; 3 \\ \end{array}"></p>
+<blockquote>
+<p>Notes:</p>
+<p>考虑以前做过的一道题，k的阶乘的末尾有几个0，我们知道因子里2肯定比5多，所以看因子5的数量，我们的做法是用k去除5，25，125…这里就是一样的道理啦。</p>
+</blockquote>
+<p>因此<img src="https://www.zhihu.com/equation?tex=2%5Ek+%5Ccdot+n+%5Cequiv+%281+%5Ccdot+2+%5Ccdot+3+%5Ccdot+4%29%5Ek+%5Ccdot+1%5E2+%5Ccdot+%281+%5Ccdot+2+%5Ccdot+3%29%5E2+%5Cpmod+5%2C+k+%3D+403%2B80%2B16%2B3" srcset="/img/loading.gif" alt="2^k \cdot n \equiv (1 \cdot 2 \cdot 3 \cdot 4)^k \cdot 1^2 \cdot (1 \cdot 2 \cdot 3)^2 \pmod 5, k = 403+80+16+3"></p>
+<blockquote>
+<p>Notes:</p>
+<p>这是为什么呢？左边是2016!/5^k，右边是2016!除去所有5以后的余数，因为是mod 5的，所以只有4中因子的可能，比如1 mod 5=1，2 mod 5=2，3 mod 5=3，4 mod 5=4，6 mod 5=1，是一直循环的，所以这里求了一下周期（减去有5因子的数后），其实我觉得可以直接找周期不这样做。</p>
+</blockquote>
+<p>有 <img src="https://www.zhihu.com/equation?tex=1+%5Ccdot+2+%5Ccdot+3+%5Cequiv+1+%5Cpmod+5" srcset="/img/loading.gif" alt="1 \cdot 2 \cdot 3 \equiv 1 \pmod 5"></p>
+<p>所以， <img src="https://www.zhihu.com/equation?tex=n+%5Cequiv+2%5E%7B502%7D+%5Cpmod+5" srcset="/img/loading.gif" alt="n \equiv 2^{502} \pmod 5"></p>
+<p>又有 <img src="https://www.zhihu.com/equation?tex=2%5E4+%5Cequiv+1+%5Cpmod+5" srcset="/img/loading.gif" alt="2^4 \equiv 1 \pmod 5"></p>
+<p>于是 <img src="https://www.zhihu.com/equation?tex=n+%5Cequiv+2%5E2+%5Cpmod+5" srcset="/img/loading.gif" alt="n \equiv 2^2 \pmod 5">（利用周期）</p>
+<p>用中国剩余定理求出<img src="https://www.zhihu.com/equation?tex=n+%5Cequiv+4+%5Cpmod+%7B10%7D" srcset="/img/loading.gif" alt="n \equiv 4 \pmod {10}"></p>
+<blockquote>
+<p>Notes：</p>
+<p>结合之前的n≡0(mod 2)，由中国剩余定理，k=(4×2×inv(2,5)+0×5×inv(5,2))%(2×5)=4。</p>
+</blockquote>
+<hr>
+<p>还看到了一个让我有启发的回答：</p>
+<ol>
+<li>小于2016的质数表</li>
+<li>将2016！表示成质数表的指数积</li>
+<li>消掉2，5</li>
+<li>计算剩余质数指数积的尾数</li>
+</ol>
+<p>提示：每个数都表示成质数字典</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/04/09/%E9%9C%87%E6%83%8A-jpg/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">震惊.jpg</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/04/06/%E8%AE%A1%E8%92%9C%E5%AE%A2%E9%A2%98-%E5%89%8D%E5%90%8E%E7%BC%80-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">
+                        <span class="hidden-mobile">计蒜客题 前后缀和+二分答案</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "各处看来的姿势&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

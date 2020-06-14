@@ -1,25 +1,590 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>并查集专题 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-26 15:58">
+      January 26, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="普通并查集模板"><a href="#普通并查集模板" class="headerlink" title="普通并查集模板"></a><strong>普通并查集模板</strong></h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> par[<span class="hljs-number">1010</span>],high[<span class="hljs-number">1010</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        par[i]=i;
+        high[i]=<span class="hljs-number">0</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">return</span> par[x]=<span class="hljs-built_in">find</span>(par[x]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)<span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">if</span>(high[x]&lt;high[y])par[x]=y;   <span class="hljs-comment">//启发式合并</span>
+    <span class="hljs-keyword">else</span>
+    &#123;
+        par[y]=x;
+        <span class="hljs-keyword">if</span>(high[x]==high[y])high[x]++;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+&#125;</code></pre>
+
+<h5 id="带权并查集模板"><a href="#带权并查集模板" class="headerlink" title="带权并查集模板"></a><strong>带权并查集模板</strong></h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> par[<span class="hljs-number">10010</span>],high[<span class="hljs-number">10010</span>];<span class="hljs-comment">//保存奇偶</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10010</span>;i++)
+    &#123;
+        par[i]=i;
+        high[i]=<span class="hljs-number">0</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">int</span> tmp=par[x];
+    par[x]=Find(par[x]);
+    high[x]=(high[x]+high[tmp])%<span class="hljs-number">2</span>;   <span class="hljs-comment">//把沿途子节点的所有父节点的权值处理一下，比如本来high[x]和high[temp]相反，就相反一下</span>
+    <span class="hljs-keyword">return</span> par[x];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> z)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> px=Find(x);
+    <span class="hljs-keyword">int</span> py=Find(y);
+    <span class="hljs-keyword">if</span>(px==py)
+    &#123;
+        <span class="hljs-keyword">if</span>(high[x]==(high[y]+z)%<span class="hljs-number">2</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">//判断是否符合奇偶</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    &#125;
+    par[py]=px;
+    high[py]=(high[x]-high[y]+z+<span class="hljs-number">2</span>)%<span class="hljs-number">2</span>;   <span class="hljs-comment">//可能是负的，所以要+2</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> Find(x)==Find(y);
+&#125;</code></pre>
+
+<h5 id="HDU-1213"><a href="#HDU-1213" class="headerlink" title="HDU 1213"></a><strong>HDU 1213</strong></h5><p>为啥用set就错了???</p>
+<h5 id="POJ-1182"><a href="#POJ-1182" class="headerlink" title="POJ 1182"></a><strong>POJ 1182</strong></h5><p>题意：</p>
+<p>​       三类动物A、B、C构成食物链循环，告诉两个动物的关系（同类或天敌），判断那个关系是和前面已有的冲突。</p>
+<p>解题思路：</p>
+<p>​       对于每只动物i创建3个元素i-A, i-B, i-C, 并用这3*N个元素建立并查集。这个并查集维护如下信息：对于1，合并x-A和y-A、x-B和y-B、x-C和y-C；对于2，合并x-A和y-B、x-B和y-C、x-C和y-A。不过在合并之前需要先判断合并是否会产生矛盾。例如在第一种信息的情况下，需要检查比如x-A和y-B或者y-C是否在同一组等信息。</p>
+<h5 id="POJ-1308"><a href="#POJ-1308" class="headerlink" title="POJ 1308"></a><strong>POJ 1308</strong></h5><p>题意：</p>
+<p>​       判断有向图是否成树。</p>
+<p>解题思路：</p>
+<p>​      成树的条件：不能有环（只要判断x,y的根是否是同一个即可），顶点数=边数-1，每个顶点的入度&lt;=1，自己不能指向自己。</p>
+<h5 id="HDU-3038"><a href="#HDU-3038" class="headerlink" title="HDU 3038"></a><strong>HDU 3038</strong></h5><p>题意：</p>
+<p>​       有n次询问，给出a到b区间的总和，问这n次给出的总和中有几次是和前面已近给出的是矛盾的。</p>
+<p>解题思路：</p>
+<p>​       带权并查集。<a href="http://blog.csdn.net/Yonggie/article/details/76885820。对于A~B之间的和是S，其实可以理解成B比A-1大S，然后并查集，rank[i]来记录每个点到根的相对深度，这里find函数就要变一变了。" target="_blank" rel="noopener">http://blog.csdn.net/Yonggie/article/details/76885820。对于A~B之间的和是S，其实可以理解成B比A-1大S，然后并查集，rank[i]来记录每个点到根的相对深度，这里find函数就要变一变了。</a></p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">int</span> tmp=par[x];
+    par[x]=<span class="hljs-built_in">find</span>(par[x]);
+    high[x]=high[x]+high[tmp];   <span class="hljs-comment">//把沿途子节点的所有父节点的权值都加上</span>
+    <span class="hljs-keyword">return</span> par[x];
+&#125;
+因为要知道每个点到根的距离，所以可以路径压缩。
+合并点的时候如果同个根的话就判断一下，其他就合并一下，把右边的树的根向左边树的根连边，更新一下根的相关标记就可以了。
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> z)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> px=<span class="hljs-built_in">find</span>(x);
+    <span class="hljs-keyword">int</span> py=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(px==py)
+    &#123;
+        <span class="hljs-keyword">if</span>(high[x]+z==high[y])<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    &#125;
+    par[py]=px;
+    high[py]=high[x]-high[y]+z;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="POJ-1733"><a href="#POJ-1733" class="headerlink" title="POJ 1733"></a><strong>POJ 1733</strong></h5><p>题意：</p>
+<p>​       给一个序列这个序列都是由0和1组成，现在随意拿出来一个序列，然后说出他的和是奇数还是偶数，因为有可能存在假话，让你判断前多少条没有假话，也就是查找第一个假话的位置-1。</p>
+<p>解题思路：</p>
+<p>​       带权并查集+离散化。带权部分和上题相似。在unite的时候判断是否符合奇偶利用奇偶性，在更新连过去的根的high[i]的时候，因为high[py]=(high[x]-high[y]+z+2)%2;，括号里面可能是负的，所以要+2，find函数中high[x]=(high[x]+high[tmp])%2;（把沿途子节点的所有父节点的权值处理一下，比如本来high[x]和high[temp]相反，就相反一下）。离散化部分可以用map来映射一下，key存该数字，value存下标（注意后面是mp[a]==0所以下标从1开始）。</p>
+<p>还是把草稿纸拍下来比较清楚吧www</p>
+<p><img src="http://imglf1.nosdn.127.net/img/ajhrcUFValVhVzdCV2kyQTU1ZXJtWHBuVDE1eVVZQ3c5RlZ1N2NydE1JWExRYXRzNGMyNkxRPT0.png?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<h5 id="POJ-1456"><a href="#POJ-1456" class="headerlink" title="*POJ 1456 *"></a>*<em>POJ 1456 *</em></h5><p>题意：</p>
+<p>​       有N件商品，知道了商品的价值和销售的最后期限，只要在最后日期之前销售处，就能得到相应的利润，并且销售该商品需要1天时间，求出最大利润。</p>
+<p>解题思路：</p>
+<p>​       直接贪心就可以水过，但是这里可以用并查集优化，优化的是先把所有产品按照利润从大到小排序，然后看截止日期这种情况，par[i]里面放截止日期，如果这个截止日期被占用了的话，就往前推，表示如果再有截止日期为这个日期的物品的话，这个物品找根的时候就是日期往前推，par[i]=i-1，对于每一个p[i].t，先找一下它的根，如果根&gt;0的话，就说明可以用。</p>
+<p><strong>POJ 2912</strong> </p>
+<p>题意：</p>
+<p>​       给出n个人玩剪刀石头布的游戏，其中有一个人是裁判，剩下的人分为3组，每一组的人只出某一种手型，裁判可以任意出。问是否能判断出哪个人是裁判。</p>
+<p>解题思路：</p>
+<p>​       食物链的做法就可以了，这里要判断裁判，就枚举每一个人，与他相关的局数就跳过去，如果这个人是裁判的时候没有出错的话，就说明这个人可能是裁判了，如果有多种裁判情况的话，就输出Can not determine；如果没有裁判的话，输出Impossible；只有一个裁判的话，就输出其他所有的出错局数最大的。</p>
+<h5 id="ZOJ-3261"><a href="#ZOJ-3261" class="headerlink" title="*ZOJ 3261 *"></a>*<em>ZOJ 3261 *</em></h5><p>题意：</p>
+<p>​       有一些点，还有一些边，每个点上都有一个权值，然后有一些询问，分为两种，query a 询问与a直接或者间接想连的点中最大权值的是那个点，输出那个点，如果那个点的权值小于等于a的权值，那么就输出-1，还有另一种操作就是destroy a b意思是删除a b的关系。</p>
+<p>解题思路：</p>
+<p>​       并查集不能实现删边操作，所以就倒着来，先删掉所有该删的边之后，倒着来回答问题，如果遇到删边的话，就添边即可。</p>
+<h5 id="POJ-1984"><a href="#POJ-1984" class="headerlink" title="POJ 1984"></a><strong>POJ 1984</strong></h5><p>题意：</p>
+<p>​       有多个点，在平面上位于坐标点上，给出一些关系，表示某个点在某个点的正东/西/南/北方向多少距离，然后给出一系列询问，表示在第几个关系给出后询问某两点的曼哈顿距离，或者未知则输出-1。</p>
+<p>解题思路：</p>
+<p>​      带权并查集。跟之前的题目都差不多，只不过变成二维的了。</p>
+<p><img src="http://imglf0.nosdn.127.net/img/ajhrcUFValVhVzdFYjdsb1k1VnF4UXd4d0hMTWxJQUlYUEdSY21hSXluM2gyZHh6TCticU1RPT0.png?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img">*<em>POJ 1417 *</em></p>
+<p>题意：</p>
+<p>​        有这么一群人，一群好人，和一群坏人，好人永远会说实话，坏人永远说假话，现在给你一组对话和好人与坏人的数目P1， P2。数据里面的no是A说B是坏人， yes代表A说B是好人，就是这样，问题能不能从这些话里面得出来唯一的解，就是可以确定谁是好人谁是坏人，如果不能输出no，如果可以输出所有的好人。</p>
+<p>解题思路：</p>
+<pre><code class="hljs markdown">如果两个人是yes的话，就说明是同类，如果两个人是no的话，说明不是同类，用带权并查集合并（这样相对于只有同类合并会少几个集合），然后判断是否唯一，每个集合又分成两个小集合表示两种类型的个数，而我们要求的是在所有大集合中选出一个小集合然后加起来看能不能组 合成p1，并且要唯一，这里我们可以想到用背包来做，dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]表示前i个大集合好人为j个的方案数，第i种状态只能由第i-1种状态而来，我们用w0[<span class="hljs-string">i</span>],w1[<span class="hljs-string">i</span>]表示第i个集合两个小集合的个数 ，所以dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">j</span>]可以由dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j-w0[</span>]i]和dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">j-w1[i</span>]]得来，这样我们只需判断dp[<span class="hljs-string">cnt</span>][<span class="hljs-symbol">p1</span>]是否等于1，这题还有麻烦的就是输出好人的编号，这里我们可以利用边的权值，w0存的全是权值为0的，w1存的全是权值为1的，然后最后只需判断下第i个集合是由w0还是w1组合而来，这里可以利用dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">p1-w0[i</span>]]的值来判断，如果等于1则表示是由w0组合否则就是w1，dp[<span class="hljs-string">i-1</span>][<span class="hljs-symbol">p1-w0[i</span>]]==1可以得到dp[<span class="hljs-string">i</span>][<span class="hljs-symbol">p1</span>]==1，因为这里已经表示答案唯一，所以只有一种情况！</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E4%B8%93%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最小生成树专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/26/%E6%9C%80%E7%9F%AD%E8%B7%AF%E4%B8%93%E9%A2%98/">
+                        <span class="hidden-mobile">最短路专题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "并查集专题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

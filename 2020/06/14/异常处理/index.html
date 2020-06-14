@@ -1,25 +1,663 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Java学习笔记（四）异常处理 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-14 19:25">
+      June 14, 2020 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Java的异常"><a href="#Java的异常" class="headerlink" title="Java的异常"></a>Java的异常</h1><p>一个健壮的程序必须处理各种各样的错误。</p>
+<p>所谓错误，就是程序调用某个函数的时候，如果失败了，就表示出错。</p>
+<p>调用方如何获知调用失败的信息？有两种方法：</p>
+<p>方法一：约定返回错误码。</p>
+<p>例如，处理一个文件，如果返回<code>0</code>，表示成功，返回其他整数，表示约定的错误码：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">int</span> code = processFile(<span class="hljs-string">"C:\\test.txt"</span>);
+<span class="hljs-keyword">if</span> (code == <span class="hljs-number">0</span>) &#123;
+    <span class="hljs-comment">// ok:</span>
+&#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-comment">// error:</span>
+    <span class="hljs-keyword">switch</span> (code) &#123;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        <span class="hljs-comment">// file not found:</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        <span class="hljs-comment">// no read permission:</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-comment">// unknown error:</span>
+    &#125;
+&#125;</code></pre>
+
+<p>因为使用<code>int</code>类型的错误码，想要处理就非常麻烦。这种方式常见于底层C函数。</p>
+<p>方法二：在语言层面上提供一个异常处理机制。</p>
+<p>Java内置了一套异常处理机制，总是使用异常来表示错误。</p>
+<p>异常是一种<code>class</code>，因此它本身带有类型信息。异常可以在任何地方抛出，但只需要在上层捕获，这样就和方法调用分离了：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;
+    String s = processFile(“C:\\test.txt”);
+    <span class="hljs-comment">// ok:</span>
+&#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;
+    <span class="hljs-comment">// file not found:</span>
+&#125; <span class="hljs-keyword">catch</span> (SecurityException e) &#123;
+    <span class="hljs-comment">// no read permission:</span>
+&#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+    <span class="hljs-comment">// io error:</span>
+&#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+    <span class="hljs-comment">// other error:</span>
+&#125;</code></pre>
+
+<p>因为Java的异常是<code>class</code>，它的继承关系如下：</p>
+<pre><code class="hljs ascii">                     ┌───────────┐
+                     │  Object   │
+                     └───────────┘
+                           ▲
+                           │
+                     ┌───────────┐
+                     │ Throwable │
+                     └───────────┘
+                           ▲
+                 ┌─────────┴─────────┐
+                 │                   │
+           ┌───────────┐       ┌───────────┐
+           │   Error   │       │ Exception │
+           └───────────┘       └───────────┘
+                 ▲                   ▲
+         ┌───────┘              ┌────┴──────────┐
+         │                      │               │
+┌─────────────────┐    ┌─────────────────┐┌───────────┐
+│OutOfMemoryError │... │RuntimeException ││IOException│...
+└─────────────────┘    └─────────────────┘└───────────┘
+                                ▲
+                    ┌───────────┴─────────────┐
+                    │                         │
+         ┌─────────────────────┐ ┌─────────────────────────┐
+         │NullPointerException │ │IllegalArgumentException │...
+         └─────────────────────┘ └─────────────────────────┘</code></pre>
+
+<p>从继承关系可知：<code>Throwable</code>是异常体系的根，它继承自<code>Object</code>。<code>Throwable</code>有两个体系：<code>Error</code>和<code>Exception</code>，<code>Error</code>表示严重的错误，程序对此一般无能为力，例如：</p>
+<ul>
+<li><code>OutOfMemoryError</code>：内存耗尽</li>
+<li><code>NoClassDefFoundError</code>：无法加载某个Class</li>
+<li><code>StackOverflowError</code>：栈溢出</li>
+</ul>
+<p>而<code>Exception</code>则是运行时的错误，它可以被捕获并处理。</p>
+<p>某些异常是应用程序逻辑处理的一部分，应该捕获并处理。例如：</p>
+<ul>
+<li><code>NumberFormatException</code>：数值类型的格式错误</li>
+<li><code>FileNotFoundException</code>：未找到文件</li>
+<li><code>SocketException</code>：读取网络失败</li>
+</ul>
+<p>还有一些异常是程序逻辑编写不对造成的，应该修复程序本身。例如：</p>
+<ul>
+<li><code>NullPointerException</code>：对某个<code>null</code>的对象调用方法或字段</li>
+<li><code>IndexOutOfBoundsException</code>：数组索引越界</li>
+</ul>
+<p><code>Exception</code>又分为两大类：</p>
+<ol>
+<li><code>RuntimeException</code>以及它的子类；</li>
+<li>非<code>RuntimeException</code>（包括<code>IOException</code>、<code>ReflectiveOperationException</code>等等）</li>
+</ol>
+<p>Java规定：</p>
+<ul>
+<li>必须捕获的异常，包括<code>Exception</code>及其子类，但不包括<code>RuntimeException</code>及其子类，这种类型的异常称为Checked Exception。</li>
+<li>不需要捕获的异常，包括<code>Error</code>及其子类，<code>RuntimeException</code>及其子类。</li>
+</ul>
+<h1 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h1><p>捕获异常使用<code>try...catch</code>语句，把可能发生异常的代码放到<code>try {...}</code>中，然后使用<code>catch</code>捕获对应的<code>Exception</code>及其子类：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">byte</span>[] bs = toGBK(<span class="hljs-string">"中文"</span>);
+        System.out.println(Arrays.toString(bs));
+    &#125;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 用指定编码转换String为byte[]:</span>
+            <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+        &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+            <span class="hljs-comment">// 如果系统不支持GBK编码，会捕获到UnsupportedEncodingException:</span>
+            System.out.println(e); <span class="hljs-comment">// 打印异常信息</span>
+            <span class="hljs-keyword">return</span> s.getBytes(); <span class="hljs-comment">// 尝试使用用默认编码</span>
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>如果我们不捕获<code>UnsupportedEncodingException</code>，会出现编译失败的问题：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">byte</span>[] bs = toGBK(<span class="hljs-string">"中文"</span>);
+        System.out.println(Arrays.toString(bs));
+    &#125;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125;
+&#125;</code></pre>
+
+<p>编译器会报错，错误信息类似：unreported exception UnsupportedEncodingException; must be caught or declared to be thrown，并且准确地指出需要捕获的语句是<code>return s.getBytes(&quot;GBK&quot;);</code>。意思是说，像<code>UnsupportedEncodingException</code>这样的Checked Exception，必须被捕获。</p>
+<p>这是因为<code>String.getBytes(String)</code>方法定义是：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] getBytes(String charsetName) <span class="hljs-keyword">throws</span> UnsupportedEncodingException &#123;
+    ...
+&#125;</code></pre>
+
+<p>在方法定义的时候，使用<code>throws Xxx</code>表示该方法可能抛出的异常类型。调用方在调用的时候，必须强制捕获这些异常，否则编译器会报错。</p>
+<p>在<code>toGBK()</code>方法中，因为调用了<code>String.getBytes(String)</code>方法，就必须捕获<code>UnsupportedEncodingException</code>。我们也可以不捕获它，而是在方法定义处用throws表示<code>toGBK()</code>方法可能会抛出<code>UnsupportedEncodingException</code>，就可以让<code>toGBK()</code>方法通过编译器检查：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">byte</span>[] bs = toGBK(<span class="hljs-string">"中文"</span>);
+        System.out.println(Arrays.toString(bs));
+    &#125;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) <span class="hljs-keyword">throws</span> UnsupportedEncodingException &#123;
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125;
+&#125;</code></pre>
+
+<p>上述代码仍然会得到编译错误，但这一次，编译器提示的不是调用<code>return s.getBytes(&quot;GBK&quot;);</code>的问题，而是<code>byte[] bs = toGBK(&quot;中文&quot;);</code>。因为在<code>main()</code>方法中，调用<code>toGBK()</code>，没有捕获它声明的可能抛出的<code>UnsupportedEncodingException</code>。</p>
+<p>修复方法是在<code>main()</code>方法中捕获异常并处理：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">byte</span>[] bs = toGBK(<span class="hljs-string">"中文"</span>);
+            System.out.println(Arrays.toString(bs));
+        &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+            System.out.println(e);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) <span class="hljs-keyword">throws</span> UnsupportedEncodingException &#123;
+        <span class="hljs-comment">// 用指定编码转换String为byte[]:</span>
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125;
+&#125;</code></pre>
+
+<p>可见，只要是方法声明的Checked Exception，不在调用层捕获，也必须在更高的调用层捕获。所有未捕获的异常，最终也必须在<code>main()</code>方法中捕获，不会出现漏写<code>try</code>的情况。这是由编译器保证的。<code>main()</code>方法也是最后捕获<code>Exception</code>的机会。</p>
+<p>如果是测试代码，上面的写法就略显麻烦。如果不想写任何<code>try</code>代码，可以直接把<code>main()</code>方法定义为<code>throws Exception</code>：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) throws Exception &#123;
+        byte[] bs = toGBK(<span class="hljs-string">"中文"</span>);
+        System.out.println(Arrays.toString(bs));
+    &#125;
+
+    <span class="hljs-keyword">static</span> byte[] toGBK(<span class="hljs-built_in">String</span> s) throws UnsupportedEncodingException &#123;
+        <span class="hljs-comment">// 用指定编码转换String为byte[]:</span>
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125;
+&#125;</code></pre>
+
+<p>因为<code>main()</code>方法声明了可能抛出<code>Exception</code>，也就声明了可能抛出所有的<code>Exception</code>，因此在内部就无需捕获了。代价就是一旦发生异常，程序会立刻退出。</p>
+<p>还有一些童鞋喜欢在<code>toGBK()</code>内部“消化”异常：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+        <span class="hljs-comment">// 什么也不干</span>
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</code></pre>
+
+<p>这种捕获后不处理的方式是非常不好的，即使真的什么也做不了，也要先把异常记录下来：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] toGBK(String s) &#123;
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">return</span> s.getBytes(<span class="hljs-string">"GBK"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+        <span class="hljs-comment">// 先记下来再说:</span>
+        e.printStackTrace();
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</code></pre>
+
+<p>所有异常都可以调用<code>printStackTrace()</code>方法打印异常栈，这是一个简单有用的快速打印异常的方法。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/14/Java%E6%A0%B8%E5%BF%83%E7%B1%BB/">
+                        <span class="hidden-mobile">Java学习笔记（三）Java核心类</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Java学习笔记（四）异常处理&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

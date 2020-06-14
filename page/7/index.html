@@ -1,7 +1,699 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/a.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.6)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/08/HDU6370-%E6%80%9D%E7%BB%B4-tarjan%E7%BC%A9%E7%82%B9/">HDU6370 思维+tarjan缩点</a>
+
+      <a href="/2018/08/08/HDU6370-%E6%80%9D%E7%BB%B4-tarjan%E7%BC%A9%E7%82%B9/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+在狼人杀里，有三种类型的人，一种是狼人，一种是村民，还有一种是不确定身份的人。已知村民不会撒谎，狼人可能会撒谎。每个人都会说一句话，比如玩家x是狼人或者玩家x是村民，自己不会说自己。问狼人和村民各有几人。其中$$1≤T≤10,1≤N≤100000$$。
+思路：
+在比赛的时候思路在经过把本来的想法的叉掉的过程之后是对了，然而不会写…
+因为无论说什么全部人都是狼的情况都肯定是成立的，所以不存在</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-08
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/08/HDU5439-%E6%89%BE%E8%A7%84%E5%BE%8B-%E9%A2%84%E5%A4%84%E7%90%86-%E4%BA%8C%E5%88%86/">HDU5439 找规律+预处理+二分</a>
+
+      <a href="/2018/08/08/HDU5439-%E6%89%BE%E8%A7%84%E5%BE%8B-%E9%A2%84%E5%A4%84%E7%90%86-%E4%BA%8C%E5%88%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+写下一组数，
+1.先写1,2,2。
+2.第三个数字是2，所以在后面写两个3。
+3.第四个数字是3，所以在后面三个4。
+4.像这样可以得到1,2,2,3,3,4,4,4,5,5,5,6,6,6,6。
+给出一个数字n，假设这个n的最后出现的位置为p，求p最后出现的位置。其中$$n≤10^9$$。
+思路：
+可以找出规律要求的$$F[n]=pre[pre[n]]$$，其中$$pre[n]$$为原数</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-08
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/07/HDU5446-lucas%E5%AE%9A%E7%90%86-%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-%E5%BF%AB%E9%80%9F%E4%B9%98/">HDU5446 lucas定理+中国剩余定理+快速乘</a>
+
+      <a href="/2018/08/07/HDU5446-lucas%E5%AE%9A%E7%90%86-%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-%E5%BF%AB%E9%80%9F%E4%B9%98/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出n,m，还有k个质数$p_1,…,p_k$，有$M=p1·p2···p3$，求$C_n^m%M$的值。其中$T≤20,1≤m≤n≤10^{18},1≤k≤10,M≤10^{18},pi≤10^5$。
+思路：
+这题目有点套路啊？（模板一顿乱套系列…然而比赛的时候并没有想到…完全忘记了之前学的中国剩余定理啊…
+用Lucas定理处理出每个$C_n^m%p_i$的值，可以得到一堆模质数后的值，</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-07
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/07/HDU6535-%E5%80%92%E7%9D%80%E7%9A%84ST%E8%A1%A8/">HDU6535 倒着的ST表</a>
+
+      <a href="/2018/08/07/HDU6535-%E5%80%92%E7%9D%80%E7%9A%84ST%E8%A1%A8/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有n个数初始都为0，有m次操作，每次操作对于$$[l,r]$$，如果v大于区间的数，就把这个数变为v，即对区间的每个数取当前值和v的最大值。求这m次操作后的$$⨁_{i=1}^n(i⋅a_i)$$，$$⨁$$表示异或和，其中$$1≤T≤100, 1≤n≤10^5, 1≤m≤5⋅10^6$$。
+思路：
+因为是区间更新刚开始想到是线段树剪枝啊…然而比赛的时候写gg了…然而想想这复杂度也不可能过</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-07
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/06/%E4%B8%8A%E6%B5%B7%E5%A4%A7%E9%83%BD%E4%BC%9A%E8%B5%9BF-%E6%89%AB%E6%8F%8F%E7%BA%BF/">上海大都会赛F 扫描线</a>
+
+      <a href="/2018/08/06/%E4%B8%8A%E6%B5%B7%E5%A4%A7%E9%83%BD%E4%BC%9A%E8%B5%9BF-%E6%89%AB%E6%8F%8F%E7%BA%BF/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出$$NM$$的区域，每个格子$$(i,j)|(0≤i&lt;N,0≤j&lt;M)$$最开始是白色的，现在有q次操作，每次操作对于给定的$$(x_c,y_c)$$和$$r$$，把满足$$\sqrt{(i-x_c)^2+(j-y_c)^2}≤r$$的格子涂成黑色。问在q次操作后区域中白色格子的个数。其中$$1≤ N,M≤210^4,1≤q≤200$$。
+思路：
+自己做的时候想到每个圆覆盖</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-06
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/05/%E4%B8%8A%E6%B5%B7%E5%A4%A7%E9%83%BD%E4%BC%9A%E8%B5%9BA-%E9%9A%8F%E6%9C%BA/">上海大都会赛A 随机</a>
+
+      <a href="/2018/08/05/%E4%B8%8A%E6%B5%B7%E5%A4%A7%E9%83%BD%E4%BC%9A%E8%B5%9BA-%E9%9A%8F%E6%9C%BA/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出N个点，求是否存在一条直线，至少经过N个点中的$$\lceil N*x\rceil$$个点。其中$$1≤ T ≤ 100$$，$$1≤N≤10^4$$，$$0 &lt; x &lt; 1$$且x为一位小数。
+思路：
+这道题是随机两个点形成一条直线，这条直线满足条件的概率为$$xx$$，因为在满足条件的直线上的点至少有$$\lceil Nx\rceil$$个，所以某个点在这条直线上的概率</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-05
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/04/HDU6331-flyod-dp-%E5%88%86%E5%9D%97/">HDU6331 flyod+dp+分块</a>
+
+      <a href="/2018/08/04/HDU6331-flyod-dp-%E5%88%86%E5%9D%97/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出n个点，m条有向边，有q次询问，问从s到t至少经过$$k_i$$条路的最短路为多少。其中$$1≤T≤10,2≤n≤50,1≤q≤100000,1≤k_i≤10000$$。
+思路：
+dp也可以分块啊 感觉开拓了我的思路啊(๑•̀ㅂ•́)و✧真有趣！
+这里有两份比较好的题解：
+https://blog.csdn.net/weixin_42068627/article/details/812</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/02/HDU6391-%E7%8A%B6%E5%8E%8BDP/">HDU6321 状压DP</a>
+
+      <a href="/2018/08/02/HDU6391-%E7%8A%B6%E5%8E%8BDP/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+定义图的匹配是一组任意两边都没有公共顶点的边集，有n个点，现在有两种类型的操作m个：
+$$+ u\ v$$：在u和v之间加一条边，
+$$- u\ v$$：删去u和v之间的边，
+问每次操作之后边集中有$$1,2,3,···,\frac{n}{2}$$条边的边集有几个。
+其中$$1≤T≤10,2≤n≤10,n\ mod\ 2=0,1≤m≤30000$$。
+思路：
+由n的范围可以想到要状压，
+考</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-02
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/02/HDU6336-%E8%A7%84%E5%BE%8B-%E5%AE%B9%E6%96%A5/">HDU6336 规律+容斥</a>
+
+      <a href="/2018/08/02/HDU6336-%E8%A7%84%E5%BE%8B-%E5%AE%B9%E6%96%A5/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出长度为L的序列A，根据这个序列跑出一个矩阵，问左上角的点$$(x_0,y_0)$$和右下角的点$$(x_1,y_1)$$形成的矩阵的和。
+思路：
+打表可以打出规律，会发现有循环节。比赛的时候发现了，然而写法不好，就GG了。所以写之前一定要想出一个优雅一点的写法啊。
+ 
+根据这张图可以看出，蓝色框子矩阵的和由那些小的矩阵组成，所以整张图中间的子矩阵可以用容斥原理表示成这些图的左上角的矩阵</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-02
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/08/01/HDU6333-%E6%8E%A8%E5%AF%BC-%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/">HDU6333 推导+莫队算法</a>
+
+      <a href="/2018/08/01/HDU6333-%E6%8E%A8%E5%AF%BC-%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出n，m，求$$C_n^1+C_n^2+···+C_n^m$$，答案模$$10^9+7$$。
+其中$$1≤T≤10^5$$，$$1≤m≤n≤10^5$$。
+思路：
+比赛的时候我是根据dp，想到这相当于是杨辉三角的前缀和，画出这个三角之后感觉是个莫队啊？然而觉得转移有点麻烦没细想而且队友打表打出的另一道题目有点东西就去转战其他题目了…赛后看题解感觉血亏啊？
+m的转移相当于$$S(n,m)=</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-08-01
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/8/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

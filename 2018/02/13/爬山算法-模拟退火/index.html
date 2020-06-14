@@ -1,25 +1,601 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>POJ2420 爬山算法&amp;&amp;模拟退火 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-13 12:33">
+      February 13, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p><strong>题意</strong>：给出平面上N（&lt;=100）个点，你需要找到一个这样的点，使得这个点到N个点的距离之和尽可能小。输出这个最小的距离和（四舍五入到最近的整数）。</p>
+<p><strong>思路</strong>：参考博客：<a href="http://www.cnblogs.com/heaad/archive/2010/12/20/1911614.html" target="_blank" rel="noopener">http://www.cnblogs.com/heaad/archive/2010/12/20/1911614.html</a></p>
+<p>就和之前一道cf里可以用猴子乱序做的那道题一样感觉有点玄学…虽然知道流程是怎么样了但是就是很奇怪的感觉orz…</p>
+<p>设置的delta初始温度下限温度的不同会得到不同的结果，所以多试几个参数去逼近答案吧（毕竟答案是最小的…（这时候样例就非常重要了…</p>
+<p>关于爬山算法与模拟退火，有一个有趣的比喻：</p>
+<p>爬山算法：兔子朝着比现在高的地方跳去。它找到了不远处的最高山峰。但是这座山不一定是珠穆朗玛峰。这就是爬山算法，它不能保证局部最优值就是全局最优值。</p>
+<p>模拟退火：兔子喝醉了。它随机地跳了很长时间。这期间，它可能走向高处，也可能踏入平地。但是，它渐渐清醒了并朝最高方向跳去。这就是模拟退火。</p>
+<p>伪代码</p>
+<pre><code class="hljs c++"><span class="hljs-comment">/*</span>
+<span class="hljs-comment">* J(y)：在状态y时的评价函数值</span>
+<span class="hljs-comment">* Y(i)：表示当前状态</span>
+<span class="hljs-comment">* Y(i+1)：表示新的状态</span>
+<span class="hljs-comment">* r： 用于控制降温的快慢</span>
+<span class="hljs-comment">* T： 系统的温度，系统初始应该要处于一个高温的状态</span>
+<span class="hljs-comment">* T_min ：温度的下限，若温度T达到T_min，则停止搜索</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-keyword">while</span>( T &gt; T_min )
+&#123;
+　　dE = J( Y(i+<span class="hljs-number">1</span>) ) - J( Y(i) ) ; 
+
+　　<span class="hljs-keyword">if</span> ( dE &gt;=<span class="hljs-number">0</span> ) <span class="hljs-comment">//表达移动后得到更优解，则总是接受移动</span>
+Y(i+<span class="hljs-number">1</span>) = Y(i) ; <span class="hljs-comment">//接受从Y(i)到Y(i+1)的移动</span>
+　　<span class="hljs-keyword">else</span>
+　　&#123;
+<span class="hljs-comment">// 函数exp( dE/T )的取值范围是(0,1) ，dE/T越大，则exp( dE/T )也</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">exp</span>( dE/T ) &gt; <span class="hljs-built_in">random</span>( <span class="hljs-number">0</span> , <span class="hljs-number">1</span> ) )<span class="hljs-comment">//这里是求最大所以是&gt;,如果是最小就是&lt;了</span>
+Y(i+<span class="hljs-number">1</span>) = Y(i) ; <span class="hljs-comment">//接受从Y(i)到Y(i+1)的移动</span>
+　　&#125;
+　　T = r * T ; <span class="hljs-comment">//降温退火 ，0&lt;r&lt;1 。r越大，降温越慢；r越小，降温越快</span>
+　　<span class="hljs-comment">/*</span>
+<span class="hljs-comment">　　* 若r过大，则搜索到全局最优解的可能会较高，但搜索的过程也就较长。若r过小，则搜索的过程会很快，但最终可能会达到一个局部最优值</span>
+<span class="hljs-comment">　　*/</span>
+　　i ++ ;
+&#125;</code></pre>
+
+<p><strong>代码</strong>：</p>
+<p>爬山算法版：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">double</span> x,y;
+&#125;p[<span class="hljs-number">110</span>];
+<span class="hljs-keyword">int</span> dx[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>&#125;;
+<span class="hljs-keyword">int</span> dy[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">dist</span><span class="hljs-params">(<span class="hljs-built_in">point</span> a,<span class="hljs-built_in">point</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getsum</span><span class="hljs-params">(<span class="hljs-built_in">point</span> a)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">double</span> sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        sum+=dist(a,p[i]);
+    <span class="hljs-keyword">return</span> sum;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf%lf"</span>,&amp;p[i].x,&amp;p[i].y);
+    <span class="hljs-keyword">double</span> maxt=<span class="hljs-number">100</span>;<span class="hljs-comment">//初始温度</span>
+    <span class="hljs-keyword">double</span> delta=<span class="hljs-number">0.99</span>;<span class="hljs-comment">//用来控制降温的快慢</span>
+    <span class="hljs-keyword">double</span> mint=<span class="hljs-number">1e-8</span>;<span class="hljs-comment">//温度的下限，到达该温度就停止搜索</span>
+    <span class="hljs-built_in">point</span> pp;pp.x=<span class="hljs-number">0</span>;pp.y=<span class="hljs-number">0</span>;<span class="hljs-comment">//初始的点</span>
+    <span class="hljs-built_in">point</span> nn;
+    <span class="hljs-keyword">double</span> t=maxt;
+    <span class="hljs-keyword">double</span> ans=INF;
+    <span class="hljs-keyword">while</span>(t&gt;mint)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)
+        &#123;
+            nn.x=pp.x+dx[i]*t;<span class="hljs-comment">//随机步长</span>
+            nn.y=pp.y+dy[i]*t;
+            <span class="hljs-keyword">double</span> zs=getsum(nn);
+            <span class="hljs-keyword">if</span>(zs&lt;ans)
+            &#123;
+                ans=zs;
+                pp=nn;
+            &#125;
+        &#125;
+        t=t*delta;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(<span class="hljs-keyword">int</span>)(ans+<span class="hljs-number">0.5</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>模拟退火版：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">double</span> x,y;
+&#125;p[<span class="hljs-number">110</span>];
+<span class="hljs-keyword">int</span> dx[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>&#125;;
+<span class="hljs-keyword">int</span> dy[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">dist</span><span class="hljs-params">(<span class="hljs-built_in">point</span> a,<span class="hljs-built_in">point</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getsum</span><span class="hljs-params">(<span class="hljs-built_in">point</span> a)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">double</span> sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        sum+=dist(a,p[i]);
+    <span class="hljs-keyword">return</span> sum;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    srand(time(<span class="hljs-literal">NULL</span>));
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf%lf"</span>,&amp;p[i].x,&amp;p[i].y);
+    <span class="hljs-keyword">double</span> maxt=<span class="hljs-number">400</span>;<span class="hljs-comment">//初始温度</span>
+    <span class="hljs-keyword">double</span> delta=<span class="hljs-number">0.99</span>;
+    <span class="hljs-keyword">double</span> mint=<span class="hljs-number">1e-8</span>;<span class="hljs-comment">//温度的下限，到达该温度就停止搜索</span>
+    <span class="hljs-built_in">point</span> pp;pp.x=<span class="hljs-number">0</span>;pp.y=<span class="hljs-number">0</span>;<span class="hljs-comment">//初始的点</span>
+    <span class="hljs-built_in">point</span> nn;
+    <span class="hljs-keyword">double</span> t=maxt;
+    <span class="hljs-keyword">double</span> ans=INF;
+    <span class="hljs-keyword">while</span>(t&gt;mint)
+    &#123;
+        <span class="hljs-keyword">double</span> rad=rand()%<span class="hljs-number">360</span>+<span class="hljs-number">1</span>;
+        nn.x=pp.x+t*<span class="hljs-built_in">cos</span>(rad);
+        nn.y=pp.y+t*<span class="hljs-built_in">sin</span>(rad);
+        <span class="hljs-keyword">double</span> zs=getsum(nn);
+        <span class="hljs-keyword">if</span>(zs&lt;ans)<span class="hljs-comment">//移动后得到更优的解，接受该移动</span>
+        &#123;
+            ans=zs;
+            pp=nn;
+        &#125;
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">exp</span>(zs-ans)/t&lt;rand()%<span class="hljs-number">100000</span>*<span class="hljs-number">0.00001</span>)<span class="hljs-comment">//生成（0，1）之间的随机数</span>
+            &#123;
+                ans=zs;
+                pp=nn;
+            &#125;
+        &#125;
+        t=t*delta;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(<span class="hljs-keyword">int</span>)(ans+<span class="hljs-number">0.5</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/14/%E5%88%86%E5%9D%97%E6%80%9D%E6%83%B3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">分块思想</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/12/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97-%E5%8D%95%E8%B0%83%E6%A0%88/">
+                        <span class="hidden-mobile">POJ2823 单调队列&&POJ2559 单调栈</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "POJ2420 爬山算法&&模拟退火&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

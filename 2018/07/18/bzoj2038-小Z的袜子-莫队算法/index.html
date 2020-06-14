@@ -1,25 +1,649 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>莫队算法 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-07-18 17:45">
+      July 18, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>莫队算法可以一个可高效解决绝大多数<strong>离线</strong>+<strong>无修改</strong>+<strong>区间查询</strong>问题的算法。这类问题具体是指：如果知道$$[L,R]$$的答案时，可以在$$O(g(n))$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案的话，就可以$$O(n\sqrt n · \mathrm{g}(n))$$的时间内求出所有查询。</p>
+<p>对于莫队算法我感觉就是暴力。由于预先知道所有的询问，因此可以合理的组织计算每个询问的顺序以此来降低复杂度。</p>
+<p>假设我们算完$$[L,R]$$的答案后现在要算$$[L′,R′]$$的答案。由于可以在$$O(1)$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案，所以计算$$[L′,R′]$$的答案耗时$$|L−L′|+|R−R′|$$。如果把询问$$[L,R]$$看做平面上的点$$a(L,R)$$，询问$$[L′,R′]$$看做点$$b(L′,R′)$$的话，那么时间开销就为两点的曼哈顿距离。</p>
+<p>因此，如果将每个询问看做平面上的一个点，按一定顺序计算每个值，那开销就为曼哈顿距离的和。要计算到每个点，路径至少会形成一棵树。所以问题就变成了求二维平面的最小曼哈顿距离生成树。</p>
+<p>这样只要顺着树边计算一次就OK了，可以证明时间复杂度为$$O(n\sqrt{n})$$（这个我不会证明），但是这种方法的编程复杂度稍微高了一点。</p>
+<p>有一个比较优雅的替代品：先对序列分块，然后对于所有询问按照L所在块的大小排序，如果一样再按照R排序，最后再计算。为什么这样计算就可以降低复杂度呢?</p>
+<p>一、i与i+1在同一块内，r单调递增，所以r是$$O(n)$$的。由于有$$\sqrt{n}$$块,所以这一部分时间复杂度是$$O(n\sqrt{n})$$；<br>二、i与i+1跨越一块，r最多变化n，由于有$$\sqrt{n}$$块，所以这一部分时间复杂度是$$O(n\sqrt{n})$$；<br>三、i与i+1在同一块内时，变化不超过$$\sqrt{n}$$，跨越一块也不会超过$$\sqrt{n}$$，不妨看作是$$\sqrt{n}$$。由于有n个数，所以时间复杂度是$$O(n\sqrt{n})$$；<br>于是就变成了$$O(n\sqrt{n})$$了。</p>
+<h5 id="例题（bzoj2038"><a href="#例题（bzoj2038" class="headerlink" title="例题（bzoj2038)"></a>例题（bzoj2038)</h5><p><strong>题意：</strong></p>
+<p>有n只袜子，每只袜子有不同的颜色，给出区间$$[L,R]$$，问在这个区间中有多大的概率抽到两只颜色相同的袜子。</p>
+<p><strong>思路：</strong></p>
+<p>假设区间$$[L,R]$$中有三种颜色，每种颜色的袜子只数分别为a,b,c。</p>
+<p>则抽到两只颜色相同的袜子的概率为$$\frac{a}{a+b+c}<em>\frac{a-1}{a+b+c-1}+\frac{b}{a+b+c}<em>\frac{b-1}{a+b+c-1}+\frac{c}{a+b+c}</em>\frac{c}{a+b+c-1}$$，化简结果为$$\frac{a^2+b^2+c^2-(a+b+c)}{(a+b+c)</em>(a+b+c-1)}=\frac{a^2+b^2+c^2-(R-L+1)}{(R-L+1)*(R-L)}$$。</p>
+<p>所以只要求每个区间内每种袜子的数目的平方和就可以了。</p>
+<p>这时可以用莫队算法了。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">qnode</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> l,r,id;
+&#125;q[<span class="hljs-number">50010</span>];
+ll tot;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">anode</span></span>
+<span class="hljs-class">&#123;</span>
+    ll fz,fm;
+&#125;ans[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> col[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> pos[<span class="hljs-number">50010</span>];<span class="hljs-comment">//在哪一块里（用来对询问排序）</span>
+ll num[<span class="hljs-number">50010</span>];<span class="hljs-comment">//当前每种颜色的数目</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(qnode x,qnode y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pos[x.l]!=pos[y.l])<span class="hljs-keyword">return</span> pos[x.l]&lt;pos[y.l];
+    <span class="hljs-keyword">return</span> x.r&lt;y.r;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> d)</span></span>
+<span class="hljs-function"></span>&#123;
+    tot-=num[col[id]]*num[col[id]];
+    num[col[id]]+=d;
+    tot+=num[col[id]]*num[col[id]];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-keyword">int</span> block=<span class="hljs-built_in">sqrt</span>(n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;col[i]);
+        pos[i]=(i<span class="hljs-number">-1</span>)/block;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;q[i].l,&amp;q[i].r);
+        q[i].id=i;
+    &#125;
+    sort(q+<span class="hljs-number">1</span>,q+<span class="hljs-number">1</span>+m,cmp);
+    <span class="hljs-built_in">memset</span>(num,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(num));
+    <span class="hljs-keyword">int</span> L=<span class="hljs-number">1</span>,R=<span class="hljs-number">0</span>;
+    tot=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+    &#123;
+        <span class="hljs-keyword">int</span> id=q[i].id;
+        <span class="hljs-keyword">if</span>(q[i].l==q[i].r)
+        &#123;
+            ans[id].fz=<span class="hljs-number">0</span>;
+            ans[id].fm=<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">continue</span>;
+        &#125;
+        <span class="hljs-keyword">if</span>(q[i].l&lt;L)
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=L<span class="hljs-number">-1</span>;j&gt;=q[i].l;j--)
+                update(j,<span class="hljs-number">1</span>);   <span class="hljs-comment">//区间增加</span>
+        &#125;
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=L;j&lt;=q[i].l<span class="hljs-number">-1</span>;j++)
+                update(j,<span class="hljs-number">-1</span>);   <span class="hljs-comment">//区间减少</span>
+        &#125;
+        L=q[i].l;
+        <span class="hljs-keyword">if</span>(q[i].r&gt;R)
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=R+<span class="hljs-number">1</span>;j&lt;=q[i].r;j++)
+                update(j,<span class="hljs-number">1</span>);
+        &#125;
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=R;j&gt;=q[i].r+<span class="hljs-number">1</span>;j--)
+                update(j,<span class="hljs-number">-1</span>);
+        &#125;
+        R=q[i].r;
+        ans[id].fz=tot-(q[i].r-q[i].l+<span class="hljs-number">1</span>);
+        ans[id].fm=(ll)(q[i].r-q[i].l+<span class="hljs-number">1</span>)*(q[i].r-q[i].l);
+        ll temp=__gcd(ans[id].fz,ans[id].fm);
+        ans[id].fz/=temp;ans[id].fm/=temp;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld/%lld\n"</span>,ans[i].fz,ans[i].fm);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>一般来说只要update函数根据题意作出修改就行了，其他都差不多。</p>
+<h5 id="小优化"><a href="#小优化" class="headerlink" title="小优化"></a>小优化</h5><p>如果l所在块的编号为奇数则按r升序排序，偶数则按r降序排序。 </p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(qnode x,qnode y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pos[x.l]!=pos[y.l])
+        <span class="hljs-keyword">return</span> pos[x.l]&lt;pos[y.l];
+    <span class="hljs-keyword">if</span>(pos[x.l]&amp;<span class="hljs-number">1</span>==<span class="hljs-number">1</span>)<span class="hljs-keyword">return</span> x.r&lt;y.r;
+    <span class="hljs-keyword">return</span> x.r&gt;y.r;
+&#125;</code></pre>
+
+<h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><p>惊了 while循环比for跑得快！考虑到莫队算法是一个很暴力的算法，还是尽可能要优化代码，所以改进一哈。</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">qnode</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> l,r,id;
+&#125;q[<span class="hljs-number">50010</span>];
+ll tot;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">anode</span></span>
+<span class="hljs-class">&#123;</span>
+    ll fz,fm;
+&#125;ans[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> col[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> pos[<span class="hljs-number">50010</span>];<span class="hljs-comment">//在哪一块里（用来对询问排序）</span>
+ll num[<span class="hljs-number">50010</span>];<span class="hljs-comment">//当前每种颜色的数目</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(qnode x,qnode y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pos[x.l]!=pos[y.l])<span class="hljs-keyword">return</span> pos[x.l]&lt;pos[y.l];
+    <span class="hljs-keyword">return</span> x.r&lt;y.r;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> d)</span></span>
+<span class="hljs-function"></span>&#123;
+    tot-=num[col[id]]*num[col[id]];
+    num[col[id]]+=d;
+    tot+=num[col[id]]*num[col[id]];
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-keyword">int</span> block=<span class="hljs-built_in">sqrt</span>(n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;col[i]);
+        pos[i]=(i<span class="hljs-number">-1</span>)/block;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;q[i].l,&amp;q[i].r);
+        q[i].id=i;
+    &#125;
+    sort(q+<span class="hljs-number">1</span>,q+<span class="hljs-number">1</span>+m,cmp);
+    <span class="hljs-built_in">memset</span>(num,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(num));
+    <span class="hljs-keyword">int</span> L=<span class="hljs-number">1</span>,R=<span class="hljs-number">0</span>;
+    tot=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+    &#123;
+        <span class="hljs-keyword">int</span> id=q[i].id;
+        <span class="hljs-keyword">if</span>(q[i].l==q[i].r)
+        &#123;
+            ans[id].fz=<span class="hljs-number">0</span>;
+            ans[id].fm=<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">continue</span>;
+        &#125;
+        <span class="hljs-keyword">while</span>(L&gt;q[i].l)
+        &#123;
+            L--;
+            update(L,<span class="hljs-number">1</span>);
+        &#125;
+        <span class="hljs-keyword">while</span>(L&lt;q[i].l)
+        &#123;
+            update(L,<span class="hljs-number">-1</span>);
+            L++;
+        &#125;
+        <span class="hljs-keyword">while</span>(R&lt;q[i].r)
+        &#123;
+            R++;
+            update(R,<span class="hljs-number">1</span>);
+        &#125;
+        <span class="hljs-keyword">while</span>(R&gt;q[i].r)
+        &#123;
+            update(R,<span class="hljs-number">-1</span>);
+            R--;
+        &#125;
+        ans[id].fz=tot-(q[i].r-q[i].l+<span class="hljs-number">1</span>);
+        ans[id].fm=(ll)(q[i].r-q[i].l+<span class="hljs-number">1</span>)*(q[i].r-q[i].l);
+        ll temp=__gcd(ans[id].fz,ans[id].fm);
+        ans[id].fz/=temp;ans[id].fm/=temp;
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld/%lld\n"</span>,ans[i].fz,ans[i].fm);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/07/20/LGV%E5%BC%95%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lindström–Gessel–Viennot引理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/07/18/Wannafly%E6%8C%91%E6%88%98%E8%B5%9B19C-%E7%8A%B6%E5%8E%8B-dfs-%E5%AE%B9%E6%96%A5/">
+                        <span class="hidden-mobile">Wannafly挑战赛19C 状压+dfs+容斥</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "莫队算法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

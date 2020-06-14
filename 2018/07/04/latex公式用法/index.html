@@ -1,25 +1,680 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>latex公式用法 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-07-04 11:33">
+      July 4, 2018 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="排版方式"><a href="#排版方式" class="headerlink" title="排版方式"></a>排版方式</h3><p><strong>行级元素(inline)</strong>，行级元素使用<code>$...$</code>，两个$表示公式的首尾。</p>
+<p><strong>块级元素(displayed)</strong>，块级元素使用<code>$$...$$</code>。块级元素默认是居中显示的。</p>
+<h3 id="常用西文符号"><a href="#常用西文符号" class="headerlink" title="常用西文符号"></a>常用西文符号</h3><p><code>\alpha</code>, <code>\beta</code>, …, <code>\omega</code>代表α,β,…ω. 大写字母,使用<code>\Gamma</code>, <code>\Delta</code>, …, <code>\Omega</code>代表Γ,Δ,…,Ω.</p>
+<h3 id="上标与下标"><a href="#上标与下标" class="headerlink" title="上标与下标"></a>上标与下标</h3><p>使用 ^和 _ 表示上标和下标. 例如,<code>x_i^2</code>:$$x_i^2$$ 。</p>
+<p>要显示$$10^{10}$$,正确的语法应该是<code>10^{10}</code>。</p>
+<h3 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h3><p>小括号和中括号直接使用，大括号由于用来分组，所以需要转义。<code>\{1+2\}</code>:$${1+2}$$。</p>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><ul>
+<li><p>分数：<code>\frac{}{}</code>。例如，<code>\frac{1+1}{2}+1</code>: $$\frac{1+1}{2}+1$$</p>
+</li>
+<li><p>求和：<code>\sum_1^n</code>:$$\sum_1^n$$</p>
+</li>
+<li><p>积分：<code>\int_1^n</code>:$$\int_1^n$$</p>
+</li>
+<li><p>极限：<code>lim_{x \to \infty}</code>:$$\lim_{x \to \infty}$$</p>
+</li>
+<li><p>矩阵：<code>$$\begin{matrix}…\end{matrix}$$</code>，使用&amp;分隔同行元素，\换行。例如：</p>
+<pre><code class="hljs latex">$$
+    \begin&#123;matrix&#125;
+    1 &amp; x &amp; x^2 \\
+    1 &amp; y &amp; y^2 \\
+    1 &amp; z &amp; z^2 \\
+    \end&#123;matrix&#125;
+$$</code></pre>
+
+<p>得到的公式为：</p>
+<p>$$ \begin{matrix} 1 &amp; x &amp; x^2 \ 1 &amp; y &amp; y^2 \ 1 &amp; z &amp; z^2 \ \end{matrix} $$</p>
+</li>
+</ul>
+<h2 id="杂例"><a href="#杂例" class="headerlink" title="杂例"></a>杂例</h2><ul>
+<li><p><code>$$h(\theta)=\sum_{j=0}^n \theta_jx_j$$</code></p>
+<p>$$h(\theta)=\sum_{j=0}^n \theta_jx_j（线性模型）$$</p>
+</li>
+</ul>
+<ul>
+<li><p><code>$$J(\theta)=\frac1{2m}\sum_{i=0}(y^i-h_\theta(x^i))^2$$</code></p>
+<p>$$J(\theta)=\frac1{2m}\sum_{i=0}(y^i-h_\theta(x^i))^2（均方误差orcostfunction）$$</p>
+</li>
+</ul>
+<ul>
+<li><p><code>$$\frac{\partial J(\theta)}{\partial\theta_j }=-\frac1m\sum_{i=0}^m(y^i-h_\theta(x^i))x^i_j$$</code></p>
+<p>$$\frac{\partial J(\theta)}{\partial\theta_j }=-\frac1m\sum_{i=0}^m(y^i-h_\theta(x^i))x^i_j （批量梯度下降的梯度算法） $$</p>
+</li>
+</ul>
+<ul>
+<li><pre><code>$$
+f(n) =
+\begin{cases}
+n/2,  &amp; \text{if $n$ is even} \\
+3n+1, &amp; \text{if $n$ is odd}
+\end{cases}
+$$
+<pre><code class="hljs">
+  
+
+  $$ f(n) = \begin&#123;cases&#125; n/2,  &amp; \text&#123;if $n$ is even&#125; \\ 3n+1, &amp; \text&#123;if $n$ is odd&#125; \end&#123;cases&#125; $$
+
+  
+
+- ```latex
+  $$
+  \left\&#123; 
+  \begin&#123;array&#125;&#123;c&#125;
+      a_1x+b_1y+c_1z=d_1 \\ 
+      a_2x+b_2y+c_2z=d_2 \\ 
+      a_3x+b_3y+c_3z=d_3
+  \end&#123;array&#125;
+  \right. 
+  $$</code></pre>
+
+
+</code></pre></li>
+</ul>
+<p>  $$ \left{  \begin{array}{c} a_1x+b_1y+c_1z=d_1 \  a_2x+b_2y+c_2z=d_2 \  a_3x+b_3y+c_3z=d_3 \end{array} \right.  $$</p>
+<ul>
+<li><pre><code class="latex">$$X=\left(
+    \begin{matrix}
+        x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+        x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d}\\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+        x_{m1} &amp; x_{m2} &amp; \cdots &amp; x_{md}\\
+    \end{matrix}
+\right)
+=\left(
+     \begin{matrix}
+            x_1^T \\
+            x_2^T \\
+            \vdots\\
+            x_m^T \\
+        \end{matrix}
+\right)
+$$
+<pre><code class="hljs">
+  
+
+  $$X=\left( \begin&#123;matrix&#125; x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \cdots &amp; x_&#123;1d&#125;\\ x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \cdots &amp; x_&#123;2d&#125;\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\ x_&#123;m1&#125; &amp; x_&#123;m2&#125; &amp; \cdots &amp; x_&#123;md&#125;\\ \end&#123;matrix&#125; \right) =\left( \begin&#123;matrix&#125; x_1^T \\ x_2^T \\ \vdots\\ x_m^T \\ \end&#123;matrix&#125; \right) $$
+
+  
+
+- ```latex
+  $$
+  \begin&#123;align&#125;
+  \frac&#123;\partial J(\theta)&#125;&#123;\partial\theta_j&#125;
+  &amp; = -\frac1m\sum_&#123;i=0&#125;^m(y^i-h_\theta(x^i)) \frac&#123;\partial&#125;&#123;\partial\theta_j&#125;(y^i-h_\theta(x^i)) \\
+  &amp; = -\frac1m\sum_&#123;i=0&#125;^m(y^i-h_\theta(x^i)) \frac&#123;\partial&#125;&#123;\partial\theta_j&#125;(\sum_&#123;j=0&#125;^n\theta_jx_j^i-y^i) \\
+  &amp; = -\frac1m\sum_&#123;i=0&#125;^m(y^i-h_\theta(x^i))x^i_j
+  \end&#123;align&#125;
+  $$</code></pre>
+
+
+</code></pre>
+</li>
+</ul>
+<p>  $$ \begin{align} \frac{\partial J(\theta)}{\partial\theta_j} &amp; = -\frac1m\sum_{i=0}^m(y^i-h_\theta(x^i)) \frac{\partial}{\partial\theta_j}(y^i-h_\theta(x^i)) \ &amp; = -\frac1m\sum_{i=0}^m(y^i-h_\theta(x^i)) \frac{\partial}{\partial\theta_j}(\sum_{j=0}^n\theta_jx_j^i-y^i) \ &amp; = -\frac1m\sum_{i=0}^m(y^i-h_\theta(x^i))x^i_j \end{align} $$</p>
+<h2 id="括号-1"><a href="#括号-1" class="headerlink" title="括号"></a>括号</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不好看</td>
+<td><code>(\frac{1}{2})</code></td>
+<td>$$(\frac{1}{2})$$</td>
+</tr>
+<tr>
+<td>好一点</td>
+<td><code>\left( \frac{1}{2} \right)</code></td>
+<td>$$\left( \frac{1}{2} \right)$$</td>
+</tr>
+</tbody></table>
+<p>您可以使用\left和\right来显示不同的括号：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>圆括号，小括号</td>
+<td><code>\left(\frac{a}{b}\right)</code></td>
+<td>$$\left(\frac{a}{b} \right)$$</td>
+</tr>
+<tr>
+<td>方括号，中括号</td>
+<td><code>\left[\frac{a}{b}\right]</code></td>
+<td>$$\left[\frac{a}{b} \right]$$</td>
+</tr>
+<tr>
+<td>花括号，大括号</td>
+<td><code>\left{\frac{a}{b} \right}</code></td>
+<td>$$\left{\frac{a}{b} \right}$$</td>
+</tr>
+<tr>
+<td>角括号</td>
+<td><code>\left\langle\frac{a}{b} \right\rangle</code></td>
+<td>$$\left\langle\frac{a}{b} \right\rangle$$</td>
+</tr>
+<tr>
+<td>单竖线，绝对值</td>
+<td>`\left</td>
+<td>\frac{a}{b}\right</td>
+</tr>
+<tr>
+<td>双竖线，范</td>
+<td>`\left</td>
+<td>\frac{a}{b}\right</td>
+</tr>
+<tr>
+<td>取整函数 （Floor function）</td>
+<td><code>\left\lfloor\frac{a}{b}\right\rfloor</code></td>
+<td>$$\left\lfloor\frac{a}{b}\right\rfloor$$</td>
+</tr>
+<tr>
+<td>取顶函数 （Ceiling function)</td>
+<td><code>\left\lceil\frac{c}{d}\right\rceil</code></td>
+<td>$$\left\lceil\frac{c}{d}\right\rceil$$</td>
+</tr>
+<tr>
+<td>斜线与反斜线</td>
+<td><code>\left/\frac{a}{b}\right\backslash</code></td>
+<td>$$\left/\frac{a}{b}\right\backslash$$</td>
+</tr>
+<tr>
+<td>上下箭头</td>
+<td><code>\left\uparrow\frac{a}{b}\right\downarrow</code></td>
+<td>$$\left\uparrow\frac{a}{b}\right\downarrow$$</td>
+</tr>
+<tr>
+<td></td>
+<td><code>\left\Uparrow\frac{a}{b}\right\Downarrow</code></td>
+<td>$$\left\Uparrow\frac{a}{b}\right\Downarrow$$</td>
+</tr>
+<tr>
+<td></td>
+<td><code>\left\updownarrow\frac{a}{b}\right\Updownarrow</code></td>
+<td>$$\left\updownarrow\frac{a}{b}\right\Updownarrow$$</td>
+</tr>
+<tr>
+<td>混合括号</td>
+<td>`\left[0,1\right)\left\langle\psi \right</td>
+<td>`</td>
+</tr>
+<tr>
+<td>单左括号</td>
+<td><code>\left\{\frac{a}{b}\right.</code></td>
+<td>$$\left{\frac{a}{b}\right.$$</td>
+</tr>
+<tr>
+<td>单右括号</td>
+<td><code>\left.\frac{a}{b}\right\}</code></td>
+<td>$$\left.\frac{a}{b}\right}$$</td>
+</tr>
+</tbody></table>
+<p>备注：</p>
+<ul>
+<li>可以使用\big, \Big, \bigg, \Bigg控制括号的大小，比如代码<code>\Bigg(\bigg[\Big\{\big\langle\left|\|\frac{a}{b}\|\right|\big\rangle\Big\}\bigg]\Bigg)</code>显示</li>
+</ul>
+<p>$$\Bigg ( \bigg [ \Big { \big \langle \left | | \frac{a}{b} | \right | \big \rangle \Big } \bigg ] \Bigg )$$</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/07/08/BAPC-2014-PreliminaryH-%E4%BA%8C%E5%88%86-%E8%B4%AA%E5%BF%83/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BAPC2014PreliminaryH 二分+贪心</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/07/04/%E4%B8%8A%E6%B5%B7%E9%AB%98%E6%A0%A1%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9BJ-%E4%BA%8C%E5%88%86-%E5%8C%B9%E9%85%8D-%E7%BD%91%E7%BB%9C%E6%B5%81/">
+                        <span class="hidden-mobile">上海高校金马五校赛J 二分+匹配/网络流</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "latex公式用法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

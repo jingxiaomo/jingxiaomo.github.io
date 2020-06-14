@@ -1,25 +1,742 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>树状数组 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-20 20:43">
+      February 20, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>以前就听说线段树的适用范围比树状数组要广 所以就一直没有学 昨天碰到了处理前缀和的问题 发现树状数组可以更方便 所以就有点好奇了 同样 我还是选择了看视频w</p>
+<p>传送门：<a href="https://www.bilibili.com/video/av18735440/" target="_blank" rel="noopener">https://www.bilibili.com/video/av18735440/</a></p>
+<p>参考博客：<a href="http://blog.csdn.net/largecub233/article/details/56666971" target="_blank" rel="noopener">http://blog.csdn.net/largecub233/article/details/56666971</a></p>
+<p>区间修改：<a href="http://blog.csdn.net/qq_21841245/article/details/43956633" target="_blank" rel="noopener">http://blog.csdn.net/qq_21841245/article/details/43956633</a></p>
+<p>模板：</p>
+<p>（下标都从1开始）</p>
+<h5 id="区间查询-单点修改"><a href="#区间查询-单点修改" class="headerlink" title="区间查询 单点修改"></a>区间查询 单点修改</h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> d[<span class="hljs-number">500010</span>];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//查询前缀和</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        res+=d[x];
+        x-=lowbit(x);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//单点修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(x&lt;=n)
+    &#123;
+        d[x]+=v;
+        x+=lowbit(x);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,x,y,ope;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+        add(i,x);
+    &#125;
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;ope,&amp;x,&amp;y);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)add(x,y);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,query(y)-query(x<span class="hljs-number">-1</span>));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="单点查询-区间修改"><a href="#单点查询-区间修改" class="headerlink" title="单点查询 区间修改"></a>单点查询 区间修改</h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> c[<span class="hljs-number">500010</span>];<span class="hljs-comment">//差分数组</span>
+<span class="hljs-comment">//这里运用了差分思想，假设原本的数据存在a数组中，</span>
+<span class="hljs-comment">//那么c数组储存的就是c[i]=a[i]-a[i-1]，如果c[1]=a[1]，那么很明显</span>
+<span class="hljs-comment">//a[i]=c[i]+c[i-1]+c[i-2]+...+c[2]+c[1].</span>
+<span class="hljs-comment">//这样我们每次单点查询的时候只要加上c数组的前缀就可以了。</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//单点查询</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        res+=c[x];
+        x-=lowbit(x);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//区间修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(x&lt;=n)
+    &#123;
+        c[x]+=v;
+        x+=lowbit(x);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,x,y,k,ope,ls;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-built_in">memset</span>(c,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(c));
+    ls=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+        add(i,x-ls);
+        ls=x;
+    &#125;
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;ope);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;k);
+            add(x,k);
+            add(y+<span class="hljs-number">1</span>,-k);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,query(x));
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="加了区间修改的万能模板"><a href="#加了区间修改的万能模板" class="headerlink" title="加了区间修改的万能模板"></a>加了区间修改的万能模板</h5><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+ll n;
+ll sum[<span class="hljs-number">200010</span>];<span class="hljs-comment">//原数列的前缀和</span>
+ll c[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差分数组</span>
+ll ci[<span class="hljs-number">200010</span>];<span class="hljs-comment">//差分*i数组</span>
+<span class="hljs-function">ll <span class="hljs-title">lowbit</span><span class="hljs-params">(ll x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">(ll arr[],ll x)</span><span class="hljs-comment">//查询前缀和</span></span>
+<span class="hljs-function"></span>&#123;
+    ll res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        res+=arr[x];
+        x-=lowbit(x);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(ll arr[],ll x,ll v)</span><span class="hljs-comment">//单点修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(x&lt;=n)
+    &#123;
+        arr[x]+=v;
+        x+=lowbit(x);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> m,x,y,k,ope;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;n);
+    <span class="hljs-built_in">memset</span>(c,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(c));
+    sum[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;x);
+        sum[i]=sum[i<span class="hljs-number">-1</span>]+x;
+    &#125;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;m);
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;ope);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;k);
+            add(c,x,k);
+            add(c,y+<span class="hljs-number">1</span>,-k);
+            add(ci,x,k*x);
+            add(ci,y+<span class="hljs-number">1</span>,-k*(y+<span class="hljs-number">1</span>));
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;x,&amp;y);
+            ll sum1=sum[x<span class="hljs-number">-1</span>]+x*query(c,x<span class="hljs-number">-1</span>)-query(ci,x<span class="hljs-number">-1</span>);
+            ll sum2=sum[y]+(y+<span class="hljs-number">1</span>)*query(c,y)-query(ci,y);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,sum2-sum1);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="二维树状数组"><a href="#二维树状数组" class="headerlink" title="二维树状数组"></a>二维树状数组</h5><p>（以bzoj1452为例）</p>
+<p>题意：一个n*m的方格，初始时每个格子有一个整数权值。接下来每次有2种操作：</p>
+<p>改变一个格子的权值；</p>
+<p>求一个子矩阵中某种特定权值出现的个数。</p>
+<p>思路：加个权值的维度即可。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> row,clo;
+<span class="hljs-keyword">int</span> mp[<span class="hljs-number">310</span>][<span class="hljs-number">310</span>];
+<span class="hljs-keyword">int</span> c[<span class="hljs-number">310</span>][<span class="hljs-number">310</span>][<span class="hljs-number">110</span>];<span class="hljs-comment">//差分数组</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> z)</span><span class="hljs-comment">//单点查询</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i&gt;<span class="hljs-number">0</span>;i-=lowbit(i))
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j&gt;<span class="hljs-number">0</span>;j-=lowbit(j))
+            res+=c[i][j][z];
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> z,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//区间修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i&lt;=row;i+=lowbit(i))
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j&lt;=clo;j+=lowbit(j))
+            c[i][j][z]+=v;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,ope,x,y,z,x1,y1,x2,y2;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;row,&amp;clo);
+    <span class="hljs-built_in">memset</span>(c,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(c));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=row;i++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=clo;j++)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;mp[i][j]);
+            add(i,j,mp[i][j],<span class="hljs-number">1</span>);
+        &#125;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;m);
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;ope);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);
+            add(x,y,mp[x][y],<span class="hljs-number">-1</span>);
+            mp[x][y]=z;
+            add(x,y,z,<span class="hljs-number">1</span>);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d%d"</span>,&amp;x1,&amp;x2,&amp;y1,&amp;y2,&amp;z);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,query(x1<span class="hljs-number">-1</span>,y1<span class="hljs-number">-1</span>,z)+query(x2,y2,z)-query(x1<span class="hljs-number">-1</span>,y2,z)-query(x2,y1<span class="hljs-number">-1</span>,z));
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>（以poj2155为例）</p>
+<p>题意：给出矩阵左上角和右下角坐标，矩阵里的元素1变0，0 变1，给出询问，问某个点是多少。</p>
+<p>思路：</p>
+<p>区间修改的时候，(x1,y1)为左上角的点，(x2,y2)是右下角的点。<img src="http://img.blog.csdn.net/20170409165447611?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQUNNX0Zpc2g=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="这里写图片描述"></p>
+<p>修改的应该是add(x1,y1,1),add(x2+1,y1,-1),add(x1,y2+1,-1),add(x2+1,y2+1,1)。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> c[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];<span class="hljs-comment">//差分数组</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span><span class="hljs-comment">//单点查询</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i&gt;<span class="hljs-number">0</span>;i-=lowbit(i))
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j&gt;<span class="hljs-number">0</span>;j-=lowbit(j))
+            res+=c[i][j];
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//区间修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=x;i&lt;=n;i+=lowbit(i))
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=y;j&lt;=n;j+=lowbit(j))
+            c[i][j]+=v;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t,m,x,y,x1,y1,x2,y2;<span class="hljs-comment">//左上角右下角</span>
+    <span class="hljs-keyword">char</span> ope[<span class="hljs-number">5</span>];
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> kase=<span class="hljs-number">0</span>;kase&lt;t;kase++)
+    &#123;
+        <span class="hljs-keyword">if</span>(kase!=<span class="hljs-number">0</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+        <span class="hljs-built_in">memset</span>(c,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(c));
+        <span class="hljs-keyword">while</span>(m--)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,ope);
+            <span class="hljs-keyword">if</span>(ope[<span class="hljs-number">0</span>]==<span class="hljs-string">'C'</span>)
+            &#123;
+                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
+                add(x1,y1,<span class="hljs-number">1</span>);
+                add(x2+<span class="hljs-number">1</span>,y1,<span class="hljs-number">-1</span>);
+                add(x2+<span class="hljs-number">1</span>,y2+<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);
+                add(x1,y2+<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>);
+            &#125;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope[<span class="hljs-number">0</span>]==<span class="hljs-string">'Q'</span>)
+            &#123;
+                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(query(x,y))%<span class="hljs-number">2</span>);
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/21/POJ2352-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">POJ2352 树状数组</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/19/CodeForces899F-%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%B8%AD%E5%89%8D%E7%BC%80%E5%92%8C%E7%9A%84%E6%9F%A5%E6%89%BE/">
+                        <span class="hidden-mobile">CodeForces899F 线段树中前缀和的查找</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "树状数组&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
