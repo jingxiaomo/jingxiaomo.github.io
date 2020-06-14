@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>博弈 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-25 18:24">
+      January 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="Bash游戏（同余）："><a href="#Bash游戏（同余）：" class="headerlink" title="Bash游戏（同余）："></a><strong>Bash游戏（同余）：</strong></h5><p>有一堆石子共有N个。A B两个人轮流拿，A先拿。每次最少拿1颗，最多拿K颗，拿到最后1颗石子的人获胜。假设A B都非常聪明，拿石子的过程中不会出现失误。给出N和K，问最后谁能赢得比赛。</p>
+<p>小学的时候沉迷的游戏…</p>
+<p>如果n可以整除k+1的话，B有必胜策略，只要报k+1-A报的数就可以了。</p>
+<p>如果不整除的话，由于A先手，所以A就胜了。</p>
+<h5 id="Nim游戏（异或）："><a href="#Nim游戏（异或）：" class="headerlink" title="Nim游戏（异或）："></a><strong>Nim游戏（异或）：</strong></h5><p>有N堆石子。A B两个人轮流拿，A先拿。每次只能从一堆中取若干个，可将一堆全取走，但不可不取，拿到最后1颗石子的人获胜。假设A B都非常聪明，拿石子的过程中不会出现失误。给出N及每堆石子的数量，问最后谁能赢得比赛。</p>
+<p>如果把n堆抽象为n个非负整数,再将n个整数转化为二进制,然后对n个二进制数按位相加(不进位),若每一位相加都为偶数,那么称这个状态为偶状态,否则称它为奇状态.</p>
+<p>事实一：假设轮到你行动了，这时堆里的Nim和为0。这样不管你怎么做，你动作后的Nim和不会等于0.</p>
+<p>事实二：假设轮到你行动了，这时堆里的Nim和不为0。但是可以保证的是，存在一种取法能在你行动后的堆的Nim和为0。</p>
+<p>现在如果你是玩家A，所以你先走。接着假设现在堆里的Nim和不等于0.你的策略将会是这样:如果可能尽可能使得下一个Nim和，也就是你动作后的Nim和为0.这也意味着无论B如何动作通过事实1可知，B的这个动作会把下个Nim和变得不为0.</p>
+<p>让我们开始，在表中记录每一步的Nim和：</p>
+<table>
+<thead>
+<tr>
+<th>下一个要走的玩家</th>
+<th>Nim和</th>
+<th>能否变为0？</th>
+<th>下个Nim和</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>非0</td>
+<td>能</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0</td>
+<td>否</td>
+<td>非0</td>
+</tr>
+<tr>
+<td>A</td>
+<td>非0</td>
+<td>能</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0</td>
+<td>否</td>
+<td>非0</td>
+</tr>
+<tr>
+<td>A</td>
+<td>非0</td>
+<td>能</td>
+<td>0</td>
+</tr>
+<tr>
+<td>……</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这个像乒乓球一样的Nim和不断在0和非0之间转化，意味着你保证能赢！如果B注定要赢，她将要把最后一个硬币攒在手中。也就是说：她需要一个动作来产生零Nim和，但在我们看来这是不可能的。你的每次动作，都在把Nim和减少到0。当游戏进行到快到结尾时时，零Nim和就等价于没有一个硬币剩余——这时你就赢了。</p>
+<p>那么对于n堆物品,只要判断它是否是奇状态就可以判断是否先手有必赢策略.</p>
+<p>以非零Nim和打头的游戏，玩家A都有一个必胜策略。策略就是在每一步都让下一个Nim和减少到0.</p>
+<p>如果游戏开始时为零Nim和，那么玩家B有一个必胜策略。当轮到B动作时不管玩家A在第一步做了什么将会留下一个非零Nim和。那么按同上的理由，必胜策略掌握在了B的手中。</p>
+<p>但是求每个数的二进制表示略显麻烦,可以用位运算.</p>
+<p>XOR 和判断: 如果有奇数个二进制数在第K位为1 那么在这一位上的和为奇,同样的，偶数个1和为偶.</p>
+<p>很明显位运算xor满足我们的要求,偶数个1异或和为0,奇数个为1。</p>
+<p>当这些数都做异或运算时等于0时,先手输，否则后手输。</p>
+<p>如果Nim游戏中的规则稍微变动一下,每次最多只能取K个,怎么处理?</p>
+<p>方法是将每堆石子数mod (k+1).</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t,n,k,sum=<span class="hljs-number">0</span>,ch;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">while</span>(n--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;ch);
+        sum=sum^ch;
+    &#125;
+    <span class="hljs-keyword">if</span>(sum==<span class="hljs-number">0</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"B\n"</span>);
+    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"A\n"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="反Nim游戏："><a href="#反Nim游戏：" class="headerlink" title="反Nim游戏："></a><strong>反Nim游戏：</strong></h5><p>在反尼姆博奕中判断必胜局面的条件有两点，满足任意一点先手都能取胜，即必胜局面。   </p>
+<p>1：各堆石子数目异或结果不等于0，且存在有石子数目大于1的石子堆。</p>
+<p>2：各堆石子数目异或结果等于0，且所有石子堆数目全部为1。</p>
+<h5 id="Wythoff游戏（黄金分割）："><a href="#Wythoff游戏（黄金分割）：" class="headerlink" title="Wythoff游戏（黄金分割）："></a><strong>Wythoff游戏（黄金分割）：</strong></h5><p>有两堆各若干的物品，两人轮流从其中一堆取至少一件物品，至多不限，或从两堆中同时取相同件物品，规定最后取完者胜利。</p>
+<p>这种情况下是颇为复杂的。我们用（ak，bk）（ak ≤ bk ,k=0，1，2，…,n)表示两堆物品的数量并称其为局势，如果甲面对（0，0），那么甲已经输了，这种局势我们称为奇异局势（先手必败）。前几个奇异局势是：（0，0）、（1，2）、（3，5）、（4，7）、（6，10）、（8，13）、（9，15）、（11，18）、（12，20）。</p>
+<p>可以看出,a0=b0=0,ak是未在前面出现过的最小自然数,而 bk= ak + k。</p>
+<p>若两堆物品的初始值为（x，y），且x&lt;y，则另z=y-x；记w=（int）[((sqrt(5)+1)/2）*z  ]；若w=x，则先手必败，否则先手必胜。</p>
+<p>给你一个局面，让你求先手输赢，假设先手赢的话输出他第一次的取法。</p>
+<p>​       首先讨论在两边同时取的情况，很明显两边同时取的话，不论怎样取他的差值是不会变的，那么我们可以根据差值计算出其中的小的值，然后加上差值就是大的一个值，当</p>
+<p>然能取的条件是求出的最小的值不能大于其中小的一堆的石子数目。</p>
+<p>​      加入在一堆中取的话，可以取任意一堆，那么其差值也是不定的，但是我们可以枚举差值，差值范围是0 — 大的石子数目，然后根据上面的理论判断满足条件的话就是一种合理的取法。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> a,b;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;a,&amp;b)!=EOF)
+    &#123;
+        <span class="hljs-keyword">if</span>(a==<span class="hljs-number">0</span>&amp;&amp;b==<span class="hljs-number">0</span>)<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">if</span>(a&gt;b)swap(a,b);
+        <span class="hljs-keyword">int</span> d=b-a;
+        <span class="hljs-keyword">int</span> x=(<span class="hljs-keyword">int</span>)((<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>)+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>*d);<span class="hljs-comment">//这里注意！</span>
+        <span class="hljs-keyword">if</span>(x==a)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"0\n"</span>);
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"1\n"</span>);
+            <span class="hljs-keyword">int</span> ans1,ans2;
+            <span class="hljs-keyword">if</span>(a&gt;x)
+            &#123;
+                ans1=x;
+                ans2=b-a+x;
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,ans1,ans2);
+            &#125;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=b;i++)
+            &#123;
+                ans1=a;ans2=b-i;
+                <span class="hljs-keyword">if</span>(ans1&gt;ans2)swap(ans1,ans2);
+                d=ans2-ans1;
+                x=(<span class="hljs-keyword">int</span>)((<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>)+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>*d);
+                <span class="hljs-keyword">if</span>(x==ans1)
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,ans1,ans2);
+            &#125;
+            <span class="hljs-keyword">if</span>(a!=b)<span class="hljs-comment">//如果a和b相同的话在a堆取和在b堆取是一样的</span>
+            &#123;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=a;i++)
+                &#123;
+                    ans1=a-i;ans2=b;
+                    <span class="hljs-keyword">if</span>(ans1&gt;ans2)swap(ans1,ans2);
+                    d=ans2-ans1;
+                    x=(<span class="hljs-keyword">int</span>)((<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>)+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>*d);
+                    <span class="hljs-keyword">if</span>(x==ans1)
+                        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,ans1,ans2);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="斐波那契博弈（找规律）："><a href="#斐波那契博弈（找规律）：" class="headerlink" title="斐波那契博弈（找规律）："></a><strong>斐波那契博弈（找规律）：</strong></h5><p>1堆石子有n个,两人轮流取.先取者第1次可以取任意多个，但不能全部取完.以后每次取的石子数不能超过上次取子数的2倍。取完者胜。</p>
+<p>n = 2时输出second；<br>n = 3时也是输出second；<br>n = 4时，第一个人想获胜就必须先拿1个，这时剩余的石子数为3，此时无论第二个人如何取，第一个人都能赢，输出first；<br>n = 5时，first不可能获胜，因为他取2时，second直接取掉剩下的3个就会获胜，当他取1时，这样就变成了n为4的情形，所以输出的是second；<br>n = 6时，first只要去掉1个，就可以让局势变成n为5的情形，所以输出的是first；   n = 7时，first取掉2个，局势变成n为5的情形，故first赢，所以输出的是first；<br>n = 8时，当first取1的时候，局势变为7的情形，第二个人可赢，first取2的时候，局势变成n为6得到情形，也是第二个人赢，取3的时候，second直接取掉剩下的5个，所以n = 8时，输出的是second；<br> …………<br> 从上面的分析可以看出，n为2、3、5、8时，这些都是输出second，即必败点，仔细的人会发现这些满足斐波那契数的规律，可以推断13也是一个必败点。<br> 借助“Zeckendorf定理”（齐肯多夫定理）：任何正整数可以表示为若干个不连续的Fibonacci数之和。n=12时，只要谁能使石子剩下8且此次取子没超过3就能获胜。因此可以把12看成8+4，把8看成一个站，等价与对4进行”气喘操作”。又如13，13=8+5，5本来就是必败态，得出13也是必败态。也就是说，只要是斐波那契数，都是必败点。</p>
+<p>先手胜当且仅当n不是斐波那契数（n为物品总数）</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%92%8C%E4%BD%8E%E7%B2%BE%E5%BA%A6%E7%9A%84%E4%B9%98%E9%99%A4%E6%B3%95-%E5%A4%A7%E6%95%B0%E5%8F%96%E6%A8%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">高精度和低精度的乘除法&&大数取模</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3/">
+                        <span class="hidden-mobile">二进制相关</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "博弈&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

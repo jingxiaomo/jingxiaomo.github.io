@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>补算法计划 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-25 18:26">
+      January 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>（有下划线的表示还不了解）</p>
+<p><strong>动态规划</strong></p>
+<p>基础</p>
+<ul>
+<li><p>线性dp、区间dp，主要就是状态方程的设计和状态的转移</p>
+</li>
+<li><p>背包dp，及其扩展 《背包九讲》是很好的学习资料</p>
+</li>
+<li><p><u>用dp递推概率、期望（dp求期望一般分为两种。一种是dp状态保存的是概率，则期望=概率*花费。另一种是dp状态直接保存期望，这样一般都是逆推的。）</u></p>
+</li>
+<li><p>树形dp（有些会套个背包dp，有些需要多次树形dp）</p>
+</li>
+<li><p>状态压缩dp</p>
+</li>
+<li><p>数位dp</p>
+</li>
+<li><p>RMQ、<u>二维RMQ</u></p>
+</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li><p><u>dp优化</u></p>
+<p><u>使用数据结构优化，如线段树、树状数组、单调队列、单调栈、维护前缀和 …</u></p>
+<p><u>斜率优化（具有单调性可直接用单调队列或者二分，不具单调性要用平衡二叉树动态维护凸壳）</u></p>
+<p><u>四边形不等式优化</u></p>
+</li>
+<li><p><u>插头dp</u></p>
+</li>
+</ul>
+<p><strong>数据结构</strong></p>
+<p>基础</p>
+<ul>
+<li><p>队列、栈</p>
+</li>
+<li><p>树、图的存储、遍历 邻接表和邻接矩阵</p>
+</li>
+<li><p>单调队列、单调栈</p>
+</li>
+<li><p>线段树、树状数组</p>
+</li>
+<li><p>并查集、带权并查集</p>
+</li>
+<li><p>堆、优先队列</p>
+</li>
+<li><p><u>平衡二叉树</u></p>
+<p><u>Treap</u></p>
+<p><u>Spaly必须会</u></p>
+<p><u>[红黑树]</u></p>
+<p><u>[AVL树]</u></p>
+</li>
+<li><p>Hash散列表</p>
+</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li>分块数组（分块的思想很强大）</li>
+<li>二维线段树（就是线段树套线段树，其实还有个[矩形树]）、二维树状数组（就是树状数组套树状数组）</li>
+<li>树链剖分</li>
+<li><u>树套树，如线段树套平衡二叉树、树状数组套平衡二叉树 …</u></li>
+<li><u>Link-Cut-Tree（解决一类动态树的问题，可以说是树的剖分+Splay）</u></li>
+<li><u>可持久化数据结构，如主席树、可持久化线段树、可持久化字典树、可持久化并查集、可持久化Treap …</u></li>
+</ul>
+<p><strong>搜索</strong></p>
+<p>基础</p>
+<ul>
+<li>深搜</li>
+<li>广搜</li>
+<li>记忆化搜索（也可以放到dp分类里）</li>
+<li>使用优先队列的广搜</li>
+<li>模拟退火、爬山算法</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li><u>搜索剪枝</u></li>
+<li><u>双向广搜</u></li>
+<li><u>A<em>、IDA</em></u></li>
+<li><u>舞蹈链</u></li>
+</ul>
+<p><strong>图论</strong></p>
+<p>基础</p>
+<ul>
+<li><p>最短路（Dijkstra、Spfa、Floyd）</p>
+</li>
+<li><p>最小生成树（Prim、Kruskal）</p>
+</li>
+<li><p>拓扑排序</p>
+</li>
+<li><p>二分图最大匹配（匈牙利算法）</p>
+<p>二分图的最小顶点覆盖</p>
+<p>DAG图的最小路径覆盖</p>
+<p>二分图的最大独立集</p>
+</li>
+<li><p>二分图最优匹配（KM算法）</p>
+</li>
+<li><p>二分图多重匹配</p>
+</li>
+<li><p>网络流</p>
+<p>最大流（Dinic、Sap）</p>
+<p><u>最小费用最大流</u></p>
+<p><u>带上下界的最大流</u></p>
+</li>
+<li><p>有向图强连通分量的Tarjan算法</p>
+</li>
+<li><p><u>最近公共祖先 Tarjan算法实现与RMQ实现各有千秋</u></p>
+</li>
+<li><p>差分约束系统</p>
+</li>
+<li><p>欧拉回路</p>
+</li>
+<li><p><u>构造哈密顿回路</u></p>
+</li>
+<li><p><u>最大团</u></p>
+</li>
+<li><p><u>无向图全局最小割（StoerWagner）</u></p>
+</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li><p><u>次小生成树</u></p>
+</li>
+<li><p><u>最优比率生成树</u></p>
+</li>
+<li><p><u>[度限制生成树]</u></p>
+</li>
+<li><p><u>[第k小生成树]</u></p>
+</li>
+<li><p><u>次短路、第k短路</u></p>
+</li>
+<li><p><u>网络流 胡伯涛的《最小割模型在信息学竞赛中的应用》是很好的学习资料</u></p>
+<p>最大权闭合图</p>
+<p><u>最大密度子图</u></p>
+<p><u>二分图最小点权覆盖集</u></p>
+<p><u>二分图最大点权独立集</u></p>
+<p><u>区间k覆盖的模型</u></p>
+<p><u>平面图网络流</u></p>
+</li>
+<li><p>无向图的割点和桥、边双联通分量、点双联通分量</p>
+</li>
+<li><p><u>2-SAT</u></p>
+</li>
+<li><p><u>最小树形图</u></p>
+</li>
+<li><p><u>一般图匹配</u></p>
+</li>
+<li><p><u>生成树计数、最小生成树计数</u></p>
+</li>
+</ul>
+<p><strong>数学</strong></p>
+<p>基础</p>
+<p>数论</p>
+<ul>
+<li><p>欧几里得算法、扩展欧几里得算法</p>
+<p>乘法逆元</p>
+<p>中国剩余定理</p>
+<p>欧拉函数</p>
+<p><u>欧拉定理</u></p>
+<p>Miller_Rabin大素数判定</p>
+<p>Pollard_rho大整数拆分</p>
+</li>
+<li><p>线性代数</p>
+<p>矩阵乘法&amp;快速幂</p>
+<p>高斯消元</p>
+</li>
+<li><p>组合数学</p>
+<p>容斥原理</p>
+<p>鸽巢原理</p>
+<p><u>[母函数]</u></p>
+<p><u>[稳定婚姻问题]</u></p>
+</li>
+<li><p>概率统计</p>
+</li>
+<li><p>群论</p>
+<p><u>置换群</u></p>
+<p><u>BurnSide引理</u></p>
+<p><u>Polya定理</u></p>
+</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li><u>莫比乌斯反演</u></li>
+<li><u>BSGS</u></li>
+<li><u>FFT</u></li>
+<li><u>……</u></li>
+<li>数学的进阶内容太多了</li>
+</ul>
+<p><strong>字符串</strong></p>
+<p>基础</p>
+<ul>
+<li>KMP、扩展KMP</li>
+<li>字典树</li>
+<li>最长回文子串的Manacher算法</li>
+<li>字符串最小/最大表示法</li>
+<li><u>许多字符串问题可以用dp甚至贪心求解</u></li>
+</ul>
+<p>进阶</p>
+<ul>
+<li>AC自动机、Trie图</li>
+<li><u>回文树</u></li>
+<li><u>后缀数组、后缀自动机、后缀树</u></li>
+<li><u>序列自动机</u></li>
+</ul>
+<p><strong>计算几何</strong></p>
+<p>基础</p>
+<ul>
+<li>向量的点积、叉积</li>
+<li>极角排序</li>
+<li>Graham扫描法</li>
+<li><u>二维最近点对</u></li>
+<li><u>最小覆盖圆</u></li>
+<li><u>圆面积并</u></li>
+<li>……</li>
+<li>计算几何的题目各种各样</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li><u>半平面交</u></li>
+<li><u>旋转卡壳</u></li>
+<li><u>三维凸包</u></li>
+<li>……</li>
+<li>计算几何的题目各种各样</li>
+</ul>
+<p><strong>杂</strong></p>
+<p><strong>博弈</strong></p>
+<p>一些经典的博弈、SG函数、<u>必胜必败态搜索</u></p>
+<p><strong>STL</strong></p>
+<p>vector、set/mutiset、map、queue、stack、deque、string、<u>rope</u>…</p>
+<p><strong>排序</strong></p>
+<p>虽然都用sort但是堆排序的原理还是要知道的</p>
+<p><strong>分治</strong></p>
+<p><u>普通的分治</u></p>
+<p><u>CDQ分治</u></p>
+<p><u>整体二分</u></p>
+<p><u>树分治</u></p>
+<p><strong>二分、三分</strong></p>
+<p><strong>2-points</strong></p>
+<p><strong>01分数规划</strong></p>
+<p><strong>构造</strong></p>
+<p><strong><u>树的同构（树的hash）</u></strong></p>
+<p><strong>莫队算法、[树上莫队]</strong></p>
+<p><strong>找规律、打表</strong></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/25/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AC自动机</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E5%88%B7%E9%A2%98%E6%97%A5%E7%A8%8B-%E0%B9%91%E2%80%A2%CC%80%E3%85%82%E2%80%A2%CC%81-%D9%88%E2%9C%A7/">
+                        <span class="hidden-mobile">刷题日程(๑•̀ㅂ•́)و✧</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "补算法计划&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

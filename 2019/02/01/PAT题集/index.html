@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>PAT题集 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-02-01 16:33">
+      February 1, 2019 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="PAT-Advanced-Level"><a href="#PAT-Advanced-Level" class="headerlink" title="PAT Advanced Level"></a>PAT Advanced Level</h2><ol>
+<li>具有充分的英文阅读理解能力；</li>
+<li>理解并掌握基础数据结构，包括：线性表、树、图；</li>
+<li>理解并熟练编程实现经典高级算法，包括哈希映射、并查集、最短路径、拓扑排序、关键路径、贪心、深度优先搜索、广度优先搜索、回溯剪枝等；</li>
+<li>具备较强的问题抽象和建模能力，能实现对复杂实际问题的模拟求解。</li>
+</ol>
+<p>1、排序：快速排序，直接插入排序，希尔排序，分治排序，堆排序。</p>
+<p>2、图论：拓扑排序(好像没考过)、最短路径、深度搜索、广度搜索。</p>
+<p>3、树：树的遍历、完全二叉树、AVL,CBT,BST。</p>
+<p>4、其他：并查集，模拟，哈希(二次探测一次，简单hash多次)、背包(一次)，lcs（一次），最大子和（一次）,set(一次)，1057（分块搜索）</p>
+<h2 id="一些东西"><a href="#一些东西" class="headerlink" title="一些东西"></a>一些东西</h2><h3 id="整行读入字符串"><a href="#整行读入字符串" class="headerlink" title="整行读入字符串"></a>整行读入字符串</h3><pre><code class="hljs c++"><span class="hljs-built_in">string</span> str;
+getline(<span class="hljs-built_in">cin</span>,str);<span class="hljs-comment">//读入string</span>
+
+<span class="hljs-keyword">char</span> str2[<span class="hljs-number">1024</span>];
+<span class="hljs-built_in">cin</span>.getline(str2,<span class="hljs-number">1024</span>);<span class="hljs-comment">//读入char数组</span></code></pre>
+
+<h3 id="string-erase"><a href="#string-erase" class="headerlink" title="string::erase"></a>string::erase</h3><p>erase(pos,n)：</p>
+<p>删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符。</p>
+<p>erase(position)：</p>
+<p>删除position处的一个字符(position是个string类型的迭代器)。</p>
+<p>erase(first,last)：</p>
+<p>删除从first到last之间的字符（first和last都是迭代器）。</p>
+<h2 id="记模板"><a href="#记模板" class="headerlink" title="记模板"></a>记模板</h2><h3 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h3><blockquote>
+<p>gcd(a,b)=gcd(b,a mod b)​</p>
+</blockquote>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(a&lt;b)&#123;<span class="hljs-keyword">int</span> temp;temp=a;a=b;b=temp;&#125;	<span class="hljs-comment">//使a&gt;=b</span>
+    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> a;
+    <span class="hljs-keyword">return</span> gcd(b,a%b);
+&#125;</code></pre>
+
+<h3 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h3><h4 id="floyd"><a href="#floyd" class="headerlink" title="floyd"></a>floyd</h4><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(k=<span class="hljs-number">1</span>;k&lt;=n;k++)    
+<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=n;i++)    
+<span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=n;j++)    
+dis[i][j]=dis[i][j]||(dis[i][k]&amp;&amp;dis[k][j]);</code></pre>
+
+<h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to,cost;
+&#125;;
+<span class="hljs-built_in">vector</span>&lt;edge&gt;v[<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;p;
+<span class="hljs-keyword">bool</span> vis[<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">int</span> dis[<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">fill</span>(dis+<span class="hljs-number">1</span>,dis+n+<span class="hljs-number">1</span>,INF);
+    dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;
+    priority_queue&lt;p,<span class="hljs-built_in">vector</span>&lt;p&gt;,greater&lt;p&gt; &gt;q;
+    q.push(p(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>));
+    <span class="hljs-keyword">while</span>(!q.empty())
+    &#123;
+        p temp=q.top();
+        q.pop();
+        <span class="hljs-keyword">int</span> w=temp.first;<span class="hljs-keyword">int</span> id=temp.second;
+        <span class="hljs-keyword">if</span>(vid[id])<span class="hljs-keyword">continue</span>;
+        vis[id]=<span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;v[id].<span class="hljs-built_in">size</span>();i++)
+        &#123;
+            edge &amp;e=v[id][i];
+            <span class="hljs-keyword">if</span>(w+e.cost&lt;dis[e.to])
+            &#123;
+                dis[e.to]=w+e.cost;
+                q.push(p(dis[e.to],e.to));
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<h3 id="数位dp"><a href="#数位dp" class="headerlink" title="数位dp"></a>数位dp</h3><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">20</span>];
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dp[<span class="hljs-number">20</span>][state];
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-comment">/*state变量*/</span>,<span class="hljs-keyword">bool</span> lead,<span class="hljs-keyword">bool</span> limit)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pos==<span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(!limit &amp;&amp; !lead &amp;&amp; dp[pos][state]!=<span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> dp[pos][state];
+    <span class="hljs-keyword">int</span> up=limit?a[pos]:<span class="hljs-number">9</span>;
+    ll ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=up;i++)
+    &#123;
+        <span class="hljs-keyword">if</span>() ...
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>()...
+        ans+=dfs(pos<span class="hljs-number">-1</span>,<span class="hljs-comment">/*状态转移*/</span>,lead &amp;&amp; i==<span class="hljs-number">0</span>,limit &amp;&amp; i==a[pos])
+    &#125;
+    <span class="hljs-keyword">if</span>(!limit &amp;&amp; !lead) dp[pos][state]=ans;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> pos=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        a[pos++]=x%<span class="hljs-number">10</span>;
+        x/=<span class="hljs-number">10</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> dfs(pos<span class="hljs-number">-1</span>,<span class="hljs-comment">/*一系列状态 */</span>,<span class="hljs-literal">true</span>,<span class="hljs-literal">true</span>);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> le,ri;
+    <span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;le,&amp;ri))
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,solve(ri)-solve(le<span class="hljs-number">-1</span>));
+    &#125;
+&#125;</code></pre>
+
+<h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><p>（下标都从1开始）</p>
+<h4 id="区间查询-单点修改"><a href="#区间查询-单点修改" class="headerlink" title="区间查询 单点修改"></a>区间查询 单点修改</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> d[<span class="hljs-number">500010</span>];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//查询前缀和</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        res+=d[x];
+        x-=lowbit(x);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//单点修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(x&lt;=n)
+    &#123;
+        d[x]+=v;
+        x+=lowbit(x);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,x,y,ope;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+        add(i,x);
+    &#125;
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;ope,&amp;x,&amp;y);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)add(x,y);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,query(y)-query(x<span class="hljs-number">-1</span>));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h4 id="单点查询-区间修改"><a href="#单点查询-区间修改" class="headerlink" title="单点查询 区间修改"></a>单点查询 区间修改</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> c[<span class="hljs-number">500010</span>];<span class="hljs-comment">//差分数组</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> x&amp;(-x);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//单点查询</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(x)
+    &#123;
+        res+=c[x];
+        x-=lowbit(x);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> v)</span><span class="hljs-comment">//区间修改</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">while</span>(x&lt;=n)
+    &#123;
+        c[x]+=v;
+        x+=lowbit(x);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m,x,y,k,ope,ls;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-built_in">memset</span>(c,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(c));
+    ls=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+        add(i,x-ls);
+        ls=x;
+    &#125;
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;ope);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;k);
+            add(x,k);
+            add(y+<span class="hljs-number">1</span>,-k);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,query(x));
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><h4 id="求满足条件的最大值"><a href="#求满足条件的最大值" class="headerlink" title="求满足条件的最大值"></a>求满足条件的最大值</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,r=maxn,ans=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span>(l&lt;=r)
+&#123;
+    <span class="hljs-keyword">int</span> mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(judge(mid))ans=mid,l=mid+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;
+&#125;</code></pre>
+
+<h4 id="求满足条件的最小值"><a href="#求满足条件的最小值" class="headerlink" title="求满足条件的最小值"></a>求满足条件的最小值</h4><pre><code class="hljs c++"><span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,r=maxn,ans=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span>(l&lt;=r)
+&#123;
+    <span class="hljs-keyword">int</span> mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(judge(mid))ans=mid,r=mid<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">else</span> l=mid+<span class="hljs-number">1</span>;
+&#125;</code></pre>
+
+<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><pre><code class="hljs c++"><span class="hljs-keyword">int</span> par[<span class="hljs-number">1010</span>],high[<span class="hljs-number">1010</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        par[i]=i;
+        high[i]=<span class="hljs-number">0</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">return</span> par[x]=<span class="hljs-built_in">find</span>(par[x]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)<span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">if</span>(high[x]&lt;high[y])par[x]=y;   <span class="hljs-comment">//启发式合并</span>
+    <span class="hljs-keyword">else</span>
+    &#123;
+        par[y]=x;
+        <span class="hljs-keyword">if</span>(high[x]==high[y])high[x]++;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+&#125;</code></pre>
+
+<h3 id="优先队列的优先级设置"><a href="#优先队列的优先级设置" class="headerlink" title="优先队列的优先级设置"></a>优先队列的优先级设置</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-built_in">string</span> name;
+    <span class="hljs-keyword">double</span> price;
+&#125;f1,f2,f3; <span class="hljs-comment">//定义三个结构体变量</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(fruit f1, fruit f2)</span> <span class="hljs-comment">//重载括号</span></span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">return</span> f1.price&lt;f2.price; <span class="hljs-comment">//等同于less</span>
+    &#125;
+&#125;;
+
+调用：priority_queue&lt;fruit,<span class="hljs-built_in">vector</span>&lt;fruit&gt;,cmp&gt;q;</code></pre>
+
+<h3 id="AVL的插入"><a href="#AVL的插入" class="headerlink" title="AVL的插入"></a>AVL的插入</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> val;
+    <span class="hljs-keyword">int</span> high;
+    node *left,*right;
+    node(<span class="hljs-keyword">int</span> x)
+    &#123;
+        val=x;high=<span class="hljs-number">0</span>;
+        left=right=<span class="hljs-literal">NULL</span>;
+    &#125;
+&#125;;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gethigh</span><span class="hljs-params">(node *temp)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(temp==<span class="hljs-literal">NULL</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> temp-&gt;high;
+&#125;
+<span class="hljs-function">node* <span class="hljs-title">SingleRotateLL</span><span class="hljs-params">(node *root)</span></span>
+<span class="hljs-function"></span>&#123;
+    node *temp;
+    temp=root-&gt;left;
+    root-&gt;left=temp-&gt;right;
+    temp-&gt;right=root;
+    root-&gt;high=<span class="hljs-built_in">max</span>(gethigh(root-&gt;left),gethigh(root-&gt;right))+<span class="hljs-number">1</span>;     <span class="hljs-comment">//更新高度</span>
+    temp-&gt;high=<span class="hljs-built_in">max</span>(gethigh(temp-&gt;left),gethigh(temp-&gt;right))+<span class="hljs-number">1</span>;     
+    <span class="hljs-keyword">return</span> temp;
+&#125;
+<span class="hljs-function">node *<span class="hljs-title">SingleRotateRR</span><span class="hljs-params">(node *root)</span></span>
+<span class="hljs-function"></span>&#123;
+    node *temp;
+    temp=root-&gt;right;
+    root-&gt;right=temp-&gt;left;
+    temp-&gt;left=root;
+    root-&gt;high=<span class="hljs-built_in">max</span>(gethigh(root-&gt;left),gethigh(root-&gt;right))+<span class="hljs-number">1</span>; <span class="hljs-comment">//更新高度</span>
+    temp-&gt;high=<span class="hljs-built_in">max</span>(gethigh(temp-&gt;left),gethigh(temp-&gt;right))+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> temp;
+&#125;
+<span class="hljs-function">node *<span class="hljs-title">DoubleRotateLR</span><span class="hljs-params">(node *root)</span></span>
+<span class="hljs-function"></span>&#123;
+    root-&gt;left=SingleRotateRR(root-&gt;left);
+    <span class="hljs-keyword">return</span> SingleRotateLL(root);
+&#125;
+<span class="hljs-function">node *<span class="hljs-title">DoubleRotateRL</span><span class="hljs-params">(node *root)</span></span>
+<span class="hljs-function"></span>&#123;
+    root-&gt;right=SingleRotateLL(root-&gt;right);
+    <span class="hljs-keyword">return</span> SingleRotateRR(root);
+&#125;
+<span class="hljs-function">node* <span class="hljs-title">Insert</span><span class="hljs-params">(node *root,<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(root==<span class="hljs-literal">NULL</span>)&#123;<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> node(x);&#125;
+    <span class="hljs-keyword">if</span>(x&lt;root-&gt;val)
+    &#123;
+        root-&gt;left=Insert(root-&gt;left,x);
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(gethigh(root-&gt;left)-gethigh(root-&gt;right))&gt;<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-keyword">if</span>(x&lt;root-&gt;left-&gt;val)
+                root=SingleRotateLL(root);
+            <span class="hljs-keyword">else</span>
+                root=DoubleRotateLR(root);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        root-&gt;right=Insert(root-&gt;right,x);
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(gethigh(root-&gt;left)-gethigh(root-&gt;right))&gt;<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-keyword">if</span>(x&gt;root-&gt;right-&gt;val)
+                root=SingleRotateRR(root);
+            <span class="hljs-keyword">else</span>
+                root=DoubleRotateRL(root);
+        &#125;
+    &#125;
+    root-&gt;high=<span class="hljs-built_in">max</span>(gethigh(root-&gt;left),gethigh(root-&gt;right))+<span class="hljs-number">1</span>; <span class="hljs-comment">//更新高度</span>
+    <span class="hljs-keyword">return</span> root;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,x;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    node *root=<span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">while</span>(n--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);
+        root=Insert(root,x);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,root-&gt;val);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="Nowcoder"><a href="#Nowcoder" class="headerlink" title="Nowcoder"></a>Nowcoder</h3><h4 id="1017"><a href="#1017" class="headerlink" title="1017"></a>1017</h4><p>求栈的中位数，包括push和pop操作。</p>
+<p>对于求中位数，二分+树状数组。</p>
+<h4 id="1038"><a href="#1038" class="headerlink" title="1038"></a>1038</h4><p>求1～N十进制表示中1的个数。</p>
+<p>数位dp。</p>
+<p>$dp[i][j]​$：长度为i已有j个1的数字中1的个数。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> num,<span class="hljs-keyword">bool</span> limit)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(pos==<span class="hljs-number">-1</span>)<span class="hljs-keyword">return</span> num;
+    <span class="hljs-keyword">if</span>(!limit&amp;&amp;dp[pos][num]!=<span class="hljs-number">-1</span>)<span class="hljs-keyword">return</span> dp[pos][num];
+    <span class="hljs-keyword">int</span> up=limit?a[pos]:<span class="hljs-number">9</span>;
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=up;i++)
+        ans+=dfs(pos<span class="hljs-number">-1</span>,i==<span class="hljs-number">1</span>?num+<span class="hljs-number">1</span>:num,limit&amp;&amp;i==up);
+    <span class="hljs-keyword">if</span>(!limit)dp[pos][num]=ans;
+    <span class="hljs-keyword">return</span> ans;
+&#125;</code></pre>
+
+<h4 id="1049"><a href="#1049" class="headerlink" title="1049"></a>1049</h4><p>给你一些数字的片段，希望拼接之后能拼出的最小的数字。</p>
+<p>样例输入：5 32 321 3214 0229 87，样例输出：22932132143287。</p>
+<p>假设有两个相邻的数字片段a,b。然后我们就要想，把a和b交换能不能使整个序列变小呢？这个问题的其实等价于b+a 是否小于a+b，也就是说对于这样一个序列，如果某两个相邻的元素之间发生交换可以使得整个序列的值变小，就应该交换。</p>
+<p>注意00000的情况即可。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-built_in">string</span> x,<span class="hljs-built_in">string</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(x+y&lt;y+x)<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+&#125;</code></pre>
+
+<h3 id="PTA"><a href="#PTA" class="headerlink" title="PTA"></a>PTA</h3><h4 id="1045"><a href="#1045" class="headerlink" title="1045"></a>1045</h4><p>有一组喜欢的数字序列，要从另一组数字里面选出最长的子序列，使得喜欢的数字序列包含在子序列中（不需要每一个都被包含）。</p>
+<p>可以把喜欢的数字序列从小到大编号，然后在数字里选出子序列就相当于最长非递减子序列。</p>
+<h4 id="1091"><a href="#1091" class="headerlink" title="1091"></a>1091</h4><p>如果dfs要考虑深度，避免递归深度过大爆栈。</p>
+<p>这题$$60<em>1280</em>80$$。所以用bfs。</p>
+<h4 id="1103"><a href="#1103" class="headerlink" title="1103"></a>1103</h4><p>给出N，K，P，使得$$N = n[1]^P + … n[K]^P$$。输出的方案首先$$n[1]+n[2]+…n[k]$$最大然后字典序最大。</p>
+<p>dfs。注意写法。</p>
+<p>dfs里面不要用循环写，因为要字典序最大，肯定是从最大的数开始枚举。</p>
+<pre><code class="hljs c++">dfs(<span class="hljs-keyword">int</span> id,<span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> cnt, <span class="hljs-keyword">int</span> sum, <span class="hljs-keyword">int</span> path[])
+转移：
+	<span class="hljs-keyword">if</span>(now+a[id]&lt;=n)
+    &#123;
+        path[cnt + <span class="hljs-number">1</span>] = id;
+        dfs(id,now + a[id], cnt + <span class="hljs-number">1</span>, sum + id, path);
+    &#125;
+    <span class="hljs-keyword">if</span>(id<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">1</span>)
+        dfs(id<span class="hljs-number">-1</span>,now,cnt,sum,path);
+调用：dfs(a[<span class="hljs-number">0</span>],<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, pp);</code></pre>
+
+<h4 id="1123"><a href="#1123" class="headerlink" title="1123"></a>1123</h4><p>判断是不是完全二叉树。当某个节点的儿子有为空的以后，出现子节点不为空的则说明不是完全二叉树，否则是。</p>
+<h4 id="1135"><a href="#1135" class="headerlink" title="1135"></a>1135</h4><p>给出一个二叉查找树的前序遍历序列，判断该树是不是红黑树。</p>
+<p>已知红黑树满足以下性质：</p>
+<p>（1）每个结点要么是红的要么是黑的。</p>
+<p>（2）根结点是黑的。 </p>
+<p>（3）每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的。 </p>
+<p>（4）如果一个结点是红的，那么它的两个儿子都是黑的。 </p>
+<p>（5）对于任意结点而言，其到叶结点树尾端NIL指针的每条路径都包含相同数目的黑结点。</p>
+<p>这道题debug了好久…一直有几个点过不去，然后看题解发现是自己不清楚红黑树的定义。它的叶子并不是我之前所想的叶子。</p>
+<p>如图是一棵红黑树：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0jsxaj9ifj30m80apaaf.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>此图忽略了叶子和根部的父结点。同时，上文中我们所说的 “叶结点” 或”NULL结点”，如上图所示，它不包含数据而只充当树在此结束的指示，这些节点在绘图中经常被省略。</p>
+<p>然后改一下写的代码就可以过了。</p>
+<h4 id="1139"><a href="#1139" class="headerlink" title="1139"></a>1139</h4><p>A想要联系B需要这样的步骤：A先找一个同性朋友C，再让C找一个与B同性且同时是C和B的D，由D联系B。现给出一些关系，给出A和B，输出可能的联系的方案，即输出C和D。编号都用四位数表示。          </p>
+<p>本来想的是DFS，这样会超时，其实已经规定了深度为4，所以只要枚举A的同性朋友C和B的同性朋友D，判断C和D是否是朋友即可。因为这里N最大为300，所以根据复杂度知道可行。</p>
+<p>这里还有一些坑，比如男女用+-来表示，如果直接用int来接收的话，如果出现-0000就没法判断到底是+还是-了。还有输出的时候应该要<strong>%04d</strong>（注意！！！）。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/02/09/tips/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">tips</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/04/I-O%E8%B0%83%E5%BA%A6/">
+                        <span class="hidden-mobile">I/O调度</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "PAT题集&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

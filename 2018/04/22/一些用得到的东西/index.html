@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>调试用 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-04-22 20:00">
+      April 22, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      782 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="计算程序运行时间"><a href="#计算程序运行时间" class="headerlink" title="计算程序运行时间"></a>计算程序运行时间</h4><h5 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h5><p><strong>GetTickCount函数</strong></p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    DWORD start_time=GetTickCount();
+    &#123;
+        <span class="hljs-comment">//此处为被测试代码</span>
+    &#125;
+    DWORD end_time=GetTickCount();
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"The run time is:"</span>&lt;&lt;(end_time-start_time)&lt;&lt;<span class="hljs-string">"ms!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出运行时间</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p><strong>clock函数（精度较差）</strong></p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">clock_t</span> start_time=clock();
+    &#123;
+        <span class="hljs-comment">//被测试代码</span>
+    &#125;
+    <span class="hljs-keyword">clock_t</span> end_time=clock();
+    <span class="hljs-built_in">cout</span>&lt;&lt; <span class="hljs-string">"Running time is: "</span>&lt;&lt;<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">double</span>&gt;(end_time-start_time)/CLOCKS_PER_SEC*<span class="hljs-number">1000</span>&lt;&lt;<span class="hljs-string">"ms"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;<span class="hljs-comment">//输出运行时间</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h5><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/time.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">10000000</span>;
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> <span class="hljs-title">start</span>, <span class="hljs-title">end</span>;</span>
+    gettimeofday(&amp;start, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-comment">// test code</span>
+    <span class="hljs-keyword">while</span>(i)
+    &#123;
+        i--;
+    &#125;
+    gettimeofday(&amp;<span class="hljs-built_in">end</span>, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> total_time = (<span class="hljs-built_in">end</span>.tv_sec - start.tv_sec) * <span class="hljs-number">1000000</span> + (<span class="hljs-built_in">end</span>.tv_usec - start.tv_usec);
+    total_time /= <span class="hljs-number">1000</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"total time is %lld ms\n"</span>, total_time);
+&#125;</code></pre>
+
+<h4 id="对拍"><a href="#对拍" class="headerlink" title="对拍"></a>对拍</h4><p>参考博客：<a href="https://blog.csdn.net/wlx65003/article/details/51149196" target="_blank" rel="noopener">https://blog.csdn.net/wlx65003/article/details/51149196</a></p>
+<p><a href="http://www.cnblogs.com/shamman/p/7351233.html" target="_blank" rel="noopener">http://www.cnblogs.com/shamman/p/7351233.html</a></p>
+<h5 id="Windows系统-1"><a href="#Windows系统-1" class="headerlink" title="Windows系统"></a>Windows系统</h5><p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1fqls2o9y8lj30m80gwq4n.jpg" srcset="/img/loading.gif" alt="avatar"></p>
+<p>新建一个批处理文件，命名为循环对拍.bat。</p>
+<pre><code class="hljs python"><span class="hljs-meta">@echo off  </span>
+:loop  
+    rand.exe %random% &gt; data.<span class="hljs-keyword">in</span>
+    std.exe &lt; data.<span class="hljs-keyword">in</span> &gt; std.out
+    my.exe &lt; data.<span class="hljs-keyword">in</span> &gt; my.out
+    fc my.out std.out 
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> errorlevel <span class="hljs-number">1</span> goto loop  
+pause
+goto loop</code></pre>
+
+<p>rand.cpp</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> random(a,b) ((a)+rand()%((b)-(a)+1))</span>
+
+<span class="hljs-built_in">stringstream</span> ss;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( <span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[] )</span></span>
+<span class="hljs-function"></span>&#123; 
+    <span class="hljs-keyword">int</span> seed=time(<span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">if</span>(argc &gt; <span class="hljs-number">1</span>)<span class="hljs-comment">//如果有参数</span>
+    &#123;
+        ss.<span class="hljs-built_in">clear</span>();
+        ss&lt;&lt;argv[<span class="hljs-number">1</span>];
+        ss&gt;&gt;seed;<span class="hljs-comment">//把参数转换成整数赋值给seed</span>
+    &#125;
+    srand(seed);
+    <span class="hljs-comment">//以上为随机数初始化，请勿修改</span>
+    <span class="hljs-comment">//random(a,b)生成[a,b]的随机整数</span>
+
+    <span class="hljs-comment">//以下写你自己的数据生成代码 </span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"1\n"</span>);
+    <span class="hljs-keyword">int</span> n=<span class="hljs-number">10</span>;
+    <span class="hljs-keyword">int</span> m=<span class="hljs-built_in">random</span>(<span class="hljs-number">1</span>,<span class="hljs-number">20</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>,n,m);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span> ; i&lt;n ; ++i)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d "</span>,<span class="hljs-built_in">random</span>(<span class="hljs-number">0</span>,m));
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>只需把my.cpp和std.cpp放在和对拍程序相同的目录下 ，</p>
+<p>my.cpp里放你自己的代码，编译成my.exe ，</p>
+<p>std.cpp里放标程，编译成std.exe，</p>
+<p>然后双击运行对拍程序，等待它暂停，然后打开data.in就能看到对拍出来的输入的数据，打开my.out和std.out就可以看到该组数据不同的输出。</p>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><p>rand.cpp与上面相同。</p>
+<pre><code class="hljs c++">#!/bin/bash
+<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>; <span class="hljs-keyword">do</span>
+    ./data &gt; data.in
+    ./<span class="hljs-built_in">std</span> &lt;data.in &gt;<span class="hljs-built_in">std</span>.out
+    ./my &lt;data.in &gt;my.out
+    <span class="hljs-keyword">if</span> diff <span class="hljs-built_in">std</span>.out my.out; then
+        <span class="hljs-built_in">printf</span> <span class="hljs-string">"AC\n"</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">printf</span> <span class="hljs-string">"Wa\n"</span>
+        <span class="hljs-built_in">exit</span> <span class="hljs-number">0</span>
+    fi
+done</code></pre>
+
+<p>将代码存储为judge.sh</p>
+<p>在终端运行 chmod +x judge.sh</p>
+<p>在终端运行 ./judge.sh</p>
+<p>保存为.sh后缀的文件（这里以test.sh为例），然后把三个程序放在一个目录下。</p>
+<p>用的时候先Ctrl+Alt+T打开终端，然后输入cd 你的文件目录（右键文件属性可以看到路径，全部输进去，大小写也要完全一样，注意这里要全部是英文路径，不然无法识别），回车。</p>
+<p>再输入sh test.sh，回车。</p>
+<p>这个时候对拍就开始跑了，如果两个程序的输出没差别的话你会看到很多很多行AC，检测到差别时对拍会停下来，你可以在终端看到两个程序分别输出的内容，在目录下的data.in里可以找到出错的这组数据。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/04/24/HDU5895-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82%E5%85%AC%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HDU5895 矩阵快速幂+欧拉降幂公式</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/04/20/LOJ526-%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86/">
+                        <span class="hidden-mobile">LOJ526 最大独立集</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "调试用&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>连通图专题 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-26 16:00">
+      January 26, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      54
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>强连通分量tarjan：<a href="https://www.byvoid.com/zhs/blog/scc-tarjan" target="_blank" rel="noopener">https://www.byvoid.com/zhs/blog/scc-tarjan</a></p>
+<p><a href="http://www.cnblogs.com/zufezzt/p/4699731.html" target="_blank" rel="noopener">http://www.cnblogs.com/zufezzt/p/4699731.html</a></p>
+<p>缩点：<a href="https://segmentfault.com/a/1190000009187840" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009187840</a></p>
+<p>求割点：<a href="http://www.cnblogs.com/en-heng/p/4002658.html" target="_blank" rel="noopener">http://www.cnblogs.com/en-heng/p/4002658.html</a></p>
+<p>求桥：<a href="http://blog.csdn.net/fuyukai/article/details/51039788" target="_blank" rel="noopener">http://blog.csdn.net/fuyukai/article/details/51039788</a></p>
+<p>双连通分量：<a href="http://blog.csdn.net/fuyukai/article/details/51303292" target="_blank" rel="noopener">http://blog.csdn.net/fuyukai/article/details/51303292</a></p>
+<p>割边：在连通图中，删除了连通图的某条边后，图不再连通。这样的边被称为割边，也叫做桥。</p>
+<p>割点：在连通图中，删除了连通图的某个点以及与这个点相连的边后，图不再连通。这样的点被称为割点。</p>
+<p>DFS搜索树：用DFS对图进行遍历时，按照遍历次序的不同，我们可以得到一棵DFS搜索树。在上面例子中，得到的搜索树为：</p>
+<p><img src="http://media.hihocoder.com/problem_images/20150627/14353909466118.png" srcset="/img/loading.gif" alt="img"></p>
+<p>树边：在搜索树中的蓝色线所示，可理解为在DFS过程中访问未访问节点时所经过的边，也称为父子边</p>
+<p>回边：在搜索树中的橙色线所示，可理解为在DFS过程中遇到已访问节点时所经过的边，也称为返祖边、后向边</p>
+<p>观察DFS搜索树，我们可以发现有两类节点可以成为割点：</p>
+<ul>
+<li>对根节点u，若其有两棵或两棵以上的子树，则该根结点u为割点；</li>
+<li>对非叶子节点u（非根节点），若其中的某棵子树的节点均没有指向u的祖先节点的回边，说明删除u之后，根结点与该棵子树的节点不再连通；则节点u为割点。</li>
+</ul>
+<p>对于根结点，显然很好处理；但是对于非叶子节点，怎么去判断有没有回边是一个值得深思的问题。</p>
+<p>我们用dfn[u]记录节点u在DFS过程中被遍历到的次序号，low[u]记录节点u或u的子树通过非父子边追溯到最早的祖先节点（即DFS次序号最小），那么low[u]的计算过程如下：</p>
+<p><img src="http://media.hihocoder.com/problem_images/20150627/week52_5.png" srcset="/img/loading.gif" alt="img"></p>
+<p>对于给的例子，其求出的dfn和low数组为：</p>
+<p>id  1 2 3 4 5 6 </p>
+<p>dfn 1 2 3 4 5 6 </p>
+<p>low 1 1 1 4 4 4</p>
+<p>可以发现，对于情况2，当(u,v)为树边且low[v]≥dfn[u]时，节点u才为割点。</p>
+<p>而当(u,v)为树边且low[v]&gt;dfn[u]时，表示v节点只能通过该边(u,v)与u连通，那么(u,v)即为割边。</p>
+<p>若一个无向图中的去掉任意一个节点（一条边）都不会改变此图的连通性，即不存在割点（桥），则称作点（边）双连通图。</p>
+<p>对于一个无向图，当我们把图中所有的桥都去掉以后，剩下的每一个区域就是我们要求的边的双连通分量。</p>
+<h5 id="POJ-2186"><a href="#POJ-2186" class="headerlink" title="POJ 2186"></a><strong>POJ 2186</strong></h5><p>题意：每一头牛的愿望就是变成一头最受欢迎的牛。现在有N头牛，给你M对整数(A,B)，表示牛A认为牛B受欢迎。 这种关系是具有传递性的，如果A认为B受欢迎，B认为C受欢迎，那么牛A也认为牛C受欢迎。你的任务是求出有多少头牛被所有的牛认为是受欢迎的。</p>
+<p>解题思路： 先用tarjan求出每个强连通分量，再缩点，统计每个点的出度，如果有且只有1个出度为0的点，就输出这个点包含的节点数，否则输出0（如果其点有出度，那么这个点首先一定就不是被所有牛崇拜的对象，所以如果一个点没有出度，那么这头牛就很有可能被所有牛所崇拜。如果出度为０的牛大于两个，那么就说明被所有牛都崇拜的个数为０，因为这里有两头及以上牛互相没有崇拜关系）。</p>
+<p>AC代码：</p>
+<pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">10010</span>];
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;scc[<span class="hljs-number">10010</span>];
+<span class="hljs-keyword">int</span> dfn[<span class="hljs-number">10010</span>];<span class="hljs-comment">//在DFS中该节点被搜索的次序</span>
+<span class="hljs-keyword">int</span> low[<span class="hljs-number">10010</span>];<span class="hljs-comment">//i或i的子树能够通过非树边追溯到最早的祖先节点（即DFS次序号最小）</span>
+<span class="hljs-keyword">int</span> sccn[<span class="hljs-number">10010</span>];<span class="hljs-comment">//缩点数组，表示某个点对应的强连通分量编号</span>
+<span class="hljs-keyword">int</span> ot[<span class="hljs-number">10010</span>];<span class="hljs-comment">//每个强连通分量的出度</span>
+<span class="hljs-keyword">bool</span> vis[<span class="hljs-number">10010</span>];<span class="hljs-comment">//是否在栈中</span>
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">step</span>;
+<span class="hljs-keyword">int</span> cnt;<span class="hljs-comment">//强连通分量编号</span>
+<span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt;s;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span>
+<span class="hljs-function"></span>&#123;
+    dfn[u]=low[u]=++<span class="hljs-built_in">step</span>;
+    vis[u]=<span class="hljs-literal">true</span>;
+    s.push(u);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;v[u].<span class="hljs-built_in">size</span>();i++)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=v[u][i];
+        <span class="hljs-keyword">if</span>(!dfn[temp])<span class="hljs-comment">//没有被访问过</span>
+        &#123;
+            tarjan(temp);
+            low[u]=<span class="hljs-built_in">min</span>(low[u],low[temp]);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vis[temp])<span class="hljs-comment">//在栈中</span>
+            low[u]=<span class="hljs-built_in">min</span>(low[u],dfn[temp]);
+    &#125;
+    <span class="hljs-keyword">if</span>(low[u]==dfn[u])<span class="hljs-comment">//构成强连通分量</span>
+    &#123;
+        cnt++;
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-keyword">int</span> temp=s.top();
+            s.pop();<span class="hljs-comment">//此点以上的点全部出栈，构成一个强连通分量</span>
+            vis[temp]=<span class="hljs-literal">false</span>;
+            sccn[temp]=cnt;<span class="hljs-comment">//cnt是强连通分量的序号</span>
+            scc[cnt].push_back(temp);
+            <span class="hljs-keyword">if</span>(temp==u)<span class="hljs-keyword">break</span>;
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        v[i].<span class="hljs-built_in">clear</span>();
+        scc[i].<span class="hljs-built_in">clear</span>();
+    &#125;
+    <span class="hljs-keyword">while</span>(m--)
+    &#123;
+        <span class="hljs-keyword">int</span> from,to;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;from,&amp;to);
+        v[from].push_back(to);
+    &#125;
+    <span class="hljs-built_in">step</span>=cnt=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">memset</span>(dfn,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dfn));
+    <span class="hljs-built_in">memset</span>(sccn,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(sccn));
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(vis));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-keyword">if</span>(!dfn[i])
+            tarjan(i);
+    <span class="hljs-built_in">memset</span>(ot,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(ot));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;v[i].<span class="hljs-built_in">size</span>();j++)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=v[i][j];
+        <span class="hljs-keyword">if</span>(sccn[i]!=sccn[temp])<span class="hljs-comment">//如果i点与他指向的点不在同一个强连通分量中</span>
+            ot[sccn[i]]++;<span class="hljs-comment">//i点所在的强连通分量的出度+1</span>
+    &#125;
+    <span class="hljs-keyword">int</span> pos=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;<span class="hljs-comment">//出度为0的强连通分量个数</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=cnt;i++)
+    <span class="hljs-keyword">if</span>(ot[i]==<span class="hljs-number">0</span>)
+    &#123;
+        num++;
+        pos=i;
+    &#125;
+    <span class="hljs-keyword">if</span>(num==<span class="hljs-number">1</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,scc[pos].<span class="hljs-built_in">size</span>());
+    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"0\n"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="HDU-2767"><a href="#HDU-2767" class="headerlink" title="HDU 2767"></a><strong>HDU 2767</strong></h5><p>题意：至少增加几条边，才能让图强连通。</p>
+<p>解题思路：我们要将这个图变成强连通分量为1的图，我们不妨这样考虑：既然强连通分量为1的图有这样的特点：如果一个图是强连通分量为1的图，对于每个节点来说，一定没有任何一个点的出度或者入度有0的情况。那么我们的任务也就明确了，对于所有节点度的处理，使得没有０度的存在。这里设出度为０的节点数为ａ，设入度为０的节点数为ｂ，其实我们如果找到了ａ和ｂ的值，搞定最大值，其实也就搞定了这个问题（注意本来就是连通图的情况要特判）。</p>
+<h5 id="POJ-1236"><a href="#POJ-1236" class="headerlink" title="POJ 1236"></a><strong>POJ 1236</strong></h5><p>题意：</p>
+<p>​       有N个学校，从每个学校都能从一个单向网络到另外一个学校，两个问题1：初始至少需要向多少个学校发放软件，使得网络内所有的学校最终都能得到软件。2：至少需要添加几条边，使任意向一个学校发放软件后，经过若干次传送，网络内所有的学校最终都能得到软件。</p>
+<p>解题思路：</p>
+<p>​      在有向无环图中，边变为了强连通分量之间的文件传输关系。意味着：只要一个强连通分量有入边，那么就可以通过这个入边从另外一个分量中接收文件。但是，无环图意味着肯定存在没有入度(入度为0)的强连通分量，这些强连通分量没有文件来源，所以要作为投放文件的位置。那么，第一问就只需要计算出缩点后入度为0的强连通分量数目即可。第二问同HDU2767。</p>
+<h5 id="UVA-315"><a href="#UVA-315" class="headerlink" title="UVA 315"></a><strong>UVA 315</strong></h5><p>题意：求割点。</p>
+<p>解题思路：</p>
+<p>在无向连通图G中，<br>1、根结点u为割顶当且仅当它有两个或者多个子结点；<br>2、非根结点u为割顶当且仅当u存在结点v，使得v极其所有后代都没有反向边可以连回u的祖先（u不算）<br>在Tarjan算法里面，有两个时间戳非常重要，一个是dfn，意为深度优先数，即代表访问顺序；一个是low，意为通过反向边能到达的最小dfn。于是，上述定理中第二个条件（非根结点）可以简单地写成low[v]&gt;=dfn[u]。 </p>
+<p>可作模板。</p>
+<p><strong>求割点模板：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">10010</span>];
+<span class="hljs-keyword">int</span> dfn[<span class="hljs-number">10010</span>];<span class="hljs-comment">//在DFS中该节点被搜索的次序</span>
+<span class="hljs-keyword">int</span> low[<span class="hljs-number">10010</span>];<span class="hljs-comment">//i或i的子树能够追溯到的最早的栈中节点的次序号</span>
+<span class="hljs-keyword">bool</span> cut[<span class="hljs-number">10010</span>];<span class="hljs-comment">//是否为割点</span>
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">step</span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> fa)</span></span>
+<span class="hljs-function"></span>&#123;
+    dfn[u]=low[u]=++<span class="hljs-built_in">step</span>;
+    <span class="hljs-keyword">int</span> child=<span class="hljs-number">0</span>;<span class="hljs-comment">//孩子结点的数目</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;v[u].<span class="hljs-built_in">size</span>();i++)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=v[u][i];
+        <span class="hljs-keyword">if</span>(temp==fa)<span class="hljs-keyword">continue</span>;
+        <span class="hljs-keyword">if</span>(!dfn[temp])<span class="hljs-comment">//没有被访问过</span>
+        &#123;
+            child++;
+            tarjan(temp,u);
+            low[u]=<span class="hljs-built_in">min</span>(low[u],low[temp]);
+            <span class="hljs-keyword">if</span>(u!=fa&amp;&amp;low[temp]&gt;=dfn[u])<span class="hljs-comment">//当前结点不是根结点</span>
+                cut[u]=<span class="hljs-literal">true</span>;
+        &#125;
+        <span class="hljs-keyword">else</span> low[u]=<span class="hljs-built_in">min</span>(low[u],dfn[temp]);
+    &#125;
+    <span class="hljs-keyword">if</span>(u==fa&amp;&amp;child&gt;<span class="hljs-number">1</span>)<span class="hljs-comment">//当前结点是根结点</span>
+        cut[u]=<span class="hljs-literal">true</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,from,to;
+    <span class="hljs-keyword">char</span> ch;
+    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+            v[i].<span class="hljs-built_in">clear</span>();
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;from);
+            <span class="hljs-keyword">if</span>(from==<span class="hljs-number">0</span>)<span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)
+            &#123;
+                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%c"</span>,&amp;to,&amp;ch);
+                v[from].push_back(to);
+                v[to].push_back(from);
+                <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'\n'</span>)<span class="hljs-keyword">break</span>;
+            &#125;
+        &#125;
+        <span class="hljs-built_in">step</span>=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(dfn,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dfn));
+        <span class="hljs-built_in">fill</span>(cut+<span class="hljs-number">1</span>,cut+n+<span class="hljs-number">1</span>,<span class="hljs-literal">false</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+            <span class="hljs-keyword">if</span>(!dfn[i])
+                tarjan(i,i);
+        <span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+            <span class="hljs-keyword">if</span>(cut[i])num++;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,num);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="UVA-796"><a href="#UVA-796" class="headerlink" title="UVA 796"></a><strong>UVA 796</strong></h5><p>题意：求桥。</p>
+<p>解题思路：可作模板。</p>
+<p><strong>求割边模板：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">10010</span>];
+<span class="hljs-keyword">int</span> dfn[<span class="hljs-number">10010</span>];<span class="hljs-comment">//在DFS中该节点被搜索的次序</span>
+<span class="hljs-keyword">int</span> low[<span class="hljs-number">10010</span>];<span class="hljs-comment">//i或i的子树能够追溯到的最早的栈中节点的次序号</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">a</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> ansx,ansy;
+&#125;ans[<span class="hljs-number">10010</span>];
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">step</span>,cnt;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(a x,a y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(x.ansx!=y.ansx)<span class="hljs-keyword">return</span> x.ansx&lt;y.ansx;
+    <span class="hljs-keyword">return</span> x.ansy&lt;y.ansy;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> fa)</span></span>
+<span class="hljs-function"></span>&#123;
+    dfn[u]=low[u]=++<span class="hljs-built_in">step</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;v[u].<span class="hljs-built_in">size</span>();i++)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=v[u][i];
+        <span class="hljs-keyword">if</span>(!dfn[temp])<span class="hljs-comment">//没有被访问过</span>
+        &#123;
+            tarjan(temp,u);
+            low[u]=<span class="hljs-built_in">min</span>(low[u],low[temp]);
+            <span class="hljs-keyword">if</span>(low[temp]&gt;dfn[u])<span class="hljs-comment">//一条无向边(u,v)是桥，当且仅当(u,v)为树枝边，且满足DFS(u)&lt;Low(v)。</span>
+            &#123;
+                <span class="hljs-keyword">int</span> a=u,b=temp;
+                <span class="hljs-keyword">if</span>(a&gt;b)swap(a,b);
+                ans[cnt].ansx=a;
+                ans[cnt++].ansy=b;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dfn[temp]&lt;dfn[u]&amp;&amp;temp!=fa)
+            low[u]=<span class="hljs-built_in">min</span>(low[u],dfn[temp]);
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,from,to,num;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)!=EOF)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+            v[i].<span class="hljs-built_in">clear</span>();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+        &#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d (%d)"</span>,&amp;from,&amp;num);
+            <span class="hljs-keyword">while</span>(num--)
+            &#123;
+                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;to);
+                v[from].push_back(to);
+            &#125;
+        &#125;
+        <span class="hljs-built_in">step</span>=cnt=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(dfn,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dfn));
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+            <span class="hljs-keyword">if</span>(!dfn[i])
+                tarjan(i,i);
+        sort(ans,ans+cnt,cmp);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d critical links\n"</span>,cnt);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;cnt;i++)
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d - %d\n"</span>,ans[i].ansx,ans[i].ansy);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="POJ-3177"><a href="#POJ-3177" class="headerlink" title="POJ 3177"></a><strong>POJ 3177</strong></h5><p>题意：最少加多少条边使图变得双连通（有重边）。</p>
+<p>解题思路：</p>
+<p><a href="http://blog.csdn.net/lyy289065406/article/details/6762370" target="_blank" rel="noopener">http://blog.csdn.net/lyy289065406/article/details/6762370</a></p>
+<p><a href="http://blog.csdn.net/lyy289065406/article/details/6762432" target="_blank" rel="noopener">http://blog.csdn.net/lyy289065406/article/details/6762432</a></p>
+<p>首先要找出图G的所有【边双连通分量】。</p>
+<p>Tarjan算法用来寻找图G的所有【边双连通分量】是最简单有效的方法，因为Tarjan算法在DFS过程中会对图G所有的结点都生成一个Low值，而由于题目已表明任意两个结点之间不会出现重边，因此Low值相同的两个结点必定在同一个【边双连通分量】中！  （如果是有重边的话，那么不同的low值是可能是属于同一个边双连通分量的，这个时候就要通过其他方法去求解边双连通分量。）无向图的边双连通分量似乎和求强连通相似…其实也是有原因的…</p>
+<p>那么如何解决重边的问题？</p>
+<p>1、  构造图G时把重边也考虑进来，然后在划分边双连通分量时先把桥删去，再划分，其中桥的一端的割点归入当前正在划分的边双连通分量。这个处理比较麻烦；</p>
+<p>2、  在输入图G的边时，若出现重边，则不把重边放入图G，然后在划分边双连通分量时依然用Low划分。</p>
+<p>把每一个【边双连通分量】都看做一个点（即【缩点】）</p>
+<p>问题再次被转化为“至少在缩点树上增加多少条树边，使得这棵树变为一个双连通图”。</p>
+<p>首先知道一条等式：</p>
+<p>若要使得任意一棵树，在增加若干条边后，变成一个双连通图，那么</p>
+<p><strong>至少增加的边数 =（ 这棵树总度数为1的结点数 + 1 ）/ 2</strong></p>
+<p>那么我们只需求缩点树中总度数为1的结点数（即叶子数）有多少就可以了。换而言之，我们只需求出所有缩点的度数，然后判断度数为1的缩点有几个，问题就解决了。</p>
+<p>求出所有缩点的度数的方法</p>
+<p>两两枚举图G的直接连通的点，只要这两个点不在同一个【缩点】中，那么它们各自所在的【缩点】的度数都+1。注意由于图G时无向图，这样做会使得所有【缩点】的度数都是真实度数的2倍，必须除2后再判断叶子。</p>
+<h5 id="HDU-4612"><a href="#HDU-4612" class="headerlink" title="HDU 4612"></a><strong>HDU 4612</strong></h5><p>题意：有重边的无向图，问添加一条边最多能够减少多少个桥。</p>
+<p>解题思路：</p>
+<p>这条边肯定是连最远的，边双连通分量缩点重建树，然后dfs找树的直径， 答案就是缩点之后的边数-直径。</p>
+<p>重边的处理：用一个k标记，假如这个点到父亲的路有两条，那么第一条可以不走，但是第二条必须要走，因为是重边,这样我的儿子节点也就可以更新low了。</p>
+<p>树的直径（最长路）的求法：假设 s-t这条路径为树的直径，或者称为树上的最长路，从任意一点u出发搜到的最远的点一定是s、t中的一点，然后在从这个最远点开始搜，就可以搜到另一个最长路的端点，即用两遍广搜就可以找出树的最长路。</p>
+<h5 id="HDU-4635"><a href="#HDU-4635" class="headerlink" title="HDU 4635"></a><strong>HDU 4635</strong></h5><p>题意：给你一个有向图，问在保证这个图无重边，无自环，且不是强连通图的情况下，最多可以添加多少条有向边。</p>
+<p>解题思路：</p>
+<p>找出强联通块，计算每个连通块内的点数。将点数最少的那个连通块单独拿出来，其余的连通块合并成一个连通分量。假设第一个连通块的 点数是 x  第二个连通块的点数是 y, 已经有的边数是 m，</p>
+<p>如果使X图强连通，边数最多为x<em>(x-1)(即X图的每个顶点到X图其它每个顶点都有一条单向边)；如果使Y图强连通，边数最多为y</em>(y-1)；X图和Y图之间只有单项的边，则边数最多为x*y(即X图的每个顶点到Y图每个顶点都有一条单向边)。</p>
+<p>通过以上可以求得边数F（DAG）=x<em>y+x</em>(x-1)+y<em>(y-1)=n</em>n-n-x<em>y.即DAG图的边数最多为n</em>n-n-x*y-m。</p>
+<p>由于n一定，所以本题就可以转化为求x*y的最小值，又因为x+y=n，可知x一定要和y相差最大，所以x要最小。而且要找的X图一定是入度为0或者出度为0的强连通分量，因为无法删边，如果入度和出度都不为0的话 ，说明该边是一定存在的，就无法用这个式子了。</p>
+<h5 id="HDU-4738"><a href="#HDU-4738" class="headerlink" title="HDU 4738"></a><strong>HDU 4738</strong></h5><p>题意：给一个无向图，求找出一条边，使得删除这条边以后整个图就不连通了，找出满足的边里权值最小的那个，找不到输出-1。</p>
+<p>解题思路：注意细节即可。考虑图本来就连通和不连通的情况，以及最小的权值为0的时候也要有人去背。</p>
+<h5 id="POJ-3694"><a href="#POJ-3694" class="headerlink" title="POJ 3694"></a><strong>POJ 3694</strong></h5><p>题意：</p>
+<p>解题思路：首先运行一次tarjan，求出桥和缩点，那么远无向图将缩点为一棵树，树边正好是原来的桥。每次连接两点，看看这两点是不是在同一个缩点内，如果是，那么缩点后的树没任何变化，如果两点属于不同的缩点，那么连接起来，然后找这两个缩点的LCA，因为从点u到LCA再到点v再到点u，将形成环，里面的树边都会变成不是桥。</p>
+<h5 id="2018年全国多校算法寒假训练营练习比赛（第四场）D"><a href="#2018年全国多校算法寒假训练营练习比赛（第四场）D" class="headerlink" title="2018年全国多校算法寒假训练营练习比赛（第四场）D"></a><strong>2018年全国多校算法寒假训练营练习比赛（第四场）D</strong></h5><p>题意：给出一个n*m个格子的地图，每个格子都有黄金。小明可以将他所在的格子的黄金收归囊中，并且还可以向下或者向右移动’.’，然后继续收集黄金。小明不能移动到有障碍物‘#’的格子上。小明可以随意地在地图上放置可以传送到地图上某一个确定的格子的传送门。至少要使用多少个传送门才能让他在游戏时无论出现在哪个格子，他都能拿到地图上的所有金子。</p>
+<p>思路：首先考虑题目里说要拿到所有金子，意思就是要让整张图强连通，而传送门就相当于至少增加几条边，才能让图强连通。这里数据比较大0&lt;n,m&lt;=1000，如果缩点会爆内存，所以只用这种思想即建好图找出度为0的数量和入度为0的数量，取最大值，而不用缩点，注意这里还是要特判只有一个’.’点的情况。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/26/51nod-1449-%E7%A0%9D%E7%A0%81%E7%A7%B0%E9%87%8D/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">51nod 1449 砝码称重</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/26/%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%B8%93%E9%A2%98/">
+                        <span class="hidden-mobile">线段树专题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "连通图专题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

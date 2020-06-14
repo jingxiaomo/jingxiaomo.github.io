@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>HDU5439 找规律+预处理+二分 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-08-08 21:49">
+      August 8, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      647 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p><strong>题意：</strong></p>
+<p>写下一组数，</p>
+<p>1.先写1,2,2。</p>
+<p>2.第三个数字是2，所以在后面写两个3。</p>
+<p>3.第四个数字是3，所以在后面三个4。</p>
+<p>4.像这样可以得到1,2,2,3,3,4,4,4,5,5,5,6,6,6,6。</p>
+<p>给出一个数字n，假设这个n的最后出现的位置为p，求p最后出现的位置。其中$$n≤10^9$$。</p>
+<p><strong>思路：</strong></p>
+<p>可以找出规律要求的$$F[n]=pre[pre[n]]$$，其中$$pre[n]$$为原数列的前缀和，可以写几项。</p>
+<p>$$F[1]=pre[pre[1]]=1$$</p>
+<p>$$F[2]=pre[pre[2]]=pre[3]=1<em>1+2</em>2$$</p>
+<p>$$F[3]=pre[pre[3]]=pre[5]=1<em>1+2</em>2+3*2$$</p>
+<p>$$F[4]=pre[pre[4]]=pre[8]=1<em>1+2</em>2+3<em>2+4</em>3$$</p>
+<p>$$F[5]=pre[pre[5]]=1<em>1+2</em>2+3<em>2+4</em>3+5<em>3=1</em>1+(2+3)<em>2+(4+5)</em>3$$</p>
+<p>$$F[6]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+6*4$$</p>
+<p>$$F[7]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+(6+7)*4$$</p>
+<p>$$F[8]=1<em>1+(2+3)</em>2+(4<em>5)</em>3+(6+7+8)*4$$</p>
+<p>由此可以知道$$F[n]=\sum_{i=1}^ni*f[i]$$，其中$$f[i]$$表示原数列。</p>
+<p>因为原数列可以根据值分成几块，所以预处理出</p>
+<p>$$f[i]$$：原数列，</p>
+<p>$$locr[i]$$：i最后一次出现的位置，</p>
+<p>$$pre[i]$$：第$$locr[i]$$个数的$$F[i]$$。</p>
+<p>这些东西就可以了，对于一个n其他多余的要加的东西可以在块内进行。</p>
+<p>所以二分一下每个n在哪一块里再把前面的$$pre$$和块内的加起来就可以了。</p>
+<p>找规律的题做法直接说出来的确有点抽象，这种东西还是要自己手推一下…</p>
+<p>找规律的题分块的确是一种写法。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-keyword">int</span> cnt;
+ll f[<span class="hljs-number">1000010</span>];
+ll locr[<span class="hljs-number">1000010</span>];<span class="hljs-comment">//最后一次出现的位置</span>
+ll pre[<span class="hljs-number">1000010</span>];<span class="hljs-comment">//第locr[i]个数的值</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    f[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;f[<span class="hljs-number">2</span>]=<span class="hljs-number">2</span>;f[<span class="hljs-number">3</span>]=<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">int</span> cur=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">3</span>;cur&lt;=<span class="hljs-number">440000</span>;i++)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;f[i];j++)
+            f[++cur]=i;
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=20;i++)</span>
+<span class="hljs-comment">        printf("%lld ",f[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+    locr[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;;i++)
+    &#123;
+        locr[i]=locr[i<span class="hljs-number">-1</span>]+f[i];
+        <span class="hljs-keyword">if</span>(locr[i]&gt;<span class="hljs-number">1e9</span>)
+        &#123;
+            cnt=i<span class="hljs-number">-1</span>;
+            <span class="hljs-keyword">break</span>;
+        &#125;
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=10;i++)</span>
+<span class="hljs-comment">        printf("%lld ",locr[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+    pre[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=cnt;i++)
+        pre[i]=(pre[i<span class="hljs-number">-1</span>]+((((locr[i<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>+locr[i])*(locr[i]-locr[i<span class="hljs-number">-1</span>]))%MOD*<span class="hljs-number">500000004l</span>l)%MOD*i)%MOD)%MOD;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=10;i++)</span>
+<span class="hljs-comment">        printf("%lld ",pre[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    init();
+    <span class="hljs-comment">//printf("%d\n",cnt);</span>
+    <span class="hljs-keyword">int</span> t;
+    ll n;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t);
+    <span class="hljs-keyword">while</span>(t--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;n);
+        <span class="hljs-keyword">int</span> pos=upper_bound(locr+<span class="hljs-number">1</span>,locr+<span class="hljs-number">1</span>+cnt,n)-locr;
+        pos--;
+        <span class="hljs-comment">//printf("%d\n",pos);</span>
+        ll ans=<span class="hljs-number">0</span>;
+        ans=(ans+pre[pos])%MOD;
+        ans=(ans+((((locr[pos]+<span class="hljs-number">1</span>+n)*(n-locr[pos]))%MOD*<span class="hljs-number">500000004l</span>l)%MOD*(pos+<span class="hljs-number">1</span>))%MOD)%MOD;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/08/08/HDU6370-%E6%80%9D%E7%BB%B4-tarjan%E7%BC%A9%E7%82%B9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HDU6370 思维+tarjan缩点</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/08/07/HDU5446-lucas%E5%AE%9A%E7%90%86-%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-%E5%BF%AB%E9%80%9F%E4%B9%98/">
+                        <span class="hidden-mobile">HDU5446 lucas定理+中国剩余定理+快速乘</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "HDU5439 找规律+预处理+二分&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

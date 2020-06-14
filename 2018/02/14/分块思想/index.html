@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>分块思想 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-14 09:49">
+      February 14, 2018 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      111
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>以前一直听说分块啥的…感觉不明觉厉…昨天晚上突发奇想想学习一下然后搜博客的时候发现了qscqesze的bilbili视频…讲得真好orz虽然很久之前就关注他了但是没有好好看过他的视频orz</p>
+<p>传送门：<a href="https://www.bilibili.com/video/av6445624/" target="_blank" rel="noopener">https://www.bilibili.com/video/av6445624/</a></p>
+<p>昨天晚上看完的今天早上就迫不及待敲一发找到了loj上hzwer的数列分块入门打算都做一遍hhh</p>
+<p>分块是什么呢？就是把一个大块拆成若干个小块进行计算，每个小块有可能有一些共同特点，或者每个小块内部是有顺序的，这样，在修改操作的时候，只需要算出两边的节点所属的小块的编号分别是什么，然后两边的散块可以进行暴力修改，而中间的由于题目不同，可以进行不同的操作，比如说区间加，那么就可以在中间的每个小块上面直接像线段树一样打一个lazy标记，标记区间增加了多少。然后在查询的时候就可以直接对散块进行暴力查询，然后对整块运用之前设置的lazy标记，或者保证有序后用二分进行从O（n）进行到O（log（n））的优化。</p>
+<h5 id="build函数"><a href="#build函数" class="headerlink" title="build函数"></a>build函数</h5><pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">50010</span>],rig[<span class="hljs-number">50010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+    rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+&#125;</code></pre>
+
+<h5 id="LOJ-6277"><a href="#LOJ-6277" class="headerlink" title="LOJ 6277"></a>LOJ 6277</h5><p>题意：若 opt=0，表示将位于[l,r]的之间的数字都加c。</p>
+<p>若 opt=1，表示询问ar的值（l和c忽略）。</p>
+<p>思路：加一个数组表示每个块一起又加了多少即可。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">50010</span>],rig[<span class="hljs-number">50010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块一起又加了多少</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+    rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">int</span> c)</span><span class="hljs-comment">//区间更新</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]+=c;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("%d %d %d %d\n",belong[l],belong[r],rig[belong[l]],lef[belong[r]]);</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]+=c;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//单点询问</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,a[x]+d[belong[x]]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">int</span> ope,l,r,c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(r);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6278"><a href="#LOJ-6278" class="headerlink" title="LOJ 6278"></a>LOJ 6278</h5><p>题意：若 opt=0，表示将位于[l,r] 的之间的数字都加 c。</p>
+<p>若 opt=1，表示询问 [l,r] 中，小于 c^2 的数字的个数。</p>
+<p>思路：</p>
+<p>对于每次区间操作：</p>
+<p>1.不完整的块 的O(√n)个元素怎么处理？</p>
+<p>2.O(√n)个 整块 怎么处理？</p>
+<p>3.要预处理什么信息（复杂度不能超过后面的操作）？</p>
+<p>在块内维护升序数组b。</p>
+<p>考虑到加c之后，块内的升序是不会发生改变的，但是块外是会有改变的，所以要维护块外的升序。</p>
+<p>当询问时，块外的顺序已经乱了，b[i]的编号与询问的编号是不同的，所以不能直接根据b[i]来二分，而要暴力查询；而块内则无所谓顺序，因为都在[l,r]的范围之内，只需知道有几个，直接在b上二分即可。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b[<span class="hljs-number">50010</span>];<span class="hljs-comment">//块内排序</span>
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">50010</span>],rig[<span class="hljs-number">50010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块一起又加了多少</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+        b[i]=a[i];
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+        <span class="hljs-keyword">if</span>(i==num)rig[i]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+        sort(b+lef[i],b+rig[i]+<span class="hljs-number">1</span>);<span class="hljs-comment">//块内维护升序</span>
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",b[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span><span class="hljs-comment">//区间更新</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]];i++)<span class="hljs-comment">//更新b[i]</span>
+            b[i]=a[i];
+        sort(b+lef[belong[l]],b+rig[belong[l]]+<span class="hljs-number">1</span>);<span class="hljs-comment">//块内维护升序</span>
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("%d %d %d %d\n",belong[l],belong[r],rig[belong[l]],lef[belong[r]]);</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]];i++)<span class="hljs-comment">//更新b[i]</span>
+            b[i]=a[i];
+        sort(b+lef[belong[l]],b+rig[belong[l]]+<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=rig[belong[r]];i++)
+            b[i]=a[i];
+        sort(b+lef[belong[r]],b+rig[belong[r]]+<span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",b[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> st)</span><span class="hljs-comment">//区间询问</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            <span class="hljs-keyword">if</span>(a[i]+d[belong[l]]&lt;st)
+                ans++;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            <span class="hljs-keyword">if</span>(a[i]+d[belong[l]]&lt;st)
+                ans++;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+        &#123;
+            <span class="hljs-keyword">int</span> pos=lower_bound(b+lef[i],b+rig[i]+<span class="hljs-number">1</span>,st-d[i])-b;
+            ans+=pos-lef[i];
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            <span class="hljs-keyword">if</span>(a[i]+d[belong[r]]&lt;st)
+                ans++;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">int</span> ope,l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%lld"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(l,r,c*c);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6279"><a href="#LOJ-6279" class="headerlink" title="LOJ 6279"></a>LOJ 6279</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间加法，询问区间内小于某个值x的前驱（比其小的最大元素）。</p>
+<p>思路：跟上一题差不多区间询问的地方稍微改一下就可以了。</p>
+<p>可以在块内维护其它结构使其更具有拓展性，比如放一个set，这样如果还有插入、删除元素的操作，会更加的方便。</p>
+<p>分块的调试检测技巧：可以生成一些大数据，然后用两份分块大小不同的代码来对拍，还可以根据运行时间尝试调整分块大小，减小常数。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b[<span class="hljs-number">100010</span>];<span class="hljs-comment">//块内排序</span>
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">100010</span>],rig[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个块一起又加了多少</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+        b[i]=a[i];
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+        <span class="hljs-keyword">if</span>(i==num)rig[i]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+        sort(b+lef[i],b+rig[i]+<span class="hljs-number">1</span>);<span class="hljs-comment">//块内维护升序</span>
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",b[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span><span class="hljs-comment">//区间更新</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]];i++)<span class="hljs-comment">//更新b[i]</span>
+            b[i]=a[i];
+        sort(b+lef[belong[l]],b+rig[belong[l]]+<span class="hljs-number">1</span>);<span class="hljs-comment">//块内维护升序</span>
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("%d %d %d %d\n",belong[l],belong[r],rig[belong[l]],lef[belong[r]]);</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]];i++)<span class="hljs-comment">//更新b[i]</span>
+            b[i]=a[i];
+        sort(b+lef[belong[l]],b+rig[belong[l]]+<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=rig[belong[r]];i++)
+            b[i]=a[i];
+        sort(b+lef[belong[r]],b+rig[belong[r]]+<span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",a[i]+d[belong[i]]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> st)</span><span class="hljs-comment">//区间询问</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> cur=-INF;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> zs=a[i]+d[belong[l]];
+            <span class="hljs-keyword">if</span>(zs&lt;st&amp;&amp;zs&gt;cur)
+                cur=zs;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+        &#123;
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> zs=a[i]+d[belong[l]];
+            <span class="hljs-keyword">if</span>(zs&lt;st&amp;&amp;zs&gt;cur)
+                cur=zs;
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+        &#123;
+            <span class="hljs-keyword">int</span> pos=lower_bound(b+lef[i],b+rig[i]+<span class="hljs-number">1</span>,st-d[i])-b;
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> zs=b[pos<span class="hljs-number">-1</span>]+d[i];
+            <span class="hljs-keyword">if</span>(pos<span class="hljs-number">-1</span>&gt;=lef[i]&amp;&amp;zs&lt;st&amp;&amp;zs&gt;cur)
+                cur=zs;
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> zs=a[i]+d[belong[r]];
+            <span class="hljs-keyword">if</span>(zs&lt;st&amp;&amp;zs&gt;cur)
+                cur=zs;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">if</span>(cur==-INF)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"-1\n"</span>);
+    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,cur);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">int</span> ope,l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%lld"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(l,r,c);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6280"><a href="#LOJ-6280" class="headerlink" title="LOJ 6280"></a>LOJ 6280</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间加法，区间求和。</p>
+<p>思路：加两个数组表示每个块的总和（用前缀和处理），表示每个块又加了多少，维护区间和即可。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">50010</span>],rig[<span class="hljs-number">50010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> pre[<span class="hljs-number">50010</span>];<span class="hljs-comment">//前缀和</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> sum[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块的总和</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块一起又加了多少</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    pre[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+        pre[i]=pre[i<span class="hljs-number">-1</span>]+a[i];
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+        <span class="hljs-keyword">if</span>(i==num)rig[i]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+        sum[i]=pre[rig[i]]-pre[lef[i]<span class="hljs-number">-1</span>];
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=num;i++)</span>
+<span class="hljs-comment">        printf("%lld ",sum[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span><span class="hljs-comment">//区间更新</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]+=c,sum[belong[l]]+=c;<span class="hljs-comment">//维护区间和</span>
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("%d %d %d %d\n",belong[l],belong[r],rig[belong[l]],lef[belong[r]]);</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]+=c,sum[belong[l]]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i]+=c;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]+=c,sum[belong[r]]+=c;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> modd)</span><span class="hljs-comment">//区间询问</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            ans=(ans+a[i]+d[belong[l]])%modd;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            ans=(ans+a[i]+d[belong[l]])%modd;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            ans=(ans+sum[i]+(d[i]*block)%modd)%modd;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            ans=(ans+a[i]+d[belong[r]])%modd;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-built_in">memset</span>(d,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(d));
+    <span class="hljs-keyword">int</span> ope,l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%lld"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(l,r,c+<span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6281"><a href="#LOJ-6281" class="headerlink" title="LOJ 6281"></a>LOJ 6281</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间开方，区间求和。</p>
+<p>思路：跟以前做过的一道线段树差不多，那道线段树没有用到lazy标记，这里也差不多，不能直接像上面那题区间求和，要利用开方，开个bool数组标记每个块是否还可以开方，如果都是0或1的话就不能开方了，这里还是用到sum数组，查询的时候会快点。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">50010</span>],rig[<span class="hljs-number">50010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">bool</span> can[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块是否还可以开方</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> pre[<span class="hljs-number">50010</span>];
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> sum[<span class="hljs-number">50010</span>];<span class="hljs-comment">//每个块的和</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    pre[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+        can[i]=<span class="hljs-literal">true</span>;
+        pre[i]=pre[i<span class="hljs-number">-1</span>]+a[i];
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+        <span class="hljs-keyword">if</span>(i==num)rig[i]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+        sum[i]=pre[rig[i]]-pre[lef[i]<span class="hljs-number">-1</span>];
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=num;i++)</span>
+<span class="hljs-comment">        printf("%lld ",sum[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span><span class="hljs-comment">//区间更新</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">if</span>(can[belong[l]])
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            &#123;
+                sum[belong[l]]=sum[belong[l]]-a[i]+<span class="hljs-built_in">sqrt</span>(a[i]);
+                a[i]=<span class="hljs-built_in">sqrt</span>(a[i]);
+            &#125;
+            <span class="hljs-keyword">bool</span> sign=<span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]]&amp;&amp;!sign;i++)
+                <span class="hljs-keyword">if</span>(a[i]!=<span class="hljs-number">0</span>&amp;&amp;a[i]!=<span class="hljs-number">1</span>)sign=<span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span>(!sign)can[belong[l]]=<span class="hljs-literal">false</span>;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">if</span>(can[belong[l]])
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            &#123;
+                sum[belong[l]]=sum[belong[l]]-a[i]+<span class="hljs-built_in">sqrt</span>(a[i]);
+                a[i]=<span class="hljs-built_in">sqrt</span>(a[i]);
+            &#125;
+            <span class="hljs-keyword">bool</span> sign=<span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[l]];i&lt;=rig[belong[l]]&amp;&amp;!sign;i++)
+                <span class="hljs-keyword">if</span>(a[i]!=<span class="hljs-number">0</span>&amp;&amp;a[i]!=<span class="hljs-number">1</span>)sign=<span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span>(!sign)can[belong[l]]=<span class="hljs-literal">false</span>;
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(can[i])
+            &#123;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=lef[i];j&lt;=rig[i];j++)
+                &#123;
+                    sum[i]=sum[i]-a[j]+<span class="hljs-built_in">sqrt</span>(a[j]);
+                    a[j]=<span class="hljs-built_in">sqrt</span>(a[j]);
+                &#125;
+                <span class="hljs-keyword">bool</span> sign=<span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=lef[i];j&lt;=rig[i]&amp;&amp;!sign;j++)
+                    <span class="hljs-keyword">if</span>(a[j]!=<span class="hljs-number">0</span>&amp;&amp;a[j]!=<span class="hljs-number">1</span>)sign=<span class="hljs-literal">true</span>;
+                <span class="hljs-keyword">if</span>(!sign)can[i]=<span class="hljs-literal">false</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">if</span>(can[belong[r]])
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            &#123;
+                sum[belong[r]]=sum[belong[r]]-a[i]+<span class="hljs-built_in">sqrt</span>(a[i]);
+                a[i]=<span class="hljs-built_in">sqrt</span>(a[i]);
+            &#125;
+            <span class="hljs-keyword">bool</span> sign=<span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=rig[belong[r]]&amp;&amp;!sign;i++)
+                <span class="hljs-keyword">if</span>(a[i]!=<span class="hljs-number">0</span>&amp;&amp;a[i]!=<span class="hljs-number">1</span>)sign=<span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span>(!sign)can[belong[r]]=<span class="hljs-literal">false</span>;
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span><span class="hljs-comment">//区间询问</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            ans+=a[i];
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            ans+=a[i];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            ans+=sum[i];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            ans+=a[i];
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-keyword">int</span> ope,l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%lld"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(l,r,c+<span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6282"><a href="#LOJ-6282" class="headerlink" title="LOJ 6282"></a>LOJ 6282</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及单点插入，单点询问，数据随机生成。</p>
+<p>思路：每个块放入vector内，插入的时候用insert函数实现，但是如果先在一个块有大量单点插入，这个块的大小会大大超过√n，块内的插入就很慢了，所以还需要引入一个操作：重新分块（重构），每√n次插入后，重新把数列平均分一下块。</p>
+<p>我这里有个很奇怪的地方，rebuild()这个函数里面，我直接用覆盖n的方法会WA，但是另外用个变量就AC了，不知道错在哪里，真的很奇怪…</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> num;
+<span class="hljs-keyword">int</span> block;
+<span class="hljs-keyword">int</span> a[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> zs[<span class="hljs-number">200010</span>];
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每块内的元素</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        v[(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>].push_back(a[i]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rebuild</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> tot=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;v[i].<span class="hljs-built_in">size</span>();j++)
+            zs[++tot]=v[i][j];
+        v[i].<span class="hljs-built_in">clear</span>();
+    &#125;
+    block=<span class="hljs-built_in">sqrt</span>(tot);
+    num=tot/block;<span class="hljs-keyword">if</span>(tot%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=tot;i++)
+        v[(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>].push_back(zs[i]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span><span class="hljs-comment">//在l前面加入r</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        <span class="hljs-keyword">int</span> can=l-v[i].<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">if</span>(can&gt;<span class="hljs-number">0</span>)
+            l=l-v[i].<span class="hljs-built_in">size</span>();<span class="hljs-comment">//x不在这块</span>
+        <span class="hljs-keyword">else</span>
+        &#123;
+            v[i].insert(v[i].<span class="hljs-built_in">begin</span>()+l<span class="hljs-number">-1</span>,r);
+            <span class="hljs-keyword">if</span>(v[i].<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">20</span>*block)rebuild();
+            <span class="hljs-comment">/*for(int j=1;j&lt;=num;j++)</span>
+<span class="hljs-comment">            &#123;</span>
+<span class="hljs-comment">                for(int k=0;k&lt;v[j].size();k++)</span>
+<span class="hljs-comment">                    printf("%d ",v[j][k]);</span>
+<span class="hljs-comment">                printf("\n");</span>
+<span class="hljs-comment">            &#125;*/</span>
+            <span class="hljs-keyword">break</span>;
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        <span class="hljs-keyword">int</span> can=x-v[i].<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">if</span>(can&gt;<span class="hljs-number">0</span>)x=x-v[i].<span class="hljs-built_in">size</span>();<span class="hljs-comment">//x不在这块</span>
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,v[i][x<span class="hljs-number">-1</span>]);
+            <span class="hljs-comment">//printf("v[%d]\n",i);</span>
+            <span class="hljs-keyword">return</span>;
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/input.txt","r",stdin);</span>
+   <span class="hljs-comment">//freopen("/Users/apple/Desktop/output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-keyword">int</span> ope,l,r,c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update(l,r);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)ask(r);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6283"><a href="#LOJ-6283" class="headerlink" title="LOJ 6283"></a>LOJ 6283</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间乘法，区间加法，单点询问。</p>
+<p>思路：之前线段树专题里做过差不多的题目，lazy标记变成ax+b形式即可。这里每次更新a[i]，即块外的时候，要把标记下放，否则会打乱乘除的顺序，在块内则不需要，因为块内并没有改变a[i]，如果块内之后变成块外的话，会下放。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">100010</span>],rig[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> d[<span class="hljs-number">100010</span>][<span class="hljs-number">2</span>];<span class="hljs-comment">//每个块的增量ax+b</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+        d[i][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;d[i][<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;
+    &#125;
+    rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushdown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[x];i&lt;=rig[x];i++)
+    &#123;
+        a[i]=(a[i]*d[x][<span class="hljs-number">0</span>])%MOD;
+        a[i]=(a[i]+d[x][<span class="hljs-number">1</span>])%MOD;
+    &#125;
+    d[x][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;d[x][<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">if</span>(d[belong[l]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[l]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]=(a[i]+c)%MOD;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("belong:%d %d\n",belong[l],belong[r]);</span>
+        <span class="hljs-keyword">if</span>(d[belong[l]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[l]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]=(a[i]+c)%MOD;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i][<span class="hljs-number">1</span>]=(d[i][<span class="hljs-number">1</span>]+c)%MOD;<span class="hljs-comment">//a[i]没有改变，不需要pushdown</span>
+        <span class="hljs-keyword">if</span>(d[belong[r]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[r]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[r]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]=(a[i]+c)%MOD;
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",a[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">if</span>(d[belong[l]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[l]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+            a[i]=(a[i]*c)%MOD;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">//printf("belong:%d %d\n",belong[l],belong[r]);</span>
+        <span class="hljs-keyword">if</span>(d[belong[l]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[l]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+            a[i]=(a[i]*c)%MOD;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+            d[i][<span class="hljs-number">0</span>]=(d[i][<span class="hljs-number">0</span>]*c)%MOD,d[i][<span class="hljs-number">1</span>]=(d[i][<span class="hljs-number">1</span>]*c)%MOD;
+        <span class="hljs-keyword">if</span>(d[belong[r]][<span class="hljs-number">0</span>]!=<span class="hljs-number">1</span>||d[belong[r]][<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)pushdown(belong[r]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+            a[i]=(a[i]*c)%MOD;
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=n;i++)</span>
+<span class="hljs-comment">        printf("%lld ",a[i]);</span>
+<span class="hljs-comment">    printf("\n");*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> r)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=a[r];
+    ans=(ans*d[belong[r]][<span class="hljs-number">0</span>])%MOD;
+    ans=(ans+d[belong[r]][<span class="hljs-number">1</span>])%MOD;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,&amp;a[i]);
+    build();
+    <span class="hljs-keyword">int</span> ope,l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%lld"</span>,&amp;ope,&amp;l,&amp;r,&amp;c);
+        <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">0</span>)update1(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">1</span>)update2(l,r,c);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ope==<span class="hljs-number">2</span>)ask(r);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6284"><a href="#LOJ-6284" class="headerlink" title="LOJ 6284"></a>LOJ 6284</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及区间询问等于一个数 c 的元素，并将这个区间的所有元素改为 c。</p>
+<p>思路：维护每个分块是否只有一种权值，区间操作的时候，对于同权值的一个块就O(1)统计答案，否则暴力统计答案，并修改标记，不完整的块也暴力。</p>
+<p>假设初始序列都是同一个值，那么查询是O(√n)，如果这时进行一个区间操作，它最多破坏首尾2个块的标记，所以只能使后面的询问至多多2个块的暴力时间，所以均摊每次操作复杂度还是O(√n)。换句话说，要想让一个操作耗费O(n)的时间，要先花费√n个操作对数列进行修改。pushdown操作类似上题。</p>
+<p>代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> a[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">100010</span>],rig[<span class="hljs-number">100010</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">int</span> same[<span class="hljs-number">100010</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+    rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushdown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[x];i&lt;=rig[x];i++)
+        a[i]=same[x];
+    same[x]=<span class="hljs-number">-1</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">int</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">if</span>(same[belong[l]]!=<span class="hljs-number">-1</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(a[i]==c)ans++;
+            <span class="hljs-keyword">else</span> a[i]=c;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-keyword">if</span>(same[belong[l]]!=<span class="hljs-number">-1</span>)pushdown(belong[l]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(a[i]==c)ans++;
+            <span class="hljs-keyword">else</span> a[i]=c;
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=belong[l]+<span class="hljs-number">1</span>;i&lt;=belong[r]<span class="hljs-number">-1</span>;i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(same[i]!=<span class="hljs-number">-1</span>)
+            &#123;
+                <span class="hljs-keyword">if</span>(same[i]==c)ans+=block;
+                <span class="hljs-keyword">else</span> same[i]=c;
+            &#125;
+            <span class="hljs-keyword">else</span><span class="hljs-comment">//不同</span>
+            &#123;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=lef[i];j&lt;=rig[i];j++)
+                &#123;
+                    <span class="hljs-keyword">if</span>(a[j]==c)ans++;
+                    <span class="hljs-keyword">else</span> a[j]=c;
+                &#125;
+                same[i]=c;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">if</span>(same[belong[r]]!=<span class="hljs-number">-1</span>)pushdown(belong[r]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(a[i]==c)ans++;
+            a[i]=c;
+        &#125;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);
+    <span class="hljs-built_in">memset</span>(same,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(same));
+    build();
+    <span class="hljs-keyword">int</span> l,r,c;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;l,&amp;r,&amp;c);
+        solve(l,r,c);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="LOJ-6285"><a href="#LOJ-6285" class="headerlink" title="LOJ 6285"></a>LOJ 6285</h5><p>题意：给出一个长为 n 的数列，以及 n 个操作，操作涉及询问区间的最小众数。</p>
+<p>思路：</p>
+<p>解法一：</p>
+<p>众数应该是完整的所有块的众数，和不完整块中出现的数。</p>
+<p>所以我们可以预处理f(i,j)表示第 i 块到第 j 块的众数（枚举 i 开个桶扫一遍）。</p>
+<p>对于块内的众数就用预处理出来的；对于块外的，给每个数 x 开个vector，按顺序存下 x 出现的位置，每次询问 x 时把区间的左右端点放进对应 vector 二分一下即可。</p>
+<p>为了不爆内存，所以要先离散化。</p>
+<p>我第一次是直接用map映射，每次读取都是mp[a[i]]这样，结果TLE到怀疑人生。看了别人的代码，发现别人的map不是这样用的，而是开了val数组来保存离散后的编号所对应的原来的数字，然后把原数列变成离散后的样子。原来map这么慢啊…涨姿势…（其实还有一种离散的方式来着吧…</p>
+<p>解法二：</p>
+<p>查询之前，先预处理一下，统计出两个东西：cnt(i)(j)和ans(i)(j)。<br>cnt(i)(j)表示i这个数在前j块出现的次数；<br>ans(i)(j)表示从i块到j块的答案，统计的都是整块的答案。<br>搞定这些的时间复杂度是O(nn√)的。<br>对于cnt(i)(j)的统计，先做出每一块i出现的次数，然后一遍前缀和搞定。对于ans(i)(j)的统计，先确定起点l，就是第i块的起点，然后r向后暴力移动统计，当r等于一个块的终点时，记录答案。<br>对于统计ans(i)(j)时，别忘了清数组，看好r……</p>
+<p>对于块外的，用前缀和处理，不够的地方暴力统计。</p>
+<p>因为这里数据范围有1e5，cnt数组如果在块大为√n时会爆内存（看到最快的用这种方法100000*500居然没爆内存？？？我以为1e6就要爆内存了？？？（迷）），或许把块搞得大一点可以？</p>
+<p>代码（解法一）：</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;time.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stack&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;map&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INF 0x3f3f3f3f</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> a[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> num;<span class="hljs-comment">//分块的个数</span>
+<span class="hljs-keyword">int</span> belong[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个数属于哪个分块</span>
+<span class="hljs-keyword">int</span> block;<span class="hljs-comment">//每个块的大小</span>
+<span class="hljs-keyword">int</span> lef[<span class="hljs-number">400</span>],rig[<span class="hljs-number">400</span>];<span class="hljs-comment">//该块的左/右端点位置</span>
+<span class="hljs-keyword">int</span> f[<span class="hljs-number">400</span>][<span class="hljs-number">400</span>];<span class="hljs-comment">//第i块到第j块的众数</span>
+<span class="hljs-keyword">int</span> ff[<span class="hljs-number">400</span>][<span class="hljs-number">400</span>];<span class="hljs-comment">//第i块到第j块的众数出现的次数</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;mp;<span class="hljs-comment">//离散数据</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;v[<span class="hljs-number">100010</span>];<span class="hljs-comment">//记录每个数字（离散后）出现的位置</span>
+<span class="hljs-keyword">int</span> val[<span class="hljs-number">100010</span>];
+<span class="hljs-keyword">int</span> apr[<span class="hljs-number">100010</span>];<span class="hljs-comment">//每个数出现的次数（桶排）</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    block=<span class="hljs-built_in">sqrt</span>(n);
+    num=n/block;<span class="hljs-keyword">if</span>(n%block)num++;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        belong[i]=(i<span class="hljs-number">-1</span>)/block+<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+        lef[i]=(i<span class="hljs-number">-1</span>)*block+<span class="hljs-number">1</span>,rig[i]=i*block;
+    rig[num]=n;<span class="hljs-comment">//最后一块不满的情况</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num;i++)
+    &#123;
+        <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">0</span>;<span class="hljs-comment">//出现最多的数字出现的最多次数</span>
+        <span class="hljs-keyword">int</span> pos=INF;<span class="hljs-comment">//出现最多的数字</span>
+        <span class="hljs-built_in">memset</span>(apr,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(apr));
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=lef[i];j&lt;=n;j++)
+        &#123;
+            apr[a[j]]++;
+            <span class="hljs-keyword">if</span>(apr[a[j]]&gt;MAX||(apr[a[j]]==MAX&amp;&amp;val[a[j]]&lt;pos))<span class="hljs-comment">//最小众数</span>
+                pos=val[a[j]],MAX=apr[a[j]],
+                f[i][belong[j]]=pos,ff[i][belong[j]]=MAX;
+        &#125;
+    &#125;
+    <span class="hljs-comment">/*for(int i=1;i&lt;=num;i++)</span>
+<span class="hljs-comment">     for(int j=i;j&lt;=num;j++)</span>
+<span class="hljs-comment">     printf("%d~%d:%d %d\n",i,j,f[i][j],ff[i][j]);*/</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> ans=INF,MAX=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(belong[l]==belong[r])
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">int</span> d=upper_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),r)-lower_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),l);
+            <span class="hljs-keyword">if</span>(d&gt;MAX||(d==MAX&amp;&amp;val[a[i]]&lt;ans))
+                ans=val[a[i]],MAX=d;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        ans=f[belong[l]+<span class="hljs-number">1</span>][belong[r]<span class="hljs-number">-1</span>];
+        MAX=ff[belong[l]+<span class="hljs-number">1</span>][belong[r]<span class="hljs-number">-1</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=l;i&lt;=rig[belong[l]];i++)
+        &#123;
+            <span class="hljs-keyword">int</span> d=upper_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),r)-lower_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),l);
+            <span class="hljs-keyword">if</span>(d&gt;MAX||(d==MAX&amp;&amp;val[a[i]]&lt;ans))
+                ans=val[a[i]],MAX=d;
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lef[belong[r]];i&lt;=r;i++)
+        &#123;
+            <span class="hljs-keyword">int</span> d=upper_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),r)-lower_bound(v[a[i]].<span class="hljs-built_in">begin</span>(),v[a[i]].<span class="hljs-built_in">end</span>(),l);
+            <span class="hljs-keyword">if</span>(d&gt;MAX||(d==MAX&amp;&amp;val[a[i]]&lt;ans))
+                ans=val[a[i]],MAX=d;
+        &#125;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/input.txt","r",stdin);</span>
+    <span class="hljs-comment">//freopen("/Users/apple/Desktop/output.txt","w",stdout);</span>
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">int</span> cnt=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);
+        <span class="hljs-keyword">if</span>(mp[a[i]]==<span class="hljs-number">0</span>)&#123;mp[a[i]]=++cnt;val[cnt]=a[i];&#125;<span class="hljs-comment">//离散化</span>
+        a[i]=mp[a[i]];
+        v[a[i]].push_back(i);
+    &#125;
+    build();
+    init();
+    <span class="hljs-keyword">int</span> l,r;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;l,&amp;r);
+        solve(l,r);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/15/%E8%A1%A5%E4%B8%8D%E5%8A%A8%E7%9A%84%E9%A2%98%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E6%83%B3QAQ/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">补不动的题的一些思想QAQ</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/13/%E7%88%AC%E5%B1%B1%E7%AE%97%E6%B3%95-%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB/">
+                        <span class="hidden-mobile">POJ2420 爬山算法&&模拟退火</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "分块思想&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

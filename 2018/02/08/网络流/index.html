@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>网络流 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-08 22:37">
+      February 8, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="最大流及Dinic算法"><a href="#最大流及Dinic算法" class="headerlink" title="最大流及Dinic算法"></a><strong>最大流及Dinic算法</strong></h5><p>参考博客：<a href="http://www.cnblogs.com/SYCstudio/p/7260613.html" target="_blank" rel="noopener">http://www.cnblogs.com/SYCstudio/p/7260613.html</a></p>
+<p><a href="https://comzyh.com/blog/archives/568/#Dinic-Code" target="_blank" rel="noopener">https://comzyh.com/blog/archives/568/#Dinic-Code</a></p>
+<p><a href="https://www.cnblogs.com/y-clever/p/6308820.html" target="_blank" rel="noopener">https://www.cnblogs.com/y-clever/p/6308820.html</a></p>
+<p><a href="https://blog.csdn.net/lirewriter/article/details/78759337" target="_blank" rel="noopener">https://blog.csdn.net/lirewriter/article/details/78759337</a></p>
+<p><a href="https://www.bilibili.com/video/av18800207/index_2.html#page=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av18800207/index_2.html#page=2</a></p>
+<p>网络流的最大流算法就是指的一个流量的方案使得网络中流量最大。</p>
+<p>网络流最大流的求解：</p>
+<p>网络流的所有算法都是基于一种增广路的思想，下面首先简要的说一下增广路思想，其基本步骤如下：</p>
+<blockquote>
+<p>1.找到一条从源点到汇点的路径，使得路径上任意一条边的残量&gt;0（注意是小于而不是小于等于，这意味着这条边还可以分配流量），这条路径便称为增广路<br>2.找到这条路径上最小的F(u)(v)（我们设F(u)(v)表示u-&gt;v这条边上的残量即剩余流量），下面记为flow<br>3.将这条路径上的每一条有向边u-&gt;v的残量减去flow，同时对于起反向边v-&gt;u的残量加上flow（为什么呢？我们下面再讲）<br>4.重复上述过程，直到找不出增广路，此时我们就找到了最大流</p>
+</blockquote>
+<p>这个算法是基于增广路定理(Augmenting Path Theorem): 网络达到最大流当且仅当残留网络中没有增广路。</p>
+<p>Dinic 算法：<br>基本思路:</p>
+<blockquote>
+<p>1.根据残量网络计算层次图。<br>2.在层次图中使用DFS进行增广直到不存在增广路。<br>3.重复以上步骤直到无法增广。</p>
+</blockquote>
+<p>较详细解释(流程) :</p>
+<blockquote>
+<p>1.用BFS建立分层图  注意:分层图是以当前图为基础建立的,所以要重复建立分层图。<br>2.用DFS的方法寻找一条由源点到汇点的路径,获得这条路径的流量I 根据这条路径修改整个图,将所经之处正向边流量减少I,反向边流量增加I,注意I是非负数。<br>3.重复步骤2,直到DFS找不到新的路径时,重复步骤1。</p>
+</blockquote>
+<p>当前弧优化：</p>
+<p>对于每个点，我可能在一次BFS之后DFS多次。那么它出发的边所到的点里， 有些点出发已经满流。</p>
+<p>这样， 我就可以每个点记录一个当前弧， 表示这次DFS它最后DFS到哪条弧，下次DFS它的时候就从这条弧开始。</p>
+<p>这样，我就可以保证每条边在一次DFS中满流后不会再遍历。</p>
+<p>模板：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> INF=<span class="hljs-number">0x3f3f3f3f3f3f3f3f</span>;
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> s,e;<span class="hljs-comment">//源点、汇点</span>
+<span class="hljs-keyword">int</span> top;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    ll cap;
+    <span class="hljs-keyword">int</span> next;
+&#125;eg[<span class="hljs-number">200010</span>];<span class="hljs-comment">//邻接表要开边数的两倍</span>
+<span class="hljs-keyword">int</span> head[<span class="hljs-number">10010</span>];
+<span class="hljs-keyword">int</span> cur[<span class="hljs-number">10010</span>];<span class="hljs-comment">//当前弧优化</span>
+<span class="hljs-keyword">int</span> dis[<span class="hljs-number">10010</span>];<span class="hljs-comment">//分层图中每个点的层数（即到原点的最短距离）</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,ll z)</span></span>
+<span class="hljs-function"></span>&#123;
+    eg[top].cap=z;
+    eg[top].to=y;
+    eg[top].next=head[x];
+    head[x]=top++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">memset</span>(dis,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(dis));
+    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt;q;
+    dis[s]=<span class="hljs-number">0</span>;
+    q.push(s);
+    <span class="hljs-keyword">while</span>(!q.empty())
+    &#123;
+        <span class="hljs-keyword">int</span> id=q.front();
+        q.pop();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+        &#123;
+            <span class="hljs-keyword">int</span> temp=eg[i].to;
+            <span class="hljs-keyword">if</span>(dis[temp]==<span class="hljs-number">-1</span>&amp;&amp;eg[i].cap&gt;<span class="hljs-number">0</span>)
+            &#123;
+                dis[temp]=dis[id]+<span class="hljs-number">1</span>;
+                q.push(temp);
+                <span class="hljs-keyword">if</span>(temp==e)<span class="hljs-keyword">break</span>;
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> dis[e]!=<span class="hljs-number">-1</span>;<span class="hljs-comment">//能否到汇点，不能就结束</span>
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,ll cp)</span><span class="hljs-comment">//id为当前节点，cp为当前最小残量</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(id==e||cp==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> cp;<span class="hljs-comment">//流到终点了或者没有流了</span>
+    ll res=<span class="hljs-number">0</span>,f;<span class="hljs-comment">//ret:本次搜索能找到的所有流量，f：本次搜索一条路径的可以通过的流量</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=cur[id];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=eg[i].to;
+        <span class="hljs-keyword">if</span>(dis[temp]==dis[id]+<span class="hljs-number">1</span>)
+        &#123;
+            f=dfs(temp,<span class="hljs-built_in">min</span>(cp-res,eg[i].cap));<span class="hljs-comment">//能通的流就等于搜过后面之后允许的流，和自己允许的流的最小值</span>
+            <span class="hljs-keyword">if</span>(f&gt;<span class="hljs-number">0</span>)
+            &#123;
+                eg[i].cap-=f;
+                eg[i^<span class="hljs-number">1</span>].cap+=f;<span class="hljs-comment">//反向边剩余流量加上f</span>
+                res+=f;
+                <span class="hljs-keyword">if</span>(res==cp)<span class="hljs-keyword">return</span> cp;
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">if</span>(res==<span class="hljs-number">0</span>)dis[id]=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">dinic</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    ll ans=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(bfs())<span class="hljs-comment">//建立分层图</span>
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+            cur[i]=head[i];<span class="hljs-comment">//每一次建立完分层图后都要把cur置为每一个点的第一条边//？？？</span>
+        ans+=dfs(s,INF);<span class="hljs-comment">//只要有路就走,假设它有无限流，再慢慢调整</span>
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;s,&amp;e)!=EOF)
+    &#123;
+        top=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(head));
+        <span class="hljs-keyword">while</span>(m--)
+        &#123;
+            <span class="hljs-keyword">int</span> x,y;
+            ll z;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%lld"</span>,&amp;x,&amp;y,&amp;z);
+            add(x,y,z);
+            add(y,x,<span class="hljs-number">0</span>);
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,dinic());
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="最大流最小割定理"><a href="#最大流最小割定理" class="headerlink" title="最大流最小割定理"></a><strong>最大流最小割定理</strong></h5><p>在一个有权图中，源点为Vs，汇点为Vt，如果拿掉这张图中的一些边，就无法从Vs到达Vt，这些边的组合就叫做割集。</p>
+<p>对于一个网络流图G=(V,E)，其割的定义为一种点的划分方式：将所有的点划分为S和T=V-S两个部分，其中源点s∈S，汇点t∈T。</p>
+<p>对于一个割(S,T)，我们定义净流f(S,T)表示穿过割(S,T)的流量之和，即：</p>
+<p>f(S,T) = Σf(u,v) | u∈S,v∈T<br>举个例子：</p>
+<p><img src="http://media.hihocoder.com/problem_images/20160917/14741006888435.jpg" srcset="/img/loading.gif" alt="1.jpg"></p>
+<p>净流f = f(2,4)+f(3,4)+f(3,5) = 12+(-4)+11 = 19</p>
+<p>同时我们定义割的容量C(S,T)为所有从S到T的边容量之和，即：</p>
+<p>C(S,T) = Σc(u,v) | u∈S,v∈T</p>
+<p>割的容量：所有正向割边的容量和</p>
+<p>同样在上面的例子中，其割的容量为：</p>
+<p>c(2,4)+c(3,5)=12+14=26</p>
+<p>实际上对于任意一个割的净流f(S,T)总是和网络流的流量f相等。比如上面例子中我们改变一下割的方式：</p>
+<p><img src="http://media.hihocoder.com/problem_images/20160917/14741006882954.jpg" srcset="/img/loading.gif" alt="2.jpg"></p>
+<p>可以计算出对于这两种情况净流f(S,T)仍然等于19。</p>
+<p><u>任意一个割的净流f(S,T)都等于当前网络的流量f。</u></p>
+<p><u>对于网络的任意一个流f一定是小于等于任意一个割的容量C(S,T)。</u></p>
+<p><u>而在所有可能的割中，存在一个容量最小的割，我们称其为最小割。</u></p>
+<p><u>对于任一个网络流图来说，其最大流一定是小于等于最小割的。</u></p>
+<p>最大流最小割定理：</p>
+<p><u>对于一个网络流图G=(V,E)，其中有源点s和汇点t，那么下面三个条件是等价的：</u></p>
+<p><u>流f是图G的最大流</u></p>
+<p><u>残留网络Gf不存在增广路</u></p>
+<p><u>对于G的某一个割(S,T)，此时f = C(S,T)</u></p>
+<p>首先有<strong>割的容量C(S,T)=T中所有正权点的权值之和+S中所有负权点的权值绝对值之和</strong>。</p>
+<h5 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a>最小费用最大流</h5><p>费用流建立在网络最大流的基础上，一张图中最大流有且仅有一个，但是最大流条数往往不止一条，这时候对于我们来说，可能要找出这些最大流中最小（或者最大）的那一条路径（贪心策略嘛），这就是最小（最大）费用最大流  </p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-keyword">const</span> ll INF=<span class="hljs-number">0x3f3f3f3f3f3f3f3f</span>;
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> s,e;<span class="hljs-comment">//源点、汇点</span>
+ll ans;<span class="hljs-comment">//最大流量情况下的最小费用</span>
+<span class="hljs-keyword">int</span> top;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> to;
+    ll cap;
+    ll cost;
+    <span class="hljs-keyword">int</span> next;
+&#125;eg[<span class="hljs-number">100010</span>];<span class="hljs-comment">//邻接表要开边数的两倍</span>
+<span class="hljs-keyword">int</span> head[<span class="hljs-number">5010</span>];
+<span class="hljs-keyword">bool</span> vis[<span class="hljs-number">5010</span>];
+ll dis[<span class="hljs-number">5010</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,ll c,ll d)</span></span>
+<span class="hljs-function"></span>&#123;
+    eg[top].cap=c;
+    eg[top].cost=d;
+    eg[top].to=b;
+    eg[top].next=head[a];
+    head[a]=top++;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ss,<span class="hljs-keyword">int</span> ee)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(vis));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)
+        dis[i]=INF;
+    dis[ee]=<span class="hljs-number">0</span>;vis[ee]=<span class="hljs-literal">true</span>;
+    <span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt;q;
+    q.push_back(ee);
+    <span class="hljs-keyword">while</span>(!q.empty())
+    &#123;
+        <span class="hljs-keyword">int</span> temp=q.front();
+        q.pop_front();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[temp];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+        &#123;
+            <span class="hljs-keyword">int</span> tp=eg[i].to;
+            <span class="hljs-keyword">if</span>(eg[i^<span class="hljs-number">1</span>].cap&amp;&amp;dis[tp]&gt;dis[temp]-eg[i].cost)
+            &#123;
+                dis[tp]=dis[temp]-eg[i].cost;
+                <span class="hljs-keyword">if</span>(!vis[tp])
+                &#123;
+                    vis[tp]=<span class="hljs-literal">true</span>;
+                    <span class="hljs-keyword">if</span>(!q.empty()&amp;&amp;dis[tp]&lt;dis[q.front()])q.push_front(tp);
+                    <span class="hljs-keyword">else</span> q.push_back(tp);
+                &#125;
+            &#125;
+        &#125;
+        vis[temp]=<span class="hljs-literal">false</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> dis[ss]&lt;INF;
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,ll cp)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(x==e)
+    &#123;
+        vis[e]=<span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">return</span> cp;
+    &#125;
+    ll used=<span class="hljs-number">0</span>,a;
+    vis[x]=<span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i!=<span class="hljs-number">-1</span>;i=eg[i].next)
+    &#123;
+        <span class="hljs-keyword">int</span> temp=eg[i].to;
+        <span class="hljs-keyword">if</span>(!vis[temp]&amp;&amp;eg[i].cap&amp;&amp;dis[x]-eg[i].cost==dis[temp])
+        &#123;
+            a=dfs(temp,<span class="hljs-built_in">min</span>(eg[i].cap,cp-used));
+            <span class="hljs-keyword">if</span>(a)
+            &#123;
+                ans+=a*eg[i].cost;
+                eg[i].cap-=a;
+                eg[i^<span class="hljs-number">1</span>].cap+=a;
+                used+=a;
+            &#125;
+            <span class="hljs-keyword">if</span>(used==cp)<span class="hljs-keyword">break</span>;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> used;
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">costflow</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    ll flow=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(spfa(s,e))
+    &#123;
+        vis[e]=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span>(vis[e])
+        &#123;
+            <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(vis));
+            flow+=dfs(s,INF);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> flow;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> m;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;s,&amp;e)!=EOF)
+    &#123;
+        top=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span>(head));
+        <span class="hljs-keyword">while</span>(m--)
+        &#123;
+            <span class="hljs-keyword">int</span> a,b;
+            ll c,d;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%lld%lld"</span>,&amp;a,&amp;b,&amp;c,&amp;d);
+            add(a,b,c,d);
+            add(b,a,<span class="hljs-number">0</span>,-d);
+        &#125;
+        ans=<span class="hljs-number">0</span>;
+        ll temp=costflow();<span class="hljs-comment">//最大流</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld %lld\n"</span>,temp,ans);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/11/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E4%B8%93%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">匹配问题专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/06/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">匹配问题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "网络流&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

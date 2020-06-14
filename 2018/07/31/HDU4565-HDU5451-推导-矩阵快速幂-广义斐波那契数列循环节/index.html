@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>HDU4565 &amp; HDU5451 推导+矩阵快速幂+广义斐波那契数列循环节 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-07-31 22:53">
+      July 31, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="HDU4565"><a href="#HDU4565" class="headerlink" title="HDU4565"></a>HDU4565</h5><p><strong>题意：</strong></p>
+<p>给出a，b，n，m，求$$S_n=\lceil(a+\sqrt b)^n\rceil%m$$。其中$$0&lt;a,m&lt;2^{15}$$，$$(a-1)^2&lt;b &lt;a^2$$，$$0&lt;b,n&lt;2^{31}$$。</p>
+<p><strong>思路：</strong></p>
+<p>首先根据构造共轭因式的思想，构造下式：</p>
+<p>$$(a+\sqrt b)^n=A+B\sqrt b$$</p>
+<p>$$(a-\sqrt b)^n=A-B\sqrt b$$</p>
+<p>注意一个条件，$$(a-1)^2&lt;b &lt;a^2$$，则$$a-1&lt;\sqrt b&lt;a$$，则$$0&lt;a-\sqrt b&lt;1$$，则有$$0&lt;(a-\sqrt b)^n=A-B\sqrt b&lt;1$$,</p>
+<p>则$$A -1&lt;B\sqrt b&lt;A​$$，</p>
+<p>因为$$S_n=\lceil(a+\sqrt b)^n\rceil%m=\lceil(A+B\sqrt b)\rceil%m=2*A$$。</p>
+<p>①和②相加得$$(a+\sqrt b)^n+(a-\sqrt b)^n=2*A$$。</p>
+<p>所以$$S_n=(a+\sqrt b)^n+(a-\sqrt b)^n$$。</p>
+<p>对于$$S_n$$的递推公式，可以有多种方法推导得到，这里说其中两种。</p>
+<p>法一：二阶线性递推式</p>
+<p>定理：对于由递推公式$$a_{n+2}=pa_{n+1}+qa_n$$，$$a_1=\alpha,a_2=\beta$$给出的数列$$\left{a_n\right}$$，方程$$x^2-px-q=0$$，叫做数列$$\left{a_n\right}$$的特征方程。</p>
+<p>这里$$(a+\sqrt b)^n$$和$$(a-\sqrt b)^n$$是特征方程的两个根，可以由韦达定理推出特征方程为$$x^2-2ax+a^2-b=0$$，所以有递推公式$$S_{n+2}=2a<em>S_{n+1}+(b-a^2)</em>S_n$$。</p>
+<p>法二：递推</p>
+<p>$$\ \ \ \ S_n*[(a+\sqrt b)+(a-\sqrt b)]\=[(a+\sqrt b)^n+(a-\sqrt b)^n][(a+\sqrt b)+(a-\sqrt b)]\=(a+\sqrt b)^{n+1}+(a-\sqrt b)^{n+1}+(a^2-b)(a+\sqrt b)^{n-1}+(a^2-b)(a-\sqrt b)^{n-1}\=S_{n+1}+(a^2-b)*S_{n-1}$$</p>
+<p>所以$$S_{n+1}=2a<em>S_n+(b-a^2)</em>S_{n-1}$$。</p>
+<p>这样就可以构造矩阵了，<br>$$<br>\left(<br>     \begin{matrix}<br>           f_n \<br>            f_{n-1} \<br>        \end{matrix}<br>\right)<br>        =\left(<br>    \begin{matrix}<br>        2a &amp; b-a^2\<br>        1 &amp; 0\<br>    \end{matrix}<br>\right)<br>=\left(<br>     \begin{matrix}<br>            f_{n-1} \<br>            f_{n-2} \<br>        \end{matrix}<br>\right)<br>$$</p>
+<p>$$<br>\left(<br>     \begin{matrix}<br>           f_n \<br>            f_{n-1} \<br>        \end{matrix}<br>\right)<br>        =\left(<br>    \begin{matrix}<br>        2a &amp; b-a^2\<br>        1 &amp; 0\<br>    \end{matrix}<br>\right)^{n-1}<br>=\left(<br>     \begin{matrix}<br>            f_1 \<br>            f_2 \<br>        \end{matrix}<br>\right)<br>$$</p>
+<p>再用矩阵快速幂做就可以了。</p>
+<p>这里要注意，$$b-a^2$$可能是负的，所以在矩阵乘法中取模的时候要加上模数再取模。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mat</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>];
+&#125;m,r;
+ll p;
+<span class="hljs-function">mat <span class="hljs-title">mult</span><span class="hljs-params">(mat x,mat y)</span></span>
+<span class="hljs-function"></span>&#123;
+    mat res=&#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-keyword">int</span> i,j,k;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)
+        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">2</span>;j++)
+            <span class="hljs-keyword">for</span>(k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">2</span>;k++)
+                res.a[i][j]=(res.a[i][j]+(x.a[i][k]*y.a[k][j])%p+p)%p;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function">mat <span class="hljs-title">PowerMod</span><span class="hljs-params">(mat x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    mat ans=&#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)
+        ans.a[i][i]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-keyword">if</span>(n%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)
+            ans=mult(ans,x);
+        x=mult(x,x);
+        n=n/<span class="hljs-number">2</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    ll x,y,n;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;n,&amp;p)!=EOF)
+    &#123;
+        m.a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">2</span>*x;m.a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]=y-x*x;
+        m.a[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;m.a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;
+        r=PowerMod(m,n<span class="hljs-number">-1</span>);
+        ll ans=(r.a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>*x+r.a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]*<span class="hljs-number">2</span>)%p;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h5 id="HDU5451"><a href="#HDU5451" class="headerlink" title="HDU5451"></a>HDU5451</h5><p><strong>题意：</strong></p>
+<p>给出x和一个质数M，$$y=(5+2\sqrt 6)^{1+2^x}$$，求$$\lfloor y\rfloor%m$$。其中$$0≤x≤2^{32}$$，$$M≤46337$$。</p>
+<p><strong>思路：</strong></p>
+<p>类似上题的方法，根据特征方程可以求出递推公式为$$f_n=10*f_{n-1}-f_{n-2}$$。</p>
+<p>已知数列$$\left{a_n\right}​$$满足$$a_{n+2}=c_1<em>a_{n+1}+c_2</em>a_n​$$，其中$$c_1​$$，$$c_2​$$为常数，且$$c_2≠0​$$，$$n∈N^*​$$。</p>
+<p>定理1：方程$$x^2=c_1x+c_2$$为该式的特征的特征方程，该方程的根称为$$\left{a_n\right}$$的特征根，记为$$\lambda_1$$，$$\lambda_2$$。</p>
+<p>定理2:若$$\lambda_1≠\lambda_2$$，则$$a_n=b_1{\lambda_1}^n+b_2{\lambda_2}^n$$，其中$$b_1$$，$$b_2$$为常数，且满足<br>$$<br>\left{<br>\begin{array}{c}<br>    a_1=b_1\lambda_1+b_2\lambda_2 \<br>    a_2=b_1{\lambda_1}^2+{b_2\lambda_2}^2  \<br>\end{array}<br>\right.<br>$$<br>定理3:若$$\lambda_1=\lambda_2=\lambda$$，则$$a_n=(b_1+b_2n)\lambda^n$$，其中$$b_1$$，$$b_2$$为常数，且满足<br>$$<br>\left{<br>\begin{array}{c}<br>    a_1=(b_1+b_2)\lambda \<br>    a_2=(b_1+2b_2)\lambda  \<br>\end{array}<br>\right.<br>$$<br>由定理2，得到通项$$f_n=(5+2\sqrt 6)^n+(5-2\sqrt 6)^n$$。</p>
+<p>因为$$(5+2\sqrt6)^n&gt;1$$，$$(5-2\sqrt6)^n&lt;1$$，因$$(5+2\sqrt 6)^n$$的整数部分为$$f_n-1$$。</p>
+<p>指数是$$2^x+1$$非常大，但模数$$M≤46337$$，所以可以直接暴力找循环节。</p>
+<p>还有一个结论，对于广义斐波那契数列$$f(n)=af(n−1)+bf(n−2),f(1)=c,f(2)=d$$，</p>
+<p>f(n)%p循环节：当c是模p的二次剩余，枚举$$n=(p-1)$$的因子，  　　　　　　　当c是模p的非二次剩余，枚举$$n=(p-1)(p+1)$$的因子。</p>
+<p>什么叫二次剩余呢？</p>
+<p>d是模p的二次剩余当且仅当$$d(p−1)/2≡1(mod\ p)$$，</p>
+<p>d是模p的非二次剩余当且仅当$$d(p−1)/2≡-1(mod\ p)$$。</p>
+<p>假设MOD为模数,则在$$f[2]!=MOD$$时,$$(MOD+1)*(MOD-1)$$一定为其一个循环节。 </p>
+<p>在这里循环节可以直接算出，循环节为$$(m+1)*(m-1)$$。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+ll f[<span class="hljs-number">100010</span>];
+ll l[<span class="hljs-number">100010</span>];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">init</span><span class="hljs-params">(ll m)</span></span>
+<span class="hljs-function"></span>&#123;
+    f[<span class="hljs-number">0</span>]=<span class="hljs-number">2</span>%m,f[<span class="hljs-number">1</span>]=<span class="hljs-number">10</span>%m;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;;i++)
+    &#123;
+        f[i]=(<span class="hljs-number">10</span>*f[i<span class="hljs-number">-1</span>]-f[i<span class="hljs-number">-2</span>]+m)%m;
+        <span class="hljs-comment">//if(i&lt;=10)printf("%lld ",f[i]);</span>
+        <span class="hljs-keyword">if</span>(f[i<span class="hljs-number">-1</span>]==f[<span class="hljs-number">0</span>]&amp;&amp;f[i]==f[<span class="hljs-number">1</span>])
+            <span class="hljs-keyword">return</span> i<span class="hljs-number">-1</span>;
+    &#125;
+    <span class="hljs-comment">//printf("\n");</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">PowerMod</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> k;
+    k=a;
+    k=k%c;
+    <span class="hljs-keyword">while</span>(b&gt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>)
+        ans=(ans*k)%c;
+        b&gt;&gt;=<span class="hljs-number">1</span>;
+        k=(k*k)%c;
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> kase=<span class="hljs-number">1</span>;kase&lt;=t;kase++)
+    &#123;
+        ll x,m;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;x,&amp;m);
+        <span class="hljs-keyword">int</span> len=init(m);
+        <span class="hljs-comment">//printf("%d\n",len);</span>
+        <span class="hljs-keyword">int</span> p=PowerMod(<span class="hljs-number">2</span>,x,len);
+        <span class="hljs-comment">//printf("p:%d\n",p);</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Case #%d: %lld\n"</span>,kase,(f[(p+<span class="hljs-number">1</span>)%len]<span class="hljs-number">-1</span>+m)%m);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/08/01/HDU6333-%E6%8E%A8%E5%AF%BC-%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HDU6333 推导+莫队算法</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/07/30/HDU6219-%E6%80%9D%E7%BB%B4-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                        <span class="hidden-mobile">HDU6219 思维+单调队列</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "HDU4565 & HDU5451 推导+矩阵快速幂+广义斐波那契数列循环节&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>一天一dp - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-26 16:21">
+      February 26, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      91
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>因为dp太菜所以（<del>其实哪儿都菜</del></p>
+<p>嘛这就算是每天的做dp记录啦orz</p>
+<p>为了省篇幅有些就一句话题解了吧大概（</p>
+<p>记住要想清楚再写</p>
+<p>想不出怎么设计状态的时候看看数据范围</p>
+<p>想不出怎么转移的时候想想如果写暴力是怎么写的然后从记忆化搜索入手</p>
+<h4 id="2-26"><a href="#2-26" class="headerlink" title="2.26"></a>2.26</h4><p>打算先把51nod的所有动规都做了 有一些之前就做过了就不写了</p>
+<h5 id="51nod1270"><a href="#51nod1270" class="headerlink" title="51nod1270"></a>51nod1270</h5><p>题意：数组A包含N个元素A1, A2……AN。数组B包含N个元素B1, B2……BN。并且数组A中的每一个元素Ai，都满足1 &lt;= Ai &lt;= Bi。数组A的代价定义如下：</p>
+<p><img src="http://img.51nod.com/upfile/000fbd1c/08d1910176cc80940000000000000007.gif" srcset="/img/loading.gif" alt="img"></p>
+<p>（公式表示所有两个相邻元素的差的绝对值之和）</p>
+<p>给出数组B，计算可能的最大代价S。</p>
+<p>数组的长度N(1 &lt;= N &lt;= 50000)。数组元素Bi(1 &lt;= Bi &lt;= 10000)。</p>
+<p>思路：看题目范围就知道不可能是O(N*Bi)的做法所以就肯定是取特殊值了，这里取的就是1或者Bi，dp(i)(j)表示第i个数字取最大值或者最小值的最大代价，然后状态转移就可以了。</p>
+<h4 id="2-27"><a href="#2-27" class="headerlink" title="2.27"></a>2.27</h4><h5 id="51nod1201"><a href="#51nod1201" class="headerlink" title="51nod1201"></a>51nod1201</h5><p>题意：将N分为若干个不同整数的和，有多少种不同的划分方式，例如：n = 6，{6} {1,5} {2,4} {1,2,3}，共4种。由于数据较大，输出Mod 10^9 + 7的结果即可。</p>
+<p>思路：这里是不同的整数，dp的话内存和循环次数都ojbk的，因为1+2+3+…+m=n（预处理部分，确定最多几个数字相加）。</p>
+<p>dp(i)(j)：有i个数字相加和为j的方案数。</p>
+<p>dp(i)(j)=dp(i-1)(j-i)+dp(i)(j-i)。</p>
+<p>dp(i-1)(j-i)：i-1个数字相加再加一个i;</p>
+<p>dp(i)(j-i)：i个数字每个数字都加1。</p>
+<p>本来是想01背包（恰好装满的）做的qwq就是把每个数字当成物品，选或者不选，容量为n的背包，dp(i)(j)dp(i)(j)=(dp(i-1)(j)+dp(i-1)(j-i))%MOD;这样做的 然而不对又不知道怎么错了…</p>
+<p>顺便这里提一下恰好装满的01背包的做法，把dp初始化为-INF，其他和可不装满的01背包一样。</p>
+<h4 id="2-28"><a href="#2-28" class="headerlink" title="2.28"></a>2.28</h4><h5 id="51nod1020"><a href="#51nod1020" class="headerlink" title="51nod1020"></a>51nod1020</h5><p>题意：给出2个数n和k，求1-n的全排列中，逆序数为k的排列有多少种？</p>
+<p>思路：</p>
+<p>dp(i)(j)：1-i的全排列中逆序数为j的方案数。</p>
+<p>从题目的栗子来看：</p>
+<p>1 2 3 4的排列中逆序为3的共有6个，分别是：1 4 3 2；2 3 4 1；2 4 1 3；3 1 4 2；3 2 1 4；4 1 2 3。</p>
+<p>考虑123排列有1 2 3；1 3 2；2 1 3；2 3 1；3 1 2；3 2 1。</p>
+<p>比如1 2 3可以得到逆序数为0 1 2 3的1-4排列，因为只要考虑4开头的逆序数对就可以了，所以就知道dp(i)(j)=∑dp(i-1)(k)，再考虑一下，知道kmin=max(0,j-i+1),kmax=min(j,(i-1)*(i-2)/2)。然后dp就可以了。这里直接开1000乘20000的long long数组会爆内存，所以用两行的滚动数组即可。但是这样会超时…</p>
+<p>想到了优化，要优化肯定是从dp(i)(j-1)来入手，因为max(0,j-i+1)&lt;=k&lt;=min(j,(i-1)*(i-2)/2)，右边可以直接写成j，因为如果(i-1)×(i-2)/2比较小，那么这个以后肯定都是0，加了也没有什么关系；左边呢，就写成j-i+1，因为如果0比较大，那这个是负数，也可以调整，那么j-i+1&lt;=k&lt;=j。所以dp(i)(j)=dp(i)(j-1)+dp(i-1)(j)-dp(i-1)(j-1-i+1)=dp(i)(j-1)+dp(i-1)(j)-dp(i-1)(j-i)。考虑到j=0的情况，dp(i)(0)=1；考虑到j-i+1可能是负数，当j-i&lt;0，最后一项不减。</p>
+<p>注意这里是多组数据…所以预处理存下所有的dp(i)(j)就好了。</p>
+<h4 id="3-7"><a href="#3-7" class="headerlink" title="3.7"></a>3.7</h4><p>想不到立着的flag这么快就倒了qwq我觉得不行（。</p>
+<h5 id="51nod1154"><a href="#51nod1154" class="headerlink" title="51nod1154"></a>51nod1154</h5><p>题意：有一个字符串S，求S最少可以被划分为多少个回文串。</p>
+<p>思路：dp[i]:前i个字母最少可以被划分为多少个回文串。</p>
+<p>可以写写看。比如a，即dp[0]=1；当aa时，dp[1]=1，当ab时，dp[1]=dp[0]+1=2；当aba时，dp[2]=0+1=1，当abb时，dp[2]=dp[0]+1=2。由此可见，dp[i]=dp[j-1]+1(j&lt;=i&amp;&amp;j到i为回文串)。</p>
+<p>那么如何知道j到i为回文串呢？</p>
+<p>可以继续dp预处理一下，hw(i)(j)：i到j是否是回文串，只有当中间为回文串而且a[i]==a[j]，i到j才为回文串。</p>
+<h4 id="3-9"><a href="#3-9" class="headerlink" title="3.9"></a>3.9</h4><p>一直做51nod的题有点吃不消QAQ做个记忆化搜索缓一缓w</p>
+<h5 id="POJ1088"><a href="#POJ1088" class="headerlink" title="POJ1088"></a>POJ1088</h5><p>题意：给一张高度图，滑雪只能往低的地方滑，求最长的一条路。</p>
+<p>思路：很简单的记忆化搜索…没啥好说的…因为题目看错WA了一发…要审清题意啊…</p>
+<h5 id="HDU1428"><a href="#HDU1428" class="headerlink" title="HDU1428"></a>HDU1428</h5><p>题意：从(1,1)走到(n,n)，给出每个地点的费时，考虑从A区域到B区域仅当存在一条从B到机房的路线比任何一条从A到机房的路线更快，问总路线有几条。</p>
+<p>思路：注意四个方向都可以走，刚开始以为只往右下走，直接两次dp了，所以WA了。先处理出每一点到机房的最短路，用bfs松弛的思想，之后记忆化搜索即可。</p>
+<h4 id="3-11"><a href="#3-11" class="headerlink" title="3.11"></a>3.11</h4><h5 id="51nod1241"><a href="#51nod1241" class="headerlink" title="51nod1241"></a>51nod1241</h5><p>题意：一个数组的元素为1至N的整数，现在要对这个数组进行排序，在排序时只能将元素放在数组的头部或尾部，问至少需要移动多少个数字，才能完成整个排序过程？</p>
+<p>思路：只要考虑最长连续子序列即可，移动的时候，其他数字都可以按序每个数字移动一次即可，即答案为n-最长连续子序列的长度。</p>
+<h4 id="3-12"><a href="#3-12" class="headerlink" title="3.12"></a>3.12</h4><h5 id="51nod-1636"><a href="#51nod-1636" class="headerlink" title="51nod 1636"></a>51nod 1636</h5><p>题意：一个学年由n天组成。A学校有m门课程，每天学生必须学习一门课，一门课程必须在一天内学习完。在学习完第i门课程后，学生们会收到 xi 个家庭作业，其中 xi是区间[ai,bi]里的一个整数 。每门课还有一个属性，就是复杂度 ci 。A学校现在要制他们的课程表，具体要求如下：在课程表中，随着天数的增加，课程的复杂度是严格递增的。</p>
+<p>除了第1天，每天的作业量必须是前一天的k倍，或者比前一天多k个作业。（假设第i天的作业量为 xi ，则对于i(1＜i≤n)到满足 xi ＝ k+xi−1 或 xi ＝ k⋅xi−1 ）；</p>
+<p>现在，给定天数n，系数k，和m门课程的ai，bi，ci（1≤i≤m）。要求计算一个学年可以安排最大的总作业量( 总作业量的表达式是∑ni=1xi )是多少。</p>
+<p>思路：刚开始思路被背包束缚住了，这么设计状态：dp(i)(j)(k)表示选到第i门选了j门最后一门作业量是k，但是1≤ai≤bi≤10^16，数组存不下，因为有这个条件bi-ai≤100，又想跟l可以搭上关系，但是想想却不能确定前一门是哪一门，所以这样是不行的。考虑另一种状态设计：dp(i)(j)(k)表示第i天选了第j门作业量为a[j].l+k的最大作业量，先sort一下满足dp(i)(j)(k)=max(dp(i-1)(l)(a[j].l+k-z-a[l].l),dp(i-1)(l)((a[j].l+k)/z-a[l].l))(l&lt;j-1)。debug到意识模糊，这种三维的调试起来最麻烦…自己想样例也是很重要的啊…其实是忘了一个点，要转移还漏了一个条件，要注意转移的前一个状态要存在，并不是只要判断合理就可以了。</p>
+<h4 id="3-14"><a href="#3-14" class="headerlink" title="3.14"></a>3.14</h4><h5 id="51nod1732"><a href="#51nod1732" class="headerlink" title="51nod1732"></a>51nod1732</h5><p>题意：给出一个字符串，求从i和从j开始的子串的最长公共前缀。</p>
+<p>思路：dp(i)(j)：i和j的匹配度。根据样例的例子写写画画就知道有转移方程dp(i)(j)=dp(i+1)(j+1)+1，所以只要先预处理出来相同的a(i)和a(j)，然后倒着跑n^2的循环就可以了。</p>
+<h4 id="3-15"><a href="#3-15" class="headerlink" title="3.15"></a>3.15</h4><h5 id="51nod1354"><a href="#51nod1354" class="headerlink" title="51nod1354"></a>51nod1354</h5><p>题意：给出n个数，输出当前子序列里面的所有元素乘起来恰好等于K的子序列数。</p>
+<p>思路：很容易想到这是一个选与不选的问题，dp(i)(j):选到第i个数字乘积为j的方案数，但是这里2&lt;=K&lt;=100000000，所以要考虑存更小的，所以想到了可以存因数，预处理出来K的因数，map存一下，然后dp即可。这里要注意一个情况，当第一个数字为1时，dp(1)(1)应该是2，因为这可能是不选也可能是1，有两种情况。</p>
+<h4 id="3-16"><a href="#3-16" class="headerlink" title="3.16"></a>3.16</h4><h5 id="51nod1055"><a href="#51nod1055" class="headerlink" title="51nod1055"></a>51nod1055</h5><p>题意：给出n个数，从中选出最长等差数列。</p>
+<p>思路：这道题目想了很久然而还是gg，是看了题解做出来的qwq双指针什么的实在是没想到啊QAQ</p>
+<p>首先想的是dp(i)(j):最后一个数为a[i]等差为j的最大长度，这样想很简单，可是就是数据存不下，而且还要考虑j的所有情况，我是开了两个map，map本来就慢，就gg了。</p>
+<p>看了题解，发现它利用了等差数列2*a[j]=a[i]+a[k]的性质。它是这么设计状态的：dp(i)(j):第一个数为a[i]，第二个数为a[j]的最长等差数列的长度。有dp(i)(j)=dp(j)(k)+1(当满足性质时)，这么说是要O(n^3)的，但是这里很巧妙，用了双指针左右扫的方法。</p>
+<p>这里还用了黑科技，10000*10000讲道理是开不下的，所以这里用了short int类型。</p>
+<p>具体看代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">10010</span>];
+short <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10005</span>][<span class="hljs-number">10005</span>];<span class="hljs-comment">//以a[i]和a[j]为前两个数的最长的等差数列</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);
+    sort(a+<span class="hljs-number">1</span>,a+n+<span class="hljs-number">1</span>);
+    <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;=n;j++)
+            dp[i][j]=<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=n<span class="hljs-number">-1</span>;j&gt;=<span class="hljs-number">2</span>;j--)
+    &#123;
+        <span class="hljs-keyword">int</span> i=j<span class="hljs-number">-1</span>,k=j+<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span>(i&gt;=<span class="hljs-number">1</span>&amp;&amp;k&lt;=n)
+        &#123;
+            <span class="hljs-keyword">if</span>(a[i]+a[k]==<span class="hljs-number">2</span>*a[j])
+            &#123;
+                dp[i][j]=dp[j][k]+<span class="hljs-number">1</span>;
+                i--;k++;
+            &#125;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a[i]+a[k]&lt;<span class="hljs-number">2</span>*a[j])k++;
+            <span class="hljs-keyword">else</span> i--;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">int</span> MAX=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;=n;j++)
+            <span class="hljs-keyword">if</span>(dp[i][j]&gt;MAX)MAX=dp[i][j];
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,MAX);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h4 id="3-21"><a href="#3-21" class="headerlink" title="3.21"></a>3.21</h4><h5 id="51nod1274"><a href="#51nod1274" class="headerlink" title="51nod1274"></a>51nod1274</h5><p>题意：给出一张无向图，求最长严格递增路径。</p>
+<p>思路：这道题看起来很简单记忆化搜索一下就ojbk了可是我debug得真的有点难受orz不过很好自从这个一天一dp计划开始就尽量不看题解了有进步hhh</p>
+<p>刚开始想的是从每个点的最长路径入手，可是考虑到这和前一条边的长度有关系，所以就考虑dp(i):从i条边开始的最长路径。这里，我又没考虑周全，我直接把每条无向边当成一条边了，然后我还存了每条边的两个端点，然后再两个方向dfs，然而这是有问题的，因为会存在是从这个端点进入但是又从这个端点出的问题，我debug的时候模拟样例真的几乎要受不了了orz所以才要考虑把一条无向边当成两条有向边来存…这样就不会存在这种问题了…这样记忆化搜索写起来也很简单了…</p>
+<p>哎这道题我写了好几个版本QAQ又一直纠错就很难受qwq</p>
+<p>总结一点吧 一定要把所有细节都考虑好再写 否则debug的话心态会炸QAQ还有实在不行的时候 就一定要全部推翻重写 真的！</p>
+<h4 id="3-25"><a href="#3-25" class="headerlink" title="3.25"></a>3.25</h4><h5 id="CodeForces934C"><a href="#CodeForces934C" class="headerlink" title="CodeForces934C"></a>CodeForces934C</h5><p>题意：给出一个只有1和2的串，允许翻转一个区间[l,r]，求翻转后最长的非递减子序列长度。</p>
+<p>思路：很容易看出来是dp的题目但是题目看错真是要命QAQ以为是子串所以想着要求每个区间最左边/中间/右边连续最长非递减长度 想着这难道要区间合并什么的嘛QAQ然而 题目不是这样的 subsequence是子序列的意思 substring才是子串</p>
+<p>因为数字只会出现1和2，所以把这个数列可以分成三部分，左部分找1的最长子序列，右部分找2的最长子序列，中间部分因为是翻转的，所以就找最长非递增子序列，枚举左右端点dp即可。</p>
+<p>dp(i)(j)(k):[i,j]中以k结尾的最长非递增序列长度。</p>
+<p>转移一下就可以了。</p>
+<h4 id="3-29"><a href="#3-29" class="headerlink" title="3.29"></a>3.29</h4><h5 id="51nod1052"><a href="#51nod1052" class="headerlink" title="51nod1052"></a>51nod1052</h5><p>题意：N个整数组成的序列a[1],a[2],a[3],…,a[n]，将这N个数划分为互不相交的M个子段，并且这M个子段的和是最大的。如果M &gt;= N个数中正数的个数，那么输出所有正数的和。</p>
+<p>思路：考虑dp(i)(j)：前i个数被分为j段的最大和（包括第i个数）。</p>
+<p>可以知道有两种转移，一种是加在前一段里面，即dp(i-1)(j)+a[i]，还有一种是当成另外一段，即dp(k)(j-1)+a[j] (k&lt;i)。</p>
+<p>所以dp(i)(j)=max(dp(i-1)(j)+a[i],max(dp(k)(j-1)+a[j])(k&lt;i))。</p>
+<p>这里k遍历的话n^3会超时，所以要开个数组pre(j-1)来记录之前的所有dp(k)(j-1)，所以这个内层循环应该倒着来。</p>
+<h4 id="3-30"><a href="#3-30" class="headerlink" title="3.30"></a>3.30</h4><p>做dp每次看到AC的时候就感觉好开心hhh（毕竟都是自己做的</p>
+<p>不过每次写debug得有点多 注意写的时候要仔细啊</p>
+<h5 id="51nod1503"><a href="#51nod1503" class="headerlink" title="51nod1503"></a>51nod1503</h5><p>题意：刚开始的时候猪站在(1,1),他的目标是走到(n,m)。他只会往(r+1,c)或(r,c+1)走。猪经过的路径要构成一个回文。数一数从(1,1)到(n,m)有多少条路径。答案可能非常巨大，请输出对 109+7 取余后的结果。</p>
+<p><img src="https://img.51nod.com/upload/000FBF15/08D2AA138BF808260000000000000009.png" srcset="/img/loading.gif" alt="img"></p>
+<p>思路：一看就知道是一道双线程的dp，就跟以前做的更难的矩阵取数问题一样。</p>
+<p>所以当然也是开三维啦，dp(i)(j)(k)：走i步到(j,2+i-j)(k,n+m-i-k)的漂亮路径数。</p>
+<p>边界条件是分奇偶的，就是搞个st来表示最长的步数，然后分奇偶来赋值1，这里也要注意偶数步数的时候，两个当前的位置应该是相邻的，要判一下。</p>
+<p>转移也是很简单的，倒推就可以了。dp(i)(j)(k)=dp(i+1)(j)(k)+dp(i+1)(j-1)(k)+dp(i+1)(j)(k+1)+dp(i)(j-1)(k+1)。</p>
+<p>因为三维而且用long long数组会很大所以当然是用滚动数组啦。</p>
+<p>因为是滚动数组所以每次dp(i%2)(j)(k)要清零呀QAQ因为这个WA了一发QAQ</p>
+<p>细节有点多越界啊啥的要注意呀qwq</p>
+<p>听说这是CF DIV2的E题难度？那我做出了真是美滋滋hhh</p>
+<h4 id="3-31"><a href="#3-31" class="headerlink" title="3.31"></a>3.31</h4><h5 id="51nod1043"><a href="#51nod1043" class="headerlink" title="51nod1043"></a>51nod1043</h5><p>题意：1个长度为2N的数，如果左边N个数的和 = 右边N个数的和，那么就是一个幸运号码。给出一个N，求长度为2N的幸运号码的数量。由于数量很大，输出数量 Mod 10^9 + 7的结果即可。</p>
+<p>思路：今天做一个数位dp。</p>
+<p>因为这个数字由两部分组成，所以考虑dp(i)(j):长度为i和为j的数字，则dp(i)(j)=∑dp(i)(j-k),0&lt;=k&lt;=9。</p>
+<p>这里还要考虑是否有前导0，前半部分是不能有前导0的，后半部分是可以有的，可以分别统计dp1,dp2，区别就在于边界条件，如果可以有前导0的话dp1(1)(0)=1。</p>
+<p>统计的时候用乘法原理。</p>
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h4><h5 id="CodeForces919D"><a href="#CodeForces919D" class="headerlink" title="CodeForces919D"></a>CodeForces919D</h5><p>题意：给出一张有向图，给每个结点一个字母，定义路径的值为这条路上的出现最多的字母出现的次数，求这张图中所有路径中路径的值的最大值，如果可以任意大的话，就输出-1。</p>
+<p>思路：容易可以看出这是一个树形dp，因为每个结点都只是一个小写字母，所以dp(i)(j)：到i点j出现的最大次数，有转移方程dp(i)(j)=max(dp(k)(j)),k为i的子结点，而且当j==a[i]-‘a’时，有dp(i)(j)++，边界条件是叶子结点的dp(i)(a[i]-‘a’)为1。</p>
+<p>考虑到任意大的情况就是有环，所以可以在dfs求dp的同时判环。</p>
+<p>这里我智障了QAQ数组开小了导致一直WA…又查不出错 以后就</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 300010</span></code></pre>
+
+<p>这样写吧。</p>
+<p>也可以用拓扑排序的写法，这里状态转移指的就是父节点而不是子节点了。</p>
+<p>因为拓扑排序的步骤：</p>
+<p> (1)从有向图中选取一个没有前驱(即入度为0)的顶点，并输出之; </p>
+<p> (2)从有向图中删去此顶点以及所有以它为尾的弧;</p>
+<p>重复上述两步，直至图空，或者图不空但找不到无前驱的顶点为止。</p>
+<p>如何通过拓扑排序判断图中是否有环：拓扑排序之后，若还剩有点，则表示有环。</p>
+<h4 id="4-6"><a href="#4-6" class="headerlink" title="4.6"></a>4.6</h4><h5 id="计蒜客题"><a href="#计蒜客题" class="headerlink" title="计蒜客题"></a>计蒜客题</h5><p>题意：有一个长度为n且由a和b组成的字符串，他把这个字符串划分成了若干段回文子串，如”abbaaba” =&gt; “abba” + “aba”是一种划分方案。每个划分方案对答案的贡献是，划分的不同部分的长度的乘积，上述贡献即为4*3=12。问所有有效划分方案贡献的总和是多少。对答案mod1000000007输出。</p>
+<p>思路：回文的动态规划好像经常用的是一维的，而且转移方程也类似。</p>
+<p>dp[i]:前i个字符的最大贡献。</p>
+<p>以题目为例子，dp[0]=1，dp[1]=1，dp[2]=dp[1]×1，dp[3]=dp[2]×1+dp[1]×2，dp[4]=dp[3]×1+dp[0]×4（这里解释了为什么dp[0]=1），dp[5]=dp[4]×1+dp[3]×2。</p>
+<p>所以有转移方程dp[i]=dp[j-1]×(i-j+1)(i到j为回文)。</p>
+<p>预处理一下i到j是否为回文（见上文）。</p>
+<h4 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h4><h5 id="ZOJ4019"><a href="#ZOJ4019" class="headerlink" title="ZOJ4019"></a>ZOJ4019</h5><p>最近一直在做其他题…所以之前的题到现在才补emmmm</p>
+<p>题意：给出两类物品，这两类物品的单位价值分别是k1，k2，再给出这两类物品中每个物品所占的体积，现有体积为c的背包，定义价值为单位价值*当前背包剩余体积，问背包能装下的最大的价值。</p>
+<p>思路：我刚开始想的是把两类物品直接dp，像这样dp(i)(j):选到第i个物品背包剩余体积为j，但是这样是不可行的，因为c&lt;1e7，所以考虑其他思路，看到只有两类，而且这两类价值都是一样的，所以这肯定是要利用的一个条件。</p>
+<p>先贪心，因为每类物品价值是一样的，所以尽可能放体积小的，排序一下。</p>
+<p>考虑dp(i)(j)：取前i个第一类，前j个第二类的最大价值。</p>
+<p>所以有转移方程：dp(i)(j)=max(dp(i-1)(j)+k1×(c-prea[i]-preb[j]),dp(i)(j-1)+k2×(c-prea[i]-preb[j]))（prea,preb都是前缀和）。</p>
+<p>边界条件就是dp(0)(i)和dp(i)(0)。</p>
+<p>因为T有500组，500×2000×2000=2e9，所以肯定要剪枝。</p>
+<p>由单调性容易想到如果一次c-prea[i]-preb[j]小于0，后面肯定都不用算了，这里我还犯了个小错误，我是直接退出两重循环了，其实并不是啊hhh，单调性是只属于每一重的。</p>
+<p>dp也不要每次清零了，直接赋值就好了，所以ans每次算出dp(i)(j)后直接更新。</p>
+<p>说一句，不要总是乱交，在submit之前再看看自己的程序，要确定没问题之后再交啊。</p>
+<h4 id="4-18"><a href="#4-18" class="headerlink" title="4.18"></a>4.18</h4><h5 id="CodeForces940E"><a href="#CodeForces940E" class="headerlink" title="CodeForces940E"></a>CodeForces940E</h5><p>题意：给你一个数列，你可以划分成几个部分，每个部分的价值是除去前[len/k]小的数的和。求价值的最小值。</p>
+<p>思路：因为总和不变，就是要让被删除的数字的总和尽可能大。</p>
+<p>先是猜测分组的len肯定只有k和1，因为k可以保证不会浪费，尽可能使len/k整除，这样的贪心可以删除尽可能多的数字。</p>
+<p>贪心之后就可以dp了，dp(i):到第i个数字删掉的元素的最大和。</p>
+<p>转移方程：dp(i)=max(dp(i-1),dp(i-k)+min(a[i-k+1],a[i-k+2]…a[i]))，即该数字一个数一组和该数字所在的组(len=k)被删掉最小值的情况。</p>
+<p>所以只要用各种方法查询最小值就可以了，我用的是ST表。</p>
+<h5 id="CodeForces932E"><a href="#CodeForces932E" class="headerlink" title="CodeForces932E"></a>CodeForces932E</h5><p>题意：给定n,k,求<br>$$<br>\sum_{i=1}^nC_n^i*i^k<br>$$<br>,其中n&lt;=1e9,k&lt;=5e3。</p>
+<p>思路：没有思路的一道题…刚开始以为这是有公式的或者可以找规律的…等打出表发现自己太天真了…看了题解 有三种解决方法 一种是求导+dp 还有一种是组合数学+dp 还有一种斯科林数的方法 都好强啊orz。</p>
+<p>看了一种自己能够接受的，组合+dp的思路。</p>
+<p>其实这个式子可以转化成一个组合问题：把n种物品放入k个箱子（每个箱子只能放一种）的方案数。妙啊orz。</p>
+<p>那么如何解决这个问题呢？</p>
+<p>这里就要用dp了，dp(i)(j):到第i个箱子放j种的方案数。看起来n&lt;=1e9不能这样设计状态，实际上这是假的，箱子总共也就k个呀…</p>
+<p>转移方程就可以写了：dp(i)(j)=dp(i-1)(j)×j+dp(i-1)(j-1)×(n-j+1)，即第i个箱子选哪一种的情况。</p>
+<p>那么答案如何表示？</p>
+<p>答案就是$$\sum_{i=1}^n dp[k][i]*2^{n-i}$$，为什么这里要乘$$2^{n-i}$$呢？因为考虑到问题里可能存在比如说预选了4种，但是实际上可能只用了2种的情况，所以这里也要存在这种情况，所以剩下的n-i种可能被选了可能没被选。</p>
+<p>好厉害啊这道题居然还可以这么转化orz学到了hhh</p>
+<h4 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h4><h5 id="CodeForces946F"><a href="#CodeForces946F" class="headerlink" title="CodeForces946F"></a>CodeForces946F</h5><p>题意：定义F(x)为F(x-1)与F(x-2)的连接（其中F(0) = ‘0’,F(1) = ‘1’）。<br>给出一个长度不超过100的字符串s，询问s在F(x)的所有子序列中出现了多少次。</p>
+<p>思路：</p>
+<p>没思路看题解做的QAQ</p>
+<p>dp(i)(j)(k):s(j,k)在F(i)的所有子序列中出现的总次数。</p>
+<p>一般情况，</p>
+<p>dp(i)(j)(k)+=dp(i-1)(j)(k)，</p>
+<p>dp(i)(j)(k)+=dp(i-2)(j)(k)，</p>
+<p>dp(i)(j)(k)+=dp(i-1)(j)(l)*dp(i-2)(l)(k)，</p>
+<p>在dp(i-1)(j)(k)中当k==n的时候，f(i-2)中可以随便选，</p>
+<p>在dp(i-2)(j)(k)中当j==1的时候，f(i-1)中可以随便选，</p>
+<p>所以，</p>
+<p>dp(i)(j)(k)+=dp(i-1)(j)(k)*(k==n?(2^len(f(i-2))):1)，</p>
+<p>dp(i)(j)(k)+=dp(i-2)(j)(k)*(j==1?(2^len(f(i-1))):1)，</p>
+<p>dp(i)(j)(k)+=dp(i-1)(j)(l)*dp(i-2)(l)(k)。</p>
+<h4 id="7-5"><a href="#7-5" class="headerlink" title="7.5"></a>7.5</h4><h5 id="luoguP1140"><a href="#luoguP1140" class="headerlink" title="luoguP1140"></a>luoguP1140</h5><p>题意：给出两个基因序列，根据<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fszcufstnjj307s04q74a.jpg" srcset="/img/loading.gif" alt="img">)求出基因相似度。不等长可以在其中加-，如<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fszcujjm5sj308001nwec.jpg" srcset="/img/loading.gif" alt="img">。规定两个基因的相似度为所有对应方法中，相似度最大的那个。</p>
+<p>思路：</p>
+<p>$$dp[i][j]$$ :前i个与前j个匹配的最大基因相似度。</p>
+<p>$$dp[i][j]=max{dp[i][j],dp[i-1][j]+val(a[i],’-‘}$$：a[i]与’-‘匹配。</p>
+<p>$$dp[i][j]=max{dp[i][j],dp[i][j-1]+val(‘-‘,’b[j]’}$$：’-‘与b[j]匹配。</p>
+<p>$$dp[i][j]=max{dp[i][j],dp[i-1][j]+val(a[i-1],b[j-1]}$$：a[i]与b[j]匹配。</p>
+<p>注意边界条件即可。</p>
+<h4 id="7-13"><a href="#7-13" class="headerlink" title="7.13"></a>7.13</h4><h5 id="GCPC2015J"><a href="#GCPC2015J" class="headerlink" title="GCPC2015J"></a>GCPC2015J</h5><p>题意：有个地方只能用金币和银币，它们的汇率为g，刚开始你有c个金币，他要去n个商家那里买东西。每个商家找零只能用一整袋的银币，每袋银币的个数为pi，商家分为greed，honest和generous三种类型，greed找零的时候是向下取整的，honest是四舍五入的，generous是向上取整的，每个商品的价格为si(si&lt;g)，而且你很同情generous，你有银币可以直接付的话就直接付。问你最多可以买几个商品。</p>
+<p>思路：</p>
+<p>$$dp[i][j][k]$$:处理完第i个商品还剩j个金币k个银币时能买到的最多商品。</p>
+<p>有转移：</p>
+<p>不买：$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k])$$；</p>
+<p>用银币买：$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j][k+s_i]+1)(k+s_i≤g*c)$$；</p>
+<p>用金币买:$$dp[i][j][k]=max(dp[i][j][k],dp[i-1][j+1][k+找零]+1)$$，</p>
+<p>其中找零可以借助ceil,floor,round（四舍五入）函数计算，</p>
+<p>因为对于generous如果银币可以付的话就不用金币付，所以当k+找零&gt;=si的话，就不能用金币买了。</p>
+<p>这里注意初始化dp数组要为-INF而不是0，因为有些状态是不能到达的。</p>
+<p>边界条件是$$dp[0][c][0]=0$$。</p>
+<h4 id="8-21"><a href="#8-21" class="headerlink" title="8.21"></a>8.21</h4><h5 id="CTU2017F"><a href="#CTU2017F" class="headerlink" title="CTU2017F"></a>CTU2017F</h5><p>题意：给出n个数字，一对相同的数字里面可以包一对相同的数字，同理可以一直包下去，问这样的数字对数最多有多少。</p>
+<p>思路：</p>
+<p>$$dp[i][j]$$：i到j这样的数字的最大对数。</p>
+<p>有转移：</p>
+<p>$$dp[i][j]=max(dp[i+1][j],dp[i][j-1])$$;</p>
+<p>如果$$a[i]==a[j]$$，有转移$$dp[i][j]=max(dp[i][j],dp[i+1][j-1]+1)$$。</p>
+<h4 id="8-27"><a href="#8-27" class="headerlink" title="8.27"></a>8.27</h4><p>做几道区间DP，区间DP常常是外层循环是长度，内存循环是起点。</p>
+<h5 id="POJ2955"><a href="#POJ2955" class="headerlink" title="POJ2955"></a>POJ2955</h5><p>题意：给出一个含’(‘，’)’，’[‘，’]’的括号序列，求最长的括号匹配子序列。</p>
+<p>思路：区间dp的典型套路，$$dp[i][j]$$：[i,j]区间最长的括号匹配子序列。除了跟上题一样的转移外，还有$$dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])$$，就是()()这种情况。</p>
+<h5 id="POJ1651"><a href="#POJ1651" class="headerlink" title="POJ1651"></a>POJ1651</h5><p>题意：给出n个数字，每次取出一个数字a[i]，价值为$$a[i-1]<em>a[i]</em>a[i+1]$$，直到只剩下最前面一个数字和最后面一个数字。问最小价值为多少。</p>
+<p>思路：$$dp[i][j]$$：[i,j]最小价值。</p>
+<p>$$dp[i][j]=max(dp[i][k]+dp[k][j]+a[i]<em>a[k]</em>a[j])\ |\ i+1\le k \le j-1$$。</p>
+<p>从长度为3开始循环，外层是长度，内层是i，再枚举k。</p>
+<p>如何理解？</p>
+<p>如果有三个数字，$$dp[1][3]=dp[1][2]+dp[2][3]+a[1]<em>a[2]</em>a[3]$$。</p>
+<p>如果有四个数字，$$dp[1][4]=max(dp[1][2]+dp[2][4]+a[1]<em>a[2]</em>a[4],dp[1][3]+dp[3][4]+a[1]<em>a[3]</em>a[4])$$。</p>
+<p>如果有五个数字，</p>
+<p>$$dp[1][5]=max(dp[1][2]+dp[2][5]+a[1]<em>a[2]</em>a[5],dp[1][3]+dp[3][5]+a[1]<em>a[3]</em>a[5],dp[1][4]+dp[4][5]+a[1]<em>a[4]</em>a[5])$$。</p>
+<p>画一画会明白。</p>
+<p>因为对于一个区间来说，最后肯定只剩下最前面的数字和最后面的数字，所以对于$$dp[i][k]$$和$$dp[k][j]$$这两个区间剩下的数字肯定只有a[i],a[k],a[j]，所以转移是这样子的。</p>
+<h5 id="LightOj1422"><a href="#LightOj1422" class="headerlink" title="LightOj1422"></a>LightOj1422</h5><p>题意：一个人要按顺序穿着n件衣服，身上的衣服可以穿好几件，但是如果脱掉以后这件衣服就报废了。问最少要几件衣服。</p>
+<p>思路：$$dp[i][j]$$：从i到j天最少要穿的衣服。</p>
+<p>对于第i件衣服，如果之后的区间不再重复利用了，这种情况的转移为$$dp[i][j]=dp[i+1][j]+1$$。</p>
+<p>如果这件衣服在后面的区间可以重复利用，则选择区间的穿的衣服种类相同的天数，$$dp[i][j]=dp[i][k-1]+dp[k+1][j]$$，因为要选第k天作为重复利用，那么要把[i,k-1]的衣服一件一件脱下来，那么[i,k-1]和[k+1,j]的代价是要独立算的。</p>
+<h4 id="9-25"><a href="#9-25" class="headerlink" title="9.25"></a>9.25</h4><h5 id="徐州网络赛B"><a href="#徐州网络赛B" class="headerlink" title="徐州网络赛B"></a>徐州网络赛B</h5><p>题意：有n轮游戏，有初始分数m，有A和B两个人，每轮游戏可以有三个选项，加某个数，减某个数，取相反数。A总是想得到GE，B总是想得到BE，GE即最后分数&gt;=k，BE即最后分数&lt;=l，其他都是NE。如果自己不能赢的话，那宁愿NE也不要对手赢。A先手。问最后的结果。其中$$1≤n≤1000, −100≤m≤100$$。</p>
+<p>思路：可以想到可以用记忆化搜索。状态就是到第i轮分数为j的结果。1000*200是可以接受的。对于A来说，尽可能要GE，不行的话就NE，之后才是BE，对于B来说，尽可能要BE，不行的话就NE，之后才是GE。脑补一下写个记忆化搜索就可以了。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/28/SPOJ-GSS3-%E5%8C%BA%E9%97%B4%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SPOJ GSS3 区间最大子段和</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/26/51nod1019-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0/">
+                        <span class="hidden-mobile">51nod1019 树状数组求逆序数</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "一天一dp&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

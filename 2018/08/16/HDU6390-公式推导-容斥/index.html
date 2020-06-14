@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>HDU6390 公式推导+容斥 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-08-16 22:09">
+      August 16, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      717 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p><strong>题意：</strong></p>
+<p>有$$G_u(a,b)=\frac{\varphi(ab)}{\varphi(a)\varphi(b)}$$。给定m,n,p，求$$(\sum_{a=1}^m\sum_{b=1}^nG_u(a,b))\ mod\ p$$。其中$$1≤m,n≤1000000$$，$$max(m,n)&lt;p≤1000000007 $$，p为质数。</p>
+<p><strong>思路：</strong></p>
+<p>可以推导出$$\frac{\varphi(ab)}{\varphi(a)\varphi(b)}=\frac{gcd(a,b)}{\varphi(gcd(a,b))}$$。</p>
+<p>举个例子形象一点，</p>
+<p>因为有欧拉公式$$φ(n) = n <em>(1-\frac{1}{x})</em> (1-\frac{1}{y})$$，其中x,y为n的质因子。<br>$$<br>\frac{\varphi(72)}{\varphi(6)\varphi(12)}=\frac{72<em>(1-\frac{1}{2})</em>(1-\frac{1}{3})}{6<em>(1-\frac{1}{2})</em>(1-\frac{1}{3})<em>12</em>(1-\frac{1}{2})<em>(1-\frac{1}{3})}=\frac{1}{(1-\frac{1}{2})</em>(1-\frac{1}{3})}<br>$$<br>化简后分母只剩下$$gcd$$的质因子的部分，上下同乘$$gcd$$，得<br>$$<br>\frac{6}{(6-3)*(1-\frac{1}{3})}=\frac{6}{6-2-3+1}<br>$$<br>这里分子就是$$gcd(6,12)$$，分母则是$$gcd(6,12)$$中减去2的倍数的个数，减去3的倍数的个数，加上6的倍数的个数，这个容斥就是求出了比$$gcd(6,12)$$小的数中与它互质的数的个数，即$$\varphi(gcd(6,12))$$。</p>
+<p>所以问题就转化为了求$$(\sum_{a=1}^m\sum_{b=1}^n\frac{gcd(a,b)}{\varphi(gcd(a,b))})\ mod\ p$$。这里用到了容斥。</p>
+<p>枚举$$gcd(a,b)$$。设f[i]:gcd为i的倍数的(a,b)对数，g[i]:gcd为i的(a,b)对数。</p>
+<p>以a=6,b=8为例，</p>
+<p>$$f[1]=6<em>8=48,f[2]=3</em>4=12,f[3]=2*2=4,$$</p>
+<p>$$f[4]=1<em>2=2,f[5]=1</em>1=1,f[6]=1*1=1$$。</p>
+<p>$$g[6]=f[6]=1,g[5]=f[5]=1,g[4]=f[4]=2,g[3]=f[3]-g[6]=4-1=3,$$</p>
+<p>$$g[2]=f[2]-g[4]-g[6]=12-2-1=9,$$</p>
+<p>$$g[1]=f[1]-g[2]-g[3]-g[4]-g[5]-g[6]=48-9-3-2-1-1=32​$$。</p>
+<p>所以就可以求出g[i]了。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 1000000</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+ll eu[MAXN+<span class="hljs-number">10</span>];
+ll pri[MAXN+<span class="hljs-number">10</span>];
+<span class="hljs-keyword">bool</span> vis[MAXN+<span class="hljs-number">10</span>];
+ll f[MAXN+<span class="hljs-number">10</span>];<span class="hljs-comment">//gcd为i的倍数的对数</span>
+ll g[MAXN+<span class="hljs-number">10</span>];<span class="hljs-comment">//gcd为i的对数</span>
+ll inv[MAXN+<span class="hljs-number">10</span>];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    eu[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+    ll cnt=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">2</span>;i&lt;=MAXN;i++)
+    &#123;
+        <span class="hljs-keyword">if</span>(!vis[i])&#123;pri[cnt++]=i;eu[i]=i<span class="hljs-number">-1</span>;&#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;=cnt&amp;&amp;pri[j]*i&lt;=MAXN;j++)
+        &#123;
+            vis[i*pri[j]]=<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">if</span>(i%pri[j]==<span class="hljs-number">0</span>)
+            &#123;
+                eu[i*pri[j]]=eu[i]*pri[j];
+                <span class="hljs-keyword">break</span>;
+            &#125;
+            eu[i*pri[j]]=eu[i]*(pri[j]<span class="hljs-number">-1</span>);
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">PowerMod</span><span class="hljs-params">(ll a,ll b,ll c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> k;
+    k=a;
+    <span class="hljs-keyword">while</span>(b&gt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-keyword">if</span>(b%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)
+        ans=(ans*k)%c;
+        b=b/<span class="hljs-number">2</span>;
+        k=(k*k)%c;
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t;
+    ll m,n,p;
+    init();
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t);
+    <span class="hljs-keyword">while</span>(t--)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld%lld"</span>,&amp;m,&amp;n,&amp;p);
+        ll ans=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-built_in">min</span>(m,n);i++)
+            f[i]=(m/i)*(n/i);
+        ll tot=<span class="hljs-built_in">min</span>(m,n);
+        inv[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">2</span>;i&lt;=tot;i++)
+           inv[i]=(p-(p/i))*inv[p%i]%p;
+        <span class="hljs-keyword">for</span>(ll i=tot;i&gt;=<span class="hljs-number">1</span>;i--)
+        &#123;
+            g[i]=f[i];
+            <span class="hljs-keyword">for</span>(ll j=<span class="hljs-number">2</span>;i*j&lt;=tot;j++)
+                g[i]=(g[i]-g[i*j]+p)%p;
+            ll temp=g[i];
+            temp=((temp*i)%p*inv[eu[i]])%p;
+            ans=(ans+temp)%p;
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/08/18/HDU5884-%E4%BA%8C%E5%88%86-%E5%A4%9A%E5%8F%89%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HDU5884 二分+多叉哈夫曼树+单调队列</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/08/16/Atcoder2069-%E6%8B%86%E7%82%B9-%E6%9C%80%E7%9F%AD%E8%B7%AF-%E5%B9%B6%E6%9F%A5%E9%9B%86-bfs/">
+                        <span class="hidden-mobile">Atcoder2069 拆点+最短路/并查集+bfs</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "HDU6390 公式推导+容斥&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

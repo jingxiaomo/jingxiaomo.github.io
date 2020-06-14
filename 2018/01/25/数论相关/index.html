@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>数论相关 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-25 18:24">
+      January 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      954 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a><strong>费马小定理</strong></h5><p>假如p是质数，且gcd(a,p)=1，那么 $$a^{p-1}≡1（mod p）$$，即：假如a是整数，p是质数，且a,p互质(即两者只有一个公约数1)，那么a的(p-1)次方除以p的余数恒等于1。</p>
+<p>和同余定理可以一起用在当指数很大的时候。比如要整体MOD 1e9+7，可以对指数MOD 1e9+6，然后再将快速幂得到的MOD 1e9+7。参见nbuoj2700。</p>
+<p>逆元一般用扩展欧几里得算法来求得，如果<img src="http://img.blog.csdn.net/20140613102712781" srcset="/img/loading.gif" alt="img">)为素数，那么还可以根据费马小定理得到逆元为<img src="http://img.blog.csdn.net/20140613103413828" srcset="/img/loading.gif" alt="img">。</p>
+<h5 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h5><p>如果ax≡1 (mod p),且gcd(a,p)=1（a与p互质），则称a关于模p的乘法逆元为x。<br>a和p互质，a才有关于p的逆元。b的逆元，我们用inv(b)来表示，那么(a/b)%p=(a×inv(b))%p=(a%p×inv(b)%p)%p，这样就把除法，完全转换为乘法了 。<br>逆元的求法：<br>方法一：用费马小定理。<br>在p是素数的情况下，x^(p−2)即为x关于p的逆元。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">PowerMod</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> k;
+    k=a;
+    k=k%c;
+    <span class="hljs-keyword">while</span>(b&gt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-keyword">if</span>(b%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)
+        ans=(ans*k)%c;
+        b=b/<span class="hljs-number">2</span>;
+        k=(k*k)%c;
+    &#125;
+    <span class="hljs-keyword">return</span> ans;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">Fermat</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> p)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> PowerMod(x,p<span class="hljs-number">-2</span>,p);
+&#125;</code></pre>
+
+<p>方法二：用扩展欧几里得算法。<br>因为ax≡1(mod p)，所以ax-py=1，应用一下扩展欧几里得算法即可。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">extgcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> d,<span class="hljs-keyword">int</span> &amp;x,<span class="hljs-keyword">int</span> &amp;y)</span>   <span class="hljs-comment">//a,b都为正整数</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123;d=a;x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;&#125;
+    <span class="hljs-keyword">else</span>&#123;extgcd(b,a%b,d,y,x);y=y-x*(a/b);&#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">inverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> p)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> d,x,y;
+    extgcd(a,p,d,x,y);
+    <span class="hljs-keyword">return</span> d==<span class="hljs-number">1</span>?(x%p+p)%p:<span class="hljs-number">-1</span>; <span class="hljs-comment">//x是应为正整数，即需要若x为负整数，则需要将之化正，即与负数取模同理，将x加上p，直至x&gt;0为止，所得的数即为最小的乘法逆元。</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> a,p;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;a,&amp;p);
+    inverse(a,p);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>方法三：线性时间求所有逆元。</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mutl</span><span class="hljs-params">(<span class="hljs-keyword">int</span> mod)</span></span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">int</span> inv[M];inv[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;<span class="hljs-comment">//边界条件 </span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=M;i++) 
+		inv[i]=((-(mod/i)*inv[mod%i])%mod+mod)%mod; <span class="hljs-comment">//防止出现负数 </span>
+	<span class="hljs-keyword">return</span> ; 
+&#125;</code></pre>
+
+<p>这个方法不限于求单个逆元，比前两个好，它可以在O(n)的复杂度内算出n个数的逆元，递归就是上面的写法，加一个记忆性递归，就可以了，递推这么写：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> inv[N];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;
+    inv[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;N;i++)&#123;
+        inv[i]=(p-p/i)*inv[p%i]%p;
+    &#125;
+&#125;</code></pre>
+
+<p>阶乘的逆元</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    fac[<span class="hljs-number">0</span>]=fac[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=MAXN;i++)
+        fac[i]=fac[i<span class="hljs-number">-1</span>]*i%MOD;
+    inv[MAXN]=PowerMod(fac[MAXN],MOD<span class="hljs-number">-2</span>,MOD);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=MAXN<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)
+        inv[i]=inv[i+<span class="hljs-number">1</span>]*(i+<span class="hljs-number">1</span>)%MOD;
+&#125;</code></pre>
+
+<h5 id="调和级数"><a href="#调和级数" class="headerlink" title="调和级数"></a>调和级数</h5><p>1+1/2+1/3+……+1/n=ln(n)。</p>
+<h5 id="唯一分解定理"><a href="#唯一分解定理" class="headerlink" title="唯一分解定理"></a>唯一分解定理</h5><p>任何一个大于1的自然数N，有标准分解式$$N=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$$。</p>
+<p>它的正因子个数为$$(1+a_1)(1+a_2)…(1+a_n)$$。</p>
+<p>正因子数之和为$$(1+p_1+p_1^2+…+p_1^{a_1})(1+p_2+p_2^2+…+p_2^{a_2})…(1+p_n+p_n^2+…+p_n^{a_n})$$。</p>
+<h5 id="费马大定理"><a href="#费马大定理" class="headerlink" title="费马大定理"></a>费马大定理</h5><p>当整数n&gt;2时，关于x,y,z的方程$$x^n+y^n=z^n$$没有正整数解。</p>
+<h5 id="勾股数的构造"><a href="#勾股数的构造" class="headerlink" title="勾股数的构造"></a>勾股数的构造</h5><p>$$a^2+b^2=c^2$$，已知a，构造出b和c。</p>
+<p>若a=1或a=2，无解；</p>
+<p>若a为奇数，$$b=\frac{a^2-1}{2}$$，$$c=\frac{a^2+1}{2}$$；</p>
+<p>若a为偶数，$$b=\frac{a^2}{4}-1$$，$$c=\frac{a^2}{4}+1$$。</p>
+<p>过程：</p>
+<p>因为$$a=b^2-c^2$$所以$$a=(b+c)*(b-c)$$。</p>
+<p>当$$a^2%2=1$$时，$$\left{\begin{array}{}c+b=a^2 \c-b=1\end{array}\right.$$。</p>
+<p>当$$a^2%2=0$$时，$$\left{\begin{array}{}c+b=\frac{a^2}{2} \c-b=2\end{array}\right.$$。</p>
+<p>解方程即可。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E7%BB%84%E5%90%88%E6%95%B0%E5%8F%96%E6%A8%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">组合数取模</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%92%8C%E4%BD%8E%E7%B2%BE%E5%BA%A6%E7%9A%84%E4%B9%98%E9%99%A4%E6%B3%95-%E5%A4%A7%E6%95%B0%E5%8F%96%E6%A8%A1/">
+                        <span class="hidden-mobile">高精度和低精度的乘除法&&大数取模</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数论相关&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

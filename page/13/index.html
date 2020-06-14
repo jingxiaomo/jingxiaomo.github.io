@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/06/%E8%AE%A1%E8%92%9C%E5%AE%A2%E9%A2%98-%E5%89%8D%E5%90%8E%E7%BC%80-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">计蒜客题 前后缀和+二分答案</a>
+
+      <a href="/2018/04/06/%E8%AE%A1%E8%92%9C%E5%AE%A2%E9%A2%98-%E5%89%8D%E5%90%8E%E7%BC%80-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：有一个长度为n且由a和b组成的字符串，可以删除其中一个子串（可以不删），使得删除后的字符串的“变化”次数小于等于m次且最长。
+变化：如果a[i]!=a[i+1]则为一次变化。
+输出删除后最长的长度。
+思路：最近好像经常做前缀和+二分的题目？
+题目里出现了最长这种词语，所以要往二分答案上想（然而我还是看了题解做的QAQ
+所以枚举删除的子串的长度，其他就由前后缀和预处理出来就可以了。
+复杂度是n</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-06
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/04/%E8%AE%A1%E8%92%9C%E5%AE%A2%E6%9F%90%E9%A2%98-%E6%89%93%E8%A1%A8%E6%89%BE%E8%A7%84%E5%BE%8B/">计蒜客题 打表找规律</a>
+
+      <a href="/2018/04/04/%E8%AE%A1%E8%92%9C%E5%AE%A2%E6%9F%90%E9%A2%98-%E6%89%93%E8%A1%A8%E6%89%BE%E8%A7%84%E5%BE%8B/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：给定正整数a，b并且a与b互质且满足a&lt;b。
+在所有小于b的自然数构成的集合A = {1，2，3，… ，b-1}中，称(c,d),c,d∈A中，为一个有序数对简称序偶。
+求c和d相乘后模b等于a的序偶有多少对。
+思路：打表大法好。
+打表之后可以发现跟a无关，然后看到数列是这样子的
+1, 2, 2, 4, 2, 6, 4, 6, 4, 10, 4, 12, 6, 8, 8, 16, 6,</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/04/projecteuler234-%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95-%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">Project Euler234 素数筛法+容斥原理</a>
+
+      <a href="/2018/04/04/projecteuler234-%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95-%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：L(x)为小于等于sqrt(x)的最大素数，R(x)为大于等于sqrt(x)的最小素数。
+若一个数x只能被L(x)和R(x)其中一个整除，我们称之为奇异数。
+对于一个正整数n，求[4,n]中所有奇异数的总和。
+思路：首先sqrt(x)为素数的话肯定不符合条件。
+而且一个非素数的L(x)和R(x)肯定是相邻的素数，所以就考虑每一个素数到下一个素数这个区间。
+那么在这个区间就要求出只能被L整除或</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/02/ST%E8%A1%A8/">ST表</a>
+
+      <a href="/2018/04/02/ST%E8%A1%A8/" class="index-excerpt">
+        
+        
+          
+        
+        <div>视频大法好：https://www.bilibili.com/video/av18735440?from=search&amp;seid=13498212845468537633qew
+模板：O(nlogn)预处理，O(1)查询。空间O(nlogn)。
+int d[1000006][25];//预处理得到的dp[i][j]表示从第i位开始长度为2^j当中最小的值
+int mn[1000006];/</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-02
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/01/CodeForces939E-%E4%B8%89%E5%88%86/">CodeForces939E 三分</a>
+
+      <a href="/2018/04/01/CodeForces939E-%E4%B8%89%E5%88%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：有一个集合S，进行Q次操作。
+第一种操作：在集合S中添加元素x，保证x不小于S中的任何元素。
+第二种操作：选出一个S的子集s，让max(s)-mean(s)最大（max(s)表示这个子集的最大值，mean(s)表示这个子集的平均数），输出这个最大值。
+思路：经过多次举例，可以知道s中，当前的最大值一定是要选的，因为这个权重比较大，然后对于这个平均值，可以再举例分析。
+肯定是从左往右取，比如1</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-01
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/01/%E4%B8%89%E5%88%86%E6%9F%A5%E6%89%BE/">三分查找</a>
+
+      <a href="/2018/04/01/%E4%B8%89%E5%88%86%E6%9F%A5%E6%89%BE/" class="index-excerpt">
+        
+        
+          
+        
+        <div>参考博客：https://blog.csdn.net/beiyouyu/article/details/7875480
+概念在二分查找的基础上，在右区间（或左区间）再进行一次二分，这样的查找算法称为三分查找，也就是三分法。
+三分查找通常用来迅速确定最值。
+三分法所面向的搜索序列的要求是：序列为一个凸性函数。通俗来讲，就是该序列必须有一个最大值（或最小值），在最大值（最小值）的左侧序列，必须满足不严</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-01
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/03/28/CodeForces954E-%E6%80%9D%E7%BB%B4/">CodeForces954E 思维</a>
+
+      <a href="/2018/03/28/CodeForces954E-%E6%80%9D%E7%BB%B4/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+思路：
+纯看题解的题QAQ
+首先可以把题目中的式子化成这样
+所以可以把每个(ti-T)分成两类，一类正，一类负。
+用贪心的思想,可以发现有一半必须全选，另一半选最靠近T的那些，因为ti-T越小，xi越大。
+所以排序之后贪心就可以了。
+涨姿势了原来这题目是这么做的。
+可是这道题我debug了很久QAQ到现在我也不知道之前WA的写法错哪儿了 我只不过把之前负的的计数改成了正的 就AC了 很奇怪</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-03-28
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/03/27/bzoj1853-%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86-dfs/">bzoj1853 容斥原理+dfs</a>
+
+      <a href="/2018/03/27/bzoj1853-%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86-dfs/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+所有只含6与8的数叫做幸运数字，幸运数字的倍数叫做近似幸运数字，幸运数字都是近似幸运数字。 给定区间[l,r]求其中近似幸运数字个数。1 &lt; =l&lt; =r&lt; =10000000000 
+思路：
+类似以前做的能被3，5，7整除的数呀什么的。
+首处理出所有的幸运数字， 然后找到这些数中的”幸运素数”(就是这些数组成的序列中不能被其他元素整除的数）。
+找到这些数,那么 其实就把</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-03-27
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/03/27/CodeForces954G/">CodeForces954G 二分答案+差分数组</a>
+
+      <a href="/2018/03/27/CodeForces954G/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：城墙上有n个连成一排的区域，每个区域中有一些弓箭手。弓箭手们都有r的防御半径，也就是说，弓箭手能够防守到向左或向右r个区域加上自己所处区域的范围。每个区域的防御等级为能够防守到该区域的弓箭手数量的总和，而城墙的防御等级为各区域防御等级的最小值。现在我们共有k名备用弓箭手可以增援这n个区域。问增援后城墙的防御等级的最大值能达到多少。
+思路：
+二分答案。
+从左到右遍历这些区域，只要有区域i防御等</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-03-27
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/03/14/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">高斯消元</a>
+
+      <a href="/2018/03/14/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>异或方程组模板（以HDU3364为例）题意：给出n盏灯和m个操作，最开始灯都是关的状态，每次操作可以把k盏灯取反，给你n盏灯的最终状态，问达到这个状态有几种方案。
+思路：解异或方程，这里要注意要有一个初始矩阵，因为在高斯消元的过程中矩阵会发生变化。
+#define MAXN 55
+typedef long long ll;
+int equ, var;///equ个方程 var个变量
+int ori</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-03-14
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/12/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/14/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

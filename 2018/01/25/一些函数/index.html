@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>一些函数 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-25 17:57">
+      January 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      839 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf"></a>sprintf</h5><p>​         sprintf()最常见的应用之一莫过于把整数打印到字符串中，如：<br>​         sprintf(s, “%d”, 123);  //把整数123打印成一个字符串保存在s中；<br>​         sprintf(s, “%8x”, 4567);  //小写16进制，宽度占8个位置，右对齐。</p>
+<h5 id="atoi-atof-atol"><a href="#atoi-atof-atol" class="headerlink" title="atoi(atof)(atol)"></a>atoi(atof)(atol)</h5><p>​         功能：把字符串转换成整型数（浮点数）（长整数）；</p>
+<p>​         表头文件 #include &lt;stdlib.h&gt;；</p>
+<p>​         程序例: </p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt; </span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt; </span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123; 
+<span class="hljs-keyword">int</span> n; 
+<span class="hljs-keyword">char</span> *str = <span class="hljs-string">"1234"</span>; 
+n = atoi(str); 
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">"string = %s integer = %d\n"</span>, str, n); 
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125; 
+运行结果是:
+<span class="hljs-built_in">string</span> =<span class="hljs-number">1234</span> integer=<span class="hljs-number">1234</span></code></pre>
+
+<p>​         运行结果是:<br>​         string =1234 integer=1234</p>
+<h5 id="lower-bound-upper-bound-函数"><a href="#lower-bound-upper-bound-函数" class="headerlink" title="lower_bound(upper_bound)函数"></a>lower_bound(upper_bound)函数</h5><p>​          头文件：#include <algorithm></p>
+<p>​          lower_bound(a,a+10,x);//在数组a中寻找大于或等于x的第一个位置，所以使用的时候常常要减a。</p>
+<p>​          upper_bound(a,a+10,x);//在数组a中寻找大于x的第一个位置。</p>
+<h5 id="sscanf函数"><a href="#sscanf函数" class="headerlink" title="sscanf函数"></a>sscanf函数</h5><p>功能：从一个字符串中读进与指定格式相符的数据。</p>
+<p>例子：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">char</span> buf[<span class="hljs-number">512</span>] = ;
+　　<span class="hljs-built_in">sscanf</span>(<span class="hljs-string">"123456 "</span>, <span class="hljs-string">"%s"</span>, buf);
+　　<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, buf);</code></pre>
+
+<p>　　结果为：123456</p>
+<h5 id="next-permutation函数-STL"><a href="#next-permutation函数-STL" class="headerlink" title="next_permutation函数(STL)"></a>next_permutation函数(STL)</h5><p>功能：字典序列举排列。</p>
+<p>例子：</p>
+<pre><code class="hljs c++">sort(p,p+n);
+<span class="hljs-keyword">do</span>
+&#123;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>,p[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+&#125;<span class="hljs-keyword">while</span>(next_permutation(p,p+n));</code></pre>
+<h5 id="strchr-s-c-函数"><a href="#strchr-s-c-函数" class="headerlink" title="strchr(s,c)函数"></a>strchr(s,c)函数</h5><p>strchr(s,c)：查找字符串s中首次出现字符c的位置；如果找到指定的字符则返回该字符所在地址，否则返回 NULL。</p>
+<h5 id="memset-a-0-sizeof-a-函数"><a href="#memset-a-0-sizeof-a-函数" class="headerlink" title="memset(a,0,sizeof(a))函数"></a>memset(a,0,sizeof(a))函数</h5><p>头文件：#include&lt;string.h&gt;</p>
+<p>只可以填充0或者-1。</p>
+<h5 id="fill-arr-arr-n-key-函数"><a href="#fill-arr-arr-n-key-函数" class="headerlink" title="fill(arr, arr + n, key)函数"></a>fill(arr, arr + n, key)函数</h5><p>头文件：#include<algorithm></p>
+<h5 id="floor函数"><a href="#floor函数" class="headerlink" title="floor函数"></a>floor函数</h5><p>floor(x)返回的是小于或等于x的最大整数。<br>如：     floor(10.5) == 10    floor(-10.5) == -11</p>
+<h5 id="ceil函数"><a href="#ceil函数" class="headerlink" title="ceil函数"></a>ceil函数</h5><p>ceil(x)返回的是大于或等于x的最小整数。</p>
+<p>如：     ceil(10.5) == 11    ceil(-10.5) ==-10</p>
+<h5 id="unique-函数"><a href="#unique-函数" class="headerlink" title="unique()函数"></a>unique()函数</h5><p>去重函数，STL中unique的函数 unique的功能是去除相邻的重复元素(只保留一个),还有一个容易忽视的特性是它并不真正把重复的元素删除。它是c++中的函数，所以头文件要加#include&lt;iostream.h&gt;，具体用法如下：</p>
+<p>​    int num[100];</p>
+<p>   unique(num,mun+n)返回的是num去重后的尾地址，之所以说比不真正把重复的元素删除，其实是，该函数把重复的元素一到后面去了，然后依然保存到了原数组中，然后返回去重后最后一个元素的地址，因为unique去除的是相邻的重复元素，所以一般用之前都会要排一下序。</p>
+<h5 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h5><p>substr(字符串,截取开始位置,截取长度) //返回截取的字</p>
+<p>substr(‘Hello World’,0,1) //返回结果为 ‘H’  *从字符串第一个字符开始截取长度为1的字符串</p>
+<p>string sub1 = s.substr(5); //只有一个数字5表示从下标为5开始一直到结尾：sub1 = “56789”</p>
+<p>string sub2 = s.substr(5, 3); //从下标为5开始截取长度为3位：sub2 = “567”</p>
+<h5 id="nth-element"><a href="#nth-element" class="headerlink" title="nth_element()"></a>nth_element()</h5><p>通过调用nth_element(start, start+n, end) 方法可以使第n大元素处于第n位置，并且比这个元素小的元素都排在这个元素之前，比这个元素大的元素都排在这个元素之后，但不能保证他们是有序的。</p>
+<p>可以用来求解中位数：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> mid = n%<span class="hljs-number">2</span> == <span class="hljs-number">1</span> ? n/<span class="hljs-number">2</span> : n/<span class="hljs-number">2</span><span class="hljs-number">-1</span>;  
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)  
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);  
+nth_element(a,a+mid,a+n);  
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,a[mid]);</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E4%B8%80%E4%BA%9B%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">一些输入输出格式</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/25/%E5%90%8C%E4%BD%99%E5%AE%9A%E7%90%86/">
+                        <span class="hidden-mobile">同余定理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "一些函数&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

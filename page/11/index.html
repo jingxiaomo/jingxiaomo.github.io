@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/08/BAPC-2014-PreliminaryH-%E4%BA%8C%E5%88%86-%E8%B4%AA%E5%BF%83/">BAPC2014PreliminaryH 二分+贪心</a>
+
+      <a href="/2018/07/08/BAPC-2014-PreliminaryH-%E4%BA%8C%E5%88%86-%E8%B4%AA%E5%BF%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给n个选手评分，你喜欢f个选手，有s个选手可以晋级，每个选手有初始分数，你有k张票，每张票都有一个分数，每个选手只能给一张票（或者不给），票必须给完。分数最高的s个选手晋级，如果你喜欢的选手跟其他选手平票了，还是算你喜欢的选手晋级。要求喜欢的选手晋级的数量最多是多少。
+
+思路：
+很容易看出是二分+贪心。
+fav：喜欢的选手。nfav：其他选手。
+错误想法：
+如果k大于f的话，就先把分数最小</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-08
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/04/latex%E5%85%AC%E5%BC%8F%E7%94%A8%E6%B3%95/">latex公式用法</a>
+
+      <a href="/2018/07/04/latex%E5%85%AC%E5%BC%8F%E7%94%A8%E6%B3%95/" class="index-excerpt">
+        
+        
+          
+        
+        <div>基本用法排版方式行级元素(inline)，行级元素使用$...$，两个$表示公式的首尾。
+块级元素(displayed)，块级元素使用$$...$$。块级元素默认是居中显示的。
+常用西文符号\alpha, \beta, …, \omega代表α,β,…ω. 大写字母,使用\Gamma, \Delta, …, \Omega代表Γ,Δ,…,Ω.
+上标与下标使用 ^和 _ 表示上标和下标. 例如,x_i</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/hexo/">hexo</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/04/%E4%B8%8A%E6%B5%B7%E9%AB%98%E6%A0%A1%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9BJ-%E4%BA%8C%E5%88%86-%E5%8C%B9%E9%85%8D-%E7%BD%91%E7%BB%9C%E6%B5%81/">上海高校金马五校赛J 二分+匹配/网络流</a>
+
+      <a href="/2018/07/04/%E4%B8%8A%E6%B5%B7%E9%AB%98%E6%A0%A1%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9BJ-%E4%BA%8C%E5%88%86-%E5%8C%B9%E9%85%8D-%E7%BD%91%E7%BB%9C%E6%B5%81/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出一个n个数字的数列a，两个数之间的差异值定义为$$max{|A_i-A_{i-1} |,2≤i≤n}$$。现在要插入m个数，可以插在最前面，中间，最后面，问插入后的最小的差异值为多少。
+思路：
+容易想到可以二分答案，知道答案后每个坑位可以填哪些数字就可以确定了。
+匹配：
+考虑二分图匹配的思路。m个数字和n+1个坑位进行匹配，这里会发现又问题，因为如果有个坑位不放数字，这样进行匹配的话不</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/04/%E4%B8%8A%E6%B5%B7%E9%AB%98%E6%A0%A1%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9B-%E5%90%88%E7%BA%A6%E6%95%B0/">上海高校金马五校赛B DFS+预处理</a>
+
+      <a href="/2018/07/04/%E4%B8%8A%E6%B5%B7%E9%AB%98%E6%A0%A1%E9%87%91%E9%A9%AC%E4%BA%94%E6%A0%A1%E8%B5%9B-%E5%90%88%E7%BA%A6%E6%95%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给定一棵n个节点的树，并且根节点的编号为p，第i个节点有属性值vali, 定义F(i): 在以i为根的子树中，属性值是$$val_i$$的合约数的节点个数。y 是 x 的合约数是指 y 是合数且 y 是 x 的约数。小埃想知道$$\sum_{i=1}^n i·F(i)$$对1000000007取模后的结果.  
+思路：
+有点类似之前做的一道CF题…就都是整体考虑。
+一次DFS就可以了，从根</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/05/15/2018%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E7%AC%AC%E4%B8%80%E5%9C%BAC-%E5%BC%BA%E8%BF%9E%E9%80%9A%E7%BC%A9%E7%82%B9/">2018计蒜之道第一场C 强连通缩点</a>
+
+      <a href="/2018/05/15/2018%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E7%AC%AC%E4%B8%80%E5%9C%BAC-%E5%BC%BA%E8%BF%9E%E9%80%9A%E7%BC%A9%E7%82%B9/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+科学家有一个容量为N的书架，书里有元素，每个元素有一个污染值。
+有两种操作，
+实习生拿了一本新书替换了x位置的书,新书对应元素的污染值为y。
+大科学家得到了新的结果，如果x位置的书对应的元素加入了实验，那么[l,r]区间内的书对应的元素都必须拿来做实验。
+大科学家希望在完成一次科学实验的前提下（不能不选任何元素），这次实验的总污染值最小。问这个最小的总污染值是多少。
+保证大科学家的书籍总数</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-05-15
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/05/12/HDU4848-%E6%90%9C%E7%B4%A2-%E5%89%AA%E6%9E%9D/">HDU4848 搜索+剪枝</a>
+
+      <a href="/2018/05/12/HDU4848-%E6%90%9C%E7%B4%A2-%E5%89%AA%E6%9E%9D/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有n个城市，每个城市与另一个城市之间都有路，需要从一个城市到另一个城市需要$$t_{xy}$$的时间，一个人到从第一个城市开始视察每一个城市，到每个城市都有一个deadline，到达这个城市的时间不能超过这个deadline，问最小的到达每个城市的到达时间的总和为多少。（n&lt;=30）
+思路：
+先用floyd处理出每两个点之间的最短路。
+n&lt;=30本来肯定是会超时的，可以考虑剪枝</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-05-12
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/05/08/ZOJ4027-DP-%E9%A2%84%E5%A4%84%E7%90%86/">ZOJ4027 DP+预处理</a>
+
+      <a href="/2018/05/08/ZOJ4027-DP-%E9%A2%84%E5%A4%84%E7%90%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>参考博客：https://blog.csdn.net/V5ZSQ/article/details/80205265
+题意：
+有一串括号，每个括号有一个权值，当遇到前一个括号为’(‘，后一个括号为’)’时，可以进行交换，交换的价值为$$v_k*v_{k+1}$$，求价值的最大值。
+思路：
+DP题…没做出来是我的锅QAQ一种转移状态考虑不出来就试着想想别的状态？
+每个左括号能到达的最右的位置是固定的，</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-05-08
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/05/04/ZOJ4028-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">ZOJ4028 差分约束</a>
+
+      <a href="/2018/05/04/ZOJ4028-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有一个长度为n的隐藏的数列a，再给出一个数列f，f[i]是到i（包括自己）的最长递增数列的长度，给出每个数的范围，求出这个隐藏的数列a。
+思路：
+差分约束。
+当$$f_i=f_j+1(j&lt;i)$$时，有$$a_i&gt;a_j$$，即$$a_j-a_i&lt;=-1$$，所以有i-&gt;j的权值为-1的边。
+当$$f_i=f_j(j&lt;i)$$时，有$$a_i&lt;=a_j$</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-05-04
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/05/03/ZOJ4029-%E6%95%B0%E5%AD%A6-%E4%BA%8C%E5%88%86/">ZOJ4029 数学+预处理+二分</a>
+
+      <a href="/2018/05/03/ZOJ4029-%E6%95%B0%E5%AD%A6-%E4%BA%8C%E5%88%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出n个ai，m个pi，$$z_i=\sum\limits_{1 \le i \le n}\Bigl\lfloor \frac{a_i}{\lceil\log_{p}a_i\rceil}\Bigr\rfloor$$，求$$(\sum\limits_{i=1}^{m} i \cdot z_i) \bmod 10^9$$。
+$$1 \le n, m \le 5 \times 10^5$$
+$$</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-05-03
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/04/27/bitset%E7%94%A8%E6%B3%95/">bitset用法</a>
+
+      <a href="/2018/04/27/bitset%E7%94%A8%E6%B3%95/" class="index-excerpt">
+        
+        
+          
+        
+        <div>参考博客：
+https://www.cnblogs.com/RabbitHu/p/bitset.html
+bitset可以用来压位，可以用在开bool数组内存不够的时候。
+bitset存储二进制数位。
+bitset就像一个bool类型的数组一样，但是有空间优化——bitset中的一个元素一般只占1 bit，相当于一个char元素所占空间的八分之一。
+bitset中的每个元素都能单独被访问，例如对于</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-04-27
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/12/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

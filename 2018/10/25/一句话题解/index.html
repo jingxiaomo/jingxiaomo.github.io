@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>一句话题解 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-10-25 10:34">
+      October 25, 2018 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h3 id="NAQC2017D"><a href="#NAQC2017D" class="headerlink" title="NAQC2017D"></a>NAQC2017D</h3><p><strong>题意：</strong></p>
+<p>有一只猫去捉n(n&lt;=15)只老鼠，猫的初始位置在(0,0)，给出n只老鼠的x,y,s，分别表示所在位置和s秒后会钻入地下，猫每捉到一只老鼠速度会*m(m&lt;1)，问猫的初速度至少为多少才能捉到所有老鼠。</p>
+<p><strong>思路：</strong></p>
+<p>看数据范围很容易想到要状压dp，可是发现每个状态要记录的有两个量，时间和初速度，如果把其中一个加一维，就开不下了。</p>
+<p>其实对于类似记录的有两个量的题目，还可以用二分+dp的思路。</p>
+<p>这里二分初速度，然后dp记录下到该状态的最小时间就可以了。</p>
+<p>这里我状压的两重循环写反了…结果debug了好久啊（甚至下了数据…</p>
+<h3 id="NAQC2016D"><a href="#NAQC2016D" class="headerlink" title="NAQC2016D"></a>NAQC2016D</h3><p><strong>题意：</strong></p>
+<p>给出一个括号序列，可以选择翻转一个区间，问能否匹配。其中len&lt;=5000。</p>
+<p><strong>思路：</strong></p>
+<p>如果把’(‘记为1，把’)’记为-1。匹配的条件为每个前缀和都&gt;=0而且总的前缀和为0。</p>
+<p>根据数据范围可以看出可以dp。</p>
+<p>没想到要怎么dp…其实可以先考虑一下这如果要搜索要怎么写，然后记忆化一下。</p>
+<p>这里可以设计状态$$dp[pos][pre][sta]$$，其中sta表示没有翻转，翻转过且连续，翻转过且没有连续。</p>
+<p>然后转移一下就可以了。</p>
+<h3 id="Codeforces1073C"><a href="#Codeforces1073C" class="headerlink" title="Codeforces1073C"></a>Codeforces1073C</h3><p><strong>题意：</strong></p>
+<p>给出一个包含’L’,’R’,’U’,’D’的序列，要到达(x,y)，而且可以改变一些字符，把改变的长度定义为改的最后一个字符和改的第一个字符的距离。问这个改变的长度最小为多少。如果无论怎么改都不能到达(x,y)，则输出-1。</p>
+<p><strong>思路：</strong></p>
+<p>可以对答案进行二分。</p>
+<p>确定好改变的长度后，枚举改变的区间，这个区间里面的值都是可以改的，所以统计一下除了这个区间以外的走得到的所在的位置，因为区间里面的都是可以改的，所以只要当前位置到最终位置的曼哈顿距离小于等于区间长度就说明是可行的，否则就不可行。</p>
+<h3 id="Codeforces1073D"><a href="#Codeforces1073D" class="headerlink" title="Codeforces1073D"></a>Codeforces1073D</h3><p><strong>题意：</strong></p>
+<p>有n个店家形成一个环，初始有T元钱，每个店家可以买$$a_1,a_2,…,a_n$$元的东西，当前的钱可以买的时候就一定要买，问最终能买多少东西。</p>
+<p><strong>思路：</strong></p>
+<p>可以模拟。</p>
+<p>对于n个店家，按顺序看能买哪些店家。</p>
+<p>然后对这些可以买的店家计算可以买几次，钱也相应更新就可以了。</p>
+<h3 id="Codeforces1076D"><a href="#Codeforces1076D" class="headerlink" title="Codeforces1076D"></a>Codeforces1076D</h3><p><strong>题意：</strong></p>
+<p>给出n个点m条边，把从1到i的最短路记为$$d_i$$，问在最多剩下k条边的情况下，使$$d_i$$不变的个数最多。求这些剩下的边。</p>
+<p><strong>思路：</strong></p>
+<p>要剩下的肯定是在所有最短路中经过最多次数的边。</p>
+<p>这里怎么处理呢。可以在求最短路的过程中记录下每个顶点的前驱$$fa[i]$$，然后就形成一棵最短路径树。因为要的是经过最多次数的边，所以bfs就可以了。</p>
+<h3 id="Codeforces1076E"><a href="#Codeforces1076E" class="headerlink" title="Codeforces1076E"></a>Codeforces1076E</h3><p><strong>题意：</strong></p>
+<p>给出一棵有n个结点的树，每个结点的权值初始都为0。给出m组操作，在v的子树中与它的距离小于等于d的结点的权值都增加x。问在这些操作之后，结点的权值分别为多少。</p>
+<p><strong>思路：</strong></p>
+<p>这里是区间修改单点查询。</p>
+<p>因为<u>每个结点的权值变化只与祖先的操作有关系</u>，所以就可以直接把每个深度当成区间。在dfs的过程中进入一个有操作的结点，对深度的区间进行修改，这样它的子树就会受到影响。然后单点查询就可以。出这个结点要把区间修改回来，因为从该结点出来之后访问的就不是它的子树了，它的操作对那些结点不会有影响。</p>
+<h3 id="Codeforces1077F2"><a href="#Codeforces1077F2" class="headerlink" title="Codeforces1077F2"></a>Codeforces1077F2</h3><p><strong>题意：</strong></p>
+<p>给出n个数，在每k个数里至少选一个，总共选x个，问最大值为多少。</p>
+<p><strong>思路：</strong></p>
+<p>可以想到是dp+单调队列。</p>
+<p>刚开始想的是这么设计状态$$dp[i][j]$$：到第i个总共选了j个的最大值，然后分选和不选来转移，这样子是不行的，因为你得确定知道转移过来的这个到底有没有被选。</p>
+<p>所以要这么设计状态$$dp[i][j]$$：选了第i个总共选了j个的最大值。</p>
+<h3 id="Codeforces1054D"><a href="#Codeforces1054D" class="headerlink" title="Codeforces1054D"></a>Codeforces1054D</h3><p><strong>题意：</strong></p>
+<p>给出n个数，每个数都可以$$\oplus(2^k-1)$$，在所有区间中，让区间异或为0的区间最少。问在这种情况下，异或不为0的区间有多少个。</p>
+<p><strong>思路：</strong></p>
+<p>首先异或是可以前缀和的，xor[l,r]=pre[r]-pre[l-1]。</p>
+<p>所以要使异或和相同的最少。因为在一个区间中如果两个数都取反就相当于没变，所以每个异或只有两种情况。</p>
+<p>所以就贪心取不同的前缀和然后计算一下就可以了。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/10/25/%E6%A6%82%E7%8E%87-%E6%9C%9F%E6%9C%9B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">概率 & 期望</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/10/22/%E7%8E%B0%E5%AE%9F%E3%81%A8%E3%81%84%E3%81%86%E5%90%8D%E3%81%AE%E6%80%AA%E7%89%A9%E3%81%A8%E6%88%A6%E3%81%86%E8%80%85%E3%81%9F%E3%81%A1/">
+                        <span class="hidden-mobile">现実という名の怪物と戦う者たち</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "一句话题解&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

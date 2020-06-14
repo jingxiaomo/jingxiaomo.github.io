@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>tips - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-02-09 23:18">
+      February 9, 2019 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>不要直接在辅导书上做题！因为要做很多遍。</p>
+<p>推荐作息时间表：</p>
+<p>6：30 起床(严格执行)</p>
+<p>6：40—7：00 洗漱10分钟，跑步10分钟。</p>
+<p>7：10—7：30 吃饭 少油，少糖，有汤，吃七成饱</p>
+<p>7：40—8：20 背单词</p>
+<p>8：30—11：40 做训练 做练习的速度要越快越好，最好看着手表做</p>
+<p>11：50—12：20 吃饭 有肉，多菜，九成饱</p>
+<p>12：20—13：00 午睡 午睡不可超过一小时(严格执行)</p>
+<p>13：00—17：00 做练习</p>
+<p>17：00—17：30 跑步，假如条件允许，做一些力量性(哑铃类)的运动</p>
+<p>17：30—18：00 吃晚饭要八成饱，多吃青菜少吃肉类</p>
+<p>18：00—22：00 看书、做练习</p>
+<p>22：00—23：00 锻炼、洗漱、洗澡</p>
+<p>23：00—23：30 背单词</p>
+<p>23：30—6：30 睡觉 (严格执行)</p>
+<h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><p>在考试前复习全书应该至少是过了两遍、历年真题及真题解析3—4遍。</p>
+<p>最好是在九月或十月就得开始做真题了，尽量是一周一套。</p>
+<h3 id="高数"><a href="#高数" class="headerlink" title="高数"></a>高数</h3><ul>
+<li>基础知识课本：张宇《高等数学十八讲》</li>
+<li>习题：《张宇考研数学习题1000题》辅以李老师660题刷一下概念小题</li>
+<li>模拟题：《张宇考研模拟题8套卷》+《张宇最后考场4套卷》 合工大超越135</li>
+<li>真题：《张宇考研真题大全解》</li>
+</ul>
+<h3 id="线代"><a href="#线代" class="headerlink" title="线代"></a>线代</h3><ul>
+<li>基础知识课本：李永乐《线性代数辅导讲义》</li>
+<li>听一遍张或汤的基础班了解基本概念后认真听李永乐老师的线代课。</li>
+</ul>
+<h3 id="概率"><a href="#概率" class="headerlink" title="概率"></a>概率</h3><ul>
+<li>曹显兵的概率论辅导讲义</li>
+</ul>
+<p>3-6月底：</p>
+<p>尽力把高数基础知识过一遍，实在看不完，也至少要看完微积分上下。</p>
+<p>课本要不要看：建议高数主要是看公式推导，定理性质推导例题。积分和求导部分课后题有必要做。线代课本定理，例题都要看。课后题可以不做。</p>
+<p>7-8月底：</p>
+<p>至少要完成基础知识完完整整一遍，讲义看完，习题做完。可以对着强化课程学习，一边看视频整理笔记，整理完听课笔记马上开始刷题。</p>
+<p>9-10月底：</p>
+<p>继续刷1000题。最迟到十月上旬要完成1000题。完成真题和模拟卷。</p>
+<p>11月-12月底：</p>
+<p>完成剩余的真题和模拟题。</p>
+<p>对冲击120+的人推荐毛岗源的考研数学解题技巧那本书，认真学一遍受益匪浅，会补充很多其他书上没有的东西，不过此书颇厚，学时候要挑着看。对于冲击150的人推荐大学数学竞赛教程（今年压轴题题源）与高等数学证明题500例解析（专攻各类证明），解决压轴题。还有一本书叫李正元最后冲刺超越135分，是少见的分题型习题书，我做了一半实在没时间做了，书不厚但是题难，大家有兴趣的可以最后买本看看。</p>
+<p>冲刺时候老师还推荐一位：方浩。押题请看李林，别的不说他出的押题卷本身质量也属于中上。</p>
+<ul>
+<li>模拟卷排序：合工大超越卷（推荐13-19年的都做。淘宝有打印整合版，模拟卷唯一神卷）—合工大共创卷（这个简单一点，和超越卷有部分重合的，做了近两年就行）—张宇八套卷四套卷个别题目（有些题目居然要求泰勒展开到七阶基本毫无意义）—李林押题卷（这卷子我建议明年人手一份吧，既然都连着两年“押中”了）—李永乐老师汤加凤老师各自模拟卷及李正元400题（这个卷子计算量挺大的）等一系列。最后刷模拟卷真题卷时候淘宝买一些答题卡（英语数学），严格按考研时间做，答案铅笔涂，能很好的模拟考场环境，保持上午数学头脑兴奋，下午英语头脑兴奋。</li>
+<li>数学公式最后要经常过。</li>
+<li>题目一定要自己做，题目一定自己做，题目一定自己做。</li>
+</ul>
+<h2 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h2><p>题型分布：（英语一）</p>
+<p>完型10分</p>
+<p>阅读40分</p>
+<p>新题型10分</p>
+<p>翻译10分</p>
+<p>小作文 10分</p>
+<p>大作文20分</p>
+<ul>
+<li><p>英语真题（淘宝最畅销的黄皮书）</p>
+<blockquote>
+<p>模拟和真题</p>
+</blockquote>
+<blockquote>
+<p>可以在背单词期间做2000年之前的真题，2000年之后的真题在背好单词之后用。</p>
+</blockquote>
+</li>
+<li><p>单词：新东方乱序单词书、</p>
+<p>单词一直背到上考场。</p>
+</li>
+<li><p>长难句：看唐迟老师的长难句课。宋逸轩的长难句。</p>
+</li>
+<li><p>阅读：唐迟老师。何凯文《阅读思路解析》。</p>
+</li>
+<li><p>语法：田静。</p>
+</li>
+<li><p>新题型：看徐家朋。</p>
+</li>
+<li><p>作文：何凯文作文写作高分攻略。</p>
+<p><a href="https://mp.weixin.qq.com/s/fKKHFvLSLzT7tjfTGPmahQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/fKKHFvLSLzT7tjfTGPmahQ</a></p>
+<p>潘赟。九宫格的方法。</p>
+<blockquote>
+<p>将作文分类，写出模板，以及一些事物好坏的好句。</p>
+</blockquote>
+</li>
+</ul>
+<p>3月-6月底：</p>
+<p>单词和句子。</p>
+<p>至少要背完一本单词书一遍。</p>
+<p>7-8月底：</p>
+<p>可以开始做阅读。推荐从97年的真题开始做，同时配着阅读的视频学习。</p>
+<p>两个要点：</p>
+<p>阅读思路的总结（比如细节事实题、推理判断题之类）。</p>
+<p>阅读材料的学习（把每篇文章中比较难的句子抄下来进行翻译，然后对照标准翻译来修改）。</p>
+<p>9-10月底：</p>
+<p>继续完成历年真题阅读。近五年的真题不要做。</p>
+<p>十月开始学习作文。</p>
+<p>11月-12月底：</p>
+<p>做五年真题来模拟考试。花一下午三小时去模拟。再把历年的新题型和完型做掉。每周大小作文各两篇。</p>
+<h2 id="政治"><a href="#政治" class="headerlink" title="政治"></a>政治</h2><p>多关心国家大事。</p>
+<p>9月-10月：</p>
+<ul>
+<li><p>大概暑假后期的时候就可以看徐涛的强化课程。</p>
+</li>
+<li><p>要听完一节课之后及时做1000题。</p>
+</li>
+<li><p>听课顺序是马原、史纲、毛中特，思修可以不听。</p>
+</li>
+<li><p>选择题：肖秀荣1000题+风中劲草核心考点、肖秀荣知识点精讲精练（工具书 只当字典别细看）</p>
+<p>快速看一章风中劲草-&gt;做1000题并认真看答案解析-&gt;看一遍本章核心考点</p>
+<p>每天2h左右。</p>
+<p>再刷一遍1000题，重点是错题。然后再穿插看一遍风中劲草核心考点。</p>
+<blockquote>
+<p>努力把知识体系化。</p>
+</blockquote>
+</li>
+</ul>
+<p>11月-12月：</p>
+<ul>
+<li><p>12月中旬有肖秀荣的南京预测3小时。</p>
+</li>
+<li><p>简答题：肖秀荣8套卷、肖秀荣4套卷、肖秀荣形势与政策、新东方预测20题</p>
+<blockquote>
+<p>记住每道题答题的框架，即关键句。</p>
+</blockquote>
+</li>
+</ul>
+<p>政治每年规律是一般单选4A4B4C4D的，顶多一两个偏差，今年也是如此。近几年多选一般有两个左右二选的，五个左右四选的，其他都是三选。把握这个规律包括英语阅读的可以做完自己检查用，当然只是个参考。</p>
+<h2 id="专业"><a href="#专业" class="headerlink" title="专业"></a>专业</h2><p>数据结构：</p>
+<p>目标院校要求的教材。</p>
+<p>高分笔记系列，配合王道。</p>
+<p>1800题 （算法与数据结构考研试题精析）。</p>
+<p>真题。</p>
+<p>算法导论可行？</p>
+<p>3-6月底：</p>
+<p>每天至少都要有1个小时到2个小时的时间进行复习。这个阶段是打基础最好的时间，具体方法就是高分笔记或者考研复习指导其中一本书或者两本书，我建议是高分笔记，比较容易入门。配合着网易云或者网上很多的视频资源，基本上2个月就能掌握一本书。</p>
+<p>7-8月底 ：</p>
+<p>做第一遍真题（留着近三年的试卷下来进行模考）和总结做题流程。</p>
+<p>真题是最重要的参考卷，不仅可以看到题型，还可以总结出出题规律。什么题目必考在你做真题就可以看出来。</p>
+<p>开始总结自己的做题方法。比如时间复杂度怎么求，每个外部排序方式的时间复杂度，还有最开始说的已知两种二叉树遍历序列求另一种序列等等。当你做了一定的题量以后，一定要学会做总结，每种题目要怎么解，怎么样求比较快。</p>
+<p>9-11底：</p>
+<p>刷题，刷题，刷题。真题二刷。</p>
+<p>做留着的近三年试卷，每周一套，按照严格的考研时间进行模考。除了真题之外，数据结构1800题，真题甚至是看过书的习题，都可以拿出来再刷一遍。</p>
+<p>错题本很重要，把真题和经常错的题目整理出来，与总结的解题步骤放在一起。</p>
+<p>这时候可以配合严版的教材和习题一起展开了，特别是在排序和查找之前的章节。这个时候你有了一定的代码积累，再看严版教材就不会有太多的困难。要注意严版教材配套的习题，基础的一定要会，网上也有很多这本书配套的视频，可以自己搜索来看看。</p>
+<p>12月：</p>
+<p>错题本和笔记就可以拿出来一遍一遍的看。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/02/26/AVL%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5%E4%B8%8E%E6%97%8B%E8%BD%AC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AVL树的插入与旋转</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/02/01/PAT%E9%A2%98%E9%9B%86/">
+                        <span class="hidden-mobile">PAT题集</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "tips&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

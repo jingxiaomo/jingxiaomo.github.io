@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>线段树专题 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-01-26 15:59">
+      January 26, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h5 id="POJ-3264"><a href="#POJ-3264" class="headerlink" title="POJ 3264"></a><strong>POJ 3264</strong></h5><p>题意：给出一串的数字，然后给出一个区间a b，输出从a到b的最大的数和最小的数的差</p>
+<p>解题思路：直接跑两次query，一次查询最小，一次查询最大即可。</p>
+<h5 id="POJ-2528"><a href="#POJ-2528" class="headerlink" title="POJ 2528"></a><strong>POJ 2528</strong></h5><p>题意：n（n&lt;=10000)个人依次贴海报,给出每张海报所贴的范围li，ri（1&lt;=li&lt;=ri&lt;=10000000)，求出最后还能看见多少张海报。</p>
+<p>解题思路：离散化+线段树。</p>
+<p>离散化部分：</p>
+<p>如下面的例子（题目的样例），因为单位1是一个单位长度，将下面的</p>
+<p>​      1   2   3   4  6   7   8   10</p>
+<p>​     —  —  —  —  —  —  —  —</p>
+<p>​      1   2   3   4  5   6   7   8</p>
+<p>离散化  X[1] = 1; X[2] = 2; X[3] = 3; X[4] = 4; X[5] = 6; X[7] = 8; X[8] = 10</p>
+<p>于是将一个很大的区间映射到一个较小的区间之中了，然后再对每一张海报依次更新在宽度为1~8的墙上(用线段树），最后统计不同颜色的段数。</p>
+<p>但是只是这样简单的离散化是错误的，</p>
+<p>如三张海报为：1<del>10 1</del>4 6~10</p>
+<p>离散化时 X[ 1 ] = 1, X[ 2 ] = 4, X[ 3 ] = 6, X[ 4 ] = 10<br>第一张海报时：墙的1<del>4被染为1；<br>第二张海报时：墙的1</del>2被染为2，3<del>4仍为1；<br>第三张海报时：墙的3</del>4被染为3，1~2仍为2。<br>最终，第一张海报就显示被完全覆盖了，于是输出2，但实际上明显不是这样，正确输出为3。</p>
+<p>新的离散方法为：在相差大于1的数间加一个数，例如在上面1 4 6 10中间加5（算法中实际上1，4之间，6，10之间都新增了数的）</p>
+<p>X[ 1 ] = 1, X[ 2 ] = 4, X[ 3 ] = 5, X[ 4 ] = 6， X[ 5 ] = 10</p>
+<p>这样之后，第一次是1<del>5被染成1；第二次1</del>2被染成2；第三次4~5被染成3</p>
+<p>最终，1<del>2为2，3为1，4</del>5为3，于是输出正确结果3。</p>
+<p>这里不用map，用二分查找找到离散后的编号即可。</p>
+<p>线段树部分：</p>
+<p>把海报的编号当成lazy标记，如果访问了某个区间，则lazy标记更新，update和query的时候都要标记下传，本区间的lazy标记归零。</p>
+<h5 id="HDU-4027"><a href="#HDU-4027" class="headerlink" title="HDU 4027"></a><strong>HDU 4027</strong></h5><p>题意：给定100000个数，两种操作，0 i j表示将i j这段的数字都开根号（向下取整），1 i j表示查询i j之间的所有值的和（所有的和都不超过64位）。</p>
+<p>解题思路：注意到值为1之后就不用再开根号了，注意这个剪枝即可，还有注意开long long。</p>
+<h5 id="HDU-1540"><a href="#HDU-1540" class="headerlink" title="HDU 1540"></a><strong>HDU 1540</strong></h5><p>题意：D代表破坏村庄，R代表修复最后被破坏的那个村庄，Q代表询问包括x在内的最大连续区间是多少。</p>
+<p>解题思路：区间合并问题。设置lsum[n],rsum[n]分别表示区间左端连续村庄个数,区间右端连续村庄个数。</p>
+<p>注意query函数的写法：</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> loc,<span class="hljs-keyword">int</span> id)</span>   <span class="hljs-comment">//区间查询</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l=node[id].left;
+    <span class="hljs-keyword">int</span> r=node[id].right;
+    <span class="hljs-keyword">if</span>(l==r)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> m=(l+r)&gt;&gt;<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(loc&gt;=m-node[id&lt;&lt;<span class="hljs-number">1</span>].rsum+<span class="hljs-number">1</span>&amp;&amp;loc&lt;=m+node[id&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].lsum)
+       <span class="hljs-keyword">return</span> node[id&lt;&lt;<span class="hljs-number">1</span>].rsum+node[id&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].lsum;
+    <span class="hljs-keyword">if</span>(loc&lt;=m)<span class="hljs-keyword">return</span> query(loc,id&lt;&lt;<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> query(loc,id&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>);
+&#125;</code></pre>
+
+<h5 id="HDU-3974"><a href="#HDU-3974" class="headerlink" title="HDU 3974"></a><strong>HDU 3974</strong></h5><p>题意：一棵树的结构，父节点是老板，子节点是员工，每次给父节点分配的任务，立即会下分到他所有的子节点，有更新和查询命令。</p>
+<p>解题思路：以样例为例子：</p>
+<p><img src="http://imglf3.nosdn.127.net/img/ajhrcUFValVhVzZueWd3RExSU2tWMlNhcmFiajRDWXQvNkswMWdxNEhSMU4veXFqUEdJTXhnPT0.jpg?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2" srcset="/img/loading.gif" alt="img"></p>
+<p>用dfs将结点重新编号，对于每个结点，保存st和ed，分别表示自己的编号和最后儿子的编号，使其连续，然后映射到线段树上，对于T操作就是对于st[i]到ed[i]的区间修改，对于C操作就是单点查询。</p>
+<h5 id="HDU-1542"><a href="#HDU-1542" class="headerlink" title="HDU 1542"></a><strong>HDU 1542</strong></h5><p>题意：矩形面积并。</p>
+<p>解题思路：</p>
+<p><a href="http://www.cnblogs.com/KonjakJuruo/p/6024266.html" target="_blank" rel="noopener">http://www.cnblogs.com/KonjakJuruo/p/6024266.html</a></p>
+<p><a href="http://blog.csdn.net/kirito_acmer/article/details/45918499" target="_blank" rel="noopener">http://blog.csdn.net/kirito_acmer/article/details/45918499</a></p>
+<h5 id="HDU-4578"><a href="#HDU-4578" class="headerlink" title="HDU 4578"></a><strong>HDU 4578</strong></h5><p>题意：</p>
+<p>给一个数组，初始值为零，有四种操作</p>
+<p>“1 x y c”,代表 把区间 [x,y] 上的值全部加c</p>
+<p>“2 x y c”,代表 把区间 [x,y] 上的值全部乘以c</p>
+<p>“3 x y c” 代表 把区间 [x,y]上的值全部赋值为c</p>
+<p>“4 x y p” 代表 求区间 [x,y] 上值的p次方和1&lt;=p&lt;=3</p>
+<p>解题思路：</p>
+<p>lazy标记用ax+b即可。注意细节即可。</p>
+<h5 id="HDU-4614"><a href="#HDU-4614" class="headerlink" title="HDU 4614"></a><strong>HDU 4614</strong></h5><p>题意：</p>
+<p>有n个花瓶，标号0 ~ n−1。m个操作， </p>
+<p>‘1AF′，表示从A位置开始插F朵花，遇到有花的花瓶跳过。到最后一个花瓶都还有花剩余，丢弃剩下的花。 </p>
+<p>‘2AB′，表示将区间[A,B]内的花瓶全部清空。(A≤B) </p>
+<p>对于每个1操作，输出第一个和最后一个插花的位置，如果一朵花都插不了，输出‘Can not put any one.’；对于每个2操作，输出区间[A,B]内被清空的花瓶的数量。</p>
+<p>解题思路：</p>
+<p>线段树+二分。</p>
+<p>令num(i,j)为区间[i,j]的空花瓶数。<br>对于一个1操作，首先判一下num(A,n)是否大于0。之后，因为区间[A,n]的空花瓶数是单调不递减的，所以可以通过二分查找到 一个最小的位置L，使得num(A,L)==1，则此时的L就是第一个插花的位置；同样二分找到一个最小的位置R，使得num(A,R)==min(F,num(A,n))，则此时的R就是最后一个插花的位置。<br>对于一个2操作，直接询问区间[A,B]的空花瓶数，拿总数一减，输出。</p>
+<p>二分的写法：</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">bin_search</span><span class="hljs-params">(<span class="hljs-keyword">int</span> loc,<span class="hljs-keyword">int</span> num)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l=loc,r=n<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">int</span> res;
+    <span class="hljs-keyword">while</span>(l&lt;=r)
+    &#123;
+        <span class="hljs-keyword">int</span> m=(l+r)&gt;&gt;<span class="hljs-number">1</span>;
+        ans=<span class="hljs-number">0</span>;
+        query2(loc,m,<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span>(ans&gt;=num)
+        &#123;
+            res=m;
+            r=m<span class="hljs-number">-1</span>;
+        &#125;
+        <span class="hljs-keyword">else</span> l=m+<span class="hljs-number">1</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/01/26/%E8%BF%9E%E9%80%9A%E5%9B%BE%E4%B8%93%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">连通图专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/01/26/AC%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%93%E9%A2%98/">
+                        <span class="hidden-mobile">AC自动机专题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "线段树专题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

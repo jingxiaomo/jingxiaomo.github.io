@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces469D 并查集 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-02-25 22:14">
+      February 25, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p><strong>题意</strong>：有n个互不相同的整数： p1,p2,…,pn 。把这些整数分到两个集合A和B里边。但是要符合下面两个条件。</p>
+<p>如果x属于A，那么a-x也肯定属于A。</p>
+<p>如果x属于B，那么b-x也肯定属于B。</p>
+<p>判断一下是否存在一种方案来分配这些数字到集合A，B中。</p>
+<p>注意：如果一个集合为空也是可以的。</p>
+<p><strong>思路</strong>：思路是很简单的就是迷之WA…牛客上面的数据水得可以快排+二分都过了下标明明都不对…果然是用脚造的数据…然后用并查集做结果一直WA在第8组数据…可是找不出来哪儿错了…找题解结果都是千篇一律的代码 可怕难道你们的思路都一模一样的嘛qwq本弱找不出错哪儿了先放在这儿…</p>
+<p><strong>update</strong>：查出错误了 a-num[i]可以不等于b-num[i]啊 少考虑了一种a-num[i]存在而且b-num[i]存在的情况</p>
+<p>对于一个x来说，能分成以下4种情况（这里a!=b）：</p>
+<p>1.a-x不存在，b-x不存在。这种情况直接输出NO。</p>
+<p>2.a-x存在，b-x不存在。这种情况把x和a-x放在集合A中。</p>
+<p>3.a-x不存在，b-x存在。这种情况把x和b-x放在集合B中。</p>
+<p>4.a-x存在，b-x存在。这种情况比较我们就不能直接确定要放A还是要放B了。</p>
+<p>1⃣把x和a-x放入集合A，那么b-x肯定也要放入集合A，那么就说明存在y使得y=a-b+x。</p>
+<p>2⃣把x和b-x放入集合B，那么a-x肯定也要放入集合B，那么就说明存在y使得y=b-a+x。</p>
+<p>假设有y=a-b+x和y=b-a+x同时存在，则有a=b，矛盾。所以上面两种情况只可能存在一种或都不存在。如果都不存在，那么我们就无法决定把x和a-x和b-x放到集合A中还是集合B中，因为放到那一边都会剩下另一个无法去放，所以就输出NO。这里用并查集来维护即可。</p>
+<p><strong>代码</strong>：</p>
+<p>WA代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> par[<span class="hljs-number">100010</span>],high[<span class="hljs-number">100010</span>],num[<span class="hljs-number">100010</span>];
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;mp;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+    &#123;
+        par[i]=i;
+        high[i]=<span class="hljs-number">0</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">return</span> par[x]=<span class="hljs-built_in">find</span>(par[x]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)<span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">if</span>(high[x]&lt;high[y])par[x]=y;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        par[y]=x;
+        <span class="hljs-keyword">if</span>(high[x]==high[y])high[x]++;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> a,b,MAX=<span class="hljs-number">-1</span>;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;n,&amp;a,&amp;b);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;num[i]);
+        MAX=<span class="hljs-built_in">max</span>(MAX,num[i]);
+        mp[num[i]]=i;
+    &#125;
+    <span class="hljs-keyword">if</span>(MAX&gt;=<span class="hljs-built_in">max</span>(a,b))&#123;<span class="hljs-built_in">printf</span>(<span class="hljs-string">"NO\n"</span>);<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;
+    init();
+    <span class="hljs-keyword">int</span> flag=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n+<span class="hljs-number">1</span>&amp;&amp;flag==<span class="hljs-number">0</span>;i++)
+    &#123;
+        <span class="hljs-comment">//printf("i=%d par[i]=%d find(i)=%d\n",i,par[i],find(i));            //printf("i=%d\n",i);</span>
+        <span class="hljs-keyword">int</span> sign=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span>(mp[b-num[i]])
+        &#123;
+            <span class="hljs-comment">//printf("(%d)\n",par[1]);</span>
+            <span class="hljs-comment">//printf("!\n");</span>
+            unite(<span class="hljs-number">1</span>,i);
+            unite(<span class="hljs-number">1</span>,mp[b-num[i]]);
+            sign++;
+        &#125;
+        <span class="hljs-keyword">if</span>(sign==<span class="hljs-number">0</span>&amp;&amp;mp[a-num[i]])
+        &#123;
+            <span class="hljs-comment">//printf("?\n");</span>
+            unite(<span class="hljs-number">0</span>,i);
+            unite(<span class="hljs-number">0</span>,mp[a-num[i]]);
+            sign++;
+        &#125;
+        <span class="hljs-keyword">if</span>(sign==<span class="hljs-number">0</span>)flag++;
+    &#125;
+    <span class="hljs-keyword">if</span>(flag!=<span class="hljs-number">0</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">"NO\n"</span>);
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"YES\n"</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;n+<span class="hljs-number">1</span>;i++)
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>,<span class="hljs-built_in">find</span>(i));
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,<span class="hljs-built_in">find</span>(n+<span class="hljs-number">1</span>));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>AC代码：</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">int</span> par[<span class="hljs-number">100010</span>],high[<span class="hljs-number">100010</span>],num[<span class="hljs-number">100010</span>];
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;mp;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+    &#123;
+        par[i]=i;
+        high[i]=<span class="hljs-number">0</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(par[x]==x)<span class="hljs-keyword">return</span> x;
+    <span class="hljs-keyword">return</span> par[x]=<span class="hljs-built_in">find</span>(par[x]);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">unite</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    x=<span class="hljs-built_in">find</span>(x);
+    y=<span class="hljs-built_in">find</span>(y);
+    <span class="hljs-keyword">if</span>(x==y)<span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">if</span>(high[x]&lt;high[y])par[x]=y;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        par[y]=x;
+        <span class="hljs-keyword">if</span>(high[x]==high[y])high[x]++;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(x)==<span class="hljs-built_in">find</span>(y);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> a,b,MAX=<span class="hljs-number">-1</span>;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;n,&amp;a,&amp;b);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;num[i]);
+        MAX=<span class="hljs-built_in">max</span>(MAX,num[i]);
+        mp[num[i]]=i;
+    &#125;
+    <span class="hljs-keyword">if</span>(MAX&gt;=<span class="hljs-built_in">max</span>(a,b))&#123;<span class="hljs-built_in">printf</span>(<span class="hljs-string">"NO\n"</span>);<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;
+    init();
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+    &#123;
+        <span class="hljs-keyword">if</span>(mp[b-num[i]])unite(i,mp[b-num[i]]);
+        <span class="hljs-keyword">else</span> unite(i,<span class="hljs-number">0</span>);
+        <span class="hljs-keyword">if</span>(mp[a-num[i]])unite(i,mp[a-num[i]]);
+        <span class="hljs-keyword">else</span> unite(i,<span class="hljs-number">1</span>);<span class="hljs-comment">//因为只能属于其中一类</span>
+    &#125;
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">find</span>(<span class="hljs-number">0</span>)==<span class="hljs-built_in">find</span>(<span class="hljs-number">1</span>))<span class="hljs-built_in">printf</span>(<span class="hljs-string">"NO\n"</span>);
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"YES\n"</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n+<span class="hljs-number">1</span>;i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">find</span>(i)==<span class="hljs-built_in">find</span>(<span class="hljs-number">0</span>))<span class="hljs-built_in">printf</span>(<span class="hljs-string">"0"</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"1"</span>);
+            <span class="hljs-keyword">if</span>(i!=n+<span class="hljs-number">1</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">" "</span>);
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/26/51nod1019-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">51nod1019 树状数组求逆序数</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/02/24/Wannafly%E6%8C%91%E6%88%98%E8%B5%9B10/">
+                        <span class="hidden-mobile">Wannafly挑战赛10</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces469D 并查集&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

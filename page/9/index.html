@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/27/%E5%BE%90%E5%B7%9E%E9%82%80%E8%AF%B7%E8%B5%9BI-%E7%B1%BB%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/">徐州邀请赛I 类矩阵快速幂</a>
+
+      <a href="/2018/07/27/%E5%BE%90%E5%B7%9E%E9%82%80%E8%AF%B7%E8%B5%9BI-%E7%B1%BB%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有N天，一个人每天穿一件衣服，总共有m件衣服，某天穿颜色A下一天穿颜色B，能得到愉快值$$f[A][B]$$。问最大的愉快值是多少。
+思路：
+$$dp[i][j][k]：第k天从i到j的最大愉快值$$ ，
+所以$$dp[i][j][k]=max(dp[i][j][k],dp[i][t][k-1]+f[t][j])$$。
+这类似于矩阵乘法了，
+矩阵乘法的形式为$$dp[i][j][k]=dp</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-27
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/26/HDU6315-%E7%BA%BF%E6%AE%B5%E6%A0%91/">HDU6315 线段树</a>
+
+      <a href="/2018/07/26/HDU6315-%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有一个长度为n的序列a和一个相同长度的序列b，a初始都为0，b初始为乱序的全排列。现在有两种操作，共操作q次：
+add l r：对于$$a_l,a_{l+1}…a_r$$加一；
+query l r：询问$$\sum_{i=l}^r\lfloor \frac{a_i}{b_i}\rfloor$$。
+其中$$1 \leq n,q \leq 100000$$，$$1 \leq l \leq r </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-26
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/24/HDU6299-%E8%B4%AA%E5%BF%83/">HDU6299 贪心</a>
+
+      <a href="/2018/07/24/HDU6299-%E8%B4%AA%E5%BF%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+给出几个括号序列，可以对这些括号序列重新进行排序，使得连起来的括号序列里面能匹配的括号长度最长。
+思路：
+首先对于同一个括号序列里面的括号可以直接进行匹配，全部匹配完后，剩下的情况肯定只有三种：全是左括号，全是右括号，前面是右括号后面是左括号。
+所以对这三种情况进行贪心，排序。
+全是左括号的一定要往前放，全是右括号的一定要往后放。
+前面是右括号后面是左括号这种情况中，左括号多的肯定要往前放</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-24
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/22/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%9A%91%E6%9C%9FACM%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%EF%BC%88%E7%AC%AC%E4%B8%80%E5%9C%BA%EF%BC%89B-dp-%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/">牛客网暑期ACM多校训练营（第一场）B dp+公式推导</a>
+
+      <a href="/2018/07/22/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%9A%91%E6%9C%9FACM%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%EF%BC%88%E7%AC%AC%E4%B8%80%E5%9C%BA%EF%BC%89B-dp-%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+符合下列条件的n*n的矩阵有多少个？(mod m)
+每个元素只能为0,1,2；
+对称矩阵，主对角线都为0；
+每行的和为2。
+思路：
+看到矩阵的这些特征可以想到把它看作一个无向图的邻接矩阵。
+若$$A_{i,j}=2$$表示i和j之间有两条边，就相当于是两个点的环。
+那么每行的和为2的意思就是每个点的度为2，说明这个图全部都是环，每个点属于且仅属于一个环。
+可以考虑dp：
+f(n)表示n个点</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-22
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/20/io%E4%BC%98%E5%8C%96/">io优化</a>
+
+      <a href="/2018/07/20/io%E4%BC%98%E5%8C%96/" class="index-excerpt">
+        
+        
+          
+        
+        <div>namespace fastIO
+&#123;
+    #define BUF_SIZE 100000
+    //fread -&gt; read
+    bool IOerror = 0;
+    inline char nc()
+    &#123;
+        static char buf[BUF_SIZE], *p1 = buf + BUF_SIZE, *pend = buf + </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-20
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/20/LGV%E5%BC%95%E7%90%86/">Lindström–Gessel–Viennot引理</a>
+
+      <a href="/2018/07/20/LGV%E5%BC%95%E7%90%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Lindström–Gessel–Viennot引理对于一张无边权的DAG图，给定n个起点和对应的n个终点，这n条不相交路径的方案数为
+
+其中e(a,b)为图上a（起点）到b（终点）的方案数。
+
+CodeForces348D题意：
+给出一张n*m的有障碍的图，问从(1,1)到(n,m)不相交的两条路径的方案。其中$$2&lt;=n,m&lt;=3000$$。
+思路：
+可以将起点看作$$A_1(1</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-20
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/18/bzoj2038-%E5%B0%8FZ%E7%9A%84%E8%A2%9C%E5%AD%90-%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/">莫队算法</a>
+
+      <a href="/2018/07/18/bzoj2038-%E5%B0%8FZ%E7%9A%84%E8%A2%9C%E5%AD%90-%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/" class="index-excerpt">
+        
+        
+          
+        
+        <div>介绍莫队算法可以一个可高效解决绝大多数离线+无修改+区间查询问题的算法。这类问题具体是指：如果知道$$[L,R]$$的答案时，可以在$$O(g(n))$$的时间下得到$$[L,R−1]$$,$$[L,R+1]$$,$$[L−1,R]$$,$$[L+1,R]$$的答案的话，就可以$$O(n\sqrt n · \mathrm{g}(n))$$的时间内求出所有查询。
+对于莫队算法我感觉就是暴力。由于预先</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/18/Wannafly%E6%8C%91%E6%88%98%E8%B5%9B19C-%E7%8A%B6%E5%8E%8B-dfs-%E5%AE%B9%E6%96%A5/">Wannafly挑战赛19C 状压+dfs+容斥</a>
+
+      <a href="/2018/07/18/Wannafly%E6%8C%91%E6%88%98%E8%B5%9B19C-%E7%8A%B6%E5%8E%8B-dfs-%E5%AE%B9%E6%96%A5/" class="index-excerpt">
+        
+        
+          
+        
+        <div>题意：
+有一棵树包含N个节点，节点编号从1到N。节点总共有K种颜色，颜色编号从1到K。第i个节点的颜色为$$A_i$$。$$F_i$$表示恰好包含i种颜色的路径数量。请计算：
+$$\left(\sum_{i=1}^k(F_i*131^i)\right)\ mod\ (10^9+7)$$。
+其中$$1≤N≤50000$$，$$1≤K≤10$$。
+思路：
+做的时候完全无从下手QAQ
+突破点是在这个k，</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/18/%E5%AE%81%E5%A4%8F%E9%82%80%E8%AF%B7%E8%B5%9BH-%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%A4%8D%E8%B5%9BA-%E8%B4%AA%E5%BF%83/">宁夏邀请赛H &amp; 计蒜之道复赛A 贪心</a>
+
+      <a href="/2018/07/18/%E5%AE%81%E5%A4%8F%E9%82%80%E8%AF%B7%E8%B5%9BH-%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%A4%8D%E8%B5%9BA-%E8%B4%AA%E5%BF%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>宁夏邀请赛H题意：
+一个人去打n只怪兽，每只怪兽有HP值和ATK值，分别表示血量与对人造成的伤害，每次打的时候活着的所有怪兽都会对人造成伤害，对于一只怪兽来说，人第i次打它HP下降i。问人打完所有怪兽受到的最小伤害为多少。
+思路：
+打的次数事实上与HP并不是正相关的，所以要先算出每只怪兽要打几次。
+考虑两只怪兽的时候，设打的次数分别为h1和h2，ATK值分别为a1和a2，要使先打第一只怪兽受到的伤</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2018/07/16/Codeforces292D-ACM%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F%E5%91%A8%E8%B5%9BD-%E5%89%8D%E5%90%8E%E7%BC%80%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/">Codeforces292D &amp; ACM训练联盟周赛D 前后缀并查集与无向图的连通分量</a>
+
+      <a href="/2018/07/16/Codeforces292D-ACM%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F%E5%91%A8%E8%B5%9BD-%E5%89%8D%E5%90%8E%E7%BC%80%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Codeforces292D题意：
+给出n个点和m条无向边，每条无向边依次编号为1～m，给出q次询问，问删去[l,r]这些边后连通分量个数。其中$$2 ≤n≤ 500$$，$$1≤ m ≤10^4$$，$$1≤k≤ 2·10^4$$。
+思路：
+并查集是可以用来求无向图连通分量的个数的：
+并查集是指比如A和B是一类，A和C是一类，那么A、B、C为一类；
+无向图的连通是指比如A和B连通，A和C连通，那</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2018-07-16
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
