@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      21
        分钟
     </span>
   
@@ -182,6 +182,7 @@
   
     
       <!-- 不蒜子统计文章PV -->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
       <span id="busuanzi_container_page_pv" style="display: none">
         <i class="iconfont icon-eye" aria-hidden="true"></i>
         <span id="busuanzi_value_page_pv"></span> 次
@@ -412,6 +413,8 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</code></pre>
 <p>所有异常都可以调用<code>printStackTrace()</code>方法打印异常栈，这是一个简单有用的快速打印异常的方法。</p>
+<h1 id="捕获异常-1"><a href="#捕获异常-1" class="headerlink" title="捕获异常"></a>捕获异常</h1><h2 id="多catch语句"><a href="#多catch语句" class="headerlink" title="多catch语句"></a>多catch语句</h2><p>可以使用多个<code>catch</code>语句，每个<code>catch</code>分别捕获对应的<code>Exception</code>及其子类。JVM在捕获到异常后，会从上到下匹配<code>catch</code>语句，匹配到某个<code>catch</code>后，执行<code>catch</code>代码块，然后<em>不再</em>继续匹配。</p>
+<p>简单地说就是：多个<code>catch</code>语句只有一个能被执行。例如：</p>
 
             </article>
             <hr>
