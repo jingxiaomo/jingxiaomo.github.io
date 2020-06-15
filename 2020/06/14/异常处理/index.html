@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      2.3k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      31
        分钟
     </span>
   
@@ -426,6 +426,98 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     &#125;
 &#125;</code></pre>
 <p>存在多个<code>catch</code>的时候，<code>catch</code>的顺序非常重要：子类必须写在前面。</p>
+<h2 id="finally语句"><a href="#finally语句" class="headerlink" title="finally语句"></a>finally语句</h2><p>无论是否有异常发生，如果我们都希望执行一些语句，例如清理工作，怎么写？</p>
+<p>可以把执行语句写若干遍：正常执行的放到<code>try</code>中，每个<code>catch</code>再写一遍。例如：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        process1();
+        process2();
+        process3();
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+        System.out.println(<span class="hljs-string">"Bad encoding"</span>);
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+        System.out.println(<span class="hljs-string">"IO error"</span>);
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125;
+&#125;</code></pre>
+<p>上述代码无论是否发生异常，都会执行<code>System.out.println(&quot;END&quot;);</code>这条语句。</p>
+<p>那么如何消除这些重复的代码？Java的<code>try ... catch</code>机制还提供了<code>finally</code>语句，<code>finally</code>语句块保证有无错误都会执行。上述代码可以改写如下：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        process1();
+        process2();
+        process3();
+    &#125; <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) &#123;
+        System.out.println(<span class="hljs-string">"Bad encoding"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+        System.out.println(<span class="hljs-string">"IO error"</span>);
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125;
+&#125;</code></pre>
+<p><code>finally</code>总是最后执行。</p>
+<p>某些情况下，可以没有<code>catch</code>，只使用<code>try ... finally</code>结构。例如：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(String file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        ...
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125;
+&#125;</code></pre>
+<p>因为方法声明了可能抛出的异常，所以可以不写<code>catch</code>。</p>
+<h2 id="捕获多种异常"><a href="#捕获多种异常" class="headerlink" title="捕获多种异常"></a>捕获多种异常</h2><p>如果某些异常的处理逻辑相同，但是异常本身不存在继承关系，那么就得编写多条<code>catch</code>子句：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        process1();
+        process2();
+        process3();
+    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+        System.out.println(<span class="hljs-string">"Bad input"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;
+        System.out.println(<span class="hljs-string">"Bad input"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+        System.out.println(<span class="hljs-string">"Unknown error"</span>);
+    &#125;
+&#125;</code></pre>
+<p>因为处理<code>IOException</code>和<code>NumberFormatException</code>的代码是相同的，所以我们可以把它两用<code>|</code>合并到一起：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        process1();
+        process2();
+        process3();
+    &#125; <span class="hljs-keyword">catch</span> (IOException | NumberFormatException e) &#123; <span class="hljs-comment">// IOException或NumberFormatException</span>
+        System.out.println(<span class="hljs-string">"Bad input"</span>);
+    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+        System.out.println(<span class="hljs-string">"Unknown error"</span>);
+    &#125;
+&#125;</code></pre>
+<h1 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h1><h2 id="异常的传播"><a href="#异常的传播" class="headerlink" title="异常的传播"></a>异常的传播</h2><p>当某个方法抛出了异常时，如果当前方法没有捕获异常，异常就会被抛到上层调用方法，直到遇到某个<code>try ... catch</code>被捕获为止：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            process1();
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process1</span><span class="hljs-params">()</span> </span>&#123;
+        process2();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process2</span><span class="hljs-params">()</span> </span>&#123;
+        Integer.parseInt(<span class="hljs-keyword">null</span>); <span class="hljs-comment">// 会抛出NumberFormatException</span>
+    &#125;
+&#125;</code></pre>
+<p>通过<code>printStackTrace()</code>可以打印出方法的调用栈，类似：</p>
+<pre><code class="hljs reasonml">java.lang.NumberFormatException: null
+    at java.base/java.lang.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span>parse<span class="hljs-constructor">Int(Integer.<span class="hljs-params">java</span>:614)</span>
+    at java.base/java.lang.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span>parse<span class="hljs-constructor">Int(Integer.<span class="hljs-params">java</span>:770)</span>
+    at <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>process2(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>java:<span class="hljs-number">16</span>)
+    at <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>process1(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>java:<span class="hljs-number">12</span>)
+    at <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>main(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Main</span>.</span></span>java:<span class="hljs-number">5</span>)</code></pre>
 
             </article>
             <hr>
